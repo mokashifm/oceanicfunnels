@@ -222,6 +222,7 @@ a{{display:inline-block;margin-top:16px;background:#3DE3C8;color:#0E1A1B;font-fa
 """)
 kit = "../brand"
 for src, dst in [("svg/oceanic-icon.svg", "icon.svg"), ("png/favicon.ico", "favicon.ico"),
-                 ("png/oceanic-icon-app-dark-192.png", "icon-192.png"), ("png/oceanic-icon-app-dark-512.png", "icon-512.png")]:
+                 ("png/oceanic-icon-app-dark-192.png", "icon-192.png"), ("png/oceanic-icon-app-dark-512.png", "icon-512.png"),
+                 ("svg/oceanic-funnels-logo-light.svg", "assets/logo-light.svg"), ("svg/oceanic-funnels-logo-dark.svg", "assets/logo-dark.svg")]:
     shutil.copy(f"{kit}/{src}", f"{SITE}/{dst}")
 print("site built")
