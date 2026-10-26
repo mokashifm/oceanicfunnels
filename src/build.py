@@ -5,6 +5,7 @@ Outputs:
   preview.html               -> artifact preview
 """
 import json, html, os, datetime
+import pages
 
 CONFIG = {
     "brand": "Oceanic Funnels",
@@ -85,7 +86,7 @@ def body():
     rep = {"{{BRAND}}": B, "{{BOOK}}": CONFIG["book_url"], "{{EMAIL}}": CONFIG["email"],
            "{{LOGIN}}": CONFIG["login"], "{{PLAN1}}": CONFIG["plan1"], "{{PLAN2}}": CONFIG["plan2"],
            "{{PLAN3}}": CONFIG["plan3"], "{{FAQ}}": faq_html(), "{{FAQ_N}}": str(len(FAQ)),
-           "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y")}
+           "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y"), "{{FOOTER}}": pages.footer(CONFIG)}
     for k, v in rep.items():
         src = src.replace(k, v)
     assert "{{" not in src, "unreplaced placeholder: " + src[src.index("{{"):src.index("{{")+30]
@@ -157,11 +158,11 @@ Allow: /
 
 Sitemap: {CONFIG['domain']}/sitemap.xml
 """)
-open(f"{SITE}/sitemap.xml", "w").write(f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>{url}</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-</urlset>
-""")
+extra = pages.build_all(CONFIG, FONTS, open("body.src.html").read(), SITE)
+def _u(p, pr): return f"  <url><loc>{CONFIG['domain']}{p}</loc><lastmod>{today}</lastmod><priority>{pr}</priority></url>"
+open(f"{SITE}/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    + "\n".join([_u("/", "1.0")] + [_u(p, "0.3" if p in ("/privacy/", "/terms/") else "0.8") for p in extra]) + "\n</urlset>\n")
+
 open(f"{SITE}/_headers", "w").write("""/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

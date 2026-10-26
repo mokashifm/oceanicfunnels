@@ -1,0 +1,374 @@
+"""Builds the extra pages: /privacy/, /terms/, /compare/ and /compare/<competitor>/.
+Shares the homepage design: its stylesheet is extracted to /assets/site.css.
+"""
+import html, json, os, re
+import legal
+from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
+
+E = html.escape
+def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
+
+PAGE_CSS = r"""
+/* ---------- inner pages */
+.nf-sub-hero{background:linear-gradient(180deg,#DEF4F0 0%,#EEF3F2 70%,#FBEEE9 100%)}
+.nf-sub-in{padding-block:48px 72px;max-width:900px}
+.nf-sub-in.c{margin:0 auto;text-align:center}
+.nf-sub-in.c .nf-sub{margin-left:auto;margin-right:auto}
+.nf-sub-in h1{font-size:clamp(38px,5.6vw,72px);line-height:1.02}
+.nf-crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--muted);margin-bottom:22px}
+.nf-sub-in.c .nf-crumbs{justify-content:center}
+.nf-crumbs a{color:var(--ink);text-decoration:none}
+.nf-crumbs a:hover{text-decoration:underline}
+.nf-sub-in .nf-hero-cta{justify-content:flex-start;margin-top:32px}
+.nf-sub-in.c .nf-hero-cta{justify-content:center}
+.nf-vs{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:#fff;border-radius:999px;padding:8px 16px;box-shadow:inset 0 0 0 1px rgba(14,26,27,.12);margin-bottom:22px}
+.nf-vs i{font-style:normal;color:var(--coral-d)}
+.nf-cmp .nf-table td.us{width:38%}
+.nf-cmp .nf-table td{width:36%}
+.nf-two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+.nf-box{background:var(--mist);border-radius:var(--r);padding:36px}
+.nf-box.ink{background:var(--ink);color:#fff}
+.nf-box.ink h3{color:#fff}
+.nf-box h3{font-size:24px;margin-bottom:16px}
+.nf-box p{color:var(--text);font-size:16px}
+.nf-box.ink p{color:#C9D6D4}
+.nf-plist{display:grid;gap:0;margin-top:6px}
+.nf-plist li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+.nf-box.ink .nf-plist li{border-color:#2A3A3A}
+.nf-plist li:last-child{border-bottom:0}
+.nf-plist b{font-family:var(--display);font-weight:600;color:var(--ink)}
+.nf-box.ink .nf-plist b{color:#fff}
+.nf-plist span{text-align:right;color:var(--muted)}
+.nf-box.ink .nf-plist span{color:var(--aqua)}
+.nf-srcs{margin-top:22px;font-size:13px;color:var(--muted)}
+.nf-srcs a{color:var(--ink)}
+.nf-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.nf-feat li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.nf-feat b{display:block;font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.nf-feat span{font-size:14.5px;color:var(--muted)}
+.nf-cta-band{background:var(--ink);border-radius:var(--r);padding:56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+.nf-cta-band h2{color:#fff;text-transform:uppercase;font-weight:700;letter-spacing:-.03em;line-height:.98;font-size:clamp(30px,3.6vw,46px);max-width:18ch}
+.nf-cta-band p{color:#C9D6D4;margin-top:12px;max-width:48ch}
+.nf-more{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.nf-more a{font-family:var(--display);font-weight:600;font-size:15px;padding:10px 18px;border-radius:999px;color:var(--ink);text-decoration:none;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.nf-more a:hover{background:var(--ink);color:#fff}
+.nf-hub{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.nf-hub a{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;text-decoration:none;color:var(--text);transition:border-color .15s}
+.nf-hub a:hover{border-color:var(--ink)}
+.nf-hub .vs{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d)}
+.nf-hub h2{font-size:24px;line-height:1.15}
+.nf-hub p{font-size:14.5px;color:var(--muted)}
+.nf-hub .go{margin-top:auto;padding-top:8px;font-family:var(--display);font-weight:600;color:var(--ink)}
+.nf-doc-wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start}
+.nf-toc{position:sticky;top:24px;font-size:14px}
+.nf-toc b{display:block;font-family:var(--display);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.nf-toc ol{display:grid;gap:8px;list-style:decimal;padding-left:18px;color:var(--muted)}
+.nf-toc a{color:var(--muted);text-decoration:none}
+.nf-toc a:hover{color:var(--ink)}
+.nf-doc{max-width:760px}
+.nf-doc section{padding-block:8px 20px;border-bottom:1px solid var(--line);margin-bottom:20px;scroll-margin-top:24px}
+.nf-doc section:last-child{border-bottom:0}
+.nf-doc h2{font-size:24px;letter-spacing:-.02em;margin-bottom:12px}
+.nf-doc p{font-size:16px;line-height:1.7;color:var(--text);margin-bottom:12px}
+.nf-doc ul{list-style:disc;padding-left:22px;display:grid;gap:8px;margin-bottom:12px}
+.nf-doc li{font-size:16px;line-height:1.65;color:var(--text)}
+.nf-doc b{color:var(--ink)}
+.nf-doc a{color:var(--ink)}
+.nf-note{background:var(--coral-l);color:#7A2A17;border-radius:var(--r);padding:14px 18px;font-size:14.5px;margin-bottom:28px}
+@media (max-width:1060px){.nf-two{grid-template-columns:1fr}.nf-feat,.nf-hub{grid-template-columns:1fr 1fr}.nf-doc-wrap{grid-template-columns:1fr;gap:28px}.nf-toc{position:static}}
+@media (max-width:680px){
+.nf-cmp .nf-table{min-width:0}
+.nf-cmp .nf-table thead{display:none}
+.nf-cmp .nf-table,.nf-cmp .nf-table tbody,.nf-cmp .nf-table tr,.nf-cmp .nf-table th,.nf-cmp .nf-table td{display:block;width:auto}
+.nf-cmp .nf-table tr{border-bottom:1px solid var(--line)}
+.nf-cmp .nf-table tbody th{background:var(--mist);border:0;padding:12px 16px;width:auto}
+.nf-cmp .nf-table td,.nf-cmp .nf-table td.us{border:0;padding:10px 16px;width:auto}
+.nf-cmp .nf-table td::before{content:attr(data-l);display:block;font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;opacity:.75}
+.nf-cmp .nf-table td.us::before{color:var(--aqua)}
+.nf-feat,.nf-hub{grid-template-columns:1fr}.nf-box,.nf-cta-band{padding:28px 22px}.nf-sub-in{padding-block:32px 56px}.nf-plist li{flex-direction:column;gap:2px}.nf-plist span{text-align:left}}
+"""
+
+def extract(src):
+    css = src[src.index('<style>') + 7: src.index('</style>')]
+    logo = re.search(r'<a class="nf-logo".*?</a>', src, re.S).group(0).replace('href="#top"', 'href="/"')
+    return css, logo
+
+def footer(cfg):
+    comp = "".join(f'<a href="/compare/{c["slug"]}/">vs {E(c["name"])}</a>' for c in COMPETITORS)
+    return f'''<footer class="nf-foot">
+  <div class="nf-wrap nf-foot-top">
+    <div>
+      <h2>Stop fishing. Build the net.</h2>
+      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system, from $67 a month.</p>
+      <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
+    </div>
+    <nav class="nf-foot-cols" aria-label="Footer">
+      <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#results">Results</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a></div>
+      <div><b>Compare</b>{comp}<a href="/compare/">All comparisons</a></div>
+      <div><b>Company</b><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+    </nav>
+  </div>
+  <div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>
+  <div class="nf-wordmark" aria-hidden="true">OCEANIC</div>
+</footer>'''
+
+def header(logo, cfg):
+    return f'''<header class="nf-head">
+      {logo}
+      <nav aria-label="Main">
+        <a class="l" href="/#features">Features</a>
+        <a class="l" href="/#pricing">Pricing</a>
+        <a class="l" href="/compare/">Compare</a>
+        <a class="nf-btn nf-btn--line" href="{cfg["login"]}">Log in</a>
+        <a class="nf-btn nf-btn--ink" href="/#pricing">Build my net</a>
+      </nav>
+    </header>'''
+
+def page(cfg, fonts, path, title, desc, crumbs, body, logo):
+    url = cfg["domain"] + path
+    items = [{"@type": "ListItem", "position": i + 1, "name": n, "item": cfg["domain"] + p} for i, (n, p) in enumerate(crumbs)]
+    schema = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebPage", "@id": url + "#page", "url": url, "name": title, "description": desc,
+         "isPartOf": {"@id": cfg["domain"] + "/#page"}, "publisher": {"@id": cfg["domain"] + "/#org"},
+         "dateModified": cfg["updated"], "inLanguage": "en"},
+        {"@type": "BreadcrumbList", "itemListElement": items}]}
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{E(title)}</title>
+<meta name="description" content="{E(desc)}">
+<link rel="canonical" href="{url}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1A1B">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{E(cfg["brand"])}">
+<meta property="og:title" content="{E(title)}">
+<meta property="og:description" content="{E(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{cfg["domain"]}/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+{fonts}
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{json.dumps(schema, indent=1)}
+</script>
+</head>
+<body style="margin:0;background:#FFFFFF">
+<div class="nf">
+{body.replace("{{HEADER}}", header(logo, cfg))}
+{footer(cfg)}
+</div>
+</body>
+</html>
+'''
+
+def crumbs_html(crumbs):
+    out = []
+    for i, (n, p) in enumerate(crumbs):
+        out.append(f'<span>{E(n)}</span>' if i == len(crumbs) - 1 else f'<a href="{p}">{E(n)}</a><span aria-hidden="true">/</span>')
+    return '<nav class="nf-crumbs" aria-label="Breadcrumb">' + "".join(out) + '</nav>'
+
+def legal_page(cfg, fonts, logo, slug, title, h1, intro, sections):
+    path = f"/{slug}/"
+    crumbs = [("Home", "/"), (h1, path)]
+    ids = [re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-") for t, _ in sections]
+    toc = "".join(f'<li><a href="#{i}">{E(t)}</a></li>' for i, (t, _) in zip(ids, sections))
+    secs = "".join(f'<section id="{i}"><h2>{E(t)}</h2>{c}</section>' for i, (t, c) in zip(ids, sections))
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in">
+      {crumbs_html(crumbs)}
+      <h1>{E(h1)}</h1>
+      <p class="nf-sub">{E(intro)} Effective {legal.EFFECTIVE}.</p>
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:64px">
+  <div class="nf-wrap nf-doc-wrap">
+    <aside class="nf-toc"><b>On this page</b><ol>{toc}</ol></aside>
+    <article class="nf-doc">{secs}</article>
+  </div>
+</section>'''
+    return path, page(cfg, fonts, path, title, intro, crumbs, body, logo)
+
+def compare_page(cfg, fonts, logo, c):
+    n = c["name"]; path = f'/compare/{c["slug"]}/'
+    crumbs = [("Home", "/"), ("Compare", "/compare/"), (f"vs {n}", path)]
+    rows = "".join(f'<tr><th scope="row">{E(ROW_LABELS[k])}</th><td class="us" data-l="Oceanic Funnels OS">✓ {E(OF[k])}</td><td data-l="{E(n)}">{E(v)}</td></tr>' for k, v in c["rows"].items())
+    rows += f'<tr><th scope="row">{E(ROW_LABELS["allinone"])}</th><td class="us" data-l="Oceanic Funnels OS">✓ {E(OF["allinone"])}</td><td data-l="{E(n)}">{E(n)} is {E(art(c["kind"]))}</td></tr>'
+    plans = "".join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in c["plans"])
+    srcs = " · ".join(f'<a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a>' for t, u in c["sources"])
+    more = "".join(f'<a href="/compare/{o["slug"]}/">vs {E(o["name"])}</a>' for o in COMPETITORS if o["slug"] != c["slug"])
+    cheap = f'Oceanic Funnels OS starts at $67 a month with unlimited contacts and users on every plan. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
+    faqs = [
+      (f"What is the difference between Oceanic Funnels and {n}?", c["answer"]),
+      (f"Is Oceanic Funnels OS cheaper than {n}?", cheap + " Usage like SMS and AI is pay-as-you-go."),
+      (f"How do I switch from {n}?", c["switch"]),
+      (f"When is {n} the better choice?", c["better"]),
+      ("Will you build it for me?", "Yes. On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($397 a month) we build your sales funnel and the full automated backend for you."),
+    ]
+    faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in">
+      {crumbs_html(crumbs)}
+      <span class="nf-vs">Oceanic Funnels <i>vs</i> {E(n)}</span>
+      <h1>{E(c["h1"])}</h1>
+      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. From $67 a month, or we build it all for you.</p>
+      <div class="nf-hero-cta">
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="/#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--line" href="#comparison">See the comparison</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:72px">
+  <div class="nf-wrap">
+    <div class="nf-panel">
+      <div>
+        <span class="nf-eyebrow">The short answer</span>
+        <h2>Oceanic Funnels vs {E(n)}: <span class="g">what's the difference?</span></h2>
+        <p class="nf-def">{E(c["answer"])}</p>
+        <p class="nf-updated">Prices checked {CHECKED} from public sources</p>
+      </div>
+      <ul class="nf-facts">
+        <li><b>Oceanic Funnels</b><span>All-in-one sales funnel, CRM and automation system</span></li>
+        <li><b>{E(n)}</b><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
+        <li><b>Starts at</b><span>$67/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
+        <li><b>Contacts</b><span>Unlimited on every Oceanic plan</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band nf-cmp" id="comparison" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Side by side</span>
+      <h2>Oceanic Funnels vs {E(n)}</h2>
+    </div>
+    <div class="nf-tablewrap">
+      <table class="nf-table">
+        <thead><tr><th scope="col"><span hidden>Feature</span></th><th scope="col" class="us">Oceanic Funnels OS</th><th scope="col">{E(n)}</th></tr></thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
+    <p class="nf-srcs">{E(n)} details from public pricing pages and reviews, checked {CHECKED}. Plans and prices change, so confirm on {E(n)}'s website. Sources: {srcs}</p>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Pricing at a glance</span>
+      <h2>What you pay <span class="g">each month</span></h2>
+    </div>
+    <div class="nf-two">
+      <div class="nf-box ink">
+        <h3>Oceanic Funnels OS</h3>
+        <ul class="nf-plist"><li><b>OS</b><span>$67/month</span></li><li><b>Growth (set up for you)</b><span>$197/month</span></li><li><b>Done-For-You (we build it)</b><span>$397/month</span></li></ul>
+        <p style="margin-top:16px">Unlimited contacts, users and funnels on every plan. SMS, email and AI usage is pay-as-you-go.</p>
+      </div>
+      <div class="nf-box">
+        <h3>{E(n)}</h3>
+        <ul class="nf-plist">{plans}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band nf-results" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">All-in-one vs piece-by-piece</span>
+      <h2>Everything {E(n)} does, <span class="g">plus the rest of your stack</span></h2>
+    </div>
+    <ul class="nf-feat">
+      <li><b>Funnels and websites</b><span>Unlimited funnels, landing pages and websites, on every plan.</span></li>
+      <li><b>CRM and pipelines</b><span>Every lead, deal and conversation in one record.</span></li>
+      <li><b>Email and SMS</b><span>Campaigns, automations and two-way texting built in.</span></li>
+      <li><b>AI agents</b><span>Chat and voice agents that reply to leads in seconds, day and night.</span></li>
+      <li><b>Booking</b><span>Calendars, reminders and no-show follow-up.</span></li>
+      <li><b>Payments</b><span>Invoices, text-to-pay, order forms and subscriptions.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-two" style="margin-top:0">
+      <div class="nf-box"><h3>When {E(n)} might suit you better</h3><p>{E(c["better"])}</p></div>
+      <div class="nf-box"><h3>How to switch from {E(n)}</h3><p>{E(c["switch"])}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap nf-faq">
+    <div>
+      <span class="nf-eyebrow">FAQ</span>
+      <h2>Oceanic Funnels vs {E(n)}, <span class="g">answered</span></h2>
+    </div>
+    <div class="nf-faq-list">
+{faq}
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
+      <div><h2>Stop fishing for customers. Build the net.</h2><p>One system, one bill, unlimited contacts. Founding member pricing locks in for life.</p></div>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="/#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+    </div>
+    <div class="nf-more" aria-label="Other comparisons">{more}<a href="/compare/">All comparisons</a></div>
+  </div>
+</section>'''
+    title = f"Oceanic Funnels vs {n}: The {n} Alternative | Oceanic Funnels"
+    if len(title) > 62: title = f"Oceanic Funnels vs {n} | {n} Alternative"
+    desc = c["answer"]
+    if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0] + "…"
+    return path, page(cfg, fonts, path, title, desc, crumbs, body, logo)
+
+def hub_page(cfg, fonts, logo):
+    path = "/compare/"; crumbs = [("Home", "/"), ("Compare", path)]
+    cards = "".join(f'''<a href="/compare/{c["slug"]}/"><span class="vs">vs {E(c["name"])}</span><h2>{E(c["h1"])}</h2><p>{E(c["name"])} is {E(art(c["kind"]))}. See features, pricing and how to switch.</p><span class="go">Compare →</span></a>''' for c in COMPETITORS)
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in c">
+      {crumbs_html(crumbs)}
+      <h1>Compare Oceanic Funnels</h1>
+      <p class="nf-sub">See how Oceanic Funnels OS compares with the funnel builders, CRMs and marketing tools you might be paying for today. Prices checked {CHECKED}.</p>
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:64px">
+  <div class="nf-wrap"><div class="nf-hub">{cards}</div></div>
+</section>'''
+    return path, page(cfg, fonts, path, "Compare Oceanic Funnels vs ClickFunnels, HubSpot and More",
+                      "Compare Oceanic Funnels OS with ClickFunnels, HubSpot, ActiveCampaign, Keap, Kartra, Klaviyo, Zoho, Salesforce and Linktree on features and pricing.", crumbs, body, logo)
+
+def build_all(cfg, fonts, src, site):
+    css, logo = extract(src)
+    os.makedirs(f"{site}/assets", exist_ok=True)
+    open(f"{site}/assets/site.css", "w").write(css + PAGE_CSS)
+    out = [legal_page(cfg, fonts, logo, "privacy", "Privacy Policy | Oceanic Funnels", "Privacy Policy",
+                      "How Oceanic Funnels collects, uses and protects personal information.", legal.PRIVACY),
+           legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
+                      "The terms that apply when you use oceanicfunnels.com and Oceanic Funnels OS.", legal.TERMS),
+           hub_page(cfg, fonts, logo)]
+    out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
+    for path, htm in out:
+        d = site + path
+        os.makedirs(d, exist_ok=True)
+        open(d + "index.html", "w").write(htm)
+    return [p for p, _ in out]
