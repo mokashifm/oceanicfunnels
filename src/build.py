@@ -120,6 +120,8 @@ def body():
            "{{PLAN3}}": CONFIG["plan3"], "{{FAQ}}": faq_html(), "{{FAQ_N}}": str(len(FAQ)),
            "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y"), "{{FOOTER}}": pages.footer(CONFIG)}
     r_rows, r_n, r_tot, r_src = replaces_html()
+    from industries import INDUSTRIES
+    rep["{{INDUSTRIES}}"] = "".join(f'<a href="/industries/{d["slug"]}/">{html.escape(d["name"])}<span aria-hidden="true">→</span></a>' for d in INDUSTRIES)
     rep.update({"{{REPL_ROWS}}": r_rows, "{{REPL_N}}": r_n, "{{REPL_TOTAL}}": r_tot, "{{REPL_SRC}}": r_src})
     for k, v in rep.items():
         src = src.replace(k, v)

@@ -4,6 +4,7 @@ Shares the homepage design: its stylesheet is extracted to /assets/site.css.
 import html, json, os, re
 import legal
 from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
+from industries import INDUSTRIES, GENERIC_FAQ
 
 E = html.escape
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
@@ -88,6 +89,34 @@ PAGE_CSS = r"""
 .nf-feat,.nf-hub{grid-template-columns:1fr}.nf-box,.nf-cta-band{padding:28px 22px}.nf-sub-in{padding-block:32px 56px}.nf-plist li{flex-direction:column;gap:2px}.nf-plist span{text-align:left}}
 """
 
+PAGE_CSS += r"""
+/* ---------- industry pages */
+.nf-leaks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.nf-leaks li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:10px}
+.nf-leaks .n{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d)}
+.nf-leaks b{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink);line-height:1.2}
+.nf-leaks span{font-size:15px;color:var(--muted)}
+.nf-run{list-style:none;margin-top:48px;display:grid;gap:0;max-width:900px}
+.nf-run li{display:grid;grid-template-columns:150px 44px minmax(0,1fr);grid-template-rows:auto auto;gap:0 20px;align-items:start;padding-bottom:32px;position:relative}
+.nf-run li:not(:last-child)::before{content:"";position:absolute;left:191px;top:44px;bottom:0;width:2px;background:#2A3A3A}
+.nf-run li:last-child{padding-bottom:0}
+.nf-run .t{grid-column:1;grid-row:1;font-family:var(--display);font-weight:600;font-size:14px;color:var(--aqua);text-align:right;padding-top:12px}
+.nf-run .d{grid-column:2;grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--aqua);color:var(--ink);font-family:var(--display);font-weight:700;display:grid;place-items:center}
+.nf-run b{grid-column:3;grid-row:1;display:block;font-family:var(--display);font-size:20px;font-weight:600;color:#fff;padding-top:9px}
+.nf-run p{grid-column:3;grid-row:2;color:#C9D6D4;font-size:15.5px;margin-top:4px;max-width:60ch}
+.nf-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.nf-chips li{font-family:var(--display);font-weight:600;font-size:15px;padding:10px 18px;border-radius:999px;background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:1060px){.nf-leaks{grid-template-columns:1fr}}
+@media (max-width:680px){
+.nf-run li{grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto;gap:0 16px}
+.nf-run li:not(:last-child)::before{left:21px}
+.nf-run .d{grid-column:1;grid-row:1/4}
+.nf-run .t{grid-column:2;grid-row:1;text-align:left;padding-top:2px;font-size:13px}
+.nf-run b{grid-column:2;grid-row:2;padding-top:2px;font-size:18px}
+.nf-run p{grid-column:2;grid-row:3}
+}
+"""
+
 def extract(src):
     css = src[src.index('<style>') + 7: src.index('</style>')]
     logo = re.search(r'<a class="nf-logo".*?</a>', src, re.S).group(0).replace('href="#top"', 'href="/"')
@@ -95,6 +124,7 @@ def extract(src):
 
 def footer(cfg):
     comp = "".join(f'<a href="/compare/{c["slug"]}/">vs {E(c["name"])}</a>' for c in COMPETITORS[:6])
+    inds = "".join(f'<a href="/industries/{i["slug"]}/">{E(i["short"])}</a>' for i in INDUSTRIES[:6])
     return f'''<footer class="nf-foot">
   <div class="nf-wrap nf-foot-top">
     <div>
@@ -104,6 +134,7 @@ def footer(cfg):
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
       <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#results">Results</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a></div>
+      <div><b>Industries</b>{inds}<a href="/industries/">All industries</a></div>
       <div><b>Compare</b>{comp}<a href="/compare/">All comparisons</a></div>
       <div><b>Company</b><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
     </nav>
@@ -117,6 +148,7 @@ def header(logo, cfg):
       {logo}
       <nav aria-label="Main">
         <a class="l" href="/#features">Features</a>
+        <a class="l" href="/industries/">Industries</a>
         <a class="l" href="/#pricing">Pricing</a>
         <a class="l" href="/compare/">Compare</a>
         <a class="nf-btn nf-btn--line" href="{cfg["login"]}">Log in</a>
@@ -357,6 +389,130 @@ def hub_page(cfg, fonts, logo):
     return path, page(cfg, fonts, path, "Compare Oceanic Funnels vs ClickFunnels, HubSpot and More",
                       "Compare Oceanic Funnels OS with ClickFunnels, HubSpot, ActiveCampaign, Keap, Kartra, Klaviyo, Zoho, Salesforce and Linktree on features and pricing.", crumbs, body, logo)
 
+def industry_page(cfg, fonts, logo, d):
+    path = f"/industries/{d['slug']}/"; n = d["name"]
+    crumbs = [("Home", "/"), ("Industries", "/industries/"), (n, path)]
+    leaks = "".join(f'<li><span class="n">Leak {i+1}</span><b>{E(t)}</b><span>{E(x)}</span></li>' for i, (t, x) in enumerate(d["leaks"]))
+    flow = "".join(f'<li><span class="t">{E(t)}</span><span class="d">{i+1}</span><b>{E(h)}</b><p>{E(x)}</p></li>' for i, (t, h, x) in enumerate(d["flow"]))
+    autos = "".join(f'<li><b>{E(t)}</b><span>{E(x)}</span></li>' for t, x in d["autos"])
+    funnels = "".join(f'<li>{E(f)}</li>' for f in d["funnels"])
+    faqs = [(f"How do {d['who']} automate their sales with Oceanic Funnels?", d["answer"])] + d["faqs"] + GENERIC_FAQ
+    faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
+    more = "".join(f'<a href="/industries/{o["slug"]}/">{E(o["short"])}</a>' for o in INDUSTRIES if o["slug"] != d["slug"])
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in">
+      {crumbs_html(crumbs)}
+      <span class="nf-vs">For {E(n)}</span>
+      <h1>{E(d["h1"])}</h1>
+      <p class="nf-sub">{E(d["sub"])}</p>
+      <div class="nf-hero-cta">
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="/#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--line" href="#how-it-runs">See how it runs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:72px">
+  <div class="nf-wrap">
+    <div class="nf-panel">
+      <div>
+        <span class="nf-eyebrow">The short answer</span>
+        <h2>How {E(d["who"].split(" like ")[0])} <span class="g">automate with Oceanic Funnels</span></h2>
+        <p class="nf-def">{E(d["answer"])}</p>
+      </div>
+      <ul class="nf-facts">
+        <li><b>Leads from</b><span>Funnels, ads, social DMs, calls and your website</span></li>
+        <li><b>Replies</b><span>Within seconds, by SMS, email, WhatsApp and AI agent</span></li>
+        <li><b>Booking</b><span>Calendars with automatic reminders</span></li>
+        <li><b>Starts at</b><span>$67/month, unlimited contacts and users</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Where customers slip away</span>
+      <h2>Three leaks in most <span class="g">{E(n.lower() if n != "Law Firms" else "law firms")}</span></h2>
+    </div>
+    <ul class="nf-leaks">{leaks}</ul>
+  </div>
+</section>
+
+<section class="nf-band nf-dark" id="how-it-runs">
+  <div class="nf-wrap">
+    <div class="nf-caps">
+      <span class="nf-eyebrow">Your net, step by step</span>
+      <h2>How the system runs <span class="g">without you</span></h2>
+    </div>
+    <ol class="nf-run">{flow}</ol>
+  </div>
+</section>
+
+<section class="nf-band">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Automations we set up</span>
+      <h2>Built for <span class="g">{E(n.lower())}</span></h2>
+    </div>
+    <ul class="nf-feat">{autos}</ul>
+    <div class="nf-two">
+      <div class="nf-box"><h3>Funnels you can launch</h3><ul class="nf-chips">{funnels}</ul></div>
+      <div class="nf-box ink"><h3>Never lose a lead again</h3><p>Missed call text back, instant replies, AI agents and reminders mean every call, form and DM gets answered, day or night. Unlimited contacts and users on every plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap nf-faq">
+    <div>
+      <span class="nf-eyebrow">FAQ</span>
+      <h2>Questions from <span class="g">{E(n.lower())}</span></h2>
+    </div>
+    <div class="nf-faq-list">
+{faq}
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
+      <div><h2>Stop fishing for customers. Build the net.</h2><p>One system for funnels, CRM, SMS, WhatsApp, AI agents, booking and payments. Or let our team build it for you.</p></div>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="/#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+    </div>
+    <div class="nf-more" aria-label="Other industries">{more}<a href="/industries/">All industries</a></div>
+  </div>
+</section>'''
+    title = f"CRM & Sales Automation for {n} | Oceanic Funnels"
+    if len(title) > 66: title = f"CRM & Sales Automation for {n}"
+    desc = d["answer"]
+    if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0] + "…"
+    return path, page(cfg, fonts, path, title, desc, crumbs, body, logo)
+
+def industries_hub(cfg, fonts, logo):
+    path = "/industries/"; crumbs = [("Home", "/"), ("Industries", path)]
+    cards = "".join(f'''<a href="/industries/{d["slug"]}/"><span class="vs">{E(d["name"])}</span><h2>{E(d["h1"])}</h2><p>{E(d["sub"])}</p><span class="go">See how it works →</span></a>''' for d in INDUSTRIES)
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in c">
+      {crumbs_html(crumbs)}
+      <h1>Built for your business</h1>
+      <p class="nf-sub">See how each kind of business uses Oceanic Funnels OS to catch every lead, answer every call, book every appointment and bring customers back, on autopilot.</p>
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:64px">
+  <div class="nf-wrap"><div class="nf-hub">{cards}</div></div>
+</section>'''
+    return path, page(cfg, fonts, path, "Industries: Sales Automation for Every Business | Oceanic Funnels",
+                      "How soccer academies, real estate agents, coaches, gyms, med spas, dental practices, home services and more automate leads, booking and follow-up with Oceanic Funnels OS.", crumbs, body, logo)
+
 def build_all(cfg, fonts, src, site):
     css, logo = extract(src)
     os.makedirs(f"{site}/assets", exist_ok=True)
@@ -367,6 +523,7 @@ def build_all(cfg, fonts, src, site):
                       "The terms that apply when you use oceanicfunnels.com and Oceanic Funnels OS.", legal.TERMS),
            hub_page(cfg, fonts, logo)]
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
+    out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     for path, htm in out:
         d = site + path
         os.makedirs(d, exist_ok=True)
