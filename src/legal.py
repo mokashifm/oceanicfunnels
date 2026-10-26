@@ -92,7 +92,7 @@ TERMS = [
 
 ("Plans, billing and renewal", """
 <ul>
-<li><b>Subscriptions:</b> plans are billed in advance, monthly or yearly, and renew automatically at the end of each period until cancelled.</li>
+<li><b>Subscriptions:</b> plans are billed monthly in advance and renew automatically each month until cancelled.</li>
 <li><b>Prices:</b> current prices are shown on our website. We may change prices with at least 30 days' notice. Changes apply from your next billing period.</li>
 <li><b>Founding member pricing:</b> if you join under a founding member offer, you keep the price you signed up at for as long as your subscription stays active and in good standing on the same plan. The offer ends if you cancel, downgrade or your account is suspended for non-payment.</li>
 <li><b>Taxes:</b> prices exclude taxes unless stated. You are responsible for applicable taxes.</li>

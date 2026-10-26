@@ -501,10 +501,6 @@
 .nf-stack .tally-row{margin-top:auto;padding-top:20px;border-top:1px solid #2A3A3A;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
 .nf-stack .tally-row .tally{margin:0;padding:0;border:0}
 .nf-stack .nf-stack-old .tally{padding-top:28px}
-.nf-toggle{display:flex;gap:4px;width:max-content;max-width:100%;margin:36px auto 0;padding:5px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
-.nf-toggle button{border:0;background:transparent;border-radius:999px;padding:10px 20px;font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:8px}
-.nf-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
-.nf-toggle span{font-size:12px;font-weight:700;background:var(--coral);color:var(--ink);padding:2px 8px;border-radius:999px}
 .nf-pricing .nf-prices{margin-top:48px}
 .nf-extras{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-top:22px}
 .nf-usage{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px}
@@ -521,7 +517,7 @@
 .nf-found{text-align:center;margin-top:26px;font-size:15px;color:var(--text)}
 .nf-found b{color:var(--coral-d)}
 @media (max-width:1060px){.nf-stack,.nf-extras{grid-template-columns:1fr}}
-@media (max-width:680px){.nf-hatch::after{width:34%;height:16%}.nf-stack-old,.nf-stack-new{padding:28px 22px}.nf-toggle button{padding:9px 14px;font-size:14px}}
+@media (max-width:680px){.nf-hatch::after{width:34%;height:16%}.nf-stack-old,.nf-stack-new{padding:28px 22px}}
 </style>
 
 <div class="nf">
@@ -848,14 +844,10 @@
       <h2>Pick how much <span class="g">we do for you</span></h2>
       <p class="nf-sub">Every plan includes the full Oceanic Funnels OS with unlimited contacts and users. The difference is how much our team builds and runs for you.</p>
     </div>
-    <div class="nf-toggle" role="group" aria-label="Billing period">
-      <button type="button" id="nf-bm" aria-pressed="true">Monthly</button>
-      <button type="button" id="nf-by" aria-pressed="false">Yearly <span>2 months free</span></button>
-    </div>
     <div class="nf-prices">
       <article class="nf-price">
         <span class="plan">OS</span>
-        <div class="amt"><span class="v" data-m="$67" data-y="$56">$67</span> <small data-m="/month" data-y="/mo, billed yearly">/month</small></div>
+        <div class="amt"><span class="v">$67</span> <small>/month</small></div>
         <p class="for">The full system. You build and run it yourself.</p>
         <ul><li class="lead">Everything to catch, follow up and close:</li><li>Unlimited contacts and users</li><li>Unlimited funnels and websites</li><li>CRM and sales pipelines</li><li>Email and SMS automations</li><li>Calendars and booking</li><li>One inbox for every channel</li><li>Invoices, payments and text-to-pay</li><li>Ticket support, 24-hour reply</li></ul>
         <a class="nf-btn nf-btn--ink" href="{{PLAN1}}">Start with OS</a>
@@ -864,7 +856,7 @@
       <article class="nf-price nf-price--pop">
         <span class="pop">MOST POPULAR</span>
         <span class="plan">Growth</span>
-        <div class="amt"><span class="v" data-m="$197" data-y="$164">$197</span> <small data-m="/month" data-y="/mo, billed yearly">/month</small></div>
+        <div class="amt"><span class="v">$197</span> <small>/month</small></div>
         <p class="for">Everything set up for you and kept running.</p>
         <ul><li class="lead">Everything in OS, plus:</li><li>Done-for-you setup in week one</li><li>Domain, email, phone and text registration</li><li>5 core automations installed</li><li>1 AI chat agent trained on your business</li><li>Niche template installed and branded</li><li>24/7 live chat and WhatsApp support</li><li>5 edit requests every month</li><li>Monthly strategy call and report</li></ul>
         <a class="nf-btn nf-btn--aqua" href="{{PLAN2}}">Get Growth</a>
@@ -872,7 +864,7 @@
       </article>
       <article class="nf-price">
         <span class="plan">Done-For-You</span>
-        <div class="amt"><span class="v" data-m="$397" data-y="$331">$397</span> <small data-m="/month" data-y="/mo, billed yearly">/month</small></div>
+        <div class="amt"><span class="v">$397</span> <small>/month</small></div>
         <p class="for">We build your funnel and the full backend.</p>
         <ul><li class="lead">Everything in Growth, plus:</li><li>Your sales funnel built from scratch</li><li>Strategy, copy and design included</li><li>Full automated backend</li><li>AI chat agent and Voice AI setup</li><li>Meta Pixel, Conversions API and GA4</li><li>Dedicated account manager</li><li>10 edits or 1 new page every month</li><li>Quarterly funnel tune-up</li></ul>
         <a class="nf-btn nf-btn--ink" href="{{PLAN3}}">Build my net</a>
@@ -968,11 +960,6 @@
     t.addEventListener("click",function(){pick(t)});
     t.addEventListener("keydown",function(e){var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(d){e.preventDefault();pick(tabs[(i+d+tabs.length)%tabs.length],true)}});
   });
-  /* billing toggle */
-  var bm=$("nf-bm"),by=$("nf-by");
-  function bill(y){bm.setAttribute("aria-pressed",!y);by.setAttribute("aria-pressed",y);
-    [].forEach.call(document.querySelectorAll(".nf-price [data-m]"),function(el){el.textContent=el.getAttribute(y?"data-y":"data-m")})}
-  if(bm&&by){bm.addEventListener("click",function(){bill(false)});by.addEventListener("click",function(){bill(true)})}
   /* calculator */
   var num=function(n){return Math.round(n).toLocaleString("en-US")},money=function(n){return "$"+num(n)};
   function calc(){

@@ -14,7 +14,7 @@ CONFIG = {
     "path": "/",                                  # homepage
     "email": "hello@oceanicfunnels.com",
     # Replace these with your real links (checkout / order form per plan, app login, contact calendar)
-    "plan1": "#pricing", "plan2": "#pricing", "plan3": "#pricing",
+    "plan1": "https://checkout.oceanicfunnels.com/oceanic_funnels", "plan2": "https://checkout.oceanicfunnels.com/oceanic_funnels", "plan3": "https://checkout.oceanicfunnels.com/oceanic_funnels",
     "login": "https://app.oceanicfunnels.com", "book_url": "#get-started",
     "updated": datetime.date.today().isoformat(),
 }
@@ -42,7 +42,7 @@ FAQ = [
     ("Can I move my contacts from my current tools?",
      "Yes. You can import contacts from a spreadsheet or your current CRM. On Growth and Done-For-You, our team does the import for you."),
     ("Is there a contract or a guarantee?",
-     "OS and Growth are month to month with a 30-day money-back guarantee. Done-For-You has a 3-month minimum because our team builds your funnel and backend up front. Yearly billing on any plan gives you two months free."),
+     "OS and Growth are month to month with a 30-day money-back guarantee. Done-For-You has a 3-month minimum because our team builds your funnel and backend up front."),
     ("What is founding member pricing?",
      "The first 50 businesses to join keep the price they signed up at for life, even when our prices go up, as long as their plan stays active."),
 ]
