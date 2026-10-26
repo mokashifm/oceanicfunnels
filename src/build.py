@@ -42,7 +42,7 @@ FAQ = [
     ("Can I move my contacts from my current tools?",
      "Yes. You can import contacts from a spreadsheet or your current CRM. On Growth and Done-For-You, our team does the import for you."),
     ("Is there a contract or a guarantee?",
-     "OS and Growth are month to month with a 30-day money-back guarantee. Done-For-You has a 3-month minimum because our team builds your funnel and backend up front."),
+     "No contracts. Every plan is month to month and you can cancel anytime. OS and Growth also come with a 30-day money-back guarantee."),
     ("What is founding member pricing?",
      "The first 50 businesses to join keep the price they signed up at for life, even when our prices go up, as long as their plan stays active."),
 ]
