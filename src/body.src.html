@@ -481,12 +481,12 @@
 .nf-repl tr.tot td.us{color:#fff}
 .nf-repl tr.tot td.num{color:#FF9A82}
 }
-.nf-ind{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
-.nf-ind a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:16px;color:var(--ink);transition:border-color .15s,background .15s}
-.nf-ind a:hover{border-color:var(--ink)}
-.nf-ind a span{color:var(--aqua-d);font-weight:700}
-@media (max-width:1060px){.nf-ind{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.nf-ind{grid-template-columns:1fr}}
+.nf-indcats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px 24px;margin-top:44px}
+.nf-indcats h3{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d);margin-bottom:12px}
+.nf-indcats a{display:block;padding:6px 0;font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;line-height:1.35}
+.nf-indcats a:hover{color:var(--aqua-d)}
+@media (max-width:1060px){.nf-indcats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:680px){.nf-indcats{grid-template-columns:1fr 1fr;gap:28px 18px}}
 .nf-stack{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px}
 .nf-stack-old,.nf-stack-new{border-radius:var(--r);padding:40px;display:flex;flex-direction:column}
 .nf-stack-old{background:var(--mist)}
@@ -542,7 +542,7 @@
         <a class="l" href="/compare/">Compare</a>
         <a class="l" href="#faq">FAQ</a>
         <a class="nf-btn nf-btn--line" href="{{LOGIN}}">Log in</a>
-        <a class="nf-btn nf-btn--ink" href="#pricing">Build my net</a>
+        <a class="nf-btn nf-btn--ink" href="{{CHECKOUT}}">Build my net</a>
       </nav>
     </header>
 
@@ -551,7 +551,7 @@
       <h1>Stop fishing for customers. <em>Build the net.</em></h1>
       <p class="nf-sub">Oceanic Funnels OS catches every lead, replies in seconds, books the call and collects the payment. One system from $67 a month, or we build it all for you.</p>
       <div class="nf-hero-cta">
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{{CHECKOUT}}">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#features">See what's inside</a>
       </div>
       <div class="nf-hero-ticks"><span>Unlimited contacts and users</span><span>Founding price locked for life</span><span>30-day money-back guarantee</span></div>
@@ -612,7 +612,7 @@
       </table>
     </div>
     <p class="nf-replnote">Starting paid price of one popular tool per job, billed monthly, checked October 2026. Per-seat and per-location prices shown for one. Usage like SMS, email sends and AI minutes is billed separately on every platform, including ours. Sources: {{REPL_SRC}}.</p>
-    <div class="nf-center" style="margin-top:28px"><a class="nf-btn nf-btn--ink nf-btn--lg" href="#pricing">Replace my stack for $67/month</a></div>
+    <div class="nf-center" style="margin-top:28px"><a class="nf-btn nf-btn--ink nf-btn--lg" href="{{CHECKOUT}}">Replace my stack for $67/month</a></div>
   </div>
 </section>
 
@@ -637,7 +637,7 @@
         <h3>Catch <span class="g">every lead, from every channel</span></h3>
         <p class="nf-sub">Sales funnels, websites, forms, chat and calls all feed one system, so no lead slips through.</p>
         <ul class="nf-checks"><li>Sales funnels and landing pages</li><li>Websites with built-in SEO</li><li>Forms, surveys and quizzes</li><li>Website chat widget</li><li>Missed-call text-back</li><li>Call tracking</li><li>QR codes and card scanner</li><li>Google, Facebook and Instagram ads</li></ul>
-        <a class="nf-btn nf-btn--ink" href="#pricing">Build my net</a>
+        <a class="nf-btn nf-btn--ink" href="{{CHECKOUT}}">Build my net</a>
       </div>
       <div class="nf-toasts" aria-hidden="true">
         <div class="nf-toast"><span class="av b"></span><span class="msg">New lead from your Facebook ad: Sarah, wants a quote.</span></div>
@@ -651,7 +651,7 @@
         <h3>Follow up <span class="g">in seconds, day and night</span></h3>
         <p class="nf-sub">AI agents and automations answer, nurture and remind, so every lead hears back while they're still interested.</p>
         <ul class="nf-checks"><li>AI chat agent that replies 24/7</li><li>Voice AI receptionist</li><li>Email and SMS automations</li><li>One inbox for SMS, email and DMs</li><li>WhatsApp, Facebook and Instagram</li><li>Appointment reminders</li><li>Ringless voicemail</li><li>Video messages</li></ul>
-        <a class="nf-btn nf-btn--ink" href="#pricing">Build my net</a>
+        <a class="nf-btn nf-btn--ink" href="{{CHECKOUT}}">Build my net</a>
       </div>
       <div class="nf-toasts" aria-hidden="true">
         <div class="nf-toast me"><span class="av p"></span><span class="msg">Hi, do you have anything open this week? (sent 11:48 PM)</span></div>
@@ -665,7 +665,7 @@
         <h3>Close <span class="g">the sale and get paid</span></h3>
         <p class="nf-sub">Bookings, pipelines, proposals and payments live next to the conversation, so closing takes one click.</p>
         <ul class="nf-checks"><li>Calendars and paid bookings</li><li>Sales pipelines and lead scoring</li><li>Estimates and proposals</li><li>Invoices and text-to-pay</li><li>Order forms, upsells and downsells</li><li>Stripe and payment integrations</li><li>Memberships and online courses</li><li>Tap-to-pay and gift cards</li></ul>
-        <a class="nf-btn nf-btn--ink" href="#pricing">Build my net</a>
+        <a class="nf-btn nf-btn--ink" href="{{CHECKOUT}}">Build my net</a>
       </div>
       <div class="nf-toasts" aria-hidden="true">
         <div class="nf-toast"><span class="av b"></span><span class="msg">Your invoice for $2,500 is ready. Tap to pay securely.</span></div>
@@ -679,7 +679,7 @@
         <h3>Get reviews <span class="g">and referrals on autopilot</span></h3>
         <p class="nf-sub">Happy customers get asked at the right moment, and every review works for your reputation.</p>
         <ul class="nf-checks"><li>Automated review requests</li><li>AI replies to reviews</li><li>Review widgets for your website</li><li>Video testimonials</li><li>Affiliate and referral manager</li><li>Customer communities</li><li>Loyalty programs</li><li>Reputation dashboard</li></ul>
-        <a class="nf-btn nf-btn--ink" href="#pricing">Build my net</a>
+        <a class="nf-btn nf-btn--ink" href="{{CHECKOUT}}">Build my net</a>
       </div>
       <div class="nf-toasts" aria-hidden="true">
         <div class="nf-toast"><span class="av b"></span><span class="msg">Thanks for visiting today! Mind leaving us a quick review?</span></div>
@@ -693,7 +693,7 @@
         <h3>Bring back <span class="g">past customers and cold leads</span></h3>
         <p class="nf-sub">Your contact list is money you already paid for. Campaigns wake it up and turn it into repeat sales.</p>
         <ul class="nf-checks"><li>Email, SMS and WhatsApp broadcasts</li><li>Smart lists and segments</li><li>Birthday and seasonal campaigns</li><li>Database reactivation campaigns</li><li>Newsletter automation</li><li>AI content writer</li><li>Win-back workflows</li><li>Social media planner</li></ul>
-        <a class="nf-btn nf-btn--ink" href="#pricing">Build my net</a>
+        <a class="nf-btn nf-btn--ink" href="{{CHECKOUT}}">Build my net</a>
       </div>
       <div class="nf-toasts" aria-hidden="true">
         <div class="nf-toast"><span class="av b"></span><span class="msg">It's been 6 months, Alex! Here's 20% off your next visit this month.</span></div>
@@ -818,10 +818,11 @@
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
       <span class="nf-eyebrow">Built for your business</span>
-      <h2>See how your industry <span class="g">runs on autopilot</span></h2>
+      <h2>CRM and automation <span class="g">for your industry</span></h2>
       <p class="nf-sub">Missed call text back, AI agents, WhatsApp, booking, payments and reviews, set up the way your kind of business works.</p>
     </div>
-    <div class="nf-ind">{{INDUSTRIES}}</div>
+    <div class="nf-indcats">{{INDUSTRIES}}</div>
+    <div class="nf-center" style="margin-top:36px"><a class="nf-btn nf-btn--line" href="/industries/">See all {{IND_N}} industries</a></div>
   </div>
 </section>
 
@@ -847,7 +848,7 @@
         <div class="row"><span>Customers with the lift</span><span id="nf-r3">54</span></div>
         <div class="big">Extra revenue per year<strong id="nf-r4">$198,000</strong></div>
         <p class="note">The lift applies to both the opt-in rate and the close rate. This is a model, not a promise.</p>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{{CHECKOUT}}">Build my net <span class="ar" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -950,7 +951,7 @@
           <li>Founding price locked in for life</li>
           <li>30-day money-back guarantee on OS and Growth</li>
         </ul>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{{CHECKOUT}}">Build my net <span class="ar" aria-hidden="true">→</span></a>
       </div>
       <div class="nf-slot">
         <h3>Not sure which plan fits?</h3>
@@ -964,7 +965,7 @@
 
 {{FOOTER}}
 
-<div class="nf-sticky"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a></div>
+<div class="nf-sticky"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="{{CHECKOUT}}">Build my net <span class="ar" aria-hidden="true">→</span></a></div>
 </div>
 
 <script>

@@ -4,11 +4,13 @@ Every feature named here is part of Oceanic Funnels OS (WhatsApp is the +$19/mon
 """
 
 # Steps every flow shares are written per industry so each page reads specific, not templated.
-INDUSTRIES = [
+BASE = [
 {
  "slug": "soccer-clubs-academies", "name": "Soccer Clubs and Academies", "short": "Soccer academies",
  "who": "soccer clubs and academies",
- "h1": "Fill every trial session and keep every family paying, on autopilot",
+ "cat": "Fitness and sports", "kw": "CRM for Soccer Clubs & Academies",
+ "hook": "Fill every trial session and keep every family paying, on autopilot",
+ "h1": "CRM and automation for soccer clubs and academies",
  "sub": "Oceanic Funnels OS runs your trial bookings, registrations, fees and parent messages in one system, so your coaches can coach.",
  "answer": "Soccer clubs and academies use Oceanic Funnels OS to turn trial-session enquiries into registered players automatically. A funnel books the free trial, WhatsApp and SMS remind parents, an AI agent answers questions about ages, times and fees, and recurring payments, waivers and team announcements run from the same system.",
  "leaks": [
@@ -41,7 +43,9 @@ INDUSTRIES = [
 {
  "slug": "real-estate", "name": "Real Estate Agents and Teams", "short": "Real estate",
  "who": "real estate agents and teams",
- "h1": "Answer every buyer and seller lead in seconds, and never lose one to slow follow-up",
+ "cat": "Real estate and finance", "kw": "Real Estate CRM & Lead Follow-Up Automation",
+ "hook": "Answer every buyer and seller lead in seconds, and never lose one to slow follow-up",
+ "h1": "The real estate CRM that follows up with every lead for you",
  "sub": "Portal leads, ad leads, open-house sign-ins and calls flow into one CRM, get an instant reply and a long-term nurture that keeps you top of mind.",
  "answer": "Real estate agents and teams use Oceanic Funnels OS to reply to every new lead within seconds, book showings and valuation calls automatically, and nurture buyers and sellers for months until they're ready. Leads from ads, websites, open houses and calls land in one pipeline with SMS, email, WhatsApp and AI follow-up built in.",
  "leaks": [
@@ -74,7 +78,9 @@ INDUSTRIES = [
 {
  "slug": "coaches-consultants", "name": "Coaches and Consultants", "short": "Coaches and consultants",
  "who": "coaches and consultants",
- "h1": "Fill your calendar with qualified calls and sell your programs while you coach",
+ "cat": "Coaching, education and online", "kw": "Sales Funnels & CRM for Coaches and Consultants",
+ "hook": "Fill your calendar with qualified calls and sell your programs while you coach",
+ "h1": "Sales funnels and CRM for coaches and consultants",
  "sub": "Lead magnets, application funnels, booking, payments, courses and communities in one system, with follow-up that runs without you.",
  "answer": "Coaches and consultants use Oceanic Funnels OS to turn content and ads into booked discovery calls automatically. A funnel captures the lead, an application qualifies them, the calendar books the call, reminders cut no-shows, and courses, memberships, communities and payments are delivered from the same system.",
  "leaks": [
@@ -107,7 +113,9 @@ INDUSTRIES = [
 {
  "slug": "gyms-fitness-studios", "name": "Gyms and Fitness Studios", "short": "Gyms and fitness",
  "who": "gyms and fitness studios",
- "h1": "Turn trial passes into members and win back the ones who stopped coming",
+ "cat": "Fitness and sports", "kw": "Gym CRM & Membership Marketing Software",
+ "hook": "Turn trial passes into members and win back the ones who stopped coming",
+ "h1": "Gym CRM and marketing automation that turns trials into members",
  "sub": "Trial-pass funnels, instant follow-up, class reminders, membership payments and win-back campaigns, all in one system.",
  "answer": "Gyms and fitness studios use Oceanic Funnels OS to turn trial-pass leads into paying members. A funnel books the trial, SMS and WhatsApp follow up within seconds, an AI agent answers questions about classes and prices, and automations remind, upsell and win back members who stop showing up.",
  "leaks": [
@@ -140,7 +148,9 @@ INDUSTRIES = [
 {
  "slug": "med-spas", "name": "Med Spas and Aesthetic Clinics", "short": "Med spas",
  "who": "med spas and aesthetic clinics",
- "h1": "Book more consultations and keep clients coming back for every treatment",
+ "cat": "Beauty and personal care", "kw": "Med Spa CRM & Marketing Automation",
+ "hook": "Book more consultations and keep clients coming back for every treatment",
+ "h1": "Med spa CRM and marketing automation",
  "sub": "Treatment funnels, instant replies, deposits, reminders and rebooking automations that keep your chairs full.",
  "answer": "Med spas and aesthetic clinics use Oceanic Funnels OS to turn treatment enquiries into booked, paid consultations. Ads and treatment pages capture the lead, an AI agent answers common questions and books the consultation, deposits cut no-shows, and rebooking reminders bring clients back at the right time for their next treatment.",
  "leaks": [
@@ -173,7 +183,9 @@ INDUSTRIES = [
 {
  "slug": "dental-practices", "name": "Dental Practices", "short": "Dental practices",
  "who": "dental practices",
- "h1": "Fill your schedule with new patients and bring back every overdue recall",
+ "cat": "Health and wellness", "kw": "Dental Marketing Automation & Patient CRM",
+ "hook": "Fill your schedule with new patients and bring back every overdue recall",
+ "h1": "Dental marketing automation and patient CRM",
  "sub": "New-patient funnels, instant follow-up, appointment reminders, recall campaigns and review requests in one system.",
  "answer": "Dental practices use Oceanic Funnels OS to book new patients from ads and their website, reply to every call and message quickly, and bring overdue patients back for check-ups. Reminders reduce missed appointments, recall campaigns fill quiet days, and review requests go out after every visit.",
  "leaks": [
@@ -206,7 +218,9 @@ INDUSTRIES = [
 {
  "slug": "home-services", "name": "Home Service Businesses", "short": "Home services",
  "who": "home service businesses like HVAC, plumbing, roofing, cleaning and landscaping",
- "h1": "Never miss a job because you were on a roof, under a sink or driving",
+ "cat": "Home services", "kw": "Home Service CRM & Missed Call Text Back",
+ "hook": "Never miss a job because you were on a roof, under a sink or driving",
+ "h1": "CRM and missed call text back for home service businesses",
  "sub": "Missed call text back, instant quotes, booking, estimates, invoices and review requests that run while your crew works.",
  "answer": "Home service businesses like HVAC, plumbing, roofing, cleaning and landscaping use Oceanic Funnels OS so no call or lead goes unanswered. Missed calls get an instant text back, an AI agent collects job details and books the visit, estimates and invoices go out by text, and every finished job triggers a review request.",
  "leaks": [
@@ -239,7 +253,9 @@ INDUSTRIES = [
 {
  "slug": "law-firms", "name": "Law Firms", "short": "Law firms",
  "who": "law firms",
- "h1": "Respond to every potential client first and book more consultations",
+ "cat": "Professional services", "kw": "Law Firm Client Intake & CRM Software",
+ "hook": "Respond to every potential client first and book more consultations",
+ "h1": "Law firm client intake and CRM software",
  "sub": "Intake funnels, instant follow-up, consultation booking, reminders and document signing in one system.",
  "answer": "Law firms use Oceanic Funnels OS to reply to every enquiry quickly, qualify potential clients with intake forms, and book consultations automatically. Missed calls get a text back, reminders reduce no-shows, and engagement documents can be sent for signature from the same system.",
  "leaks": [
@@ -272,7 +288,9 @@ INDUSTRIES = [
 {
  "slug": "salons-barbershops", "name": "Salons and Barbershops", "short": "Salons and barbers",
  "who": "salons and barbershops",
- "h1": "Keep your chairs full with online booking, reminders and rebooking that runs itself",
+ "cat": "Beauty and personal care", "kw": "Salon & Barbershop Booking and Marketing Software",
+ "hook": "Keep your chairs full with online booking, reminders and rebooking that runs itself",
+ "h1": "Booking, reminders and marketing for salons and barbershops",
  "sub": "Booking, reminders, no-show protection, rebooking nudges and review requests for salons and barbershops.",
  "answer": "Salons and barbershops use Oceanic Funnels OS to take bookings online, cut no-shows with reminders and deposits, and bring clients back on time with rebooking messages. Missed calls get a text back with the booking link, and every visit ends with a review request.",
  "leaks": [
@@ -305,7 +323,9 @@ INDUSTRIES = [
 {
  "slug": "insurance-agencies", "name": "Insurance Agencies", "short": "Insurance agencies",
  "who": "insurance agencies",
- "h1": "Quote faster, follow up longer and cross-sell every policyholder",
+ "cat": "Real estate and finance", "kw": "Insurance Agency CRM & Lead Follow-Up",
+ "hook": "Quote faster, follow up longer and cross-sell every policyholder",
+ "h1": "Insurance agency CRM and lead follow-up automation",
  "sub": "Quote-request funnels, instant follow-up, renewal reminders and cross-sell campaigns for insurance agencies.",
  "answer": "Insurance agencies use Oceanic Funnels OS to reply to quote requests in seconds, book quote calls automatically and follow up until the prospect decides. Renewal reminders, cross-sell campaigns and review requests keep policyholders with you for years.",
  "leaks": [
@@ -338,7 +358,9 @@ INDUSTRIES = [
 {
  "slug": "chiropractors-physiotherapy", "name": "Chiropractors and Physiotherapy Clinics", "short": "Chiro and physio",
  "who": "chiropractors and physiotherapy clinics",
- "h1": "Book more new patients and keep them on their care plan",
+ "cat": "Health and wellness", "kw": "Chiropractic & Physio Patient CRM and Marketing",
+ "hook": "Book more new patients and keep them on their care plan",
+ "h1": "Patient CRM and marketing for chiropractors and physio clinics",
  "sub": "New-patient funnels, instant replies, reminders, care-plan follow-up and reactivation in one system.",
  "answer": "Chiropractors and physiotherapy clinics use Oceanic Funnels OS to book new patients from ads and their website, reduce missed visits with reminders, and keep patients on their care plan with follow-up. Reactivation campaigns bring back past patients, and review requests go out after visits.",
  "leaks": [
@@ -371,7 +393,9 @@ INDUSTRIES = [
 {
  "slug": "martial-arts-dance-studios", "name": "Martial Arts and Dance Studios", "short": "Martial arts and dance",
  "who": "martial arts and dance studios",
- "h1": "Turn trial classes into enrolled students and keep families enrolled",
+ "cat": "Fitness and sports", "kw": "CRM for Martial Arts & Dance Studios",
+ "hook": "Turn trial classes into enrolled students and keep families enrolled",
+ "h1": "CRM and enrolment automation for martial arts and dance studios",
  "sub": "Trial-class funnels, instant follow-up, reminders, enrolment payments and parent communication in one system.",
  "answer": "Martial arts and dance studios use Oceanic Funnels OS to turn trial-class enquiries into enrolled students. A funnel books the trial class, SMS and WhatsApp remind families, an AI agent answers questions about classes and ages, and enrolment payments, events and announcements run from the same system.",
  "leaks": [
@@ -407,3 +431,18 @@ GENERIC_FAQ = [
   ("Do you set it up for me?", "On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($397 a month) we build your sales funnel and the full automated backend for your business."),
   ("How much does it cost?", "Oceanic Funnels OS starts at $67 a month with unlimited contacts and users. Usage like SMS, email and AI is pay-as-you-go, and WhatsApp is a +$19/month add-on."),
 ]
+
+from ind_trades import TRADES
+from ind_health import HEALTH, FITNESS_EDU
+from ind_other import OTHER
+
+CATEGORIES = ["Home services", "Health and wellness", "Fitness and sports", "Beauty and personal care",
+              "Real estate and finance", "Professional services", "Coaching, education and online",
+              "Local and hospitality", "Automotive", "Community and nonprofit"]
+INDUSTRIES = BASE + TRADES + HEALTH + FITNESS_EDU + OTHER
+_slugs = [d["slug"] for d in INDUSTRIES]
+assert len(_slugs) == len(set(_slugs)), "duplicate slug"
+for d in INDUSTRIES:
+    assert d["cat"] in CATEGORIES, d["slug"]
+    for k in ("slug","name","short","cat","kw","h1","hook","sub","who","answer","leaks","flow","autos","funnels","faqs"):
+        assert k in d, (d["slug"], k)

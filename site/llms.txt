@@ -1,0 +1,97 @@
+# Oceanic Funnels
+
+> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $397/month (we build your sales funnel and backend). All plans are month to month.
+
+## Key pages
+- [Home and pricing](https://oceanicfunnels.com/): what's included, pricing and FAQ
+- [Industries](https://oceanicfunnels.com/industries/): how each industry uses the system
+- [Comparisons](https://oceanicfunnels.com/compare/): Oceanic Funnels vs other tools
+
+## Home services
+- [Home Service Businesses](https://oceanicfunnels.com/industries/home-services/): Home Service CRM & Missed Call Text Back
+- [HVAC Companies](https://oceanicfunnels.com/industries/hvac/): HVAC CRM & Missed Call Text Back Software
+- [Plumbing Companies](https://oceanicfunnels.com/industries/plumbers/): Plumber CRM & Missed Call Text Back
+- [Roofing Companies](https://oceanicfunnels.com/industries/roofing/): Roofing CRM & Lead Follow-Up Software
+- [Cleaning Companies](https://oceanicfunnels.com/industries/cleaning-services/): Cleaning Business CRM & Booking Software
+- [Landscaping and Lawn Care Companies](https://oceanicfunnels.com/industries/landscaping-lawn-care/): Landscaping & Lawn Care CRM Software
+- [Pest Control Companies](https://oceanicfunnels.com/industries/pest-control/): Pest Control CRM & Recurring Service Software
+- [Solar Installers](https://oceanicfunnels.com/industries/solar-installers/): Solar Lead Follow-Up & CRM Software
+- [Electricians](https://oceanicfunnels.com/industries/electricians/): Electrician CRM & Booking Software
+- [General Contractors and Remodelers](https://oceanicfunnels.com/industries/contractors-remodelers/): Contractor CRM & Remodeling Lead Software
+- [Moving Companies](https://oceanicfunnels.com/industries/moving-companies/): Moving Company CRM & Quote Follow-Up
+
+## Health and wellness
+- [Dental Practices](https://oceanicfunnels.com/industries/dental-practices/): Dental Marketing Automation & Patient CRM
+- [Chiropractors and Physiotherapy Clinics](https://oceanicfunnels.com/industries/chiropractors-physiotherapy/): Chiropractic & Physio Patient CRM and Marketing
+- [Veterinary Clinics](https://oceanicfunnels.com/industries/veterinary-clinics/): Veterinary Clinic Marketing & Client Reminders
+- [Weight Loss Clinics](https://oceanicfunnels.com/industries/weight-loss-clinics/): Weight Loss Clinic Marketing & Patient Follow-Up
+- [Plastic Surgery Practices](https://oceanicfunnels.com/industries/plastic-surgery/): Plastic Surgery Practice CRM & Consultation Booking
+- [Therapy and Counselling Practices](https://oceanicfunnels.com/industries/therapy-practices/): Private Practice Marketing & Client Booking for Therapists
+- [Optometrists and Eye Care Practices](https://oceanicfunnels.com/industries/optometry/): Optometry Marketing & Patient Recall Software
+
+## Fitness and sports
+- [Soccer Clubs and Academies](https://oceanicfunnels.com/industries/soccer-clubs-academies/): CRM for Soccer Clubs & Academies
+- [Gyms and Fitness Studios](https://oceanicfunnels.com/industries/gyms-fitness-studios/): Gym CRM & Membership Marketing Software
+- [Martial Arts and Dance Studios](https://oceanicfunnels.com/industries/martial-arts-dance-studios/): CRM for Martial Arts & Dance Studios
+- [Yoga and Pilates Studios](https://oceanicfunnels.com/industries/yoga-pilates-studios/): Yoga & Pilates Studio Marketing and Membership Software
+- [Personal Trainers](https://oceanicfunnels.com/industries/personal-trainers/): Personal Trainer CRM, Booking & Payment Software
+- [Swim Schools](https://oceanicfunnels.com/industries/swim-schools/): Swim School Enrolment & Parent Communication Software
+
+## Beauty and personal care
+- [Med Spas and Aesthetic Clinics](https://oceanicfunnels.com/industries/med-spas/): Med Spa CRM & Marketing Automation
+- [Salons and Barbershops](https://oceanicfunnels.com/industries/salons-barbershops/): Salon & Barbershop Booking and Marketing Software
+- [Lash, Brow and Nail Studios](https://oceanicfunnels.com/industries/lash-brow-nail-studios/): Booking & Marketing Software for Lash, Brow and Nail Studios
+
+## Real estate and finance
+- [Real Estate Agents and Teams](https://oceanicfunnels.com/industries/real-estate/): Real Estate CRM & Lead Follow-Up Automation
+- [Insurance Agencies](https://oceanicfunnels.com/industries/insurance-agencies/): Insurance Agency CRM & Lead Follow-Up
+- [Mortgage Brokers and Loan Officers](https://oceanicfunnels.com/industries/mortgage-brokers/): Mortgage Broker CRM & Lead Follow-Up
+- [Property Management Companies](https://oceanicfunnels.com/industries/property-management/): Property Management CRM & Owner Lead Software
+
+## Professional services
+- [Law Firms](https://oceanicfunnels.com/industries/law-firms/): Law Firm Client Intake & CRM Software
+- [Accountants and CPA Firms](https://oceanicfunnels.com/industries/accountants-cpas/): CRM & Client Onboarding for Accountants and CPAs
+- [Financial Advisors](https://oceanicfunnels.com/industries/financial-advisors/): CRM & Client Nurture for Financial Advisors
+- [Recruiting and Staffing Agencies](https://oceanicfunnels.com/industries/recruiting-staffing/): Recruiting CRM & Candidate Follow-Up
+
+## Coaching, education and online
+- [Coaches and Consultants](https://oceanicfunnels.com/industries/coaches-consultants/): Sales Funnels & CRM for Coaches and Consultants
+- [Tutoring and Learning Centres](https://oceanicfunnels.com/industries/tutoring-learning-centers/): Tutoring Business CRM & Enrolment Software
+- [Daycares and Preschools](https://oceanicfunnels.com/industries/daycares-preschools/): Daycare Enrolment & Parent Communication Software
+- [Driving Schools](https://oceanicfunnels.com/industries/driving-schools/): Driving School Booking & Student CRM
+- [Course Creators](https://oceanicfunnels.com/industries/course-creators/): Course Platform, Funnels & Email for Course Creators
+- [Ecommerce Brands](https://oceanicfunnels.com/industries/ecommerce-brands/): Ecommerce Funnels, Email & SMS Marketing
+
+## Local and hospitality
+- [Restaurants and Cafés](https://oceanicfunnels.com/industries/restaurants/): Restaurant Text Marketing & Review Software
+- [Event Venues and Wedding Vendors](https://oceanicfunnels.com/industries/event-venues-wedding-vendors/): Wedding & Event Venue CRM and Booking Software
+- [Photographers](https://oceanicfunnels.com/industries/photographers/): CRM & Booking Software for Photographers
+- [Travel Agencies](https://oceanicfunnels.com/industries/travel-agencies/): Travel Agency CRM & Lead Follow-Up
+- [Vacation Rentals and Boutique Hotels](https://oceanicfunnels.com/industries/vacation-rentals/): Direct Booking Marketing for Vacation Rentals & Hotels
+
+## Automotive
+- [Car Dealerships](https://oceanicfunnels.com/industries/auto-dealerships/): Car Dealership Lead Follow-Up & CRM
+- [Auto Repair Shops](https://oceanicfunnels.com/industries/auto-repair-shops/): Auto Repair Shop Marketing & Service Reminders
+- [Car Detailing Businesses](https://oceanicfunnels.com/industries/car-detailing/): Car Detailing Booking & Marketing Software
+
+## Community and nonprofit
+- [Churches and Ministries](https://oceanicfunnels.com/industries/churches/): Church Communication & Visitor Follow-Up Software
+- [Nonprofits and Charities](https://oceanicfunnels.com/industries/nonprofits/): Nonprofit Donor CRM & Fundraising Automation
+
+## Comparisons
+- [Oceanic Funnels vs ClickFunnels](https://oceanicfunnels.com/compare/clickfunnels/)
+- [Oceanic Funnels vs Kajabi](https://oceanicfunnels.com/compare/kajabi/)
+- [Oceanic Funnels vs Funnelish](https://oceanicfunnels.com/compare/funnelish/)
+- [Oceanic Funnels vs Shopify](https://oceanicfunnels.com/compare/shopify/)
+- [Oceanic Funnels vs HubSpot](https://oceanicfunnels.com/compare/hubspot/)
+- [Oceanic Funnels vs ActiveCampaign](https://oceanicfunnels.com/compare/activecampaign/)
+- [Oceanic Funnels vs Keap](https://oceanicfunnels.com/compare/keap/)
+- [Oceanic Funnels vs Kartra](https://oceanicfunnels.com/compare/kartra/)
+- [Oceanic Funnels vs Klaviyo](https://oceanicfunnels.com/compare/klaviyo/)
+- [Oceanic Funnels vs Zoho CRM](https://oceanicfunnels.com/compare/zoho/)
+- [Oceanic Funnels vs Salesforce](https://oceanicfunnels.com/compare/salesforce/)
+- [Oceanic Funnels vs Linktree](https://oceanicfunnels.com/compare/linktree/)
+
+## Legal
+- [Privacy Policy](https://oceanicfunnels.com/privacy/)
+- [Terms of Service](https://oceanicfunnels.com/terms/)

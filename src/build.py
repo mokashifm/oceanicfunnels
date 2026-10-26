@@ -118,10 +118,13 @@ def body():
     rep = {"{{BRAND}}": B, "{{BOOK}}": CONFIG["book_url"], "{{EMAIL}}": CONFIG["email"],
            "{{LOGIN}}": CONFIG["login"], "{{PLAN1}}": CONFIG["plan1"], "{{PLAN2}}": CONFIG["plan2"],
            "{{PLAN3}}": CONFIG["plan3"], "{{FAQ}}": faq_html(), "{{FAQ_N}}": str(len(FAQ)),
-           "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y"), "{{FOOTER}}": pages.footer(CONFIG)}
+           "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y"), "{{FOOTER}}": pages.footer(CONFIG), "{{CHECKOUT}}": pages.CK}
     r_rows, r_n, r_tot, r_src = replaces_html()
-    from industries import INDUSTRIES
-    rep["{{INDUSTRIES}}"] = "".join(f'<a href="/industries/{d["slug"]}/">{html.escape(d["name"])}<span aria-hidden="true">→</span></a>' for d in INDUSTRIES)
+    from industries import INDUSTRIES, CATEGORIES
+    rep["{{IND_N}}"] = str(len(INDUSTRIES))
+    rep["{{INDUSTRIES}}"] = "".join(
+        f'<div><h3>{html.escape(c)}</h3>' + "".join(f'<a href="/industries/{d["slug"]}/">{html.escape(d["name"])}</a>' for d in INDUSTRIES if d["cat"] == c) + '</div>'
+        for c in CATEGORIES)
     rep.update({"{{REPL_ROWS}}": r_rows, "{{REPL_N}}": r_n, "{{REPL_TOTAL}}": r_tot, "{{REPL_SRC}}": r_src})
     for k, v in rep.items():
         src = src.replace(k, v)
@@ -198,6 +201,21 @@ extra = pages.build_all(CONFIG, FONTS, open("body.src.html").read(), SITE)
 def _u(p, pr): return f"  <url><loc>{CONFIG['domain']}{p}</loc><lastmod>{today}</lastmod><priority>{pr}</priority></url>"
 open(f"{SITE}/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "\n".join([_u("/", "1.0")] + [_u(p, "0.3" if p in ("/privacy/", "/terms/") else "0.8") for p in extra]) + "\n</urlset>\n")
+
+from industries import INDUSTRIES as _IND, CATEGORIES as _CAT
+from competitors import COMPETITORS as _CMP
+_d = CONFIG["domain"]
+_llms = [f"# {B}", "",
+  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $397/month (we build your sales funnel and backend). All plans are month to month.", "",
+  "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", ""]
+for c in _CAT:
+    _llms.append(f"## {c}")
+    _llms += [f"- [{d['name']}]({_d}/industries/{d['slug']}/): {d['kw']}" for d in _IND if d["cat"] == c]
+    _llms.append("")
+_llms.append("## Comparisons")
+_llms += [f"- [Oceanic Funnels vs {c['name']}]({_d}/compare/{c['slug']}/)" for c in _CMP]
+_llms += ["", "## Legal", f"- [Privacy Policy]({_d}/privacy/)", f"- [Terms of Service]({_d}/terms/)", ""]
+open(f"{SITE}/llms.txt", "w").write("\n".join(_llms))
 
 open(f"{SITE}/_headers", "w").write("""/*
   X-Content-Type-Options: nosniff
