@@ -81,12 +81,46 @@ def faq_html():
         f'<span aria-hidden="true">+</span></summary><p>{html.escape(a)}</p></details>'
         for i, (q, a) in enumerate(FAQ))
 
+
+# "What's included" table: one representative tool per job, starting paid price, checked October 2026
+REPLACES = [
+    ("CRM and sales pipelines", "HubSpot Sales Hub", 100, "per seat", "https://encharge.io/hubspot-pricing/"),
+    ("Sales funnels", "ClickFunnels", 97, "", "https://support.clickfunnels.com/en/articles/12734340-clickfunnels-2-0-pricing"),
+    ("Website builder", "Wix", 36, "", "https://www.websitebuilderexpert.com/website-builders/wix/wix-pricing/"),
+    ("Online store and checkout", "Shopify", 39, "", "https://www.swell.is/content/shopify-pricing"),
+    ("Email marketing", "ActiveCampaign", 49, "", "https://drry.com/guides/activecampaign-pricing"),
+    ("Two-way SMS", "SimpleTexting", 39, "", "https://textbolt.com/blog/simpletexting-pricing/"),
+    ("Forms and surveys", "Typeform", 39, "", "https://www.jetadmin.io/blog/typeform-pricing/"),
+    ("Appointment booking", "Calendly", 12, "per seat", "https://zeeg.me/en/blog/post/calendly-pricing-guide"),
+    ("Courses and memberships", "Kajabi", 179, "", "https://revenuegeeks.com/guides/kajabi-pricing"),
+    ("Communities", "Skool", 99, "", "https://schoolmaker.com/blog/skool-pricing"),
+    ("Call tracking", "CallRail", 55, "", "https://www.capterra.com/p/141829/CallRail/pricing/"),
+    ("Review management", "Birdeye", 299, "per location", "https://costbench.com/software/review-management/birdeye"),
+    ("Document signing", "DocuSign", 30, "per user", "https://automationatlas.io/answers/docusign-pricing-explained-2026/"),
+    ("Social media planner", "Buffer", 6, "per channel", "https://napoleoncat.com/blog/buffer-pricing/"),
+    ("Link-in-bio page", "Linktree", 15, "", "https://u2l.ai/blog/linktree-pricing"),
+]
+
+def replaces_html():
+    tot = sum(r[2] for r in REPLACES)
+    rows = "".join(
+        f'<tr><th scope="row">{f}</th><td data-l="Replaces"><span class="nf-tool">{t}</span></td>'
+        f'<td data-l="Their price" class="num">${c}<small>/mo{(" " + u) if u else ""}</small></td>'
+        f'<td data-l="Oceanic Funnels" class="us">✓ Included</td></tr>' for f, t, c, u, _ in REPLACES)
+    rows += (f'<tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">{len(REPLACES)} separate tools</td>'
+             f'<td data-l="Their price" class="num">${tot:,}<small>/mo</small></td>'
+             f'<td data-l="Oceanic Funnels" class="us"><b>$67</b>/month</td></tr>')
+    src = " · ".join(f'<a href="{l}" rel="nofollow noopener" target="_blank">{t}</a>' for _, t, _, _, l in REPLACES)
+    return rows, str(len(REPLACES)), f"{tot:,}", src
+
 def body():
     src = open("body.src.html").read()
     rep = {"{{BRAND}}": B, "{{BOOK}}": CONFIG["book_url"], "{{EMAIL}}": CONFIG["email"],
            "{{LOGIN}}": CONFIG["login"], "{{PLAN1}}": CONFIG["plan1"], "{{PLAN2}}": CONFIG["plan2"],
            "{{PLAN3}}": CONFIG["plan3"], "{{FAQ}}": faq_html(), "{{FAQ_N}}": str(len(FAQ)),
            "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y"), "{{FOOTER}}": pages.footer(CONFIG)}
+    r_rows, r_n, r_tot, r_src = replaces_html()
+    rep.update({"{{REPL_ROWS}}": r_rows, "{{REPL_N}}": r_n, "{{REPL_TOTAL}}": r_tot, "{{REPL_SRC}}": r_src})
     for k, v in rep.items():
         src = src.replace(k, v)
     assert "{{" not in src, "unreplaced placeholder: " + src[src.index("{{"):src.index("{{")+30]

@@ -1,19 +1,18 @@
 """Privacy Policy and Terms of Service content (HTML fragments).
 
-Placeholders in [BRACKETS] must be filled in before relying on these documents.
 These are a starting draft, not legal advice: have a lawyer review them.
 """
 
 EFFECTIVE = "October 26, 2026"
-ENTITY = "[LEGAL ENTITY NAME]"
-ADDRESS = "[BUSINESS ADDRESS]"
-LAW = "[GOVERNING LAW: STATE / COUNTRY]"
+ENTITY = "Oceanic Funnels"
+ADDRESS = "Bahawalpur, Pakistan"
+LAW = "Pakistan"
 EMAIL = "hello@oceanicfunnels.com"
 
 PRIVACY = [
 ("Who we are", f"""
 <p>This Privacy Policy explains how {ENTITY} ("Oceanic Funnels", "we", "us") collects, uses and protects personal information when you visit oceanicfunnels.com, contact us, or use Oceanic Funnels OS and our done-for-you services (together, the "Services").</p>
-<p>You can reach us at <b>{EMAIL}</b> or {ADDRESS}.</p>"""),
+<p>You can reach us at <b>{EMAIL}</b>. We are based in {ADDRESS}.</p>"""),
 
 ("Information we collect", """
 <ul>
@@ -77,7 +76,7 @@ PRIVACY = [
 <p>We may update this policy from time to time. If we make significant changes, we will post the new version here with a new effective date and, where appropriate, notify you by email or in the app.</p>"""),
 
 ("Contact us", f"""
-<p>Questions about this policy or your information: <b>{EMAIL}</b>, {ENTITY}, {ADDRESS}.</p>"""),
+<p>Questions about this policy or your information: email <b>{EMAIL}</b>. {ENTITY}, {ADDRESS}.</p>"""),
 ]
 
 TERMS = [
@@ -165,7 +164,7 @@ TERMS = [
 <p>We may suspend or terminate your access if you breach these Terms, fail to pay, or use the Services in a way that creates legal or security risk. Where reasonable, we will give you notice and a chance to fix the problem first. After termination, you may request an export of your data within 30 days.</p>"""),
 
 ("Governing law and disputes", f"""
-<p>These Terms are governed by the laws of {LAW}. Before starting any formal dispute, you agree to contact us at hello@oceanicfunnels.com so we can try to resolve it informally within 30 days.</p>"""),
+<p>These Terms are governed by the laws of {LAW}, without regard to conflict-of-law rules. Before starting any formal dispute, you agree to contact us at hello@oceanicfunnels.com so we can try to resolve it informally within 30 days.</p>"""),
 
 ("Changes to these Terms", """
 <p>We may update these Terms from time to time. If changes are significant, we will notify you by email or in the app at least 15 days before they take effect. Continuing to use the Services after that means you accept the updated Terms.</p>"""),

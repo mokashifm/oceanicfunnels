@@ -94,7 +94,7 @@ def extract(src):
     return css, logo
 
 def footer(cfg):
-    comp = "".join(f'<a href="/compare/{c["slug"]}/">vs {E(c["name"])}</a>' for c in COMPETITORS)
+    comp = "".join(f'<a href="/compare/{c["slug"]}/">vs {E(c["name"])}</a>' for c in COMPETITORS[:6])
     return f'''<footer class="nf-foot">
   <div class="nf-wrap nf-foot-top">
     <div>

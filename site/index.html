@@ -582,6 +582,36 @@
 /* ---------- v6 additions */
 .nf-hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
 .nf-hcard .nf-eyebrow{color:var(--aqua)}
+.nf-repl .nf-table thead th.num,.nf-repl .nf-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nf-repl .nf-table td.num{color:var(--ink);font-weight:600}
+.nf-repl .nf-table td.num small{font-weight:400;color:var(--muted);font-size:13px;margin-left:2px}
+.nf-repl .nf-table th,.nf-repl .nf-table td{padding:14px 22px;vertical-align:middle}
+.nf-repl .nf-table tbody th{width:30%}
+.nf-repl .nf-table td.us{width:22%}
+.nf-tool{display:inline-block;padding:3px 11px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--ink);background:#fff}
+.nf-repl tr.tot th,.nf-repl tr.tot td{border-top:2px solid var(--ink);font-family:var(--display);font-size:17px;padding-top:20px;padding-bottom:20px}
+.nf-repl tr.tot td.num{color:var(--coral-d);text-decoration:line-through;text-decoration-thickness:2px}
+.nf-repl tr.tot td.us b{color:var(--aqua);font-size:22px}
+.nf-repl-m{display:none;margin:0;padding:14px 16px;background:var(--ink);color:var(--aqua);font-family:var(--display);font-weight:600;font-size:15px}
+.nf-replnote{margin:16px auto 0;max-width:900px;text-align:center;font-size:13px;line-height:1.6;color:var(--muted)}
+.nf-replnote a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:760px){
+.nf-repl .nf-table{min-width:0}
+.nf-repl .nf-table thead{display:none}
+.nf-repl .nf-table tbody tr{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.nf-repl .nf-table tbody th,.nf-repl .nf-table tbody td{display:block;width:auto;padding:0;border:0;background:none}
+.nf-repl .nf-table tbody th{grid-column:1/-1}
+.nf-repl .nf-table tbody tr:not(.tot) td.us{display:none}
+.nf-repl .nf-table tbody th{font-size:15px}
+.nf-repl .nf-table td.us{grid-column:1/-1}
+.nf-repl .nf-table td.num{align-self:center}
+.nf-repl-m{display:block!important}
+.nf-repl .nf-table td.num{text-align:right}
+.nf-repl tr.tot{background:var(--ink)}
+.nf-repl tr.tot th,.nf-repl tr.tot td{color:#fff;border:0;padding:0}
+.nf-repl tr.tot td.us{color:#fff}
+.nf-repl tr.tot td.num{color:#FF9A82}
+}
 .nf-stack{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px}
 .nf-stack-old,.nf-stack-new{border-radius:var(--r);padding:40px;display:flex;flex-direction:column}
 .nf-stack-old{background:var(--mist)}
@@ -699,29 +729,19 @@
 <section class="nf-band" id="all-in-one" style="padding-top:20px">
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
-      <span class="nf-eyebrow">All-in-one vs piece-by-piece</span>
-      <h2>Fire your 9 apps. <span class="g">Keep one bill.</span></h2>
-      <p class="nf-sub">Most businesses glue together a funnel builder, an email tool, a CRM, a scheduler and more. Every tool is another login, another bill and another place for leads to fall through.</p>
+      <span class="nf-eyebrow">What's included</span>
+      <h2>Fire your 15 apps. <span class="g">Keep one bill.</span></h2>
+      <p class="nf-sub">Most businesses glue together a funnel builder, an email tool, a CRM, a scheduler and more. Here is what that stack costs, and what you pay with Oceanic Funnels OS.</p>
     </div>
-    <div class="nf-stack">
-      <div class="nf-stack-old">
-        <h3>The piece-by-piece stack</h3>
-        <ul>
-          <li>Funnel and website builder</li><li>Email marketing tool</li><li>SMS marketing tool</li>
-          <li>CRM and sales pipeline</li><li>Scheduling app</li><li>Website chat tool</li>
-          <li>Review management</li><li>Invoicing and payments</li><li>Course and membership platform</li>
-        </ul>
-        <p class="tally">9 logins · 9 bills · leads scattered everywhere</p>
-      </div>
-      <div class="nf-stack-new nf-hatch">
-        <h3>Oceanic Funnels OS</h3>
-        <ul>
-          <li>Every one of those tools in one system</li><li>One inbox for every conversation</li><li>One record for every contact</li>
-          <li>AI agents that reply in seconds</li><li>Automations that run 24/7</li><li>Unlimited contacts and users</li><li>Mobile app for you and your team</li><li>Built-in reporting on every step</li><li>Setup done for you on Growth</li>
-        </ul>
-        <div class="tally-row"><p class="tally">1 login · 1 bill · from <b>$67/month</b></p><a class="nf-btn nf-btn--aqua" href="#pricing">Build my net</a></div>
-      </div>
+    <div class="nf-tablewrap nf-repl">
+      <p class="nf-repl-m">✓ Every one of these is included in Oceanic Funnels OS</p>
+      <table class="nf-table">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Replaces</th><th scope="col" class="num">Their price</th><th scope="col" class="us">Oceanic Funnels</th></tr></thead>
+        <tbody><tr><th scope="row">CRM and sales pipelines</th><td data-l="Replaces"><span class="nf-tool">HubSpot Sales Hub</span></td><td data-l="Their price" class="num">$100<small>/mo per seat</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Sales funnels</th><td data-l="Replaces"><span class="nf-tool">ClickFunnels</span></td><td data-l="Their price" class="num">$97<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Website builder</th><td data-l="Replaces"><span class="nf-tool">Wix</span></td><td data-l="Their price" class="num">$36<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Online store and checkout</th><td data-l="Replaces"><span class="nf-tool">Shopify</span></td><td data-l="Their price" class="num">$39<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Email marketing</th><td data-l="Replaces"><span class="nf-tool">ActiveCampaign</span></td><td data-l="Their price" class="num">$49<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Two-way SMS</th><td data-l="Replaces"><span class="nf-tool">SimpleTexting</span></td><td data-l="Their price" class="num">$39<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Forms and surveys</th><td data-l="Replaces"><span class="nf-tool">Typeform</span></td><td data-l="Their price" class="num">$39<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Appointment booking</th><td data-l="Replaces"><span class="nf-tool">Calendly</span></td><td data-l="Their price" class="num">$12<small>/mo per seat</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Courses and memberships</th><td data-l="Replaces"><span class="nf-tool">Kajabi</span></td><td data-l="Their price" class="num">$179<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Communities</th><td data-l="Replaces"><span class="nf-tool">Skool</span></td><td data-l="Their price" class="num">$99<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Call tracking</th><td data-l="Replaces"><span class="nf-tool">CallRail</span></td><td data-l="Their price" class="num">$55<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Review management</th><td data-l="Replaces"><span class="nf-tool">Birdeye</span></td><td data-l="Their price" class="num">$299<small>/mo per location</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Document signing</th><td data-l="Replaces"><span class="nf-tool">DocuSign</span></td><td data-l="Their price" class="num">$30<small>/mo per user</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Social media planner</th><td data-l="Replaces"><span class="nf-tool">Buffer</span></td><td data-l="Their price" class="num">$6<small>/mo per channel</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Link-in-bio page</th><td data-l="Replaces"><span class="nf-tool">Linktree</span></td><td data-l="Their price" class="num">$15<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">15 separate tools</td><td data-l="Their price" class="num">$1,094<small>/mo</small></td><td data-l="Oceanic Funnels" class="us"><b>$67</b>/month</td></tr></tbody>
+      </table>
     </div>
+    <p class="nf-replnote">Starting paid price of one popular tool per job, billed monthly, checked October 2026. Per-seat and per-location prices shown for one. Usage like SMS, email sends and AI minutes is billed separately on every platform, including ours. Sources: <a href="https://encharge.io/hubspot-pricing/" rel="nofollow noopener" target="_blank">HubSpot Sales Hub</a> · <a href="https://support.clickfunnels.com/en/articles/12734340-clickfunnels-2-0-pricing" rel="nofollow noopener" target="_blank">ClickFunnels</a> · <a href="https://www.websitebuilderexpert.com/website-builders/wix/wix-pricing/" rel="nofollow noopener" target="_blank">Wix</a> · <a href="https://www.swell.is/content/shopify-pricing" rel="nofollow noopener" target="_blank">Shopify</a> · <a href="https://drry.com/guides/activecampaign-pricing" rel="nofollow noopener" target="_blank">ActiveCampaign</a> · <a href="https://textbolt.com/blog/simpletexting-pricing/" rel="nofollow noopener" target="_blank">SimpleTexting</a> · <a href="https://www.jetadmin.io/blog/typeform-pricing/" rel="nofollow noopener" target="_blank">Typeform</a> · <a href="https://zeeg.me/en/blog/post/calendly-pricing-guide" rel="nofollow noopener" target="_blank">Calendly</a> · <a href="https://revenuegeeks.com/guides/kajabi-pricing" rel="nofollow noopener" target="_blank">Kajabi</a> · <a href="https://schoolmaker.com/blog/skool-pricing" rel="nofollow noopener" target="_blank">Skool</a> · <a href="https://www.capterra.com/p/141829/CallRail/pricing/" rel="nofollow noopener" target="_blank">CallRail</a> · <a href="https://costbench.com/software/review-management/birdeye" rel="nofollow noopener" target="_blank">Birdeye</a> · <a href="https://automationatlas.io/answers/docusign-pricing-explained-2026/" rel="nofollow noopener" target="_blank">DocuSign</a> · <a href="https://napoleoncat.com/blog/buffer-pricing/" rel="nofollow noopener" target="_blank">Buffer</a> · <a href="https://u2l.ai/blog/linktree-pricing" rel="nofollow noopener" target="_blank">Linktree</a>.</p>
+    <div class="nf-center" style="margin-top:28px"><a class="nf-btn nf-btn--ink nf-btn--lg" href="#pricing">Replace my stack for $67/month</a></div>
   </div>
 </section>
 
@@ -1083,7 +1103,7 @@
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
       <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#results">Results</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a></div>
-      <div><b>Compare</b><a href="/compare/clickfunnels/">vs ClickFunnels</a><a href="/compare/hubspot/">vs HubSpot</a><a href="/compare/activecampaign/">vs ActiveCampaign</a><a href="/compare/keap/">vs Keap</a><a href="/compare/kartra/">vs Kartra</a><a href="/compare/klaviyo/">vs Klaviyo</a><a href="/compare/zoho/">vs Zoho CRM</a><a href="/compare/salesforce/">vs Salesforce</a><a href="/compare/linktree/">vs Linktree</a><a href="/compare/">All comparisons</a></div>
+      <div><b>Compare</b><a href="/compare/clickfunnels/">vs ClickFunnels</a><a href="/compare/kajabi/">vs Kajabi</a><a href="/compare/funnelish/">vs Funnelish</a><a href="/compare/shopify/">vs Shopify</a><a href="/compare/hubspot/">vs HubSpot</a><a href="/compare/activecampaign/">vs ActiveCampaign</a><a href="/compare/">All comparisons</a></div>
       <div><b>Company</b><span>hello@oceanicfunnels.com</span><a href="https://app.oceanicfunnels.com">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
     </nav>
   </div>
