@@ -5,6 +5,10 @@ import html, json, os, re
 import legal
 from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
 from industries import INDUSTRIES, GENERIC_FAQ, CATEGORIES
+from guides_a import G_A
+from guides_b import G_B
+GUIDES = G_A + G_B
+GUIDE_DATE = "2026-10-26"
 
 E = html.escape
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
@@ -121,6 +125,29 @@ PAGE_CSS += r"""
 }
 """
 
+PAGE_CSS += r"""
+/* ---------- guides */
+.nf-meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px;font-size:14px;color:var(--muted)}
+.nf-meta b{color:var(--ink);font-weight:600}
+.nf-answer{background:var(--ink);color:#E6EEEC;border-radius:var(--r);padding:26px 28px;margin-bottom:36px;position:relative;overflow:hidden}
+.nf-answer b.k{display:block;font-family:var(--display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua);margin-bottom:8px}
+.nf-answer p{color:#E6EEEC!important;font-size:17px!important;line-height:1.65!important;margin:0!important}
+.nf-doc ol{list-style:decimal;padding-left:22px;display:grid;gap:10px;margin-bottom:14px}
+.nf-doc ol li{font-size:16px;line-height:1.65;color:var(--text)}
+.nf-doc ol.nf-steps-list{list-style:none;padding:0;counter-reset:st;gap:12px}
+.nf-doc ol.nf-steps-list li{counter-increment:st;position:relative;padding:14px 16px 14px 58px;background:var(--mist);border-radius:14px}
+.nf-doc ol.nf-steps-list li::before{content:counter(st);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--aqua);color:var(--ink);font-family:var(--display);font-weight:700;font-size:14px;display:grid;place-items:center}
+.nf-doc i{color:var(--ink)}
+.nf-doc code{font-size:14px;background:var(--mist);padding:2px 6px;border-radius:6px}
+.nf-doc h2{scroll-margin-top:24px}
+.nf-doc .nf-srcs{margin-top:8px}
+.nf-gcta{background:var(--aqua-l);border-radius:var(--r);padding:26px 28px;margin:8px 0 28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.nf-gcta b{font-family:var(--display);font-size:20px;color:var(--ink);display:block}
+.nf-gcta span{font-size:15px;color:var(--text)}
+.nf-gcard .vs{color:var(--aqua-d)!important}
+.nf-gcard .rt{font-size:13px;color:var(--muted)}
+"""
+
 def extract(src):
     css = src[src.index('<style>') + 7: src.index('</style>')]
     logo = re.search(r'<a class="nf-logo".*?</a>', src, re.S).group(0).replace('href="#top"', 'href="/"')
@@ -137,7 +164,7 @@ def footer(cfg):
       <a class="nf-btn nf-btn--aqua" href="{CK}">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
-      <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#results">Results</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a></div>
+      <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
       <div><b>Industries</b>{inds}<a href="/industries/">All industries</a></div>
       <div><b>Compare</b>{comp}<a href="/compare/">All comparisons</a></div>
       <div><b>Company</b><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
@@ -153,6 +180,7 @@ def header(logo, cfg):
       <nav aria-label="Main">
         <a class="l" href="/#features">Features</a>
         <a class="l" href="/industries/">Industries</a>
+        <a class="l" href="/guides/">Guides</a>
         <a class="l" href="/#pricing">Pricing</a>
         <a class="l" href="/compare/">Compare</a>
         <a class="nf-btn nf-btn--line" href="{cfg["login"]}">Log in</a>
@@ -407,6 +435,9 @@ def industry_page(cfg, fonts, logo, d):
     faqs = [(f"How do {d['who']} automate their sales with Oceanic Funnels?", d["answer"])] + d["faqs"] + GENERIC_FAQ
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
     more = "".join(f'<a href="/industries/{o["slug"]}/">{E(o["name"])}</a>' for o in INDUSTRIES if o["slug"] != d["slug"] and o["cat"] == d["cat"])
+    rg = [g for g in GUIDES if d["slug"] in g["related_ind"]]
+    rg += [g for g in GUIDES if g["slug"] in ("missed-call-text-back", "speed-to-lead", "ai-chat-agent-for-business", "get-more-google-reviews") and g not in rg]
+    guides = "".join(f'<a href="/guides/{g["slug"]}/">{E(g["kw"].split(":")[0])}</a>' for g in rg[:6])
     body = f'''<section class="nf-sub-hero">
   <div class="nf-wrap">
     {{{{HEADER}}}}
@@ -493,6 +524,8 @@ def industry_page(cfg, fonts, logo, d):
       <div><h2>Stop fishing for customers. Build the net.</h2><p>One system for funnels, CRM, SMS, WhatsApp, AI agents, booking and payments. Or let our team build it for you.</p></div>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
     </div>
+    <h2 class="nf-more-h">Guides for {E(W)}</h2>
+    <div class="nf-more" aria-label="Guides">{guides}<a href="/guides/">All guides</a></div>
     <h2 class="nf-more-h">More in {E(d["cat"].lower())}</h2>
     <div class="nf-more" aria-label="Related industries">{more}<a href="/industries/">All {len(INDUSTRIES)} industries</a></div>
   </div>
@@ -534,6 +567,99 @@ def industries_hub(cfg, fonts, logo):
     return path, page(cfg, fonts, path, "CRM & Marketing Automation by Industry | Oceanic Funnels",
                       f"How {len(INDUSTRIES)} industries, from home services and dental practices to gyms, real estate and coaches, automate leads, booking and follow-up with Oceanic Funnels OS.", crumbs, body, logo)
 
+def guide_page(cfg, fonts, logo, g):
+    path = f"/guides/{g['slug']}/"
+    crumbs = [("Home", "/"), ("Guides", "/guides/"), (g["title"], path)]
+    ids = [re.sub(r"[^a-z0-9]+", "-", h.lower()).strip("-") for h, _ in g["sections"]]
+    toc = "".join(f'<li><a href="#{i}">{E(h)}</a></li>' for i, (h, _) in zip(ids, g["sections"]))
+    toc += '<li><a href="#faq">FAQ</a></li>'
+    secs = "".join(f'<section id="{i}"><h2>{E(h)}</h2>{c}</section>' for i, (h, c) in zip(ids, g["sections"]))
+    faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(g["faqs"]))
+    srcs = ""
+    if g["sources"]:
+        srcs = '<section><h2>Sources</h2><ul>' + "".join(f'<li><a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a></li>' for t, u in g["sources"]) + '</ul></section>'
+    inds = [d for d in INDUSTRIES if d["slug"] in g["related_ind"]]
+    indl = "".join(f'<a href="/industries/{d["slug"]}/">{E(d["name"])}</a>' for d in inds)
+    more = "".join(f'<a href="/guides/{o["slug"]}/">{E(o["kw"].split(":")[0])}</a>' for o in GUIDES if o["slug"] != g["slug"])
+    date = datetime_fmt(GUIDE_DATE)
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in">
+      {crumbs_html(crumbs)}
+      <span class="nf-vs">{E(g["cat"])}</span>
+      <h1 style="font-size:clamp(34px,4.6vw,58px)">{E(g["title"])}</h1>
+      <p class="nf-sub">{E(g["desc"])}</p>
+      <div class="nf-meta"><span>By <b>Oceanic Funnels Team</b></span><span>Updated <time datetime="{GUIDE_DATE}">{date}</time></span><span>{g["read"]} min read</span></div>
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:56px">
+  <div class="nf-wrap nf-doc-wrap">
+    <aside class="nf-toc"><b>In this guide</b><ol>{toc}</ol></aside>
+    <article class="nf-doc">
+      <div class="nf-answer"><b class="k">The short answer</b><p>{E(g["short"])}</p></div>
+      {secs}
+      <div class="nf-gcta"><div><b>Want this set up for you?</b><span>On Growth and Done-For-You, our team builds it into your system.</span></div><a class="nf-btn nf-btn--ink" href="{CK}">Build my net</a></div>
+      {srcs}
+    </article>
+  </div>
+</section>
+<section class="nf-band" id="faq" style="padding-top:0">
+  <div class="nf-wrap nf-faq">
+    <div><span class="nf-eyebrow">FAQ</span><h2>Questions, <span class="g">answered</span></h2></div>
+    <div class="nf-faq-list">
+{faq}
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
+      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system, from $67 a month.</p></div>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
+    </div>
+    <h2 class="nf-more-h">Built for these industries</h2>
+    <div class="nf-more">{indl}<a href="/industries/">All industries</a></div>
+    <h2 class="nf-more-h">More guides</h2>
+    <div class="nf-more">{more}</div>
+  </div>
+</section>'''
+    title = f"{g['kw']} | Oceanic Funnels"
+    if len(title) > 70: title = g["kw"]
+    extra = [faq_schema(g["faqs"]), {"@type": "BlogPosting", "@id": cfg["domain"] + path + "#article", "headline": g["title"],
+             "description": g["desc"], "datePublished": GUIDE_DATE, "dateModified": GUIDE_DATE, "inLanguage": "en",
+             "author": {"@type": "Organization", "name": "Oceanic Funnels Team", "url": cfg["domain"] + "/"},
+             "publisher": {"@id": cfg["domain"] + "/#org"}, "mainEntityOfPage": cfg["domain"] + path,
+             "image": cfg["domain"] + "/og-image.png", "articleSection": g["cat"]}]
+    return path, page(cfg, fonts, path, title, g["desc"], crumbs, body, logo, extra)
+
+def datetime_fmt(iso):
+    import datetime as _dt
+    d = _dt.date.fromisoformat(iso)
+    return d.strftime("%B ") + str(d.day) + d.strftime(", %Y")
+
+def guides_hub(cfg, fonts, logo):
+    path = "/guides/"; crumbs = [("Home", "/"), ("Guides", path)]
+    cards = "".join(f'''<a class="nf-gcard" href="/guides/{g["slug"]}/"><span class="vs">{E(g["cat"])}</span><h2>{E(g["title"])}</h2><p>{E(g["desc"])}</p><span class="rt">{g["read"]} min read</span><span class="go">Read the guide →</span></a>''' for g in GUIDES)
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in c">
+      {crumbs_html(crumbs)}
+      <h1>Sales and marketing automation guides</h1>
+      <p class="nf-sub">Practical, step-by-step guides on answering every lead, booking more appointments, getting reviews, texting compliantly and building funnels that sell.</p>
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:64px">
+  <div class="nf-wrap"><div class="nf-hub">{cards}</div></div>
+</section>'''
+    extra = [{"@type": "CollectionPage", "@id": cfg["domain"] + path + "#collection", "name": "Sales and marketing automation guides",
+              "hasPart": [{"@type": "BlogPosting", "headline": g["title"], "url": cfg["domain"] + f"/guides/{g['slug']}/"} for g in GUIDES]}]
+    return path, page(cfg, fonts, path, "Sales & Marketing Automation Guides | Oceanic Funnels",
+                      "Step-by-step guides on missed call text back, AI agents, appointment reminders, Google reviews, A2P 10DLC, email deliverability, sales funnels and more.", crumbs, body, logo, extra)
+
 def build_all(cfg, fonts, src, site):
     css, logo = extract(src)
     os.makedirs(f"{site}/assets", exist_ok=True)
@@ -545,6 +671,7 @@ def build_all(cfg, fonts, src, site):
            hub_page(cfg, fonts, logo)]
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
+    out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
     for path, htm in out:
         d = site + path
         os.makedirs(d, exist_ok=True)

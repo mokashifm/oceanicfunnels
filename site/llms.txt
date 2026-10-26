@@ -6,6 +6,7 @@
 - [Home and pricing](https://oceanicfunnels.com/): what's included, pricing and FAQ
 - [Industries](https://oceanicfunnels.com/industries/): how each industry uses the system
 - [Comparisons](https://oceanicfunnels.com/compare/): Oceanic Funnels vs other tools
+- [Guides](https://oceanicfunnels.com/guides/): how-to guides on lead response, AI agents, reviews, texting compliance and funnels
 
 ## Home services
 - [Home Service Businesses](https://oceanicfunnels.com/industries/home-services/): Home Service CRM & Missed Call Text Back
@@ -77,6 +78,21 @@
 ## Community and nonprofit
 - [Churches and Ministries](https://oceanicfunnels.com/industries/churches/): Church Communication & Visitor Follow-Up Software
 - [Nonprofits and Charities](https://oceanicfunnels.com/industries/nonprofits/): Nonprofit Donor CRM & Fundraising Automation
+
+## Guides
+- [What is missed call text back? How it works and how to set it up](https://oceanicfunnels.com/guides/missed-call-text-back/): Missed call text back sends an automatic text when you can't answer a call, so the caller doesn't ring your competitor. Here's how it works and how to set it up.
+- [Speed to lead: why replying in minutes wins the sale, and how to automate it](https://oceanicfunnels.com/guides/speed-to-lead/): Speed to lead is how fast you respond to a new enquiry. Research shows the first business to reply usually wins. Here's how to reply in seconds automatically.
+- [How to set up an AI chat agent that answers leads and books appointments](https://oceanicfunnels.com/guides/ai-chat-agent-for-business/): An AI chat agent replies to leads on your website, SMS, Facebook, Instagram and WhatsApp, answers questions and books appointments. Here's how to set one up.
+- [AI receptionist for small business: how a voice AI agent answers your calls](https://oceanicfunnels.com/guides/ai-receptionist/): A voice AI receptionist answers your business calls, answers questions, books appointments and transfers urgent calls. Here's how it works and how to set it up.
+- [WhatsApp automation for business: what you can automate and what it costs](https://oceanicfunnels.com/guides/whatsapp-business-automation/): How businesses automate WhatsApp: instant replies, reminders, AI agents and broadcasts, plus how WhatsApp's 24-hour window and per-message pricing work.
+- [How to reduce appointment no-shows with automated reminders](https://oceanicfunnels.com/guides/reduce-appointment-no-shows/): No-shows cost service businesses hours every week. Here's how automated confirmations, reminders, deposits and easy rescheduling cut no-shows.
+- [How to get more Google reviews automatically (without breaking the rules)](https://oceanicfunnels.com/guides/get-more-google-reviews/): Most customers will leave a review if you ask at the right time. Here's how to automate Google review requests, what to say and what to avoid.
+- [A2P 10DLC registration explained: how to get your business texting approved](https://oceanicfunnels.com/guides/a2p-10dlc-registration/): To text customers from a US local number, you need A2P 10DLC registration. Here's what it is, what you need and how to avoid the most common rejections.
+- [Email deliverability for small business: SPF, DKIM, DMARC and the bulk sender rules](https://oceanicfunnels.com/guides/email-deliverability-spf-dkim-dmarc/): Why your emails land in spam and how to fix it: SPF, DKIM and DMARC explained, Gmail, Yahoo and Outlook sender rules, and a setup checklist.
+- [How to build a sales funnel that converts: a step-by-step guide](https://oceanicfunnels.com/guides/how-to-build-a-sales-funnel/): A step-by-step guide to building a sales funnel: choose your offer, build the landing page, capture leads, follow up automatically and measure each step.
+- [Database reactivation: how to turn old leads into booked appointments](https://oceanicfunnels.com/guides/database-reactivation/): Your old leads and past customers are your cheapest new sales. Here's how to run a database reactivation campaign by SMS and email, step by step.
+- [Order bumps and upsells: how to raise your average order value](https://oceanicfunnels.com/guides/order-bumps-and-upsells/): Order bumps and one-click upsells increase how much each customer spends. Here's how they work, what to offer and how to set them up in your checkout.
+- [What is a CRM? A plain-English guide for small business owners](https://oceanicfunnels.com/guides/what-is-a-crm/): A CRM keeps every customer, conversation and deal in one place and automates follow-up. Here's what a CRM does, what to look for and how to choose one.
 
 ## Comparisons
 - [Oceanic Funnels vs ClickFunnels](https://oceanicfunnels.com/compare/clickfunnels/)

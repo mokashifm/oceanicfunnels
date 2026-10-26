@@ -207,11 +207,15 @@ from competitors import COMPETITORS as _CMP
 _d = CONFIG["domain"]
 _llms = [f"# {B}", "",
   "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $397/month (we build your sales funnel and backend). All plans are month to month.", "",
-  "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", ""]
+  "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", f"- [Guides]({_d}/guides/): how-to guides on lead response, AI agents, reviews, texting compliance and funnels", ""]
 for c in _CAT:
     _llms.append(f"## {c}")
     _llms += [f"- [{d['name']}]({_d}/industries/{d['slug']}/): {d['kw']}" for d in _IND if d["cat"] == c]
     _llms.append("")
+from pages import GUIDES as _G
+_llms.append("## Guides")
+_llms += [f"- [{g['title']}]({_d}/guides/{g['slug']}/): {g['desc']}" for g in _G]
+_llms.append("")
 _llms.append("## Comparisons")
 _llms += [f"- [Oceanic Funnels vs {c['name']}]({_d}/compare/{c['slug']}/)" for c in _CMP]
 _llms += ["", "## Legal", f"- [Privacy Policy]({_d}/privacy/)", f"- [Terms of Service]({_d}/terms/)", ""]
