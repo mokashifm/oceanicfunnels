@@ -17,6 +17,13 @@ assert len({g['slug'] for g in GUIDES}) == len(GUIDES)
 GUIDE_DATE = "2026-10-26"
 
 E = html.escape
+CLARITY = """<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "z3wchhfmwo");
+</script>"""
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
 
@@ -230,6 +237,7 @@ def page(cfg, fonts, path, title, desc, crumbs, body, logo, extra=()):
 <script type="application/ld+json">
 {json.dumps(schema, indent=1)}
 </script>
+{CLARITY}
 </head>
 <body style="margin:0;background:#FFFFFF">
 <div class="nf">

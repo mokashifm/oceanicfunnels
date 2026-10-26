@@ -54,7 +54,7 @@ PRIVACY = [
 <p>Oceanic Funnels OS includes AI agents and AI writing tools. When you use them, the content you provide (for example a conversation the AI agent replies to) is processed by AI service providers to generate a response. We do not use your Customer Data to train our own models.</p>"""),
 
 ("Cookies", """
-<p>We use cookies and similar technologies to keep you signed in, remember preferences, measure traffic and, where allowed, measure advertising. You can control cookies in your browser settings. Blocking some cookies may stop parts of the Services from working.</p>"""),
+<p>We use cookies and similar technologies to keep you signed in, remember preferences, measure traffic and, where allowed, measure advertising. We use Microsoft Clarity to understand how visitors use our website, through heatmaps and session recordings of clicks, scrolling and page interactions. Clarity masks sensitive information typed into forms. You can control cookies in your browser settings. Blocking some cookies may stop parts of the Services from working.</p>"""),
 
 ("How long we keep information", """
 <p>We keep personal information for as long as your account is active and as needed to provide the Services, then for as long as required for legal, tax, accounting and security purposes. When you close your account, you can export your Customer Data first. We delete or anonymise it within a reasonable period after closure unless the law requires us to keep it.</p>"""),

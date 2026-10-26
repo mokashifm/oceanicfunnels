@@ -175,7 +175,7 @@ seo_head = f"""<meta charset="utf-8">
 <meta name="twitter:image" content="{CONFIG['domain']}/og-image.png">"""
 os.makedirs(SITE, exist_ok=True)
 open(f"{SITE}/index.html", "w").write(
-    f'<!doctype html>\n<html lang="en">\n<head>\n{seo_head}\n{head}<style>html,body{{margin:0;background:#FFFFFF}}</style>\n</head>\n<body>\n{page}\n</body>\n</html>\n')
+    f'<!doctype html>\n<html lang="en">\n<head>\n{seo_head}\n{head}<style>html,body{{margin:0;background:#FFFFFF}}</style>\n{pages.CLARITY}\n</head>\n<body>\n{page}\n</body>\n</html>\n')
 today = CONFIG["updated"]
 open(f"{SITE}/robots.txt", "w").write(f"""User-agent: *
 Allow: /
@@ -244,7 +244,7 @@ open(f"{SITE}/404.html", "w").write(f"""<!doctype html>
 <link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400&display=swap">
 <style>body{{margin:0;min-height:100vh;display:grid;place-items:center;background:#0E1A1B;color:#fff;font-family:Inter,Arial,sans-serif;text-align:center;padding:24px;box-sizing:border-box}}
 h1{{font-family:"Inter Tight",Arial,sans-serif;font-size:clamp(40px,8vw,80px);letter-spacing:-.04em;margin:0}}p{{color:#9DB0AD;font-size:18px}}
-a{{display:inline-block;margin-top:16px;background:#3DE3C8;color:#0E1A1B;font-family:"Inter Tight",Arial,sans-serif;font-weight:600;text-decoration:none;padding:14px 28px;border-radius:999px}}</style></head>
+a{{display:inline-block;margin-top:16px;background:#3DE3C8;color:#0E1A1B;font-family:"Inter Tight",Arial,sans-serif;font-weight:600;text-decoration:none;padding:14px 28px;border-radius:999px}}</style>{pages.CLARITY}</head>
 <body><main><img src="/icon.svg" alt="" width="72" height="72"><h1>This fish got away.</h1><p>The page you're looking for isn't here.</p><a href="/">Back to the homepage</a></main></body></html>
 """)
 kit = "../brand"
