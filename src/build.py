@@ -128,7 +128,7 @@ def body():
     rep["{{INDUSTRIES}}"] = "".join(
         f'<div><h3>{html.escape(c)}</h3>' + "".join(f'<a href="/industries/{d["slug"]}/">{html.escape(d["name"])}</a>' for d in INDUSTRIES if d["cat"] == c) + '</div>'
         for c in CATEGORIES)
-    rep.update({"{{REPL_ROWS}}": r_rows, "{{REPL_N}}": r_n, "{{REPL_TOTAL}}": r_tot, "{{REPL_SRC}}": r_src})
+    rep.update({"{{REPL_ROWS}}": r_rows, "{{REPL_N}}": r_n, "{{REPL_TOTAL}}": r_tot})
     for k, v in rep.items():
         src = src.replace(k, v)
     assert "{{" not in src, "unreplaced placeholder: " + src[src.index("{{"):src.index("{{")+30]
