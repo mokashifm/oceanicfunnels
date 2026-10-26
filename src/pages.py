@@ -7,7 +7,13 @@ from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
 from industries import INDUSTRIES, GENERIC_FAQ, CATEGORIES
 from guides_a import G_A
 from guides_b import G_B
-GUIDES = G_A + G_B
+from guides_c import G_C
+from guides_d import G_D
+from guides_e import G_E
+GUIDES = G_A + G_B + G_C + G_D + G_E
+GUIDE_CATS = ["Lead response", "AI agents", "Messaging", "Lead capture", "Booking", "CRM", "Automation", "Follow-up", "Reviews", "Sales funnels", "Websites and SEO", "Ecommerce and payments", "Courses and communities", "Marketing", "Reporting", "Compliance"]
+assert all(g["cat"] in GUIDE_CATS for g in GUIDES), [g["cat"] for g in GUIDES if g["cat"] not in GUIDE_CATS]
+assert len({g['slug'] for g in GUIDES}) == len(GUIDES)
 GUIDE_DATE = "2026-10-26"
 
 E = html.escape
@@ -82,7 +88,7 @@ PAGE_CSS = r"""
 .nf-doc ul{list-style:disc;padding-left:22px;display:grid;gap:8px;margin-bottom:12px}
 .nf-doc li{font-size:16px;line-height:1.65;color:var(--text)}
 .nf-doc b{color:var(--ink)}
-.nf-doc a{color:var(--ink)}
+.nf-doc a:not(.nf-btn){color:var(--ink)}
 .nf-note{background:var(--coral-l);color:#7A2A17;border-radius:var(--r);padding:14px 18px;font-size:14.5px;margin-bottom:28px}
 @media (max-width:1060px){.nf-two{grid-template-columns:1fr}.nf-feat,.nf-hub{grid-template-columns:1fr 1fr}.nf-doc-wrap{grid-template-columns:1fr;gap:28px}.nf-toc{position:static}}
 @media (max-width:680px){
@@ -580,7 +586,8 @@ def guide_page(cfg, fonts, logo, g):
         srcs = '<section><h2>Sources</h2><ul>' + "".join(f'<li><a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a></li>' for t, u in g["sources"]) + '</ul></section>'
     inds = [d for d in INDUSTRIES if d["slug"] in g["related_ind"]]
     indl = "".join(f'<a href="/industries/{d["slug"]}/">{E(d["name"])}</a>' for d in inds)
-    more = "".join(f'<a href="/guides/{o["slug"]}/">{E(o["kw"].split(":")[0])}</a>' for o in GUIDES if o["slug"] != g["slug"])
+    rel = [o for o in GUIDES if o["slug"] != g["slug"] and o["cat"] == g["cat"]] + [o for o in GUIDES if o["slug"] != g["slug"] and o["cat"] != g["cat"]]
+    more = "".join(f'<a href="/guides/{o["slug"]}/">{E(o["kw"].split(":")[0])}</a>' for o in rel[:10]) + '<a href="/guides/">All guides</a>' 
     date = datetime_fmt(GUIDE_DATE)
     body = f'''<section class="nf-sub-hero">
   <div class="nf-wrap">
@@ -641,24 +648,32 @@ def datetime_fmt(iso):
 
 def guides_hub(cfg, fonts, logo):
     path = "/guides/"; crumbs = [("Home", "/"), ("Guides", path)]
-    cards = "".join(f'''<a class="nf-gcard" href="/guides/{g["slug"]}/"><span class="vs">{E(g["cat"])}</span><h2>{E(g["title"])}</h2><p>{E(g["desc"])}</p><span class="rt">{g["read"]} min read</span><span class="go">Read the guide →</span></a>''' for g in GUIDES)
+    groups = ""
+    for cat in GUIDE_CATS:
+        items = [g for g in GUIDES if g["cat"] == cat]
+        if not items: continue
+        cid = re.sub(r"[^a-z0-9]+", "-", cat.lower()).strip("-")
+        cards = "".join(f'''<a class="nf-gcard" href="/guides/{g["slug"]}/"><span class="vs">{E(g["cat"])}</span><h3>{E(g["title"])}</h3><p>{E(g["desc"])}</p><span class="rt">{g["read"]} min read</span><span class="go">Read the guide →</span></a>''' for g in items)
+        groups += f'<div class="nf-hubgrp" id="{cid}"><h2>{E(cat)}</h2><div class="nf-hub">{cards}</div></div>'
+    jump = "".join(f'<a href="#{re.sub(r"[^a-z0-9]+", "-", c.lower()).strip("-")}">{E(c)}</a>' for c in GUIDE_CATS if any(g["cat"] == c for g in GUIDES))
     body = f'''<section class="nf-sub-hero">
   <div class="nf-wrap">
     {{{{HEADER}}}}
     <div class="nf-sub-in c">
       {crumbs_html(crumbs)}
       <h1>Sales and marketing automation guides</h1>
-      <p class="nf-sub">Practical, step-by-step guides on answering every lead, booking more appointments, getting reviews, texting compliantly and building funnels that sell.</p>
+      <p class="nf-sub">{len(GUIDES)} practical, step-by-step guides to answering every lead, booking more appointments, building websites and funnels, selling online and automating your business.</p>
+      <div class="nf-more" style="justify-content:center">{jump}</div>
     </div>
   </div>
 </section>
 <section class="nf-band" style="padding-top:64px">
-  <div class="nf-wrap"><div class="nf-hub">{cards}</div></div>
+  <div class="nf-wrap">{groups}</div>
 </section>'''
     extra = [{"@type": "CollectionPage", "@id": cfg["domain"] + path + "#collection", "name": "Sales and marketing automation guides",
               "hasPart": [{"@type": "BlogPosting", "headline": g["title"], "url": cfg["domain"] + f"/guides/{g['slug']}/"} for g in GUIDES]}]
     return path, page(cfg, fonts, path, "Sales & Marketing Automation Guides | Oceanic Funnels",
-                      "Step-by-step guides on missed call text back, AI agents, appointment reminders, Google reviews, A2P 10DLC, email deliverability, sales funnels and more.", crumbs, body, logo, extra)
+                      f"{len(GUIDES)} step-by-step guides on CRM, automation, AI agents, websites, SEO, online stores, courses, communities, payments, reviews and more.", crumbs, body, logo, extra)
 
 def build_all(cfg, fonts, src, site):
     css, logo = extract(src)

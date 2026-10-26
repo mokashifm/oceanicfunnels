@@ -233,7 +233,8 @@ dict(
   ("Getting set up", """
 <ol class="nf-steps-list">
 <li>Add the WhatsApp add-on to your Oceanic Funnels OS account.</li>
-<li>Connect your WhatsApp Business account and phone number through the setup flow. You'll need a Meta business account.</li>
+<li>Go to <b>Settings → WhatsApp</b> and choose how to connect: link the WhatsApp Business app you already use (you keep using the app, and can import up to six months of chat history), create a new WhatsApp Business account with a new number, or migrate a number from another WhatsApp provider.</li>
+<li>Log in with the Facebook account that manages your business, verify the number with the code sent by SMS or call, and select your Meta business portfolio.</li>
 <li>Create and submit your message templates for approval, such as appointment reminders and follow-ups.</li>
 <li>Turn on WhatsApp in your calendar notifications, workflows and AI agent channels.</li>
 </ol>

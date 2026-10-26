@@ -590,7 +590,7 @@
 .nf-doc ul{list-style:disc;padding-left:22px;display:grid;gap:8px;margin-bottom:12px}
 .nf-doc li{font-size:16px;line-height:1.65;color:var(--text)}
 .nf-doc b{color:var(--ink)}
-.nf-doc a{color:var(--ink)}
+.nf-doc a:not(.nf-btn){color:var(--ink)}
 .nf-note{background:var(--coral-l);color:#7A2A17;border-radius:var(--r);padding:14px 18px;font-size:14.5px;margin-bottom:28px}
 @media (max-width:1060px){.nf-two{grid-template-columns:1fr}.nf-feat,.nf-hub{grid-template-columns:1fr 1fr}.nf-doc-wrap{grid-template-columns:1fr;gap:28px}.nf-toc{position:static}}
 @media (max-width:680px){

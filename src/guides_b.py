@@ -134,7 +134,7 @@ dict(
   ("The 2026 change: privacy policy and terms URLs", """
 <p>From June 30, 2026, new A2P 10DLC campaign submissions must include both a privacy policy URL and a terms and conditions URL, and both must be valid, publicly accessible pages. Existing approved campaigns aren't affected.</p>"""),
   ("Registering in Oceanic Funnels OS", """
-<p>Registration is submitted from the phone settings inside Oceanic Funnels OS. Approval times vary, so start as soon as your website and policies are live. On the Growth and Done-For-You plans, text registration is part of the setup our team does for you, including your privacy policy and terms pages.</p>"""),
+<p>In Oceanic Funnels OS, go to <b>Settings → Phone Numbers → Trust Center</b>. The registration walks you through your business profile (legal name, tax ID and address), brand, campaign (use case and sample messages with opt-out language) and consent (how contacts opt in), then a review screen before you submit. Approval times vary, so start as soon as your website and policies are live. On the Growth and Done-For-You plans, text registration is part of the setup our team does for you, including your privacy policy and terms pages.</p>"""),
  ],
  faqs=[
   ("Do I need A2P 10DLC registration?", "If you send texts to US numbers from a local 10-digit business number using software, yes. Toll-free numbers use a separate toll-free verification process instead."),
@@ -314,7 +314,13 @@ dict(
   ("Two-step order forms", """
 <p>A two-step order form asks for contact details first, then payment. Because the contact is saved after step one, you can follow up with anyone who doesn't finish checkout, by email and SMS.</p>"""),
   ("Setting it up in Oceanic Funnels OS", """
-<p>Funnel checkouts in Oceanic Funnels OS support two-step order forms, order bumps and upsell pages after purchase, with products and prices managed in Payments. Abandoned checkouts can trigger an automatic follow-up sequence. On Done-For-You, our team builds the checkout and follow-up for you.</p>"""),
+<ol class="nf-steps-list">
+<li>Add your products to the funnel step's products, and mark the add-on as a <b>Bump Product</b>.</li>
+<li>Open the order form on the page, go to its advanced settings and open <b>Order bump options</b>.</li>
+<li>Turn on <b>Order Bump</b>, choose the bump product and save.</li>
+<li>Add an upsell step after the checkout step in the funnel for your one-click offer.</li>
+</ol>
+<p>Funnel checkouts in Oceanic Funnels OS support two-step order forms, order bumps and upsell pages after purchase. Abandoned checkouts can trigger an automatic follow-up sequence. On Done-For-You, our team builds the checkout and follow-up for you.</p>"""),
  ],
  faqs=[
   ("Do order bumps annoy customers?", "Not when they're relevant and inexpensive. A single, clearly described add-on is easy to skip and often welcome."),
