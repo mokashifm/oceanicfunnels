@@ -9,7 +9,7 @@ import json, html, os, datetime
 CONFIG = {
     "brand": "Oceanic Funnels",
     "product": "Oceanic Funnels OS",
-    "domain": "https://www.oceanicfunnels.com",
+    "domain": "https://oceanicfunnels.com",
     "path": "/",                                  # homepage
     "email": "hello@oceanicfunnels.com",
     # Replace these with your real links (checkout / order form per plan, app login, contact calendar)

@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.oceanicfunnels.com/sitemap.xml
+Sitemap: https://oceanicfunnels.com/sitemap.xml
