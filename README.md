@@ -13,7 +13,7 @@ Marketing website for Oceanic Funnels OS.
 2. `cd src && python3 build.py` rewrites `site/`.
 3. Commit and push. Cloudflare Pages deploys automatically in about a minute.
 
-## Cloudflare Pages settings
-- Framework preset: None
-- Build command: *(leave empty)*
-- Build output directory: `site`
+## Cloudflare settings
+Deployed as a Cloudflare Worker with static assets (`wrangler.jsonc` points it at `site/`).
+- Worker name: `oceanicfunnels` (must match `name` in wrangler.jsonc)
+- Build command: *(empty)* · Deploy command: `npx wrangler deploy` · Path: `/`

@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers static site: publishes the site/ folder
+  "name": "oceanicfunnels",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page"
+  }
+}
