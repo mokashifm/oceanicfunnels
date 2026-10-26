@@ -73,7 +73,7 @@ PRIVACY = [
 <p>The Services are for businesses and are not directed to children under 16. We do not knowingly collect personal information from children.</p>"""),
 
 ("Changes to this policy", """
-<p>We may update this policy from time to time. If we make significant changes, we will post the new version here with a new effective date and, where appropriate, notify you by email or in the app.</p>"""),
+<p>We may update this policy from time to time. If we make significant changes, we will post the new version here with a new effective date and, where appropriate, notify you by email or in your account.</p>"""),
 
 ("Contact us", f"""
 <p>Questions about this policy or your information: email <b>{EMAIL}</b>. {ENTITY}, {ADDRESS}.</p>"""),
@@ -167,7 +167,7 @@ TERMS = [
 <p>These Terms are governed by the laws of {LAW}, without regard to conflict-of-law rules. Before starting any formal dispute, you agree to contact us at hello@oceanicfunnels.com so we can try to resolve it informally within 30 days.</p>"""),
 
 ("Changes to these Terms", """
-<p>We may update these Terms from time to time. If changes are significant, we will notify you by email or in the app at least 15 days before they take effect. Continuing to use the Services after that means you accept the updated Terms.</p>"""),
+<p>We may update these Terms from time to time. If changes are significant, we will notify you by email or in your account at least 15 days before they take effect. Continuing to use the Services after that means you accept the updated Terms.</p>"""),
 
 ("Contact", f"""
 <p>{ENTITY}, {ADDRESS}. Email: <b>{EMAIL}</b>.</p>"""),
