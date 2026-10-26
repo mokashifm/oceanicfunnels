@@ -334,6 +334,7 @@
 .nf-price .amt{font-family:var(--display);font-size:60px;font-weight:600;line-height:1;letter-spacing:-.05em;color:var(--ink);margin-top:24px;display:flex;align-items:baseline;gap:6px}
 .nf-price .amt small{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted)}
 .nf-price .plus{margin-top:14px;font-size:14px;font-weight:600;color:var(--ink);background:var(--aqua);padding:6px 16px;border-radius:999px}
+.nf-price .fee{font-size:14px;font-weight:600;color:var(--coral-d);margin-top:10px}
 .nf-price .for{font-size:14.5px;color:var(--text);margin-top:14px;min-height:46px}
 .nf-price--pop .for{margin-top:12px}
 .nf-price ul{width:100%;margin-top:22px;margin-bottom:auto;border-top:1px solid var(--line)}

@@ -428,7 +428,7 @@ BASE = [
 ]
 
 GENERIC_FAQ = [
-  ("Do you set it up for me?", "On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($397 a month) we build your sales funnel and the full automated backend for your business."),
+  ("Do you set it up for me?", "On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($297 a month plus a one-time $997 build fee) we build your sales funnel and the full automated backend for your business."),
   ("How much does it cost?", "Oceanic Funnels OS starts at $67 a month with unlimited contacts and users. Usage like SMS, email and AI is pay-as-you-go, and WhatsApp is a +$19/month add-on."),
 ]
 

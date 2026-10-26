@@ -335,6 +335,7 @@
 .nf-price .amt{font-family:var(--display);font-size:60px;font-weight:600;line-height:1;letter-spacing:-.05em;color:var(--ink);margin-top:24px;display:flex;align-items:baseline;gap:6px}
 .nf-price .amt small{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted)}
 .nf-price .plus{margin-top:14px;font-size:14px;font-weight:600;color:var(--ink);background:var(--aqua);padding:6px 16px;border-radius:999px}
+.nf-price .fee{font-size:14px;font-weight:600;color:var(--coral-d);margin-top:10px}
 .nf-price .for{font-size:14.5px;color:var(--text);margin-top:14px;min-height:46px}
 .nf-price--pop .for{margin-top:12px}
 .nf-price ul{width:100%;margin-top:22px;margin-bottom:auto;border-top:1px solid var(--line)}
@@ -866,6 +867,7 @@
       <article class="nf-price">
         <span class="plan">OS</span>
         <div class="amt"><span class="v">$67</span> <small>/month</small></div>
+        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
         <p class="for">The full system. You build and run it yourself.</p>
         <ul><li class="lead">Everything to catch, follow up and close:</li><li>Unlimited contacts and users</li><li>Unlimited funnels and websites</li><li>CRM and sales pipelines</li><li>Email and SMS automations</li><li>Calendars and booking</li><li>One inbox for every channel</li><li>Invoices, payments and text-to-pay</li><li>Ticket support, 24-hour reply</li></ul>
         <a class="nf-btn nf-btn--ink" href="{{PLAN1}}">Start with OS</a>
@@ -875,6 +877,7 @@
         <span class="pop">MOST POPULAR</span>
         <span class="plan">Growth</span>
         <div class="amt"><span class="v">$197</span> <small>/month</small></div>
+        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
         <p class="for">Everything set up for you and kept running.</p>
         <ul><li class="lead">Everything in OS, plus:</li><li>Done-for-you setup in week one</li><li>Domain, email, phone and text registration</li><li>5 core automations installed</li><li>1 AI chat agent trained on your business</li><li>Niche template installed and branded</li><li>24/7 live chat and WhatsApp support</li><li>5 edit requests every month</li><li>Monthly strategy call and report</li></ul>
         <a class="nf-btn nf-btn--aqua" href="{{PLAN2}}">Get Growth</a>
@@ -882,7 +885,8 @@
       </article>
       <article class="nf-price">
         <span class="plan">Done-For-You</span>
-        <div class="amt"><span class="v">$397</span> <small>/month</small></div>
+        <div class="amt"><span class="v">$297</span> <small>/month</small></div>
+        <p class="fee">+ $997 one-time build fee</p>
         <p class="for">We build your funnel and the full backend.</p>
         <ul><li class="lead">Everything in Growth, plus:</li><li>Your sales funnel built from scratch</li><li>Strategy, copy and design included</li><li>Full automated backend</li><li>AI chat agent and Voice AI setup</li><li>Meta Pixel, Conversions API and GA4</li><li>Dedicated account manager</li><li>10 edits or 1 new page every month</li><li>Quarterly funnel tune-up</li></ul>
         <a class="nf-btn nf-btn--ink" href="{{PLAN3}}">Build my net</a>

@@ -98,16 +98,24 @@
     {
      "@type": "Offer",
      "name": "Done-For-You",
-     "price": "397",
+     "price": "297",
      "priceCurrency": "USD",
-     "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "397",
-      "priceCurrency": "USD",
-      "unitText": "MONTH",
-      "billingDuration": 1,
-      "billingIncrement": 1
-     }
+     "priceSpecification": [
+      {
+       "@type": "UnitPriceSpecification",
+       "price": "297",
+       "priceCurrency": "USD",
+       "unitText": "MONTH",
+       "billingDuration": 1,
+       "billingIncrement": 1
+      },
+      {
+       "@type": "UnitPriceSpecification",
+       "price": "997",
+       "priceCurrency": "USD",
+       "name": "One-time build fee"
+      }
+     ]
     }
    ]
   },
@@ -465,6 +473,7 @@
 .nf-price .amt{font-family:var(--display);font-size:60px;font-weight:600;line-height:1;letter-spacing:-.05em;color:var(--ink);margin-top:24px;display:flex;align-items:baseline;gap:6px}
 .nf-price .amt small{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted)}
 .nf-price .plus{margin-top:14px;font-size:14px;font-weight:600;color:var(--ink);background:var(--aqua);padding:6px 16px;border-radius:999px}
+.nf-price .fee{font-size:14px;font-weight:600;color:var(--coral-d);margin-top:10px}
 .nf-price .for{font-size:14.5px;color:var(--text);margin-top:14px;min-height:46px}
 .nf-price--pop .for{margin-top:12px}
 .nf-price ul{width:100%;margin-top:22px;margin-bottom:auto;border-top:1px solid var(--line)}
@@ -996,6 +1005,7 @@
       <article class="nf-price">
         <span class="plan">OS</span>
         <div class="amt"><span class="v">$67</span> <small>/month</small></div>
+        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
         <p class="for">The full system. You build and run it yourself.</p>
         <ul><li class="lead">Everything to catch, follow up and close:</li><li>Unlimited contacts and users</li><li>Unlimited funnels and websites</li><li>CRM and sales pipelines</li><li>Email and SMS automations</li><li>Calendars and booking</li><li>One inbox for every channel</li><li>Invoices, payments and text-to-pay</li><li>Ticket support, 24-hour reply</li></ul>
         <a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Start with OS</a>
@@ -1005,6 +1015,7 @@
         <span class="pop">MOST POPULAR</span>
         <span class="plan">Growth</span>
         <div class="amt"><span class="v">$197</span> <small>/month</small></div>
+        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
         <p class="for">Everything set up for you and kept running.</p>
         <ul><li class="lead">Everything in OS, plus:</li><li>Done-for-you setup in week one</li><li>Domain, email, phone and text registration</li><li>5 core automations installed</li><li>1 AI chat agent trained on your business</li><li>Niche template installed and branded</li><li>24/7 live chat and WhatsApp support</li><li>5 edit requests every month</li><li>Monthly strategy call and report</li></ul>
         <a class="nf-btn nf-btn--aqua" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Get Growth</a>
@@ -1012,7 +1023,8 @@
       </article>
       <article class="nf-price">
         <span class="plan">Done-For-You</span>
-        <div class="amt"><span class="v">$397</span> <small>/month</small></div>
+        <div class="amt"><span class="v">$297</span> <small>/month</small></div>
+        <p class="fee">+ $997 one-time build fee</p>
         <p class="for">We build your funnel and the full backend.</p>
         <ul><li class="lead">Everything in Growth, plus:</li><li>Your sales funnel built from scratch</li><li>Strategy, copy and design included</li><li>Full automated backend</li><li>AI chat agent and Voice AI setup</li><li>Meta Pixel, Conversions API and GA4</li><li>Dedicated account manager</li><li>10 edits or 1 new page every month</li><li>Quarterly funnel tune-up</li></ul>
         <a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Build my net</a>
@@ -1067,7 +1079,7 @@
 <details class="nf-q" open><summary><h3>What is Oceanic Funnels OS?</h3><span aria-hidden="true">+</span></summary><p>Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill, starting at $67 a month.</p></details>
 <details class="nf-q"><summary><h3>What is a sales funnel?</h3><span aria-hidden="true">+</span></summary><p>A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel.</p></details>
 <details class="nf-q"><summary><h3>What is included in the $67 OS plan?</h3><span aria-hidden="true">+</span></summary><p>The full system: unlimited contacts and users, funnels, websites and forms, CRM and sales pipelines, email and SMS automations, calendars and booking, one inbox for every channel, invoices and payments, reviews and courses. You build and run it yourself, with ticket support that replies within 24 hours.</p></details>
-<details class="nf-q"><summary><h3>What is the difference between Growth and Done-For-You?</h3><span aria-hidden="true">+</span></summary><p>Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($397 a month) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month.</p></details>
+<details class="nf-q"><summary><h3>What is the difference between Growth and Done-For-You?</h3><span aria-hidden="true">+</span></summary><p>Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($297 a month plus a one-time $997 build fee) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month.</p></details>
 <details class="nf-q"><summary><h3>Are contacts really unlimited?</h3><span aria-hidden="true">+</span></summary><p>Yes. Every plan includes unlimited contacts and unlimited team users. You never pay more because your list or your team grows.</p></details>
 <details class="nf-q"><summary><h3>How do email, SMS and AI costs work?</h3><span aria-hidden="true">+</span></summary><p>Email, SMS and calls are pay-as-you-go, billed from your account wallet at transparent per-use rates. AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do. If you want unlimited AI replies and voice minutes, add AI Agent Unlimited for $147 a month.</p></details>
 <details class="nf-q"><summary><h3>Can I build more than one funnel?</h3><span aria-hidden="true">+</span></summary><p>Yes. Every plan includes unlimited funnels and websites that you build yourself. If you want our team to build an extra funnel for you, it is $297 one time per funnel.</p></details>

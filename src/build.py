@@ -28,7 +28,7 @@ FAQ = [
     ("What is included in the $67 OS plan?",
      "The full system: unlimited contacts and users, funnels, websites and forms, CRM and sales pipelines, email and SMS automations, calendars and booking, one inbox for every channel, invoices and payments, reviews and courses. You build and run it yourself, with ticket support that replies within 24 hours."),
     ("What is the difference between Growth and Done-For-You?",
-     "Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($397 a month) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month."),
+     "Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($297 a month plus a one-time $997 build fee) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month."),
     ("Are contacts really unlimited?",
      "Yes. Every plan includes unlimited contacts and unlimited team users. You never pay more because your list or your team grows."),
     ("How do email, SMS and AI costs work?",
@@ -50,10 +50,13 @@ FAQ = [
 def schema():
     url = CONFIG["domain"] + CONFIG["path"]
     org_id = CONFIG["domain"] + "/#org"
-    def offer(name, price):
+    def offer(name, price, setup=None):
+        spec = [{"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "USD",
+                 "unitText": "MONTH", "billingDuration": 1, "billingIncrement": 1}]
+        if setup:
+            spec.append({"@type": "UnitPriceSpecification", "price": setup, "priceCurrency": "USD", "name": "One-time build fee"})
         return {"@type": "Offer", "name": name, "price": price, "priceCurrency": "USD",
-                "priceSpecification": {"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "USD",
-                                       "unitText": "MONTH", "billingDuration": 1, "billingIncrement": 1}}
+                "priceSpecification": spec if setup else spec[0]}
     graph = [
         {"@type": "Organization", "@id": org_id, "name": B, "url": CONFIG["domain"], "email": CONFIG["email"],
          "knowsAbout": ["Sales funnels", "CRM", "Marketing automation", "AI agents", "Email and SMS marketing"]},
@@ -65,7 +68,7 @@ def schema():
          "applicationCategory": "BusinessApplication", "operatingSystem": "Web",
          "publisher": {"@id": org_id},
          "description": "All-in-one sales funnel, CRM and marketing automation system with unlimited contacts, users and funnels: funnels and websites, email and SMS automations, AI agents, calendars, one inbox for every channel, invoices and payments, reviews and courses.",
-         "offers": [offer("OS", "67"), offer("Growth", "197"), offer("Done-For-You", "397")]},
+         "offers": [offer("OS", "67"), offer("Growth", "197"), offer("Done-For-You", "297", "997")]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": url}]},
     ]
@@ -206,7 +209,7 @@ from industries import INDUSTRIES as _IND, CATEGORIES as _CAT
 from competitors import COMPETITORS as _CMP
 _d = CONFIG["domain"]
 _llms = [f"# {B}", "",
-  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $397/month (we build your sales funnel and backend). All plans are month to month.", "",
+  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $297/month plus a one-time $997 build fee (we build your sales funnel and backend). All plans are month to month.", "",
   "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", f"- [Guides]({_d}/guides/): how-to guides on lead response, AI agents, reviews, texting compliance and funnels", ""]
 for c in _CAT:
     _llms.append(f"## {c}")

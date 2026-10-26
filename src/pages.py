@@ -284,7 +284,7 @@ def compare_page(cfg, fonts, logo, c):
       (f"Is Oceanic Funnels OS cheaper than {n}?", cheap + " Usage like SMS and AI is pay-as-you-go."),
       (f"How do I switch from {n}?", c["switch"]),
       (f"When is {n} the better choice?", c["better"]),
-      ("Will you build it for me?", "Yes. On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($397 a month) we build your sales funnel and the full automated backend for you."),
+      ("Will you build it for me?", "Yes. On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($297 a month plus a one-time $997 build fee) we build your sales funnel and the full automated backend for you."),
     ]
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
     body = f'''<section class="nf-sub-hero">
@@ -347,7 +347,7 @@ def compare_page(cfg, fonts, logo, c):
     <div class="nf-two">
       <div class="nf-box ink">
         <h3>Oceanic Funnels OS</h3>
-        <ul class="nf-plist"><li><b>OS</b><span>$67/month</span></li><li><b>Growth (set up for you)</b><span>$197/month</span></li><li><b>Done-For-You (we build it)</b><span>$397/month</span></li></ul>
+        <ul class="nf-plist"><li><b>OS</b><span>$67/month</span></li><li><b>Growth (set up for you)</b><span>$197/month</span></li><li><b>Done-For-You (we build it)</b><span>$297/month + $997 one-time build</span></li></ul>
         <p style="margin-top:16px">Unlimited contacts, users and funnels on every plan. SMS, email and AI usage is pay-as-you-go.</p>
       </div>
       <div class="nf-box">
