@@ -4,7 +4,7 @@ G_D = [
 dict(
  slug="workflow-automation", cat="Automation",
  title="Workflow automation for small business: triggers, actions and recipes",
- kw="Workflow Automation for Small Business: Triggers, Actions, Recipes",
+ kw="Workflow Automation for Small Business: A Practical Guide",
  desc="How workflow automation works: triggers, actions, if/else branches and ready-made recipes, plus the first five automations every business should build.",
  read=9,
  short="A workflow is an automated sequence that starts when something happens (a trigger) and then runs steps for you (actions). For example: when a form is submitted, send a text, create an opportunity, assign it to a salesperson and remind them to call. In Oceanic Funnels OS you can build a workflow with AI, start from a ready-made template, or build from scratch: add a trigger, add actions, use if/else branches for different paths, test it with a fresh contact and publish.",
@@ -50,7 +50,7 @@ dict(
 dict(
  slug="import-contacts-smart-lists", cat="CRM",
  title="How to import your contacts and organise them with smart lists",
- kw="How to Import Contacts (CSV) and Organise Them with Smart Lists",
+ kw="How to Import Contacts and Organise Them with Smart Lists",
  desc="Move your customer list into your CRM from a CSV file, map fields, avoid duplicates, then segment contacts with tags and smart lists.",
  read=6,
  short="To import contacts into Oceanic Funnels OS, export them to a single-sheet CSV with a header row, then go to Contacts → Smart Lists → Import Contacts. Map each column to a field, choose whether to update existing contacts or create new ones, add a tag for the import, and optionally add everyone to a workflow or a new smart list. Existing contacts are matched by email first, then phone. Track progress under Bulk Actions.",
@@ -200,7 +200,7 @@ dict(
 dict(
  slug="call-tracking", cat="Reporting",
  title="Call tracking: see which ads and pages make your phone ring",
- kw="Call Tracking with Number Pools: See Which Ads Make Your Phone Ring",
+ kw="Call Tracking: See Which Ads Make Your Phone Ring",
  desc="How call tracking with number pools and dynamic number insertion shows which ads, keywords and pages drive phone calls.",
  read=6,
  short="Call tracking shows which marketing makes your phone ring. With a number pool, your website swaps in a tracking number for each visitor (dynamic number insertion), so when they call, the call is tied to the ad, keyword or page they came from. In Oceanic Funnels OS, create a pool under Settings → Phone Numbers → Add Number → Add Number Pool, set where calls forward, paste the snippet on your site and see results in Reporting → Call Report.",
@@ -278,7 +278,7 @@ dict(
 dict(
  slug="social-media-scheduling", cat="Marketing",
  title="How to schedule social media posts for every platform from one place",
- kw="Schedule Social Media Posts from One Place: Social Planner Guide",
+ kw="How to Schedule Social Media Posts from One Place",
  desc="Plan and schedule posts for Facebook, Instagram, LinkedIn, TikTok, Google Business Profile and more from one social planner.",
  read=5,
  short="A social planner lets you write, schedule and publish posts to all your social accounts from one place. In Oceanic Funnels OS, go to Marketing → Social Planner, connect your accounts (Facebook pages and groups, Instagram, LinkedIn, TikTok, X and Google Business Profile), create a post, choose the accounts and schedule it. Posts can also be uploaded in bulk or sent for approval before they go live.",

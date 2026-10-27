@@ -545,7 +545,7 @@ def industry_page(cfg, fonts, logo, d):
   </div>
 </section>'''
     title = f"{d['kw']} | Oceanic Funnels"
-    if len(title) > 66: title = d["kw"]
+    if len(title) > 62: title = d["kw"]
     extra = [faq_schema(faqs), {"@type": "Service", "@id": cfg["domain"] + path + "#service", "name": d["kw"],
              "serviceType": "CRM, sales funnel and marketing automation software", "description": d["answer"],
              "provider": {"@id": cfg["domain"] + "/#org"}, "areaServed": "Worldwide",
@@ -641,7 +641,7 @@ def guide_page(cfg, fonts, logo, g):
   </div>
 </section>'''
     title = f"{g['kw']} | Oceanic Funnels"
-    if len(title) > 70: title = g["kw"]
+    if len(title) > 62: title = g["kw"]
     extra = [faq_schema(g["faqs"]), {"@type": "BlogPosting", "@id": cfg["domain"] + path + "#article", "headline": g["title"],
              "description": g["desc"], "datePublished": GUIDE_DATE, "dateModified": GUIDE_DATE, "inLanguage": "en",
              "author": {"@type": "Organization", "name": "Oceanic Funnels Team", "url": cfg["domain"] + "/"},
@@ -688,7 +688,7 @@ def build_all(cfg, fonts, src, site):
     os.makedirs(f"{site}/assets", exist_ok=True)
     open(f"{site}/assets/site.css", "w").write(css + PAGE_CSS)
     out = [legal_page(cfg, fonts, logo, "privacy", "Privacy Policy | Oceanic Funnels", "Privacy Policy",
-                      "How Oceanic Funnels collects, uses and protects personal information.", legal.PRIVACY),
+                      "How Oceanic Funnels collects, uses, shares and protects personal information, including SMS consent, cookies, analytics and your privacy rights.", legal.PRIVACY),
            legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
                       "The terms that apply when you use oceanicfunnels.com and Oceanic Funnels OS.", legal.TERMS),
            hub_page(cfg, fonts, logo)]

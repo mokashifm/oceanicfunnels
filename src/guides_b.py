@@ -98,7 +98,7 @@ dict(
 dict(
  slug="a2p-10dlc-registration", cat="Compliance",
  title="A2P 10DLC registration explained: how to get your business texting approved",
- kw="A2P 10DLC Registration Explained: Get Business Texting Approved",
+ kw="A2P 10DLC Registration Explained: Get Texting Approved",
  desc="To text customers from a US local number, you need A2P 10DLC registration. Here's what it is, what you need and how to avoid the most common rejections.",
  read=9,
  short="A2P 10DLC is the registration US carriers require for businesses that send text messages from software using a regular 10-digit local number. You register a brand (your business, with its legal name, EIN and website) and a campaign (what you'll text, how people opt in and sample messages). Most rejections come from mismatched business details, an unclear opt-in, or a website without a privacy policy that says mobile data isn't shared. Since June 30, 2026, new campaigns also need public privacy policy and terms URLs.",

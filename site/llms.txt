@@ -80,7 +80,7 @@
 - [Nonprofits and Charities](https://oceanicfunnels.com/industries/nonprofits/): Nonprofit Donor CRM & Fundraising Automation
 
 ## Guides
-- [What is missed call text back? How it works and how to set it up](https://oceanicfunnels.com/guides/missed-call-text-back/): Missed call text back sends an automatic text when you can't answer a call, so the caller doesn't ring your competitor. Here's how it works and how to set it up.
+- [What is missed call text back? How it works and how to set it up](https://oceanicfunnels.com/guides/missed-call-text-back/): Missed call text back sends an automatic text when you can't answer a call, so the caller doesn't ring your competitor. How it works and how to set it up.
 - [Speed to lead: why replying in minutes wins the sale, and how to automate it](https://oceanicfunnels.com/guides/speed-to-lead/): Speed to lead is how fast you respond to a new enquiry. Research shows the first business to reply usually wins. Here's how to reply in seconds automatically.
 - [How to set up an AI chat agent that answers leads and books appointments](https://oceanicfunnels.com/guides/ai-chat-agent-for-business/): An AI chat agent replies to leads on your website, SMS, Facebook, Instagram and WhatsApp, answers questions and books appointments. Here's how to set one up.
 - [AI receptionist for small business: how a voice AI agent answers your calls](https://oceanicfunnels.com/guides/ai-receptionist/): A voice AI receptionist answers your business calls, answers questions, books appointments and transfers urgent calls. Here's how it works and how to set it up.

@@ -81,7 +81,7 @@ dict(
 dict(
  slug="create-and-sell-an-online-course", cat="Courses and communities",
  title="How to create and sell an online course (without a separate course platform)",
- kw="How to Create and Sell an Online Course Without a Course Platform",
+ kw="How to Create and Sell an Online Course",
  desc="Build your course with modules and lessons, set up drip content, create offers and pricing, and sell with a funnel, all in one system.",
  read=8,
  short="To create and sell an online course in Oceanic Funnels OS, go to Sites → Memberships, create a product (your course), add categories (modules) and lessons with video, text and downloads, and set drip schedules if you want lessons to unlock over time. Then create an offer with a one-time or subscription price, connect it to a checkout in a funnel, and buyers get access automatically in your branded membership portal. Communities can be added for student discussion.",

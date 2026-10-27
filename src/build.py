@@ -64,9 +64,9 @@ def schema():
          "name": f"All-in-One Sales Funnel & CRM Software | {B}",
          "about": {"@id": url + "#software"}, "publisher": {"@id": org_id},
          "dateModified": CONFIG["updated"], "inLanguage": "en"},
-        {"@type": "SoftwareApplication", "@id": url + "#software", "name": P,
-         "applicationCategory": "BusinessApplication", "operatingSystem": "Web",
-         "publisher": {"@id": org_id},
+        {"@type": "Service", "@id": url + "#software", "name": P,
+         "serviceType": "All-in-one sales funnel, CRM and marketing automation software",
+         "provider": {"@id": org_id}, "areaServed": "Worldwide",
          "description": "All-in-one sales funnel, CRM and marketing automation system with unlimited contacts, users and funnels: funnels and websites, email and SMS automations, AI agents, calendars, one inbox for every channel, invoices and payments, reviews and courses.",
          "offers": [offer("OS", "67"), offer("Growth", "197"), offer("Done-For-You", "297", "997")]},
         {"@type": "BreadcrumbList", "itemListElement": [

@@ -9,7 +9,7 @@ dict(
  slug="missed-call-text-back", cat="Lead response",
  title="What is missed call text back? How it works and how to set it up",
  kw="Missed Call Text Back: What It Is and How to Set It Up",
- desc="Missed call text back sends an automatic text when you can't answer a call, so the caller doesn't ring your competitor. Here's how it works and how to set it up.",
+ desc="Missed call text back sends an automatic text when you can't answer a call, so the caller doesn't ring your competitor. How it works and how to set it up.",
  read=7,
  short="Missed call text back is an automation that sends a text message to anyone whose call you don't answer, usually within seconds. Instead of hitting voicemail and calling the next business on Google, the caller gets a message like \"Sorry we missed you, how can we help?\" and the conversation continues by text. In Oceanic Funnels OS you turn it on under Settings → Phone System → Voice → Voicemail & Missed Call Text Back.",
  sections=[
@@ -57,7 +57,7 @@ dict(
 dict(
  slug="speed-to-lead", cat="Lead response",
  title="Speed to lead: why replying in minutes wins the sale, and how to automate it",
- kw="Speed to Lead: Why Fast Lead Response Wins (and How to Automate It)",
+ kw="Speed to Lead: Why Fast Response Wins and How to Automate It",
  desc="Speed to lead is how fast you respond to a new enquiry. Research shows the first business to reply usually wins. Here's how to reply in seconds automatically.",
  read=8,
  short="Speed to lead is the time between a new lead contacting you and your first reply. It matters because interest fades fast and many people contact several businesses at once. A widely cited Harvard Business Review study found companies that contacted leads within an hour were nearly seven times as likely to qualify them as those that waited even an hour longer. The fix is automation: an instant text and email, an AI agent that answers questions, and a booking link, so every lead gets a reply in seconds, day or night.",
@@ -102,7 +102,7 @@ dict(
 dict(
  slug="ai-chat-agent-for-business", cat="AI agents",
  title="How to set up an AI chat agent that answers leads and books appointments",
- kw="AI Chat Agent for Business: Answer Leads and Book Appointments 24/7",
+ kw="AI Chat Agent for Business: Answer Leads and Book 24/7",
  desc="An AI chat agent replies to leads on your website, SMS, Facebook, Instagram and WhatsApp, answers questions and books appointments. Here's how to set one up.",
  read=8,
  short="An AI chat agent is software that replies to customer messages for you, using your business information. In Oceanic Funnels OS, it can answer on SMS, email, your website chat, Facebook, Instagram and WhatsApp, answer common questions, qualify leads and book, reschedule or cancel appointments in your calendar. You create one under AI Agents → Conversation AI, train it on your business, test it in suggestive mode, then switch it to auto-pilot.",
@@ -155,7 +155,7 @@ dict(
 dict(
  slug="ai-receptionist", cat="AI agents",
  title="AI receptionist for small business: how a voice AI agent answers your calls",
- kw="AI Receptionist for Small Business: Voice AI That Answers Calls",
+ kw="AI Receptionist: Voice AI That Answers Your Business Calls",
  desc="A voice AI receptionist answers your business calls, answers questions, books appointments and transfers urgent calls. Here's how it works and how to set it up.",
  read=7,
  short="An AI receptionist is a voice AI agent that answers your business phone, talks to callers in natural speech, answers common questions from your knowledge base, books appointments into your calendar, sends texts and transfers calls to a person when needed. In Oceanic Funnels OS you build one under AI Agents → Voice AI, assign it a phone number and choose whether it answers every call, only after hours, or as a backup when nobody picks up.",

@@ -137,7 +137,7 @@ dict(
 dict(
  slug="wordpress-migration", cat="Websites and SEO",
  title="WordPress hosting and migration: move your WordPress site without rebuilding it",
- kw="WordPress Hosting & Migration: Move Your Site Without Rebuilding",
+ kw="WordPress Hosting & Migration Without Rebuilding Your Site",
  desc="Keep your WordPress website and move it to Oceanic Funnels hosting next to your CRM, funnels and automations. Here's how the migration works.",
  read=6,
  short="If your business website runs on WordPress, you don't have to rebuild it. Oceanic Funnels can host your WordPress site alongside your CRM, funnels and automations. Our team migrates it with a migration plugin: you install the plugin on your current site and generate a secure, time-limited access link, and we move the site for you. Larger sites typically take one to three business days. WordPress hosting is an add-on; ask our team for pricing.",
@@ -179,7 +179,7 @@ dict(
 dict(
  slug="business-listings-management", cat="Websites and SEO",
  title="Business listings: keep your name, address and phone consistent everywhere",
- kw="Business Listings Management: Keep NAP Consistent for Local SEO",
+ kw="Business Listings: Keep Your NAP Consistent for Local SEO",
  desc="Why consistent business listings matter for local SEO, which directories count, and how listings management updates them from one place.",
  read=6,
  short="Business listings are your company's profiles on directories, maps and apps such as Google, Bing, Apple Maps and Facebook. Search engines trust businesses whose name, address and phone number (NAP) match everywhere. Listings management publishes your details to a network of directories from one place and keeps them in sync. In Oceanic Funnels OS, listings management is an add-on powered by the major listing networks; ask our team for pricing.",
