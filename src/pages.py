@@ -5,6 +5,7 @@ import html, json, os, re
 import legal
 from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
 from industries import INDUSTRIES, GENERIC_FAQ, CATEGORIES
+from ind_deep import DEEP
 from guides_a import G_A
 from guides_b import G_B
 from guides_c import G_C
@@ -159,6 +160,48 @@ PAGE_CSS += r"""
 .nf-gcta span{font-size:15px;color:var(--text)}
 .nf-gcard .vs{color:var(--aqua-d)!important}
 .nf-gcard .rt{font-size:13px;color:var(--muted)}
+"""
+
+PAGE_CSS += r"""
+/* ---------- deep industry pages */
+.nf-money{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:48px}
+.nf-money li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:10px}
+.nf-money .n{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d)}
+.nf-money b{font-family:var(--display);font-size:21px;font-weight:600;color:var(--ink);line-height:1.2}
+.nf-money p{font-size:15.5px;color:var(--muted);line-height:1.6}
+.nf-money p.fix{margin-top:auto;padding:14px 16px;background:var(--aqua-l);border-radius:12px;color:var(--ink);font-size:15px}
+.nf-money p.fix span{display:block;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#086455;margin-bottom:4px}
+.nf-treat .nf-table tbody th{width:28%}
+.nf-treat .nf-table td{width:30%}
+.nf-dfy{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;margin-top:44px;align-items:start}
+.nf-dfy-list{display:grid;gap:12px;counter-reset:dfy}
+.nf-dfy-list li{counter-increment:dfy;display:flex;gap:14px;align-items:flex-start;color:#E6EEEC;font-size:16.5px;line-height:1.5}
+.nf-dfy-list li::before{content:counter(dfy);flex:none;width:28px;height:28px;border-radius:50%;background:var(--aqua);color:var(--ink);font-family:var(--display);font-weight:700;font-size:13px;display:grid;place-items:center;margin-top:-1px}
+.nf-dfy-card{background:#fff;color:var(--ink);border-radius:var(--r);padding:34px 30px;position:sticky;top:24px;text-align:center}
+.nf-dfy-card .plan{display:inline-block;font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.nf-dfy-card .amt{font-family:var(--display);font-size:60px;font-weight:600;letter-spacing:-.05em;line-height:1;margin-top:20px;display:flex;justify-content:center;align-items:baseline;gap:6px}
+.nf-dfy-card .amt small{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted)}
+.nf-dfy-card .fee{font-size:15px;font-weight:600;color:var(--coral-d);margin-top:10px}
+.nf-dfy-card ul{display:grid;gap:0;margin:22px 0;text-align:left}
+.nf-dfy-card ul li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--text);display:flex;gap:10px}
+.nf-dfy-card ul li::before{content:"\2713";color:var(--aqua-d);font-weight:700}
+.nf-dfy-card .nf-btn{width:100%;justify-content:center}
+.nf-dfy-card .small{font-size:14px;color:var(--muted);margin-top:14px}
+.nf-dfy-card .small a{color:var(--ink)}
+#leak-calculator .nf-field label{align-items:flex-start;gap:12px}
+#leak-calculator .nf-field output{flex:none;line-height:1.6;white-space:nowrap}
+@media (max-width:1060px){.nf-money,.nf-dfy{grid-template-columns:1fr}.nf-dfy-card{position:static}}
+@media (max-width:680px){
+.nf-treat .nf-table{min-width:0}
+.nf-treat .nf-table thead{display:none}
+.nf-treat .nf-table,.nf-treat .nf-table tbody,.nf-treat .nf-table tr,.nf-treat .nf-table th,.nf-treat .nf-table td{display:block;width:auto}
+.nf-treat .nf-table tr{border-bottom:1px solid var(--line)}
+.nf-treat .nf-table tbody th{background:var(--mist);border:0;padding:12px 16px;width:auto}
+.nf-treat .nf-table td,.nf-treat .nf-table td.us{border:0;padding:10px 16px;width:auto}
+.nf-treat .nf-table td::before{content:attr(data-l);display:block;font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;opacity:.75}
+.nf-treat .nf-table td.us::before{color:var(--aqua)}
+.nf-money li,.nf-dfy-card{padding:24px 20px}
+}
 """
 
 def extract(src):
@@ -439,14 +482,106 @@ def hub_page(cfg, fonts, logo):
     return path, page(cfg, fonts, path, "Compare Oceanic Funnels vs ClickFunnels, HubSpot and More",
                       "Compare Oceanic Funnels OS with ClickFunnels, HubSpot, ActiveCampaign, Keap, Kartra, Klaviyo, Zoho, Salesforce and Linktree on features and pricing.", crumbs, body, logo)
 
+def deep_sections(d, X):
+    money = "".join(f'<li><span class="n">Leak {i+1}</span><b>{E(t)}</b><p>{E(x)}</p><p class="fix"><span>The fix</span>{E(f)}</p></li>' for i, (t, x, f) in enumerate(X["money"]))
+    rows = "".join(f'<tr><th scope="row">{E(a)}</th><td data-l="Typical rhythm">{E(b)}</td><td data-l="What the system does" class="us">✓ {E(c)}</td></tr>' for a, b, c in X["treatments"])
+    dfy = "".join(f'<li>{E(x)}</li>' for x in X["dfy"])
+    c = X["calc"]
+    fields = "".join(f'<div class="nf-field"><label for="dc-{k}">{E(v[0])} <output id="dc-{k}-o"></output></label><input id="dc-{k}" type="range" min="{v[2]}" max="{v[3]}" step="{v[4]}" value="{v[1]}"></div>' for k, v in c.items())
+    top = f'''<section class="nf-band" style="padding-top:0" id="leaks">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">The leaks</span>
+      <h2>{E(X["money_h"][0])} <span class="g">{E(X["money_h"][1])}</span></h2>
+    </div>
+    <ul class="nf-money">{money}</ul>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0" id="treatments">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Treatment by treatment</span>
+      <h2>{E(X["treat_h"][0])} <span class="g">{E(X["treat_h"][1])}</span></h2>
+    </div>
+    <div class="nf-tablewrap nf-treat">
+      <table class="nf-table">
+        <thead><tr><th scope="col">Treatment</th><th scope="col">Typical rhythm</th><th scope="col" class="us">What the system does</th></tr></thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
+    <p class="nf-replnote">{E(X["treat_note"])}</p>
+  </div>
+</section>'''
+    mid = f'''<section class="nf-band" id="leak-calculator">
+  <div class="nf-wrap">
+    <div class="nf-calc">
+      <div>
+        <span class="nf-eyebrow">Quick math</span>
+        <h2>What slow replies <span class="g">cost you</span></h2>
+        <p class="nf-sub">Example numbers. Move the sliders to match your clinic.</p>
+        <div class="nf-inputs">{fields}</div>
+      </div>
+      <div class="nf-result" aria-live="polite">
+        <div class="row"><span>Enquiries waiting too long</span><span id="dc-r1"></span></div>
+        <div class="row"><span>Clients you could be winning</span><span id="dc-r2"></span></div>
+        <div class="row"><span>Per month</span><span id="dc-r3"></span></div>
+        <div class="big">Per year, first visits only<strong id="dc-r4"></strong></div>
+        <p class="note">Before rebooking, memberships or referrals. A model, not a promise.</p>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#done-for-you">Stop the leak <span class="ar" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band nf-dark" id="done-for-you">
+  <div class="nf-wrap">
+    <div class="nf-caps">
+      <span class="nf-eyebrow">Done-For-You</span>
+      <h2>{E(X["dfy_h"][0])} <span class="g">{E(X["dfy_h"][1])}</span></h2>
+    </div>
+    <div class="nf-dfy">
+      <ul class="nf-dfy-list">{dfy}</ul>
+      <aside class="nf-dfy-card">
+        <span class="plan">Done-For-You</span>
+        <div class="amt"><span class="v">$297</span><small>/month</small></div>
+        <p class="fee">+ $997 one-time build</p>
+        <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>Dedicated account manager</li><li>24/7 support</li><li>Cancel anytime</li></ul>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
+        <p class="small">Rather build it yourself? <a href="/#pricing">Start on OS from $67/month</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+<script>
+(function(){{var $=function(i){{return document.getElementById(i)}},n=function(x){{return Math.round(x).toLocaleString("en-US")}};
+function u(){{var e=+$("dc-enq").value,m=+$("dc-miss").value/100,c=+$("dc-close").value/100,v=+$("dc-val").value;
+$("dc-enq-o").textContent=n(e);$("dc-miss-o").textContent=Math.round(m*100)+"%";$("dc-close-o").textContent=Math.round(c*100)+"%";$("dc-val-o").textContent="$"+n(v);
+var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3").textContent="$"+n(k*v);$("dc-r4").textContent="$"+n(k*v*12)}}
+["enq","miss","close","val"].forEach(function(k){{$("dc-"+k).addEventListener("input",u)}});u()}})();
+</script>'''
+    return top, mid
+
 def industry_page(cfg, fonts, logo, d):
     path = f"/industries/{d['slug']}/"; n = d["name"]; W = d["who"].split(" like ")[0]
+    X = DEEP.get(d["slug"])
+    hook, sub = (X["hook"], X["sub"]) if X else (d["hook"], d["sub"])
     crumbs = [("Home", "/"), ("Industries", "/industries/"), (n, path)]
     leaks = "".join(f'<li><span class="n">Leak {i+1}</span><b>{E(t)}</b><span>{E(x)}</span></li>' for i, (t, x) in enumerate(d["leaks"]))
     flow = "".join(f'<li><span class="t">{E(t)}</span><span class="d">{i+1}</span><b>{E(h)}</b><p>{E(x)}</p></li>' for i, (t, h, x) in enumerate(d["flow"]))
     autos = "".join(f'<li><b>{E(t)}</b><span>{E(x)}</span></li>' for t, x in d["autos"])
     funnels = "".join(f'<li>{E(f)}</li>' for f in d["funnels"])
-    faqs = [(f"How do {d['who']} automate their sales with Oceanic Funnels?", d["answer"])] + d["faqs"] + GENERIC_FAQ
+    faqs = [(f"How do {d['who']} automate their sales with Oceanic Funnels?", d["answer"])] + (X["faqs"] + d["faqs"] if X else d["faqs"] + GENERIC_FAQ)
+    deep_top, deep_mid = deep_sections(d, X) if X else ("", "")
+    LEAKS = f'''<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Where customers slip away</span>
+      <h2>Three leaks in most <span class="g">{E(W)}</span></h2>
+    </div>
+    <ul class="nf-leaks">{leaks}</ul>
+  </div>
+</section>'''
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
     more = "".join(f'<a href="/industries/{o["slug"]}/">{E(o["name"])}</a>' for o in INDUSTRIES if o["slug"] != d["slug"] and o["cat"] == d["cat"])
     rg = [g for g in GUIDES if d["slug"] in g["related_ind"]]
@@ -459,10 +594,10 @@ def industry_page(cfg, fonts, logo, d):
       {crumbs_html(crumbs)}
       <span class="nf-vs">For {E(n)}</span>
       <h1>{E(d["h1"])}</h1>
-      <p class="nf-sub"><b>{E(d["hook"])}.</b> {E(d["sub"])}</p>
+      <p class="nf-sub"><b>{E(hook)}.</b> {E(sub)}</p>
       <div class="nf-hero-cta">
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
-        <a class="nf-btn nf-btn--line" href="#how-it-runs">See how it runs</a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--line" href="{"#done-for-you" if X else "#how-it-runs"}">{"See what we build" if X else "See how it runs"}</a>
       </div>
     </div>
   </div>
@@ -486,15 +621,7 @@ def industry_page(cfg, fonts, logo, d):
   </div>
 </section>
 
-<section class="nf-band" style="padding-top:0">
-  <div class="nf-wrap">
-    <div class="nf-center nf-caps">
-      <span class="nf-eyebrow">Where customers slip away</span>
-      <h2>Three leaks in most <span class="g">{E(W)}</span></h2>
-    </div>
-    <ul class="nf-leaks">{leaks}</ul>
-  </div>
-</section>
+{deep_top if X else LEAKS}
 
 <section class="nf-band nf-dark" id="how-it-runs">
   <div class="nf-wrap">
@@ -505,6 +632,7 @@ def industry_page(cfg, fonts, logo, d):
     <ol class="nf-run">{flow}</ol>
   </div>
 </section>
+{deep_mid}
 
 <section class="nf-band">
   <div class="nf-wrap">
@@ -535,8 +663,8 @@ def industry_page(cfg, fonts, logo, d):
 <section class="nf-band" style="padding-top:0">
   <div class="nf-wrap">
     <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
-      <div><h2>Stop fishing for customers. Build the net.</h2><p>One system for funnels, CRM, SMS, WhatsApp, AI agents, booking and payments. Or let our team build it for you.</p></div>
-      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
+      <div><h2>{E(X["cta_h"]) if X else "Stop fishing for customers. Build the net."}</h2><p>{E(X["cta_p"]) if X else "One system for funnels, CRM, SMS, WhatsApp, AI agents, booking and payments. Or let our team build it for you."}</p></div>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <h2 class="nf-more-h">Guides for {E(W)}</h2>
     <div class="nf-more" aria-label="Guides">{guides}<a href="/guides/">All guides</a></div>
