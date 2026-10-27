@@ -217,7 +217,7 @@ def footer(cfg):
     <div>
       <h2>Stop fishing. Build the net.</h2>
       <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system, from $67 a month.</p>
-      <a class="nf-btn nf-btn--aqua" href="{CK}">Build my net</a>
+      <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
       <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
