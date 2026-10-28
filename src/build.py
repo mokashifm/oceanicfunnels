@@ -69,8 +69,6 @@ def schema():
          "provider": {"@id": org_id}, "areaServed": "Worldwide",
          "description": "All-in-one sales funnel, CRM and marketing automation system with unlimited contacts, users and funnels: funnels and websites, email and SMS automations, AI agents, calendars, one inbox for every channel, invoices and payments, reviews and courses.",
          "offers": [offer("OS", "67"), offer("Growth", "197"), offer("Done-For-You", "297", "997")]},
-        {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": url}]},
     ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=1)
 
