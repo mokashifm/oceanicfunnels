@@ -146,8 +146,8 @@ print("body", len(page)//1024, "KB")
 import shutil
 SITE = "../site"
 TITLE = f"All-in-One Sales Funnel & CRM Software | {B}"
-DESC = ("Stop fishing for customers. Build the net. Funnels, CRM, email, SMS, AI agents and payments "
-        "in one system with unlimited contacts. Plans from $67 a month.")
+DESC = ("All-in-one sales funnel and CRM software: funnels, email, SMS, AI agents and payments "
+        "in one system. From $67 a month.")
 url = CONFIG["domain"] + "/"
 seo_head = f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
