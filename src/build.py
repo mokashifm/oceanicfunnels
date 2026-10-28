@@ -59,6 +59,7 @@ def schema():
                 "priceSpecification": spec if setup else spec[0]}
     graph = [
         {"@type": "Organization", "@id": org_id, "name": B, "url": CONFIG["domain"], "email": CONFIG["email"],
+         "logo": CONFIG["domain"] + "/icon-512.png", "sameAs": [u for _, u in pages.SOCIAL],
          "knowsAbout": ["Sales funnels", "CRM", "Marketing automation", "AI agents", "Email and SMS marketing"]},
         {"@type": "WebPage", "@id": url + "#page", "url": url,
          "name": f"All-in-One Sales Funnel & CRM Software | {B}",

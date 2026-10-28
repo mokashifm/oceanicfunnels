@@ -26,6 +26,7 @@ CLARITY = """<script type="text/javascript">
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
+SOCIAL = [("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
 
 PAGE_CSS = r"""
@@ -223,7 +224,7 @@ def footer(cfg):
       <div><span class="fh">Product</span><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
       <div><span class="fh">Industries</span>{inds}<a href="/industries/">All industries</a></div>
       <div><span class="fh">Compare</span>{comp}<a href="/compare/">All comparisons</a></div>
-      <div><span class="fh">Company</span><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+      <div><span class="fh">Company</span><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a>{"".join(f'<a href="{u}" rel="me noopener" target="_blank">{n}</a>' for n, u in SOCIAL)}</div>
     </nav>
   </div>
   <div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>
