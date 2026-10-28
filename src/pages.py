@@ -26,7 +26,7 @@ CLARITY = """<script type="text/javascript">
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
-SOCIAL = [("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
+SOCIAL = [("Facebook", "https://www.facebook.com/oceanicfunnels"), ("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
 
 PAGE_CSS = r"""
