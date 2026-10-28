@@ -220,10 +220,10 @@ def footer(cfg):
       <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
-      <div><b>Product</b><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
-      <div><b>Industries</b>{inds}<a href="/industries/">All industries</a></div>
-      <div><b>Compare</b>{comp}<a href="/compare/">All comparisons</a></div>
-      <div><b>Company</b><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+      <div><span class="fh">Product</span><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
+      <div><span class="fh">Industries</span>{inds}<a href="/industries/">All industries</a></div>
+      <div><span class="fh">Compare</span>{comp}<a href="/compare/">All comparisons</a></div>
+      <div><span class="fh">Company</span><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
     </nav>
   </div>
   <div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>
@@ -364,10 +364,10 @@ def compare_page(cfg, fonts, logo, c):
         <p class="nf-updated">Prices checked {CHECKED} from public sources</p>
       </div>
       <ul class="nf-facts">
-        <li><b>Oceanic Funnels</b><span>All-in-one sales funnel, CRM and automation system</span></li>
-        <li><b>{E(n)}</b><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
-        <li><b>Starts at</b><span>$67/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
-        <li><b>Contacts</b><span>Unlimited on every Oceanic plan</span></li>
+        <li><span class="k">Oceanic Funnels</span><span>All-in-one sales funnel, CRM and automation system</span></li>
+        <li><span class="k">{E(n)}</span><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
+        <li><span class="k">Starts at</span><span>$67/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
+        <li><span class="k">Contacts</span><span>Unlimited on every Oceanic plan</span></li>
       </ul>
     </div>
   </div>
@@ -612,10 +612,10 @@ def industry_page(cfg, fonts, logo, d):
         <p class="nf-def">{E(d["answer"])}</p>
       </div>
       <ul class="nf-facts">
-        <li><b>Leads from</b><span>Funnels, ads, social DMs, calls and your website</span></li>
-        <li><b>Replies</b><span>Within seconds, by SMS, email, WhatsApp and AI agent</span></li>
-        <li><b>Booking</b><span>Calendars with automatic reminders</span></li>
-        <li><b>Starts at</b><span>$67/month, unlimited contacts and users</span></li>
+        <li><span class="k">Leads from</span><span>Funnels, ads, social DMs, calls and your website</span></li>
+        <li><span class="k">Replies</span><span>Within seconds, by SMS, email, WhatsApp and AI agent</span></li>
+        <li><span class="k">Booking</span><span>Calendars with automatic reminders</span></li>
+        <li><span class="k">Starts at</span><span>$67/month, unlimited contacts and users</span></li>
       </ul>
     </div>
   </div>

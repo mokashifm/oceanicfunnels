@@ -22,13 +22,13 @@
 .nf-dark{background:var(--ink);color:#fff}
 
 /* type */
-.nf h1,.nf h2,.nf h3,.nf h4{font-family:var(--display);color:var(--ink);text-wrap:balance}
+.nf h1,.nf h2,.nf h3,.nf h4,.nf .nf-h{font-family:var(--display);color:var(--ink);text-wrap:balance}
 .nf h1{font-size:clamp(44px,7.2vw,96px);font-weight:600;line-height:1;letter-spacing:-.045em}
 .nf h2{font-size:clamp(32px,4.4vw,56px);font-weight:600;line-height:1.04;letter-spacing:-.035em}
 .nf h3{font-size:20px;font-weight:600;line-height:1.3;letter-spacing:-.015em}
 .nf .nf-caps h2,.nf h2.nf-caps{text-transform:uppercase;font-weight:700;letter-spacing:-.03em;line-height:.98}
 .nf h2 .g,.nf h3 .g{color:var(--muted)}
-.nf-dark h2,.nf-dark h3{color:#fff}
+.nf-dark h2,.nf-dark h3,.nf-dark .nf-h{color:#fff}
 .nf-dark h2 .g{color:var(--soft)}
 .nf-eyebrow{display:block;font-family:var(--display);font-size:13.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
 .nf-dark .nf-eyebrow{color:var(--aqua)}
@@ -142,7 +142,7 @@
 .nf-facts{background:#fff;border-radius:var(--r);padding:6px 26px}
 .nf-facts li{display:grid;grid-template-columns:132px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
 .nf-facts li:last-child{border-bottom:0}
-.nf-facts b{font-family:var(--display);font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--aqua-d);padding-top:2px}
+.nf-facts .k{font-family:var(--display);font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--aqua-d);padding-top:2px}
 
 /* ---------- stage tabs */
 .nf-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:40px 0 28px}
@@ -273,7 +273,7 @@
 .nf-mix li::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ink)}
 .nf-mix li:nth-child(2)::before{background:var(--aqua)}
 .nf-mix li:nth-child(3)::before{background:var(--coral)}
-.nf-mix li b{margin-left:auto;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.nf-mix li .v{margin-left:auto;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
 .nf-mix .mixh{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--ink)}
 .nf-auto{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
 .nf-auto li{font-size:14px;font-weight:500;color:var(--ink);border-radius:999px;padding:9px 16px;box-shadow:inset 0 0 0 1.5px var(--ink);display:flex;align-items:center;gap:8px}
@@ -375,7 +375,7 @@
 .nf-audit li{display:flex;gap:10px;color:#fff}
 .nf-audit li::before{content:"✓";width:22px;height:22px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:11.5px;font-weight:700;display:grid;place-items:center;flex:none;margin-top:2px}
 .nf-slot{background:#fff;color:var(--text);border-radius:var(--r);padding:32px}
-.nf-slot h3{margin-bottom:6px}
+.nf-slot .nf-h{margin-bottom:6px;font-size:1.17em;font-weight:700}
 .nf-slot p{font-size:14.5px;color:var(--muted);margin-bottom:20px}
 .nf-slot .nf-btn{width:100%}
 .nf-mail{font-size:13.5px;color:var(--muted);margin-top:14px;text-align:center}
@@ -387,7 +387,7 @@
 .nf-foot-top p{margin:18px 0 28px;color:#C9D6D4}
 .nf-foot-cols{display:grid;grid-template-columns:.8fr 1.1fr 1.1fr 1fr;gap:24px}
 .nf-foot-cols div{display:flex;flex-direction:column;gap:10px;font-size:15px;min-width:0}
-.nf-foot-cols b{font-family:var(--display);color:#fff;font-weight:600;font-size:16px;margin-bottom:8px}
+.nf-foot-cols .fh{font-family:var(--display);color:#fff;font-weight:600;font-size:16px;margin-bottom:8px}
 .nf-foot-cols a{text-decoration:none;color:#C9D6D4}
 .nf-foot-cols a:hover{color:var(--aqua)}
 .nf-foot-cols span{overflow-wrap:break-word}
@@ -486,7 +486,7 @@
 .nf-repl tr.tot td.num small{color:#9AAAA7}
 }
 .nf-indcats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px 24px;margin-top:44px}
-.nf-indcats h3{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d);margin-bottom:12px}
+.nf-indcats .nf-h{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d);margin-bottom:12px}
 .nf-indcats a{display:block;padding:6px 0;font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;line-height:1.35}
 .nf-indcats a:hover{color:var(--aqua-d)}
 @media (max-width:1060px){.nf-indcats{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -727,15 +727,15 @@
       <div>
         <span class="nf-eyebrow">The short answer</span>
         <h2>What is a <span class="g">sales funnel system?</span></h2>
-        <p class="nf-def"><strong>A sales funnel system is one platform that runs every step from first click to paying customer:</strong> the funnel pages that capture leads, the CRM that tracks them, the email, SMS and AI follow-up that nurtures them, and the booking and payment tools that close the sale. Running it all in one place means no lead gets lost between tools.</p>
+        <p class="nf-def"><strong>A sales funnel system</strong> is one platform that runs every step from first click to paying customer: the funnel pages that capture leads, the CRM that tracks them, the email, SMS and AI follow-up that nurtures them, and the booking and payment tools that close the sale. Running it all in one place means no lead gets lost between tools.</p>
         <p class="nf-updated">Updated {{UPDATED}}</p>
       </div>
       <ul class="nf-facts">
-        <li><b>Also called</b><span>All-in-one marketing platform, funnel software, CRM with marketing automation</span></li>
-        <li><b>Replaces</b><span>Funnel builder, email and SMS tools, CRM, scheduler, website chat, reviews, invoicing</span></li>
-        <li><b>Key metrics</b><span>Speed to lead, lead-to-customer rate, revenue per lead</span></li>
-        <li><b>Best for</b><span>Local service businesses, coaches, consultants, agencies and online sellers</span></li>
-        <li><b>Oceanic OS</b><span>From $67 a month with unlimited contacts and users</span></li>
+        <li><span class="k">Also called</span><span>All-in-one marketing platform, funnel software, CRM with marketing automation</span></li>
+        <li><span class="k">Replaces</span><span>Funnel builder, email and SMS tools, CRM, scheduler, website chat, reviews, invoicing</span></li>
+        <li><span class="k">Key metrics</span><span>Speed to lead, lead-to-customer rate, revenue per lead</span></li>
+        <li><span class="k">Best for</span><span>Local service businesses, coaches, consultants, agencies and online sellers</span></li>
+        <li><span class="k">Oceanic OS</span><span>From $67 a month with unlimited contacts and users</span></li>
       </ul>
     </div>
   </div>
@@ -789,7 +789,7 @@
         <div class="nf-mix">
           <p class="mixh">Revenue mix last month</p>
           <div class="bar" role="img" aria-label="Subscriptions 97.5 percent, usage billing 2.1 percent, other 0.4 percent"><i style="width:97.5%"></i><i style="width:2.1%"></i><i style="width:0.4%"></i></div>
-          <ul><li>Subscriptions<b>97.5%</b></li><li>Usage billing<b>2.1%</b></li><li>Other<b>0.4%</b></li></ul>
+          <ul><li>Subscriptions<span class="v">97.5%</span></li><li>Usage billing<span class="v">2.1%</span></li><li>Other<span class="v">0.4%</span></li></ul>
         </div>
       </article>
 
@@ -961,7 +961,7 @@
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
       </div>
       <div class="nf-slot">
-        <h3>Not sure which plan fits?</h3>
+        <p class="nf-h">Not sure which plan fits?</p>
         <p>Tell us about your business and we'll recommend the right plan. No pressure, no pitch deck.</p>
         <a class="nf-btn nf-btn--ink" href="{{BOOK}}">Talk to our team</a>
         <p class="nf-mail">Prefer email? {{EMAIL}}</p>

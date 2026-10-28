@@ -124,7 +124,7 @@ def body():
     from industries import INDUSTRIES, CATEGORIES
     rep["{{IND_N}}"] = str(len(INDUSTRIES))
     rep["{{INDUSTRIES}}"] = "".join(
-        f'<div><h3>{html.escape(c)}</h3>' + "".join(f'<a href="/industries/{d["slug"]}/">{html.escape(d["name"])}</a>' for d in INDUSTRIES if d["cat"] == c) + '</div>'
+        f'<div><p class="nf-h">{html.escape(c)}</p>' + "".join(f'<a href="/industries/{d["slug"]}/">{html.escape(d["name"])}</a>' for d in INDUSTRIES if d["cat"] == c) + '</div>'
         for c in CATEGORIES)
     rep.update({"{{REPL_ROWS}}": r_rows, "{{REPL_N}}": r_n, "{{REPL_TOTAL}}": r_tot})
     for k, v in rep.items():
@@ -227,6 +227,17 @@ open(f"{SITE}/_headers", "w").write("""/*
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/
+  Content-Type: text/html; charset=utf-8
+/:a/
+  Content-Type: text/html; charset=utf-8
+/:a/:b/
+  Content-Type: text/html; charset=utf-8
+/*.html
+  Content-Type: text/html; charset=utf-8
+/*.css
+  Content-Type: text/css; charset=utf-8
 
 /*.png
   Cache-Control: public, max-age=31536000, immutable
