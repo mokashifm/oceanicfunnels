@@ -879,6 +879,24 @@ LP_CSS = r"""
 .lp-three{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 .lp-guar{margin:14px 0 4px;background:var(--aqua-l);color:var(--ink);border-radius:10px;padding:12px 14px;font-weight:600;font-size:15px;line-height:1.4}
 .lp-guar small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:4px}
+.lp-pay{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.lp-plan{background:#fff;color:var(--ink);border-radius:var(--r);padding:28px 26px}
+.lp-plan .tag{display:inline-block;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.lp-plan .amt{font-family:var(--display);font-size:52px;font-weight:600;letter-spacing:-.05em;line-height:1;margin-top:16px}
+.lp-plan .amt small{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted);margin-left:4px}
+.lp-plan h3{font-size:20px;margin-top:14px;color:var(--ink)}
+.lp-plan .d{color:var(--muted)!important;font-size:15px;margin-top:6px}
+.lp-plan ul{display:grid;gap:9px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.lp-plan li{position:relative;padding-left:24px;font-size:15px;line-height:1.45}
+.lp-plan li::before{content:"";position:absolute;left:2px;top:6px;width:10px;height:6px;border-left:2px solid var(--aqua-d,#0f8f86);border-bottom:2px solid var(--aqua-d,#0f8f86);transform:rotate(-45deg)}
+.lp-plan .note{font-size:13px;color:var(--muted);margin-top:16px}
+.lp-sum{max-width:560px;margin:28px auto 0;text-align:center}
+.lp-sum .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#E6EEEC;font-size:16px;text-align:left}
+.lp-sum .row b{color:#fff;text-align:right}
+.lp-sum .lp-guar{margin:20px 0}
+.lp-sum .small{color:#B9C9C6;font-size:14px;margin-top:12px}
+.lp-sum .small a{color:#fff}
+@media(max-width:800px){.lp-pay{grid-template-columns:1fr}}
 .lp-sticky{display:none}
 @media (max-width:1100px){.lp-three{grid-template-columns:repeat(2,minmax(0,1fr))!important}.lp-pains{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:700px){.lp-three,.lp-pains{grid-template-columns:1fr!important}
@@ -920,6 +938,27 @@ def lp_med_spa(cfg, fonts, logo):
     c = X["calc"]
     fields = "".join(f'<div class="nf-field"><label for="dc-{k}">{E(v[0])} <output id="dc-{k}-o"></output></label><input id="dc-{k}" type="range" min="{v[2]}" max="{v[3]}" step="{v[4]}" value="{v[1]}"></div>' for k, v in c.items())
     dfy = "".join(f'<li>{E(x)}</li>' for x in X["dfy"][:10])
+    build = "".join(f'<li>{E(x)}</li>' for x in [
+        "Booking pages for your top three treatments",
+        "Consultation booking with a deposit or card on file",
+        "An AI agent trained on your menu, prices and policies, answering Instagram, Facebook, website chat and text",
+        "Missed call text back on your business number",
+        "Intake and consent forms sent before every visit",
+        "Reminders and no-show rebooking",
+        "Rebooking reminders for each treatment",
+        "Membership and package plans",
+        "Review requests after every visit",
+        "A campaign to bring back past clients",
+        "Meta Pixel, Conversions API and GA4 for your ads"])
+    monthly = "".join(f'<li>{E(x)}</li>' for x in [
+        "One inbox for Instagram, Facebook, text, email and website chat",
+        "Your client list and pipeline, from enquiry to member",
+        "Online calendar, deposits, payments and memberships",
+        "All your automations running 24/7",
+        "24/7 support and changes when you need them",
+        "A monthly report and strategy call",
+        "Founding price locked for life (first 50 clinics)",
+        "No contract, cancel anytime"])
     faqs = [
         ("Do we need a sales team or appointment setters?", "No. The AI agent answers enquiries, books consultations and sends deposit links, and automations handle reminders, no-shows and rebooking. Your front desk only steps in when a client needs a person."),
         ("Does it replace our EMR or booking software?", "Most med spas keep their EMR for charts and clinical notes. Oceanic Funnels handles enquiries, consultation booking, reminders, rebooking, memberships, payments and marketing. We agree with you which bookings live where."),
@@ -1016,21 +1055,33 @@ def lp_med_spa(cfg, fonts, logo):
 
 <section class="nf-band nf-dark" id="price">
   <div class="nf-wrap">
-    <div class="nf-caps">
-      <span class="nf-eyebrow">Done-For-You</span>
-      <h2>What we build for your med spa <span class="g">in 14 days</span></h2>
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Pricing</span>
+      <h2>What you pay for, <span class="g">in plain words</span></h2>
     </div>
-    <div class="nf-dfy">
-      <ul class="nf-dfy-list">{dfy}</ul>
-      <aside class="nf-dfy-card">
-        <span class="plan">Done-For-You</span>
-        <div class="amt"><span class="v">$297</span><small>/month</small></div>
-        <p class="fee">+ $997 one-time build</p>
-        <p class="lp-guar">We go live in 14 days. If we're late, your first month is free.<small>The $997 build fee still applies. The 14 days start once we have your content and logins.</small></p>
-        <ul><li>Built and launched by our team</li><li>Founding price locked for life (first 50 clinics)</li><li>No sales team needed</li><li>24/7 support</li><li>No contract, cancel anytime</li></ul>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
-        <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
-      </aside>
+    <div class="lp-pay">
+      <div class="lp-plan">
+        <span class="tag">One time</span>
+        <div class="amt">$997</div>
+        <h3>We build it for you</h3>
+        <p class="d">Our team sets up your whole system and launches it in 14 days.</p>
+        <ul>{build}</ul>
+      </div>
+      <div class="lp-plan">
+        <span class="tag">Every month</span>
+        <div class="amt">$297<small>/month</small></div>
+        <h3>You use the system, we look after it</h3>
+        <p class="d">Your clinic runs on it every day. We keep it working.</p>
+        <ul>{monthly}</ul>
+        <p class="note">Texts, emails, calls and AI replies are pay-as-you-go from your account wallet.</p>
+      </div>
+    </div>
+    <div class="lp-sum">
+      <div class="row"><span>First month</span><b>$997 + $297 = $1,294</b></div>
+      <div class="row"><span>After that</span><b>$297/month, cancel anytime</b></div>
+      <p class="lp-guar">If you're not live in 14 days, your first $297 month is free.<small>The 14 days start once we have your content and logins.</small></p>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
+      <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
     </div>
   </div>
 </section>
