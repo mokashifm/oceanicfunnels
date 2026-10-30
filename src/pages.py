@@ -824,8 +824,216 @@ def build_all(cfg, fonts, src, site):
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
-    for path, htm in out:
+    for path, htm in out + [lp_med_spa(cfg, fonts, logo)]:
         d = site + path
         os.makedirs(d, exist_ok=True)
         open(d + "index.html", "w").write(htm)
     return [p for p, _ in out]
+
+
+# ---------------- Ad landing pages (noindex, not in sitemap) ----------------
+LP_CSS = r"""
+.lp-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px}
+.lp-hero{background:linear-gradient(180deg,#DEF4F0 0%,#EEF3F2 60%,#FBEEE9 100%)}
+.lp-hero .in{padding-block:48px 72px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+.lp-kick{display:inline-block;font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--coral-d)}
+.lp-hero h1{font-size:clamp(38px,5.2vw,64px);line-height:1.02;letter-spacing:-.045em;margin-top:14px}
+.lp-hero h1 em{font-style:normal;background:linear-gradient(transparent 64%,var(--aqua) 64% 90%,transparent 90%)}
+.lp-hero .sub{font-size:19px;line-height:1.55;margin-top:20px;color:var(--text);max-width:52ch}
+.lp-ticks{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:15px}
+.lp-ticks span::before{content:"\2713";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--aqua);font-size:11px;font-weight:700;margin-right:8px;vertical-align:-3px}
+.lp-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.lp-phone{background:var(--ink);border-radius:34px;padding:14px;box-shadow:0 30px 60px -30px rgba(14,26,27,.55);max-width:380px;margin-inline:auto;width:100%}
+.lp-phone .scr{background:#F4F8F7;border-radius:24px;padding:18px 16px 20px;display:flex;flex-direction:column;gap:12px;font-size:15px;line-height:1.4}
+.lp-phone .bar{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:600}
+.lp-phone .ch{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+.lp-q{align-self:flex-end;background:var(--ink);color:#fff;border-radius:18px 18px 4px 18px;padding:11px 14px;max-width:85%}
+.lp-a{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:11px 14px;max-width:90%}
+.lp-a b{display:block;font-family:var(--display);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-d);margin-bottom:3px}
+.lp-tag{align-self:center;font-size:12px;font-weight:600;color:var(--aqua-d);background:var(--aqua-l);padding:5px 12px;border-radius:999px}
+.lp-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:44px}
+.lp-three .lp-phone{max-width:none;border-radius:28px;padding:10px}
+.lp-three .lp-phone .scr{border-radius:20px;min-height:330px}
+.lp-three h3{font-size:21px;margin-top:20px}
+.lp-three p.d{font-size:15.5px;color:var(--text);margin-top:6px;line-height:1.5}
+.lp-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+.lp-stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.lp-stat .n{font-family:var(--display);font-size:56px;font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--ink)}
+.lp-stat p{margin-top:12px;font-size:16px;line-height:1.5}
+.lp-stat small{display:block;margin-top:12px;font-size:13px;color:var(--muted)}
+.lp-vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.lp-vs>div{border-radius:var(--r);padding:30px}
+.lp-vs .no{background:#fff;border:1px solid var(--line)}
+.lp-vs .yes{background:var(--ink);color:#fff}
+.lp-vs h3{font-size:20px}.lp-vs .yes h3{color:var(--aqua)}
+.lp-vs ul{list-style:none;margin-top:16px;display:grid;gap:12px;font-size:16px;line-height:1.45}
+.lp-vs .no li::before{content:"\00D7";color:var(--coral-d);font-weight:700;margin-right:10px}
+.lp-vs .yes li::before{content:"\2713";color:var(--aqua);font-weight:700;margin-right:10px}
+.lp-book{background:var(--ink);color:#fff;text-align:center}
+.lp-book h2{color:#fff}
+.lp-book p{color:#C9D6D4;font-size:18px;max-width:56ch;margin:16px auto 0;line-height:1.55}
+.lp-book .lp-cta{justify-content:center}
+@media (max-width:900px){.lp-hero .in{grid-template-columns:1fr;gap:36px;padding-block:28px 56px}.lp-three,.lp-stats,.lp-vs{grid-template-columns:1fr}}
+"""
+PAGE_CSS += LP_CSS
+
+
+def lp_med_spa(cfg, fonts, logo):
+    X = DEEP["med-spas"]
+    path = "/lp/med-spas/"
+    book = "#book"
+    mail = "mailto:" + cfg["email"] + "?subject=Free%20lead%20leak%20check%20for%20my%20med%20spa"
+    head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{book}">Book my free leak check</a></header>'
+    def phone(ch, msgs, tag=None):
+        inner = "".join((f'<div class="lp-q">{E(t)}</div>' if w == "u" else f'<div class="lp-a"><b>{E(w)}</b>{E(t)}</div>') for w, t in msgs)
+        return f'<div class="lp-phone"><div class="scr"><div class="bar"><span>{E(ch[0])}</span><span>{E(ch[1])}</span></div><div class="ch">{E(ch[2])}</div>{inner}{f"<span class=lp-tag>{E(tag)}</span>" if tag else ""}</div></div>'
+    hero_phone = phone(("9:14 PM", "Saturday", "Instagram DM"), [
+        ("u", "Hi! How much is lip filler and do you have anything this week?"),
+        ("AI agent", "Hi! Lip filler starts from $650. Your provider confirms the plan at your consultation. We have Thursday 4:00 or Saturday 11:00. Which works?"),
+        ("u", "Saturday please!"),
+        ("AI agent", "Booked for Saturday at 11:00. A $50 deposit link is on its way to hold your spot.")], "Booked in 2 minutes. Deposit paid.")
+    three = [
+        (phone(("9:14 PM", "Friday", "Instagram DM"), [("u", "Do you do Botox? How much?"), ("AI agent", "We do! Pricing is per unit and your injector confirms it at your visit. Want Saturday 10:00 or 1:30?"), ("u", "1:30"), ("AI agent", "You're booked. Confirmation and intake form sent.")]),
+         "DMs answered in seconds, 24/7", "Your AI agent knows your menu, prices and policies, books the consultation and hands anything clinical to your team."),
+        (phone(("2:47 PM", "Tuesday", "Text message"), [("Clinic", "Hi, it's Glow Aesthetics. Sorry we missed your call, we're with a client. How can we help?"), ("u", "Looking to book a HydraFacial this week"), ("Clinic", "Thursday 11:00 or Friday 3:00? Book here: [link]")]),
+         "No missed call goes to a competitor", "The moment a call goes unanswered, the caller gets a text from your number and the conversation keeps going."),
+        (phone(("10:00 AM", "Month 4", "Text message"), [("Clinic", "Hi Sarah! It's about 4 months since your last Botox. Want to book your next appointment before it wears off? [link]"), ("u", "Yes please, same injector"), ("Clinic", "Done! Booked with Jess on the 14th at 2:00.")]),
+         "Clients rebooked on time", "Rebooking reminders timed to each treatment, so clients come back to you instead of whoever runs a promo that week."),
+    ]
+    three_html = "".join(f'<div>{p}<h3>{E(h)}</h3><p class="d">{E(d)}</p></div>' for p, h, d in three)
+    c = X["calc"]
+    fields = "".join(f'<div class="nf-field"><label for="dc-{k}">{E(v[0])} <output id="dc-{k}-o"></output></label><input id="dc-{k}" type="range" min="{v[2]}" max="{v[3]}" step="{v[4]}" value="{v[1]}"></div>' for k, v in c.items())
+    dfy = "".join(f'<li>{E(x)}</li>' for x in X["dfy"][:10])
+    faqs = [
+        ("Do we need a sales team or appointment setters?", "No. The AI agent answers enquiries, books consultations and sends deposit links, and automations handle reminders, no-shows and rebooking. Your front desk only steps in when a client needs a person."),
+        ("Does it replace our EMR or booking software?", "Most med spas keep their EMR for charts and clinical notes. Oceanic Funnels handles enquiries, consultation booking, reminders, rebooking, memberships, payments and marketing. We agree with you which bookings live where."),
+        ("Do you run our ads?", "No. We build and run the system that catches and converts your leads. If you run ads, we install the Meta Pixel, Conversions API and GA4 so you can see which ads lead to booked treatments."),
+        ("How fast will it be live?", "Usually within 14 days of getting your content, logins and approvals. Your team reviews everything before it goes live."),
+        ("What does it cost?", "A one-time $997 build fee plus $297 a month, with no contract. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
+    ]
+    faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
+    body = f'''<section class="lp-hero">
+  {head}
+  <div class="nf-wrap in">
+    <div>
+      <span class="lp-kick">For med spas and aesthetic clinics</span>
+      <h1>Stop losing Botox and filler bookings to <em>slow replies.</em></h1>
+      <p class="sub">We build your med spa a system that answers every DM, call and enquiry in seconds, books consultations with a deposit and rebooks clients on time. No sales team needed. Set up for you in 14 days.</p>
+      <div class="lp-ticks"><span>Live in 14 days</span><span>No contract</span><span>You own the system</span></div>
+      <div class="lp-cta">
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Book my free lead leak check <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--line" href="#price">See what it costs</a>
+      </div>
+    </div>
+    {hero_phone}
+  </div>
+</section>
+
+<section class="nf-band">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">See it work</span>
+      <h2>What your clients see, <span class="g">day and night</span></h2>
+    </div>
+    <div class="lp-three">{three_html}</div>
+    <p class="nf-srcs" style="text-align:center;margin-top:18px">Illustrations. Clinic names, prices and times are examples.</p>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0" id="leak-calculator">
+  <div class="nf-wrap">
+    <div class="nf-calc">
+      <div>
+        <span class="nf-eyebrow">Your numbers</span>
+        <h2>What slow replies <span class="g">cost your clinic</span></h2>
+        <p class="nf-sub">Move the sliders to match your med spa.</p>
+        <div class="nf-inputs">{fields}</div>
+      </div>
+      <div class="nf-result" aria-live="polite">
+        <div class="row"><span>Enquiries waiting too long</span><span id="dc-r1"></span></div>
+        <div class="row"><span>Clients you could be winning</span><span id="dc-r2"></span></div>
+        <div class="row"><span>Per month</span><span id="dc-r3"></span></div>
+        <div class="big">Per year, first visits only<strong id="dc-r4"></strong></div>
+        <p class="note">Before rebooking, memberships or referrals. A model, not a promise.</p>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Find my leaks <span class="ar" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Why speed matters</span>
+      <h2>The first clinic to reply <span class="g">usually wins</span></h2>
+    </div>
+    <div class="lp-stats">
+      <div class="lp-stat"><div class="n">7&times;</div><p>Firms that contacted a lead within an hour were nearly 7 times as likely to qualify it as firms that waited an hour longer.</p><small>Harvard Business Review, The Short Life of Online Sales Leads</small></div>
+      <div class="lp-stat"><div class="n">74%</div><p>of consumers only care about reviews from the last three months, so fresh reviews after every visit matter.</p><small>BrightLocal Local Consumer Review Survey 2026</small></div>
+      <div class="lp-stat"><div class="n">45%</div><p>of US consumers now use AI tools to find local businesses, up from 6% a year earlier.</p><small>BrightLocal Local Consumer Review Survey 2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">The difference</span>
+      <h2>Your clinic today vs <span class="g">with the system</span></h2>
+    </div>
+    <div class="lp-vs">
+      <div class="no"><h3>Today</h3><ul><li>DMs answered the next morning</li><li>Missed calls go to voicemail</li><li>Free consults that never show up</li><li>Botox clients drifting past month four</li><li>Reviews only when someone remembers to ask</li></ul></div>
+      <div class="yes"><h3>With Oceanic Funnels</h3><ul><li>Every DM answered in seconds, 24/7</li><li>Missed calls texted back instantly</li><li>Deposits and reminders cut no-shows</li><li>Rebooking reminders timed to each treatment</li><li>A review request after every visit</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band nf-dark" id="price">
+  <div class="nf-wrap">
+    <div class="nf-caps">
+      <span class="nf-eyebrow">Done-For-You</span>
+      <h2>What we build for your med spa <span class="g">in 14 days</span></h2>
+    </div>
+    <div class="nf-dfy">
+      <ul class="nf-dfy-list">{dfy}</ul>
+      <aside class="nf-dfy-card">
+        <span class="plan">Done-For-You</span>
+        <div class="amt"><span class="v">$297</span><small>/month</small></div>
+        <p class="fee">+ $997 one-time build</p>
+        <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>No sales team needed</li><li>24/7 support</li><li>No contract, cancel anytime</li></ul>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Book my free leak check <span class="ar" aria-hidden="true">→</span></a>
+        <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="nf-band" id="faq">
+  <div class="nf-wrap nf-faq">
+    <div><span class="nf-eyebrow">Questions</span><h2>Before you <span class="g">book</span></h2></div>
+    <div class="nf-faq-list">
+{faq}
+    </div>
+  </div>
+</section>
+
+<section class="nf-band lp-book" id="book">
+  <div class="nf-wrap">
+    <span class="nf-eyebrow" style="color:var(--aqua)">Free, 15 minutes</span>
+    <h2>Get your free lead leak check</h2>
+    <p>We look at how your clinic handles DMs, missed calls, no-shows, rebooking and reviews, and show you exactly where bookings are slipping away. No pressure, no pitch deck.</p>
+    <div class="lp-cta"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="{mail}">Book my free leak check <span class="ar" aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+<script>
+(function(){{var $=function(i){{return document.getElementById(i)}},n=function(x){{return Math.round(x).toLocaleString("en-US")}};
+function u(){{var e=+$("dc-enq").value,m=+$("dc-miss").value/100,c=+$("dc-close").value/100,v=+$("dc-val").value;
+$("dc-enq-o").textContent=n(e);$("dc-miss-o").textContent=Math.round(m*100)+"%";$("dc-close-o").textContent=Math.round(c*100)+"%";$("dc-val-o").textContent="$"+n(v);
+var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3").textContent="$"+n(k*v);$("dc-r4").textContent="$"+n(k*v*12);}}
+["dc-enq","dc-miss","dc-close","dc-val"].forEach(function(i){{$(i).addEventListener("input",u)}});u();}})();
+</script>'''
+    htm = page(cfg, fonts, path, "Med Spa Booking System, Built for You | Oceanic Funnels",
+               "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.",
+               [("Home", "/"), ("Med spas", path)], body, logo)
+    htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    return path, htm
