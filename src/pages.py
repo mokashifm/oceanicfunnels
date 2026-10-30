@@ -882,8 +882,8 @@ def lp_med_spa(cfg, fonts, logo):
     X = DEEP["med-spas"]
     path = "/lp/med-spas/"
     book = "#book"
-    mail = "mailto:" + cfg["email"] + "?subject=Free%20lead%20leak%20check%20for%20my%20med%20spa"
-    head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{book}">Book my free leak check</a></header>'
+    mail = "mailto:" + cfg["email"] + "?subject=Free%20info%20call%20for%20my%20med%20spa"
+    head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{book}">Book a free info call</a></header>'
     def phone(ch, msgs, tag=None):
         inner = "".join((f'<div class="lp-q">{E(t)}</div>' if w == "u" else f'<div class="lp-a"><b>{E(w)}</b>{E(t)}</div>') for w, t in msgs)
         return f'<div class="lp-phone"><div class="scr"><div class="bar"><span>{E(ch[0])}</span><span>{E(ch[1])}</span></div><div class="ch">{E(ch[2])}</div>{inner}{f"<span class=lp-tag>{E(tag)}</span>" if tag else ""}</div></div>'
@@ -921,8 +921,8 @@ def lp_med_spa(cfg, fonts, logo):
       <p class="sub">We build your med spa a system that answers every DM, call and enquiry in seconds, books consultations with a deposit and rebooks clients on time. No sales team needed. Set up for you in 14 days.</p>
       <div class="lp-ticks"><span>Live in 14 days</span><span>No contract</span><span>You own the system</span></div>
       <div class="lp-cta">
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Book my free lead leak check <span class="ar" aria-hidden="true">→</span></a>
-        <a class="nf-btn nf-btn--line" href="#price">See what it costs</a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my booking system <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--line" href="{book}">Book a free info call</a>
       </div>
     </div>
     {hero_phone}
@@ -955,7 +955,7 @@ def lp_med_spa(cfg, fonts, logo):
         <div class="row"><span>Per month</span><span id="dc-r3"></span></div>
         <div class="big">Per year, first visits only<strong id="dc-r4"></strong></div>
         <p class="note">Before rebooking, memberships or referrals. A model, not a promise.</p>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Find my leaks <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Fix this for my clinic <span class="ar" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -1001,7 +1001,7 @@ def lp_med_spa(cfg, fonts, logo):
         <div class="amt"><span class="v">$297</span><small>/month</small></div>
         <p class="fee">+ $997 one-time build</p>
         <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>No sales team needed</li><li>24/7 support</li><li>No contract, cancel anytime</li></ul>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Book my free leak check <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my booking system <span class="ar" aria-hidden="true">→</span></a>
         <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
       </aside>
     </div>
@@ -1020,9 +1020,9 @@ def lp_med_spa(cfg, fonts, logo):
 <section class="nf-band lp-book" id="book">
   <div class="nf-wrap">
     <span class="nf-eyebrow" style="color:var(--aqua)">Free, 15 minutes</span>
-    <h2>Get your free lead leak check</h2>
-    <p>We look at how your clinic handles DMs, missed calls, no-shows, rebooking and reviews, and show you exactly where bookings are slipping away. No pressure, no pitch deck.</p>
-    <div class="lp-cta"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="{mail}">Book my free leak check <span class="ar" aria-hidden="true">→</span></a></div>
+    <h2>Ready to install your booking system?</h2>
+    <p>Book a free 15-minute info call. We show you how the system works for your clinic, what we build and how fast it goes live. No pressure, no pitch deck.</p>
+    <div class="lp-cta"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="{mail}">I'm ready to install my booking system <span class="ar" aria-hidden="true">→</span></a></div>
   </div>
 </section>
 <script>
