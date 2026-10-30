@@ -922,7 +922,6 @@ def lp_med_spa(cfg, fonts, logo):
       <div class="lp-ticks"><span>Live in 14 days</span><span>No contract</span><span>You own the system</span></div>
       <div class="lp-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
-        <a class="nf-btn nf-btn--line" href="{book}">Book a free info call</a>
       </div>
     </div>
     {hero_phone}
