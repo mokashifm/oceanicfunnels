@@ -1036,8 +1036,12 @@ var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3
                [("Home", "/"), ("Med spas", path)], body, logo)
     htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
     i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
-    mini = ('<footer class="nf-foot"><div class="nf-wrap nf-foot-bot" style="border-top:0">'
-            f'<span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
-            '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div></footer>')
+    mini = ('<footer class="nf-foot"><div class="nf-wrap nf-foot-top" style="grid-template-columns:1fr"><div style="max-width:640px">'
+            '<h2>Stop fishing. Build the net.</h2>'
+            '<p>Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.</p>'
+            f'<a class="nf-btn nf-btn--aqua" href="{book}">Install my revenue system</a></div></div>'
+            f'<div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
+            '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>'
+            '<div class="nf-wordmark" aria-hidden="true">OCEANIC</div></footer>')
     htm = htm[:i] + mini + htm[j:]
     return path, htm
