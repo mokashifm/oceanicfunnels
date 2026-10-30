@@ -32,6 +32,19 @@ REELS = {
        html='<span class="k ap" data-at=".1">Thursday</span><div class="cal ap" data-at=".3"><div class="lb">Thursday</div><div class="slot"><b>1:00</b>Microneedling</div><div class="slot on"><b>2:30</b>Botox<span class="tg">FROM A MISSED CALL</span></div><div class="slot"><b>4:00</b>Filler review</div></div>'),
   dict(clip="B3", inp=0, vo=END_VO, html=END_HTML('Every call answered, <span class="aq">even mid-treatment.</span>'), dim=True),
  ],
+ "C": [
+  dict(clip="C1", inp=0, vo="An empty chair is the most expensive thing in your med spa.",
+       html='<span class="k ap" data-at=".2">11:00 AM · Today</span><div class="cal ap" data-at=".8"><div class="lb">Today</div><div class="slot"><b>10:00</b>Hydrafacial</div><div class="slot off"><b>11:00</b>Consultation<span class="tg">NO-SHOW</span></div><div class="slot"><b>12:30</b>Botox</div></div>'),
+  dict(clip="C2", inp=0, maxlen=4.2, vo="Your provider waits. The slot is gone.",
+       html='<span class="k ap" data-at=".1">11:15 AM</span><div class="card red ap" data-at=".5"><div class="h">Consultation <i>11:00</i></div>Client did not show up. No deposit. Slot lost.</div>'),
+  dict(clip="C3", inp=0, minlen=6.2, vo="Now every consultation is booked with a deposit, and clients get reminders by text and email.",
+       html='<span class="k ap" data-at=".1">Day before · 10:00 AM</span><div class="card ap" data-at=".3"><div class="pay"><div class="ic">$</div><div><b>$50 deposit paid</b><span>Credited to the treatment</span></div></div></div><div class="ph ap" data-at="1.6"><div class="a ap" data-at="1.7"><span class="who">Text from your clinic</span>Reminder: your consultation is tomorrow at 11:00. Reply C to confirm.</div><div class="q ap" data-at="3.0">C</div></div><div class="mail ap" data-at="3.8"><div class="top"><span>Email · Your clinic</span><span>10:00 AM</span></div><div class="bd"><b>See you tomorrow at 11:00</b><br>Your consultation is confirmed.</div></div>'),
+  dict(clip="C1", inp=2.0, vo="If something comes up, they reschedule in one tap, and the deposit carries over.",
+       html='<span class="k ap" data-at=".1">Rescheduled</span><div class="ph ap" data-at=".2"><div class="q ap" data-at=".3">Something came up, can I move it?</div><div class="a ap" data-at="1.4"><span class="who">Your clinic</span>No problem! Your deposit carries over. Friday 2:00 or Saturday 10:30?</div><div class="q ap" data-at="2.8">Saturday works</div><div class="chip ap" data-at="3.6">✓ Moved · deposit kept</div></div>'),
+  dict(clip="C4", inp=0, vo="So clients actually show up, and your chairs stay full.",
+       html='<span class="k ap" data-at=".1">Saturday</span><div class="cal ap" data-at=".3"><div class="lb">Saturday</div><div class="slot on"><b>10:00</b>Hydrafacial</div><div class="slot on"><b>10:30</b>Consultation<span class="tg">ARRIVED</span></div><div class="slot on"><b>12:30</b>Botox</div><div class="slot on"><b>2:00</b>Filler</div></div>'),
+  dict(clip="C4", inp=0, vo=END_VO, html=END_HTML('Fewer no-shows. <span class="aq">Deposits held.</span>'), dim=True),
+ ],
 }
 SC = REELS[RID]; os.makedirs(WORK, exist_ok=True)
 from kokoro_onnx import Kokoro
@@ -48,7 +61,7 @@ parts = []
 for i, s in enumerate(SC):
     src = f"{CLIPS}/{s['clip']}.mp4"
     dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", src]).decode())
-    avail = dur - s["inp"]; f = max(1.0, s["len"] / avail)
+    avail = min(dur - s["inp"], s.get("maxlen", 99)); f = max(1.0, s["len"] / avail)
     vf = f"trim=start={s['inp']},setpts=(PTS-STARTPTS)*{f:.4f},scale=1080:1920:flags=lanczos,fps=30"
     if s.get("dim"): vf += ",eq=brightness=-0.08:saturation=0.9"
     out = f"{WORK}/part{i}.mp4"
