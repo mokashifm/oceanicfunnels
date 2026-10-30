@@ -1026,7 +1026,7 @@ def lp_med_spa(cfg, fonts, logo):
         <span class="plan">Done-For-You</span>
         <div class="amt"><span class="v">$297</span><small>/month</small></div>
         <p class="fee">+ $997 one-time build</p>
-        <p class="lp-guar">Live in 14 days, or your first month is free.<small>The $997 build fee still applies. The 14 days start once we have your content and logins.</small></p>
+        <p class="lp-guar">We go live in 14 days. If we're late, your first month is free.<small>The $997 build fee still applies. The 14 days start once we have your content and logins.</small></p>
         <ul><li>Built and launched by our team</li><li>Founding price locked for life (first 50 clinics)</li><li>No sales team needed</li><li>24/7 support</li><li>No contract, cancel anytime</li></ul>
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
         <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
