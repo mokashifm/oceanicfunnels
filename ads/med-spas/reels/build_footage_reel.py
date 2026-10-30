@@ -19,6 +19,19 @@ REELS = {
        html='<span class="k ap" data-at=".1">Sunday · 8:00 AM</span><div class="dash ap" data-at=".4"><div class="lb">Booked overnight</div><div><span class="num cnt" data-to="3" data-at=".6">0</span><span class="up">while you slept</span></div><small>Example. Illustration only.</small></div>'),
   dict(clip="A1", inp=0, vo=END_VO, html=END_HTML('Every DM answered <span class="aq">and booked. 24/7.</span>'), dim=True),
  ],
+ "B": [
+  dict(clip="B1", inp=0, vo="Your injector is mid-treatment. Then the front desk phone rings.",
+       html='<span class="k ap" data-at=".2">Tuesday · 2:47 PM</span><div class="card red ap" data-at="1.6"><div class="h">Incoming call <i>Front desk</i></div>(512) ••• ••21 is calling…</div>'),
+  dict(clip="B3", inp=0, vo="Nobody can pick up. That caller was ready to book.",
+       html='<span class="k ap" data-at=".1">Missed call</span><div class="panel ap" data-at=".3"><div class="call"><div class="av red" style="color:#FF7657"><div class="ring"></div><span style="color:#0E1A1B">✕</span></div><h3>Missed call</h3><div class="sub">(512) ••• ••21 · 2:47 PM</div></div></div>'),
+  dict(clip="B2", inp=0, minlen=5.6, vo="Now the A.I. receptionist answers instead.",
+       html='<span class="k ap" data-at=".1">Answered · 2:47 PM</span><div class="panel ap" data-at=".2"><div class="call"><div class="av" style="color:#3DE3C8"><div class="ring"></div><span style="color:#0E1A1B">AI</span></div><h3>AI receptionist</h3><div class="sub tm">0:00</div><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="ph ap" data-at="1.0"><div class="q ap" data-at="1.2">Hi, do you have Botox this Thursday?</div><div class="a ap" data-at="2.6"><span class="who">Your clinic</span>Yes! 2:30 or 5:00. Which works?</div></div>'),
+  dict(clip="B1", inp=2.2, vo="It books the caller into a free slot, and texts the confirmation.",
+       html='<span class="k ap" data-at=".1">Text · 2:49 PM</span><div class="ph ap" data-at=".2"><div class="a ap" data-at=".3"><span class="who">Your clinic</span>You are booked for Botox on Thursday at 2:30. Reply R to reschedule.</div><div class="q ap" data-at="1.8">Perfect, thank you!</div><div class="chip ap" data-at="2.6">✓ Booked from a missed call</div></div>'),
+  dict(clip="B4", inp=0, vo="Your team never stops the treatment. And you never lose the booking.",
+       html='<span class="k ap" data-at=".1">Thursday</span><div class="cal ap" data-at=".3"><div class="lb">Thursday</div><div class="slot"><b>1:00</b>Microneedling</div><div class="slot on"><b>2:30</b>Botox<span class="tg">FROM A MISSED CALL</span></div><div class="slot"><b>4:00</b>Filler review</div></div>'),
+  dict(clip="B3", inp=0, vo=END_VO, html=END_HTML('Every call answered, <span class="aq">even mid-treatment.</span>'), dim=True),
+ ],
 }
 SC = REELS[RID]; os.makedirs(WORK, exist_ok=True)
 from kokoro_onnx import Kokoro
@@ -27,7 +40,7 @@ t = 0.0; PAD = 0.5
 for i, s in enumerate(SC):
     a, sr = k.create(s["vo"], voice="af_heart", speed=1.03, lang="en-us"); sf.write(f"{WORK}/vo{i}.wav", a, sr)
     s["dur"] = round(len(a) / sr, 3); s["st"] = round(t, 3)
-    s["len"] = round(max(3.6, s["dur"] + PAD) + (0.4 if i == 0 else 0) + (2.4 if i == len(SC) - 1 else 0), 3)
+    s["len"] = round(max(s.get("minlen", 3.6), s["dur"] + PAD) + (0.4 if i == 0 else 0) + (2.4 if i == len(SC) - 1 else 0), 3)
     s["vost"] = round(t + (0.4 if i == 0 else 0.15), 3); t += s["len"]
 TOTAL = round(t, 3)
 # --- base video: each scene from its clip, scaled to 1080x1920, slowed if the clip is too short
@@ -58,7 +71,10 @@ ov.innerHTML='<div class="scrim"></div>'+SC.map((s,i)=>`<div class="sc ${s.end?'
 const ease=x=>x<0?0:x>1?1:1-Math.pow(1-x,3);
 function sh(el,t,t0,d=.35,dy=40){el.style.display=t<t0?'none':'';const p=ease((t-t0)/d);el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`}
 window.render=function(t){SC.forEach((x,i)=>{const el=document.getElementById('s'+i);const A=x.st,B=x.st+x.len;const o=Math.min(ease((t-A)/.25),1-ease((t-B+.25)/.25));el.style.opacity=o;el.style.visibility=o>0?'visible':'hidden';if(o<=0)return;
- el.querySelectorAll('.ap').forEach(e=>sh(e,t,x.st+ +e.dataset.at));el.querySelectorAll('.cnt').forEach(e=>{e.textContent=Math.round(+e.dataset.to*ease((t-x.st-+e.dataset.at)/2))})});
+ el.querySelectorAll('.ap').forEach(e=>sh(e,t,x.st+ +e.dataset.at));el.querySelectorAll('.cnt').forEach(e=>{e.textContent=Math.round(+e.dataset.to*ease((t-x.st-+e.dataset.at)/2))});
+ el.querySelectorAll('.wave i').forEach((w,j)=>{w.style.height=(18+80*Math.abs(Math.sin(t*9+j*.7))*Math.abs(Math.sin(t*2.3+j)))+'px'});
+ el.querySelectorAll('.ring').forEach(r=>{const p=((t-x.st)*1.1)%1;r.style.transform=`scale(${1+p*.55})`;r.style.opacity=1-p});
+ el.querySelectorAll('.tm').forEach(r=>{r.textContent='0:'+String(Math.max(0,Math.floor(t-x.st))).padStart(2,'0')})});
  let c='';SC.forEach(x=>{if(t>=x.vost&&t<x.vost+x.dur+.2)c=x.vo});document.getElementById('cc').innerHTML=c?'<span>'+c+'</span>':'';};render(0);
 </script></body></html>'''
 open(f"{WORK}/overlay.html", "w").write(html)
