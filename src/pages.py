@@ -26,6 +26,7 @@ CLARITY = """<script type="text/javascript">
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
+CK_IND = {"med-spas": "https://checkout.oceanicfunnels.com/oceanic_funnels_med-spas"}
 SOCIAL = [("Facebook", "https://www.facebook.com/oceanicfunnels"), ("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
 
@@ -548,7 +549,7 @@ def deep_sections(d, X):
         <div class="amt"><span class="v">$297</span><small>/month</small></div>
         <p class="fee">+ $997 one-time build</p>
         <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>Dedicated account manager</li><li>24/7 support</li><li>Cancel anytime</li></ul>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d["slug"], CK)}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
         <p class="small">Rather build it yourself? <a href="/#pricing">Start on OS from $67/month</a>.</p>
       </aside>
     </div>
@@ -597,7 +598,7 @@ def industry_page(cfg, fonts, logo, d):
       <h1>{E(d["h1"])}</h1>
       <p class="nf-sub"><b>{E(hook)}.</b> {E(sub)}</p>
       <div class="nf-hero-cta">
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d['slug'], CK) if X else CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="{"#done-for-you" if X else "#how-it-runs"}">{"See what we build" if X else "See how it runs"}</a>
       </div>
     </div>
@@ -665,7 +666,7 @@ def industry_page(cfg, fonts, logo, d):
   <div class="nf-wrap">
     <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
       <div><h2>{E(X["cta_h"]) if X else "Stop fishing for customers. Build the net."}</h2><p>{E(X["cta_p"]) if X else "One system for funnels, CRM, SMS, WhatsApp, AI agents, booking and payments. Or let our team build it for you."}</p></div>
-      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d['slug'], CK) if X else CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <h2 class="nf-more-h">Guides for {E(W)}</h2>
     <div class="nf-more" aria-label="Guides">{guides}<a href="/guides/">All guides</a></div>
@@ -1081,7 +1082,7 @@ def lp_med_spa(cfg, fonts, logo):
       <div class="row"><span>After that</span><b>$297/month, cancel anytime</b></div>
       <p class="lp-guar">If you're not live in 14 days, your first $297 month is free.<small>The 14 days start once we have your content and logins.</small></p>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
-      <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
+      <p class="small">Ready now? <a href="{CK_IND["med-spas"]}">Get it built for me</a>.</p>
     </div>
   </div>
 </section>
