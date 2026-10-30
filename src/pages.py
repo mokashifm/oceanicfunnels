@@ -27,7 +27,7 @@ CLARITY = """<script type="text/javascript">
 </script>"""
 
 # Meta Pixel (dataset). Paste the dataset ID here and rebuild; empty = no pixel on the site.
-META_PIXEL_ID = ""
+META_PIXEL_ID = "1759319485158087"
 if META_PIXEL_ID:
     CLARITY += """
 <script>
