@@ -880,24 +880,25 @@ LP_CSS = r"""
 .lp-three{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 .lp-guar{margin:14px 0 4px;background:var(--aqua-l);color:var(--ink);border-radius:10px;padding:12px 14px;font-weight:600;font-size:15px;line-height:1.4}
 .lp-guar small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:4px}
-.lp-pay{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
-.lp-plan{background:#fff;color:var(--ink);border-radius:var(--r);padding:28px 26px}
-.lp-plan .tag{display:inline-block;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--ink)}
-.lp-plan .amt{font-family:var(--display);font-size:52px;font-weight:600;letter-spacing:-.05em;line-height:1;margin-top:16px}
-.lp-plan .amt small{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;color:var(--muted);margin-left:4px}
-.lp-plan h3{font-size:20px;margin-top:14px;color:var(--ink)}
-.lp-plan .d{color:var(--muted)!important;font-size:15px;margin-top:6px}
-.lp-plan ul{display:grid;gap:9px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
-.lp-plan li{position:relative;padding-left:24px;font-size:15px;line-height:1.45}
-.lp-plan li::before{content:"";position:absolute;left:2px;top:6px;width:10px;height:6px;border-left:2px solid var(--aqua-d,#0f8f86);border-bottom:2px solid var(--aqua-d,#0f8f86);transform:rotate(-45deg)}
-.lp-plan .note{font-size:13px;color:var(--muted);margin-top:16px}
-.lp-sum{max-width:560px;margin:28px auto 0;text-align:center}
-.lp-sum .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#E6EEEC;font-size:16px;text-align:left}
+.lp-pay{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px;max-width:960px;margin-inline:auto;align-items:stretch}
+.lp-pay .nf-price .for{min-height:0}
+.lp-pay .nf-price .for b{display:block;font-family:var(--display);font-size:19px;color:var(--ink);margin-bottom:4px}
+.lp-pay .nf-price--pop .for b{color:#fff}
+.lp-pay .nf-price li{padding:11px 6px}
+.lp-pay .nf-price--pop .plan{color:var(--aqua);box-shadow:inset 0 0 0 1.5px var(--aqua)}
+.lp-pay .nf-price .after{margin-top:18px}
+.lp-pay .nf-hatch::after{width:44%;height:190px}
+.lp-sum.nf-hatch::after{width:34%;height:100%}
+.lp-vs .yes.nf-hatch::after{width:40%;height:150px}
+.nf-result.nf-hatch::after{width:40%;height:140px}
+.lp-sum{max-width:960px;margin:18px auto 0;background:var(--ink);color:#fff;border-radius:var(--r);padding:30px 34px;display:grid;grid-template-columns:1fr 1fr;gap:6px 34px;align-items:center}
+.lp-sum .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #2A3A3A;color:#C9D6D4;font-size:16px}
 .lp-sum .row b{color:#fff;text-align:right}
-.lp-sum .lp-guar{margin:20px 0}
-.lp-sum .small{color:#B9C9C6;font-size:14px;margin-top:12px}
+.lp-sum .lp-guar{grid-column:2;grid-row:1/3;margin:0}
+.lp-sum .nf-btn{grid-column:1/-1;justify-self:center;margin-top:18px}
+.lp-sum .small{grid-column:1/-1;text-align:center;color:#B9C9C6;font-size:14px;margin-top:4px}
 .lp-sum .small a{color:#fff}
-@media(max-width:800px){.lp-pay{grid-template-columns:1fr}}
+@media(max-width:800px){.lp-sum.nf-hatch::after{height:90px;width:30%}.lp-pay{grid-template-columns:1fr}.lp-sum{grid-template-columns:1fr;padding:24px 20px}.lp-sum .lp-guar{grid-column:1;grid-row:auto;margin-top:12px}.lp-sum .nf-btn{white-space:normal;text-align:center;max-width:100%}}
 .lp-sticky{display:none}
 @media (max-width:1100px){.lp-three{grid-template-columns:repeat(2,minmax(0,1fr))!important}.lp-pains{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:700px){.lp-three,.lp-pains{grid-template-columns:1fr!important}
@@ -1015,7 +1016,7 @@ def lp_med_spa(cfg, fonts, logo):
         <p class="nf-sub">Move the sliders to match your med spa.</p>
         <div class="nf-inputs">{fields}</div>
       </div>
-      <div class="nf-result" aria-live="polite">
+      <div class="nf-result nf-hatch" aria-live="polite">
         <div class="row"><span>Enquiries waiting too long</span><span id="dc-r1"></span></div>
         <div class="row"><span>Clients you could be winning</span><span id="dc-r2"></span></div>
         <div class="row"><span>Per month</span><span id="dc-r3"></span></div>
@@ -1049,35 +1050,34 @@ def lp_med_spa(cfg, fonts, logo):
     </div>
     <div class="lp-vs">
       <div class="no"><h3>Today</h3><ul><li>DMs answered the next morning</li><li>Missed calls go to voicemail</li><li>Free consults that never show up</li><li>Botox clients drifting past month four</li><li>Reviews only when someone remembers to ask</li></ul></div>
-      <div class="yes"><h3>With Oceanic Funnels</h3><ul><li>Every DM answered in seconds, 24/7</li><li>Missed calls texted back instantly</li><li>Deposits and reminders cut no-shows</li><li>Rebooking reminders timed to each treatment</li><li>A review request after every visit</li></ul></div>
+      <div class="yes nf-hatch"><h3>With Oceanic Funnels</h3><ul><li>Every DM answered in seconds, 24/7</li><li>Missed calls texted back instantly</li><li>Deposits and reminders cut no-shows</li><li>Rebooking reminders timed to each treatment</li><li>A review request after every visit</li></ul></div>
     </div>
   </div>
 </section>
 
-<section class="nf-band nf-dark" id="price">
+<section class="nf-band nf-pricing" id="price">
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
       <span class="nf-eyebrow">Pricing</span>
       <h2>What you pay for, <span class="g">in plain words</span></h2>
     </div>
     <div class="lp-pay">
-      <div class="lp-plan">
-        <span class="tag">One time</span>
-        <div class="amt">$997</div>
-        <h3>We build it for you</h3>
-        <p class="d">Our team sets up your whole system and launches it in 14 days.</p>
-        <ul>{build}</ul>
-      </div>
-      <div class="lp-plan">
-        <span class="tag">Every month</span>
-        <div class="amt">$297<small>/month</small></div>
-        <h3>You use the system, we look after it</h3>
-        <p class="d">Your clinic runs on it every day. We keep it working.</p>
-        <ul>{monthly}</ul>
-        <p class="note">Texts, emails, calls and AI replies are pay-as-you-go from your account wallet.</p>
-      </div>
+      <article class="nf-price">
+        <span class="plan">One-time build</span>
+        <div class="amt"><span class="v">$997</span> <small>once</small></div>
+        <p class="for"><b>We build it for you.</b> Our team sets up your whole system and launches it in 14 days.</p>
+        <ul><li class="lead">What we build:</li>{build}</ul>
+        <p class="after">Paid once, at checkout</p>
+      </article>
+      <article class="nf-price nf-price--pop nf-hatch">
+        <span class="plan">Every month</span>
+        <div class="amt"><span class="v">$297</span> <small>/month</small></div>
+        <p class="for"><b>You use the system, we look after it.</b> Your clinic runs on it every day. We keep it working.</p>
+        <ul><li class="lead">Every month you get:</li>{monthly}</ul>
+        <p class="after">Texts, emails, calls and AI replies are pay-as-you-go from your account wallet.</p>
+      </article>
     </div>
-    <div class="lp-sum">
+    <div class="lp-sum nf-hatch" style="--hc:var(--coral)">
       <div class="row"><span>First month</span><b>$997 + $297 = $1,294</b></div>
       <div class="row"><span>After that</span><b>$297/month, cancel anytime</b></div>
       <p class="lp-guar">If you're not live in 14 days, your first $297 month is free.<small>The 14 days start once we have your content and logins.</small></p>
@@ -1097,7 +1097,7 @@ def lp_med_spa(cfg, fonts, logo):
 </section>
 
 <div class="lp-sticky"><a class="nf-btn nf-btn--aqua" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a></div>
-<section class="nf-band lp-book" id="book">
+<section class="nf-band lp-book nf-hatch" id="book" style="--hc:var(--coral)">
   <div class="nf-wrap">
     <span class="nf-eyebrow" style="color:var(--aqua)">Free, 15 minutes</span>
     <h2>Ready to install your revenue system?</h2>
