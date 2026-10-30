@@ -39,7 +39,8 @@ if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>""".replace("PIXELID", META_PIXEL_ID)
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
-CAL_MED = "https://links.oceanicfunnels.com/widget/bookings/os-install-your-med-spa-revenue-system"
+CAL_MED = "/lp/med-spas/book/"
+CAL_EMBED = "https://links.oceanicfunnels.com/widget/booking/0Fq9d6ETDejl4rKothS4"
 CK_IND = {"med-spas": "https://checkout.oceanicfunnels.com/oceanic_funnels_med-spas"}
 SOCIAL = [("Facebook", "https://www.facebook.com/oceanicfunnels"), ("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
@@ -839,7 +840,7 @@ def build_all(cfg, fonts, src, site):
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
-    for path, htm in out + [lp_med_spa(cfg, fonts, logo)]:
+    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo)]:
         d = site + path
         os.makedirs(d, exist_ok=True)
         open(d + "index.html", "w").write(htm)
@@ -1126,9 +1127,12 @@ $("dc-enq-o").textContent=n(e);$("dc-miss-o").textContent=Math.round(m*100)+"%";
 var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3").textContent="$"+n(k*v);$("dc-r4").textContent="$"+n(k*v*12);}}
 ["dc-enq","dc-miss","dc-close","dc-val"].forEach(function(i){{$(i).addEventListener("input",u)}});u();}})();
 </script>'''
-    htm = page(cfg, fonts, path, "Med Spa Booking System, Built for You | Oceanic Funnels",
-               "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.",
-               [("Home", "/"), ("Med spas", path)], body, logo)
+    return lp_shell(cfg, fonts, logo, path, "Med Spa Booking System, Built for You | Oceanic Funnels",
+               "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.", body)
+
+def lp_shell(cfg, fonts, logo, path, title, desc, body, book=None):
+    book = book or CAL_MED
+    htm = page(cfg, fonts, path, title, desc, [("Home", "/"), ("Med spas", "/lp/med-spas/")], body, logo)
     htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
     i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
     mini = ('<footer class="nf-foot"><div class="nf-wrap nf-foot-top" style="grid-template-columns:1fr"><div style="max-width:640px">'
@@ -1140,3 +1144,78 @@ var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3
             '<div class="nf-wordmark" aria-hidden="true">OCEANIC</div></footer>')
     htm = htm[:i] + mini + htm[j:]
     return path, htm
+
+LP_BOOK_CSS = """
+.lp-bk{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:44px;align-items:start;padding-block:28px 72px}
+.lp-bk h1{font-family:var(--display);font-size:clamp(34px,4.6vw,52px);line-height:1.03;letter-spacing:-.035em;margin-top:14px}
+.lp-bk h1 em{font-style:normal;color:var(--aqua-d)}
+.lp-bk .sub{font-size:17px;color:var(--text);margin-top:14px;line-height:1.55}
+.lp-bk ul{list-style:none;margin-top:22px;display:grid;gap:12px}
+.lp-bk li{display:flex;gap:12px;font-size:16px;line-height:1.45;color:var(--ink)}
+.lp-bk li::before{content:"\\2713";flex:none;width:22px;height:22px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:11px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+.lp-bk .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.lp-bk .meta span{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--ink)}
+.lp-bk .price{margin-top:22px;font-size:14.5px;color:var(--muted)}
+.lp-cal{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:8px;min-height:720px;box-shadow:0 20px 50px -30px rgba(14,26,27,.35)}
+.lp-cal iframe{width:100%;min-height:700px;border:0;display:block}
+.lp-done{max-width:720px;margin:0 auto;padding-block:40px 80px;text-align:center}
+.lp-done .ok{width:64px;height:64px;border-radius:50%;background:var(--aqua);color:var(--ink);display:grid;place-items:center;margin:0 auto;font-size:30px;font-weight:700}
+.lp-done h1{font-family:var(--display);font-size:clamp(36px,5vw,56px);letter-spacing:-.035em;margin-top:18px;line-height:1.03}
+.lp-done .sub{font-size:18px;color:var(--text);margin-top:14px;line-height:1.55}
+.lp-prep{list-style:none;counter-reset:p;display:grid;gap:12px;margin-top:30px;text-align:left}
+.lp-prep li{counter-increment:p;display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;font-size:16px;line-height:1.45}
+.lp-prep li::before{content:counter(p);flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--display);font-weight:700;font-size:13px;display:grid;place-items:center}
+.lp-prep b{display:block;color:var(--ink)}
+@media(max-width:900px){.lp-bk{grid-template-columns:1fr;gap:24px;padding-block:16px 56px}.lp-bk ul,.lp-bk .meta{display:none}}
+"""
+
+PAGE_CSS += LP_BOOK_CSS
+
+def lp_med_book(cfg, fonts, logo):
+    path = "/lp/med-spas/book/"
+    head = f'<header class="lp-head nf-wrap">{logo}<span class="lp-tag" style="background:#fff">Free, 15 minutes</span></header>'
+    body = f'''<section class="lp-hero nf-hatch">
+  {head}
+  <div class="nf-wrap lp-bk">
+    <div>
+      <span class="lp-kick">Med spas and aesthetic clinics</span>
+      <h1>Book your free <em>info call.</em></h1>
+      <p class="sub">Pick a time that suits you. In 15 minutes we show you how the system works for your clinic and whether it is a fit.</p>
+      <ul>
+        <li>Where your clinic is losing bookings right now</li>
+        <li>How the system answers, books and rebooks for you, 24/7</li>
+        <li>What we build in your first 14 days</li>
+        <li>Clear pricing, no pressure, no pitch deck</li>
+      </ul>
+      <div class="meta"><span>15 minutes</span><span>No obligation</span><span>Free</span></div>
+      <p class="price">$997 one-time build, then $297/month. No contract.</p>
+    </div>
+    <div class="lp-cal">
+      <iframe src="{CAL_EMBED}" allow="payment" scrolling="no" id="0Fq9d6ETDejl4rKothS4_1793371640258" title="Book your free info call"></iframe>
+    </div>
+  </div>
+</section>
+<script src="https://links.oceanicfunnels.com/js/form_embed.js" type="text/javascript"></script>'''
+    return lp_shell(cfg, fonts, logo, path, "Book Your Free Info Call | Oceanic Funnels",
+                    "Book a free 15-minute info call to see how the system answers, books and rebooks for your med spa.", body)
+
+def lp_med_booked(cfg, fonts, logo):
+    path = "/lp/med-spas/booked/"
+    head = f'<header class="lp-head nf-wrap">{logo}</header>'
+    body = f'''<section class="lp-hero">
+  {head}
+  <div class="nf-wrap lp-done">
+    <div class="ok" aria-hidden="true">&#10003;</div>
+    <h1>You're booked.</h1>
+    <p class="sub">Your confirmation and calendar invite are on the way by email and text. To get the most from 15 minutes, have these ready:</p>
+    <ol class="lp-prep">
+      <li><span><b>Your top three treatments and prices</b>For example Botox, filler and laser, so we can show you the right booking flows.</span></li>
+      <li><span><b>Roughly how many enquiries you get a month</b>DMs, calls and website forms. A rough guess is fine.</span></li>
+      <li><span><b>The booking or EMR software you use today</b>So we can show you how the system works alongside it.</span></li>
+    </ol>
+    <div class="lp-cta" style="justify-content:center;margin-top:30px"><a class="nf-btn nf-btn--ink" href="/lp/med-spas/#price">See what we build <span class="ar" aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+<script>if(window.fbq){{fbq('track','Schedule',{{content_name:'med-spa-info-call'}})}}</script>'''
+    return lp_shell(cfg, fonts, logo, path, "You're Booked | Oceanic Funnels",
+                    "Your free info call is booked.", body)
