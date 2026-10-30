@@ -847,7 +847,7 @@ def build_all(cfg, fonts, src, site):
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
-    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo)]:
+    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo), lp_med_welcome(cfg, fonts, logo)]:
         d = site + path
         os.makedirs(d, exist_ok=True)
         px = pixel_for(path)
@@ -1140,7 +1140,7 @@ var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3
     return lp_shell(cfg, fonts, logo, path, "Med Spa Booking System, Built for You | Oceanic Funnels",
                "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.", body)
 
-def lp_shell(cfg, fonts, logo, path, title, desc, body, book=None):
+def lp_shell(cfg, fonts, logo, path, title, desc, body, book=None, cta=True):
     book = book or CAL_MED
     htm = page(cfg, fonts, path, title, desc, [("Home", "/"), ("Med spas", "/lp/med-spas/")], body, logo)
     htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
@@ -1148,7 +1148,7 @@ def lp_shell(cfg, fonts, logo, path, title, desc, body, book=None):
     mini = ('<footer class="nf-foot"><div class="nf-wrap nf-foot-top" style="grid-template-columns:1fr"><div style="max-width:640px">'
             '<h2>Stop fishing. Build the net.</h2>'
             '<p>Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.</p>'
-            f'<a class="nf-btn nf-btn--aqua" href="{book}">Install my revenue system</a></div></div>'
+            + (f'<a class="nf-btn nf-btn--aqua" href="{book}">Install my revenue system</a>' if cta else '') + '</div></div>'
             f'<div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
             '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>'
             '<div class="nf-wordmark" aria-hidden="true">OCEANIC</div></footer>')
@@ -1228,4 +1228,25 @@ def lp_med_booked(cfg, fonts, logo):
 </section>
 <script>if(window.fbq){{fbq('track','Schedule',{{content_name:'med-spa-info-call'}})}}</script>'''
     return lp_shell(cfg, fonts, logo, path, "You're Booked | Oceanic Funnels",
-                    "Your free info call is booked.", body)
+                    "Your free info call is booked.", body, cta=False)
+
+def lp_med_welcome(cfg, fonts, logo):
+    path = "/lp/med-spas/welcome/"
+    head = f'<header class="lp-head nf-wrap">{logo}</header>'
+    body = f'''<section class="lp-hero">
+  {head}
+  <div class="nf-wrap lp-done">
+    <div class="ok" aria-hidden="true">&#10003;</div>
+    <h1>Welcome aboard. Your build has started.</h1>
+    <p class="sub">Your payment went through and your receipt is on its way by email. Here is what happens next.</p>
+    <ol class="lp-prep">
+      <li><span><b>We email you to book your kickoff call</b>Watch your inbox, including spam, for a message from {E(cfg["email"])}.</span></li>
+      <li><span><b>Get your content ready</b>Your logo, treatment menu with prices, providers, booking and cancellation policies, and before-and-after photos you have consent to use.</span></li>
+      <li><span><b>Have your logins ready</b>Admin access to your Instagram and Facebook page, your website or domain, and the business phone number you want texts and calls on.</span></li>
+      <li><span><b>We build and launch in 14 days</b>The 14 days start once we have your content and logins. Your team reviews everything before it goes live.</span></li>
+    </ol>
+    <p class="sub" style="font-size:15px;margin-top:26px">Questions? Email <a href="mailto:{E(cfg["email"])}" style="color:var(--aqua-d);font-weight:600">{E(cfg["email"])}</a></p>
+  </div>
+</section>'''
+    return lp_shell(cfg, fonts, logo, path, "Welcome to Oceanic Funnels | Your Med Spa Build Has Started",
+                    "Your med spa system build has started.", body, cta=False)
