@@ -2,6 +2,12 @@
 
 > Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $297/month plus a one-time $997 build fee (we build your sales funnel and backend). All plans are month to month.
 
+## Company
+- Oceanic Funnels is a company based in Bahawalpur, Pakistan, serving businesses worldwide. Customers sign up, pay, are onboarded and get support directly from the Oceanic Funnels team.
+- Support: 24/7. The team replies within the same hour; an AI support assistant replies instantly. Email: hello@oceanicfunnels.com
+- Customers own their data: contacts and data can be exported at any time, connected domains stay in the customer's name, and all plans are month to month with no lock-in.
+- [About Oceanic Funnels](https://oceanicfunnels.com/about/)
+
 ## Key pages
 - [Home and pricing](https://oceanicfunnels.com/): what's included, pricing and FAQ
 - [Industries](https://oceanicfunnels.com/industries/): how each industry uses the system

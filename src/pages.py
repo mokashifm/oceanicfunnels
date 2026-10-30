@@ -247,7 +247,7 @@ def footer(cfg):
       <div><span class="fh">Product</span><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
       <div><span class="fh">Industries</span>{inds}<a href="/industries/">All industries</a></div>
       <div><span class="fh">Compare</span>{comp}<a href="/compare/">All comparisons</a></div>
-      <div><span class="fh">Company</span><span>{E(cfg["email"])}</span><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a>{"".join(f'<a href="{u}" rel="me noopener" target="_blank">{n}</a>' for n, u in SOCIAL)}</div>
+      <div><span class="fh">Company</span><span>{E(cfg["email"])}</span><a href="/about/">About</a><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a>{"".join(f'<a href="{u}" rel="me noopener" target="_blank">{n}</a>' for n, u in SOCIAL)}</div>
     </nav>
   </div>
   <div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>
@@ -344,6 +344,45 @@ def legal_page(cfg, fonts, logo, slug, title, h1, intro, sections):
   </div>
 </section>'''
     return path, page(cfg, fonts, path, title, intro, crumbs, body, logo)
+
+ABOUT = [
+ ("Who we are", """<p>Oceanic Funnels is the company behind Oceanic Funnels OS, an all-in-one sales funnel, CRM and marketing automation system for small and growing businesses. We sell it, set it up, build on it and support it.</p>
+<p>You can run the system yourself on the OS plan, or have our team set it up (Growth) or build your sales funnel and full automated backend for you (Done-For-You).</p>"""),
+ ("Where we are", """<p>Oceanic Funnels is based in Bahawalpur, Pakistan, and works with businesses worldwide. All plans are priced in US dollars.</p>"""),
+ ("Who you deal with", """<p>You deal with Oceanic Funnels directly. You sign up and pay with us, our team onboards you and builds your system, and our team answers your support requests. There is no third party between you and the people who look after your account.</p>"""),
+ ("Support", """<ul><li><b>24/7 support.</b> Our team replies within the same hour, day or night.</li><li><b>Instant answers.</b> Our AI support assistant replies straight away while a person picks up your request.</li><li><b>Email:</b> <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></li></ul>"""),
+ ("Your data and your freedom to leave", """<ul><li><b>You own your contacts.</b> Export your contacts and data at any time.</li><li><b>Your domain stays in your name.</b> If you connect your own domain, it is registered to you, not to us.</li><li><b>No lock-in.</b> Every plan is month to month. Cancel anytime.</li></ul>"""),
+ ("Plans", """<ul><li><b>OS:</b> $67 a month. The full system, you build and run it yourself.</li><li><b>Growth:</b> $197 a month. Set up for you in the first week, with 24/7 support.</li><li><b>Done-For-You:</b> $297 a month plus a one-time $997 build. We build your sales funnel and full automated backend, live in 14 days.</li></ul><p>OS and Growth include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> for details.</p>"""),
+]
+
+def about_page(cfg, fonts, logo):
+    path = "/about/"
+    crumbs = [("Home", "/"), ("About", path)]
+    intro = "The company behind Oceanic Funnels OS: where we are, who you deal with, how support works and how you keep control of your data."
+    ids = [re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-") for t, _ in ABOUT]
+    toc = "".join(f'<li><a href="#{i}">{E(t)}</a></li>' for i, (t, _) in zip(ids, ABOUT))
+    secs = "".join(f'<section id="{i}"><h2>{E(t)}</h2>{c}</section>' for i, (t, c) in zip(ids, ABOUT))
+    body = f'''<section class="nf-sub-hero">
+  <div class="nf-wrap">
+    {{{{HEADER}}}}
+    <div class="nf-sub-in">
+      {crumbs_html(crumbs)}
+      <h1>About Oceanic Funnels</h1>
+      <p class="nf-sub">{E(intro)}</p>
+    </div>
+  </div>
+</section>
+<section class="nf-band" style="padding-top:64px">
+  <div class="nf-wrap nf-doc-wrap">
+    <aside class="nf-toc"><b>On this page</b><ol>{toc}</ol></aside>
+    <article class="nf-doc">{secs}</article>
+  </div>
+</section>'''
+    htm = page(cfg, fonts, path, "About Oceanic Funnels | Company, Support and Your Data", intro, crumbs, body, logo)
+    org = {"@context": "https://schema.org", "@type": "AboutPage", "url": cfg["domain"] + path, "name": "About Oceanic Funnels",
+           "mainEntity": {"@id": cfg["domain"] + "/#org"}}
+    htm = htm.replace("</head>", f'<script type="application/ld+json">{json.dumps(org)}</script>\n</head>', 1)
+    return path, htm
 
 def compare_page(cfg, fonts, logo, c):
     n = c["name"]; path = f'/compare/{c["slug"]}/'
@@ -843,7 +882,7 @@ def build_all(cfg, fonts, src, site):
                       "How Oceanic Funnels collects, uses, shares and protects personal information, including SMS consent, cookies, analytics and your privacy rights.", legal.PRIVACY),
            legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
                       "The terms that apply when you use oceanicfunnels.com and Oceanic Funnels OS.", legal.TERMS),
-           hub_page(cfg, fonts, logo)]
+           hub_page(cfg, fonts, logo), about_page(cfg, fonts, logo)]
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
@@ -991,6 +1030,7 @@ def lp_med_spa(cfg, fonts, logo):
         ("Does it replace our EMR or booking software?", "Most med spas keep their EMR for charts and clinical notes. Oceanic Funnels handles enquiries, consultation booking, reminders, rebooking, memberships, payments and marketing. We agree with you which bookings live where."),
         ("Do you run our ads?", "No. We build and run the system that catches and converts your leads. If you run ads, we install the Meta Pixel, Conversions API and GA4 so you can see which ads lead to booked treatments."),
         ("How fast will it be live?", "Usually within 14 days of getting your content, logins and approvals. Your team reviews everything before it goes live."),
+        ("What happens to our data if we cancel?", "You keep it. You can export your contacts and data at any time, your domain stays in your name, and every plan is month to month with no lock-in."),
         ("What does it cost?", "A one-time $997 build fee plus $297 a month, with no contract. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
     ]
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))

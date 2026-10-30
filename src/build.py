@@ -43,6 +43,10 @@ FAQ = [
      "Yes. You can import contacts from a spreadsheet or your current CRM. On Growth and Done-For-You, our team does the import for you."),
     ("Is there a contract or a guarantee?",
      "No contracts. Every plan is month to month and you can cancel anytime. OS and Growth also come with a 30-day money-back guarantee."),
+    ("Who is behind Oceanic Funnels?",
+     "Oceanic Funnels is a company based in Bahawalpur, Pakistan, working with businesses worldwide. You sign up, pay, get onboarded and get support directly from our team. Support is 24/7: our team replies within the same hour and our AI support assistant answers straight away."),
+    ("What happens to my data if I cancel?",
+     "You keep it. You can export your contacts and data at any time, your domain stays in your name, and every plan is month to month with no lock-in."),
     ("What is founding member pricing?",
      "The first 50 businesses to join keep the price they signed up at for life, even when our prices go up, as long as their plan stays active."),
 ]
@@ -60,6 +64,10 @@ def schema():
     graph = [
         {"@type": "Organization", "@id": org_id, "name": B, "url": CONFIG["domain"], "email": CONFIG["email"],
          "logo": CONFIG["domain"] + "/icon-512.png", "sameAs": [u for _, u in pages.SOCIAL],
+         "address": {"@type": "PostalAddress", "addressLocality": "Bahawalpur", "addressCountry": "PK"},
+         "areaServed": "Worldwide",
+         "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": CONFIG["email"], "availableLanguage": "English",
+                          "hoursAvailable": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}},
          "knowsAbout": ["Sales funnels", "CRM", "Marketing automation", "AI agents", "Email and SMS marketing"]},
         {"@type": "WebPage", "@id": url + "#page", "url": url,
          "name": f"All-in-One Sales Funnel & CRM Software | {B}",
@@ -209,6 +217,7 @@ from competitors import COMPETITORS as _CMP
 _d = CONFIG["domain"]
 _llms = [f"# {B}", "",
   "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $297/month plus a one-time $997 build fee (we build your sales funnel and backend). All plans are month to month.", "",
+  "## Company", "- Oceanic Funnels is a company based in Bahawalpur, Pakistan, serving businesses worldwide. Customers sign up, pay, are onboarded and get support directly from the Oceanic Funnels team.", "- Support: 24/7. The team replies within the same hour; an AI support assistant replies instantly. Email: hello@oceanicfunnels.com", "- Customers own their data: contacts and data can be exported at any time, connected domains stay in the customer's name, and all plans are month to month with no lock-in.", f"- [About Oceanic Funnels]({_d}/about/)", "",
   "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", f"- [Guides]({_d}/guides/): how-to guides on lead response, AI agents, reviews, texting compliance and funnels", ""]
 for c in _CAT:
     _llms.append(f"## {c}")
