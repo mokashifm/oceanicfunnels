@@ -1035,4 +1035,9 @@ var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3
                "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.",
                [("Home", "/"), ("Med spas", path)], body, logo)
     htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
+    mini = ('<footer class="nf-foot"><div class="nf-wrap nf-foot-bot" style="border-top:0">'
+            f'<span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
+            '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div></footer>')
+    htm = htm[:i] + mini + htm[j:]
     return path, htm
