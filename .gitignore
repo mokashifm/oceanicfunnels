@@ -3,3 +3,6 @@ src/preview.html
 __pycache__/
 .DS_Store
 __pycache__/
+
+# Rendered ad videos (large, kept out of the deploy repo)
+ads/**/out/*.mp4

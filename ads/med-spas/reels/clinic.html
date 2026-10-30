@@ -1,0 +1,81 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style><link rel="stylesheet" href="ov.css">
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script></head><body><div id="ov"></div>
+<script type="module">
+import * as THREE from 'three';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+const P=new URLSearchParams(location.search);const W=+(P.get('w')||1080),H=+(P.get('h')||1920);const NIGHT=P.get('mode')==='night';
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});r.setSize(W,H);r.setPixelRatio(1);
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=NIGHT?0.85:1.05;r.outputColorSpace=THREE.SRGBColorSpace;r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+document.body.appendChild(r.domElement);
+const sc=new THREE.Scene();const pm=new THREE.PMREMGenerator(r);sc.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;sc.environmentIntensity=NIGHT?0.12:0.6;
+sc.background=new THREE.Color(NIGHT?0x1a1714:0xEFE6DE);
+const M=(c,ro=.6,me=0,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:ro,metalness:me},o));
+function tex(draw,w=512,h=512,rep=[1,1]){const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(...rep);t.anisotropy=8;return t}
+// floor: light oak planks
+const floorT=tex((g,w,h)=>{for(let i=0;i<8;i++){const y=i*h/8;g.fillStyle=`hsl(32,${28+Math.random()*8}%,${70+Math.random()*6}%)`;g.fillRect(0,y,w,h/8);g.strokeStyle='rgba(90,60,30,.18)';g.lineWidth=2;g.strokeRect(0,y,w,h/8);for(let k=0;k<30;k++){g.strokeStyle=`rgba(120,80,40,${Math.random()*.08})`;g.beginPath();g.moveTo(0,y+Math.random()*h/8);g.lineTo(w,y+Math.random()*h/8);g.stroke()}}},512,512,[3,3]);
+const add=(geo,mat,x,y,z,cast=true)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=cast;m.receiveShadow=true;sc.add(m);return m};
+add(new THREE.PlaneGeometry(12,12),M(0xffffff,.55,0,{map:floorT}),0,0,0).rotation.x=-Math.PI/2;
+const wallM=M(NIGHT?0xB8A496:0xF2E4D8,.95);
+add(new THREE.PlaneGeometry(12,5),wallM,0,2.5,-3,false);
+const lw=add(new THREE.PlaneGeometry(12,5),wallM,-4,2.5,0,false);lw.rotation.y=Math.PI/2;
+const rw=add(new THREE.PlaneGeometry(12,5),wallM,4,2.5,0,false);rw.rotation.y=-Math.PI/2;
+add(new THREE.PlaneGeometry(12,12),M(0xF7F1EC,1),0,4.2,0,false).rotation.x=Math.PI/2;
+// arched wall panel (blush) behind bed
+const arch=new THREE.Shape();arch.moveTo(-1.3,0);arch.lineTo(-1.3,2.2);arch.absarc(0,2.2,1.3,Math.PI,0,true);arch.lineTo(1.3,0);arch.lineTo(-1.3,0);
+add(new THREE.ShapeGeometry(arch,32),M(0xE9C9B9,.9),0.2,0,-2.98,false);
+// window on right wall
+const win=add(new THREE.PlaneGeometry(2.2,2.4),new THREE.MeshBasicMaterial({color:0xFFF8EE}),3.98,2.1,-0.6,false);win.rotation.y=-Math.PI/2;
+const frameM=M(0xffffff,.4);for(const [dy,dz,sy,sz] of [[0,0,2.5,.08],[0,1.1,.08,.08],[0,-1.1,.08,.08]]){}
+// treatment bed
+const leather=M(0xFBF8F5,.35,0,{envMapIntensity:.8});const chrome=M(0xE4E4E4,.22,1,{envMapIntensity:2});
+add(new RoundedBoxGeometry(2.0,.16,.8,6,.07),leather,0.2,.82,-1.6);
+const back=add(new RoundedBoxGeometry(.85,.14,.8,6,.06),leather,-1.13,1.07,-1.6);back.rotation.z=-.55;
+add(new RoundedBoxGeometry(1.6,.5,.55,4,.05),M(0xE8DDD3,.6),0.2,.5,-1.6);
+add(new THREE.CylinderGeometry(.04,.04,.25,16),chrome,0.2,.15,-1.6);
+add(new RoundedBoxGeometry(1.2,.06,.7,4,.03),chrome,0.2,.03,-1.6);
+// stool
+add(new THREE.CylinderGeometry(.26,.26,.1,32),M(0x2B2B2B,.4),1.6,.62,-0.7);add(new THREE.CylinderGeometry(.03,.03,.55,12),chrome,1.6,.33,-0.7);add(new THREE.CylinderGeometry(.25,.25,.03,24),chrome,1.6,.05,-0.7);
+// cabinet + shelves with bottles on left wall
+add(new RoundedBoxGeometry(.6,1.0,2.2,4,.03),M(0xFFFFFF,.5),-3.68,.5,-1.2);
+add(new RoundedBoxGeometry(.6,.05,2.2,2,.01),M(0xD8C3A5,.4),-3.68,1.02,-1.2);
+for(const sy of [1.75,2.35]){add(new THREE.BoxGeometry(.32,.04,1.8),M(0xD8C3A5,.5),-3.82,sy,-1.2)}
+const bottleCols=[0xF4E3D7,0xFFFFFF,0xD9B8A3,0x9FD9CF,0xEBD8C3,0xffffff];
+for(const sy of [1.77,2.37,1.04])for(let i=0;i<7;i++){const h=.16+Math.random()*.14,rr=.04+Math.random()*.03;const b=add(new THREE.CylinderGeometry(rr,rr,h,20),M(bottleCols[i%6],.25,0,{envMapIntensity:1}),-3.78+(Math.random()*.06),sy+h/2,-2.0+i*.26);add(new THREE.CylinderGeometry(rr*.6,rr*.6,.04,16),M(0xC8A982,.3,.6),b.position.x,sy+h+.02,b.position.z)}
+// round mirror with glow ring on left wall
+const ring=add(new THREE.TorusGeometry(.62,.035,16,80),M(0xffffff,.3,0,{emissive:0xFFE9D6,emissiveIntensity:NIGHT?2.2:1.2}),-3.95,2.3,0.9,false);ring.rotation.y=Math.PI/2;
+const mir=add(new THREE.CircleGeometry(.6,64),M(0xE6ECEF,.12,.15,{envMapIntensity:1.5}),-3.97,2.3,0.9,false);mir.rotation.y=Math.PI/2;
+// plants
+function plant(x,z,s){add(new THREE.CylinderGeometry(.22*s,.17*s,.45*s,24),M(0xEDE3D8,.7),x,.225*s,z);const lm=M(0x5E8C61,.7);for(let i=0;i<14;i++){const l=add(new THREE.SphereGeometry(.16*s,12,10),lm,x+(Math.random()-.5)*.4*s,.55*s+Math.random()*.7*s,z+(Math.random()-.5)*.4*s);l.scale.set(1,.45,.7);l.rotation.set(Math.random(),Math.random(),Math.random())}}
+plant(3.3,-2.4,1.3);plant(-3.4,0.9-1.6,0.9);
+// pendant lights
+const pend=[];for(const x of [-0.6,1.0]){add(new THREE.CylinderGeometry(.006,.006,1.2,6),M(0x222222),x,3.6,-1.2,false);const g=add(new THREE.SphereGeometry(.2,32,24),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xFFDDBB,emissiveIntensity:NIGHT?3:1.6,roughness:.3}),x,2.95,-1.2,false);pend.push(g);const pl=new THREE.PointLight(0xFFD7B0,2.5,6,1.6);pend.push(pl);pl.position.set(x,2.8,-1.2);pl.castShadow=true;pl.shadow.mapSize.set(1024,1024);pl.shadow.bias=-.002;sc.add(pl)}
+// side cart with tray + syringes
+add(new RoundedBoxGeometry(.5,.04,.4,3,.01),chrome,1.6,.95,-2.2);add(new RoundedBoxGeometry(.5,.04,.4,3,.01),chrome,1.6,.45,-2.2);for(const [dx,dz] of [[-.22,-.17],[.22,-.17],[-.22,.17],[.22,.17]])add(new THREE.CylinderGeometry(.012,.012,.95,8),chrome,1.6+dx,.47,-2.2+dz);
+add(new RoundedBoxGeometry(.36,.03,.24,3,.01),M(0xffffff,.3),1.6,.985,-2.2);for(let i=0;i<3;i++){const s=add(new THREE.CylinderGeometry(.012,.012,.16,10),M(0xEAF6FF,.1,0,{transparent:true,opacity:.8}),1.5+i*.08,1.01,-2.2);s.rotation.z=Math.PI/2}
+// reception desk front-left
+const deskM=M(0xFFFFFF,.45);add(new RoundedBoxGeometry(1.8,1.05,.7,5,.05),deskM,-2.6,.525,2.2);add(new RoundedBoxGeometry(1.95,.06,.85,4,.02),M(0xD8C3A5,.4),-2.6,1.08,2.2);
+add(new RoundedBoxGeometry(1.82,.12,.02,2,.01),M(0xE9C9B9,.8),-2.6,.75,2.56);
+const phone=add(new RoundedBoxGeometry(.16,.015,.32,3,.01),M(0x111111,.3,.4),-2.25,1.12,2.15);phone.rotation.y=.3;
+const scr=add(new THREE.PlaneGeometry(.14,.29),new THREE.MeshStandardMaterial({color:0x000000,emissive:0x3DE3C8,emissiveIntensity:0}),-2.25,1.129,2.15,false);scr.rotation.x=-Math.PI/2;scr.rotation.z=.3;window.phoneScr=scr;
+const lap=add(new RoundedBoxGeometry(.5,.02,.34,2,.01),M(0xBFC3C7,.3,.8),-2.85,1.12,2.15);const lid=add(new RoundedBoxGeometry(.5,.32,.015,2,.007),M(0xBFC3C7,.3,.8),-2.85,1.27,2.0);lid.rotation.x=-.25;
+add(new THREE.CylinderGeometry(.07,.05,.25,20),M(0xE9C9B9,.4),-3.2,1.235,2.25);for(let i=0;i<5;i++){const st=add(new THREE.CylinderGeometry(.006,.006,.4,6),M(0x6B8F5E),-3.2+(Math.random()-.5)*.08,1.45,2.25+(Math.random()-.5)*.08);st.rotation.z=(Math.random()-.5)*.4}
+// lights
+const hemi=new THREE.HemisphereLight(0xFFF4EA,0xD8C3A5,.9);sc.add(hemi);
+const sun=new THREE.DirectionalLight(0xFFF1DD,2.6);sun.position.set(6,5,-1);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-5;sun.shadow.camera.right=5;sun.shadow.camera.top=5;sun.shadow.camera.bottom=-5;sun.shadow.bias=-.0005;sc.add(sun);
+window.setMode=function(n){r.toneMappingExposure=n?0.7:1.05;sc.environmentIntensity=n?0.1:0.6;sc.background.set(n?0x1a1714:0xEFE6DE);
+ hemi.color.set(n?0x2a2a48:0xFFF4EA);hemi.groundColor.set(n?0x140d08:0xD8C3A5);hemi.intensity=n?.12:.9;sun.color.set(n?0x8EA6FF:0xFFF1DD);sun.intensity=n?.3:2.6;
+ win.material.color.set(n?0x16223a:0xFFF8EE);wallM.color.set(n?0xB8A496:0xF2E4D8);
+ pend.forEach(o=>{if(o.isPointLight)o.intensity=n?7:2.5;else{o.material.emissiveIntensity=n?3.2:1.6}});ring.material.emissiveIntensity=n?2.4:1.2};
+window.setMode(NIGHT);
+const cam=new THREE.PerspectiveCamera(60,W/H,.05,50);
+const SH={wide:[[3.0,1.85,4.6],[2.1,1.8,3.8],[-0.5,1.3,-1.4]],cart:[[2.6,1.45,-0.2],[2.2,1.35,-0.6],[1.5,1.0,-2.2]],shelf:[[-1.2,1.95,1.0],[-1.5,1.85,0.2],[-3.8,1.8,-1.3]],
+ mirror:[[-1.6,2.1,2.8],[-2.0,2.05,2.0],[-3.95,2.2,0.9]],desk:[[-0.6,1.75,4.4],[-1.0,1.6,3.6],[-2.6,1.05,2.2]],bed:[[1.8,1.55,0.8],[1.2,1.45,0.3],[-0.2,0.95,-1.6]]};
+window.shot=function(name,k){const s=SH[name];const e=1-Math.pow(1-Math.min(1,Math.max(0,k)),2);cam.position.set(s[0][0]+(s[1][0]-s[0][0])*e,s[0][1]+(s[1][1]-s[0][1])*e,s[0][2]+(s[1][2]-s[0][2])*e);cam.lookAt(...s[2]);cam.updateProjectionMatrix();r.render(sc,cam)};
+window.render=function(t,shot){const k=Math.min(1,t/8);const s=shot||'wide';
+ if(s==='wide'){cam.position.set(3.0-0.9*k,1.85,4.6-0.8*k);cam.lookAt(-0.5,1.25,-1.4)}
+ else if(s==='cart'){cam.position.set(2.4-.4*k,1.35,-0.6-.3*k);cam.lookAt(1.5,1.0,-2.2)}
+ else if(s==='shelf'){cam.position.set(-1.6,1.9-.2*k,0.6-.6*k);cam.lookAt(-3.8,1.8,-1.4)}
+ cam.updateProjectionMatrix();r.render(sc,cam)};
+if(P.get('reel')){await import('./'+P.get('reel')+'.js');}window.ready=true;render(0);
+</script></body></html>
