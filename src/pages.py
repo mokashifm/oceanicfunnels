@@ -1022,7 +1022,7 @@ def lp_med_spa(cfg, fonts, logo):
     <span class="nf-eyebrow" style="color:var(--aqua)">Free, 15 minutes</span>
     <h2>Ready to install your revenue system?</h2>
     <p>Book a free 15-minute info call. We show you how the system works for your clinic, what we build and how fast it goes live. No pressure, no pitch deck.</p>
-    <div class="lp-cta"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="{mail}">I'm ready to install my booking system <span class="ar" aria-hidden="true">→</span></a></div>
+    <div class="lp-cta"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="{mail}">I'm ready to install my revenue system <span class="ar" aria-hidden="true">→</span></a></div>
   </div>
 </section>
 <script>
