@@ -362,7 +362,7 @@ def compare_page(cfg, fonts, logo, c):
         <span class="nf-eyebrow">The short answer</span>
         <h2>Oceanic Funnels vs {E(n)}: <span class="g">what's the difference?</span></h2>
         <p class="nf-def">{E(c["answer"])}</p>
-        <p class="nf-updated">Prices checked {CHECKED} from public sources</p>
+        <p class="nf-updated">Prices checked {CHECKED} on {E(n)}'s own website</p>
       </div>
       <ul class="nf-facts">
         <li><span class="k">Oceanic Funnels</span><span>All-in-one sales funnel, CRM and automation system</span></li>
@@ -386,7 +386,7 @@ def compare_page(cfg, fonts, logo, c):
         <tbody>{rows}</tbody>
       </table>
     </div>
-    <p class="nf-srcs">{E(n)} details from public pricing pages and reviews, checked {CHECKED}. Plans and prices change, so confirm on {E(n)}'s website. Sources: {srcs}</p>
+    <p class="nf-srcs">{E(n)} details from {E(n)}'s own pricing pages, checked {CHECKED}. Plans and prices change, so confirm on {E(n)}'s website. Sources: {srcs}</p>
   </div>
 </section>
 
@@ -481,7 +481,7 @@ def hub_page(cfg, fonts, logo):
   <div class="nf-wrap"><div class="nf-hub">{cards}</div></div>
 </section>'''
     return path, page(cfg, fonts, path, "Compare Oceanic Funnels vs ClickFunnels, HubSpot and More",
-                      "Compare Oceanic Funnels OS with ClickFunnels, HubSpot, ActiveCampaign, Keap, Kartra, Klaviyo, Zoho, Salesforce and Linktree on features and pricing.", crumbs, body, logo)
+                      "Compare Oceanic Funnels OS with Skool, ClickFunnels, Kajabi, HubSpot, Shopify, ActiveCampaign, Keap, Klaviyo and Salesforce, using their own published pricing.", crumbs, body, logo)
 
 def deep_sections(d, X):
     money = "".join(f'<li><span class="n">Leak {i+1}</span><b>{E(t)}</b><p>{E(x)}</p><p class="fix"><span>The fix</span>{E(f)}</p></li>' for i, (t, x, f) in enumerate(X["money"]))

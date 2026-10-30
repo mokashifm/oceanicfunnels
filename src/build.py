@@ -86,34 +86,34 @@ def faq_html():
 
 # "What's included" table: one representative tool per job, starting paid price, checked October 2026
 REPLACES = [
-    ("CRM and sales pipelines", "HubSpot Sales Hub", 100, "per seat", "https://encharge.io/hubspot-pricing/"),
-    ("Sales funnels", "ClickFunnels", 97, "", "https://support.clickfunnels.com/en/articles/12734340-clickfunnels-2-0-pricing"),
-    ("Website builder", "Wix", 36, "", "https://www.websitebuilderexpert.com/website-builders/wix/wix-pricing/"),
-    ("Online store and checkout", "Shopify", 39, "", "https://www.swell.is/content/shopify-pricing"),
-    ("Email marketing", "ActiveCampaign", 49, "", "https://drry.com/guides/activecampaign-pricing"),
-    ("Two-way SMS", "SimpleTexting", 39, "", "https://textbolt.com/blog/simpletexting-pricing/"),
-    ("Forms and surveys", "Typeform", 39, "", "https://www.jetadmin.io/blog/typeform-pricing/"),
-    ("Appointment booking", "Calendly", 12, "per seat", "https://zeeg.me/en/blog/post/calendly-pricing-guide"),
-    ("Courses and memberships", "Kajabi", 179, "", "https://revenuegeeks.com/guides/kajabi-pricing"),
-    ("Communities", "Skool", 99, "", "https://schoolmaker.com/blog/skool-pricing"),
-    ("Call tracking", "CallRail", 55, "", "https://www.capterra.com/p/141829/CallRail/pricing/"),
-    ("Review management", "Birdeye", 299, "per location", "https://costbench.com/software/review-management/birdeye"),
-    ("Document signing", "DocuSign", 30, "per user", "https://automationatlas.io/answers/docusign-pricing-explained-2026/"),
-    ("Social media planner", "Buffer", 6, "per channel", "https://napoleoncat.com/blog/buffer-pricing/"),
-    ("Link-in-bio page", "Linktree", 15, "", "https://u2l.ai/blog/linktree-pricing"),
+    ("CRM and sales pipelines", "HubSpot Sales Hub", 20, "per seat", "https://www.hubspot.com/pricing/sales"),
+    ("Sales funnels", "ClickFunnels", 97, "", "https://www.clickfunnels.com/pricing"),
+    ("Website builder", "Wix", 17.77, "billed yearly", "https://www.wix.com/plans"),
+    ("Online store and checkout", "Shopify", 39, "", "https://www.shopify.com/pricing"),
+    ("Email marketing", "ActiveCampaign", 15, "billed yearly", "https://www.activecampaign.com/pricing"),
+    ("Two-way SMS", "SimpleTexting", 39, "billed yearly", "https://simpletexting.com/pricing/"),
+    ("Forms and surveys", "Typeform", 29, "", "https://www.typeform.com/pricing"),
+    ("Appointment booking", "Calendly", 10, "per seat, billed yearly", "https://calendly.com/pricing"),
+    ("Courses and memberships", "Kajabi", 179, "", "https://www.kajabi.com/pricing"),
+    ("Communities", "Skool", 9, "+ 10% of sales", "https://www.skool.com/pricing"),
+    ("Call tracking", "CallRail", 50, "", "https://www.callrail.com/pricing"),
+    ("Review requests", "NiceJob", 75, "", "https://get.nicejob.com/pricing"),
+    ("Document signing", "DocuSign", 11, "billed yearly", "https://ecom.docusign.com/plans-and-pricing/esignature"),
+    ("Social media planner", "Buffer", 6, "per channel", "https://buffer.com/pricing"),
+    ("Link-in-bio page", "Linktree", 9, "", "https://linktr.ee/s/pricing"),
 ]
 
 def replaces_html():
-    tot = sum(r[2] for r in REPLACES)
+    tot = round(sum(r[2] for r in REPLACES), 2)
     rows = "".join(
         f'<tr><th scope="row">{f}</th><td data-l="Replaces"><span class="nf-tool">{t}</span></td>'
-        f'<td data-l="Their price" class="num">${c}<small>/mo{(" " + u) if u else ""}</small></td>'
+        f'<td data-l="Their price" class="num">${c:g}<small>/mo{(" " + u) if u else ""}</small></td>'
         f'<td data-l="Oceanic Funnels" class="us">✓ Included</td></tr>' for f, t, c, u, _ in REPLACES)
     rows += (f'<tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">{len(REPLACES)} separate tools</td>'
-             f'<td data-l="Their price" class="num">${tot:,}<small>/mo</small></td>'
+             f'<td data-l="Their price" class="num">${tot:,.2f}<small>/mo</small></td>'
              f'<td data-l="Oceanic Funnels" class="us"><b>$67</b>/month</td></tr>')
     src = " · ".join(f'<a href="{l}" rel="nofollow noopener" target="_blank">{t}</a>' for _, t, _, _, l in REPLACES)
-    return rows, str(len(REPLACES)), f"{tot:,}", src
+    return rows, str(len(REPLACES)), f"{tot:,.2f}", src
 
 def body():
     src = open("body.src.html").read()
@@ -223,6 +223,7 @@ _llms += [f"- [Oceanic Funnels vs {c['name']}]({_d}/compare/{c['slug']}/)" for c
 _llms += ["", "## Legal", f"- [Privacy Policy]({_d}/privacy/)", f"- [Terms of Service]({_d}/terms/)", ""]
 open(f"{SITE}/llms.txt", "w").write("\n".join(_llms))
 
+open(f"{SITE}/_redirects", "w").write("/compare/kartra/ /compare/ 301\n/compare/kartra /compare/ 301\n")
 open(f"{SITE}/_headers", "w").write("""/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

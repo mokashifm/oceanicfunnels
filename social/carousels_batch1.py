@@ -75,10 +75,10 @@ dict(cap="Old reviews don't sell. In BrightLocal's 2026 survey, 74% of consumers
   cta("Fresh reviews, [[on autopilot.]]","Oceanic Funnels sends a review request after every visit and lets you reply to reviews from one place."),
  ]),
 # 6 (Oct 30 PM) about us: 15 apps
-dict(cap="Most businesses pay for a stack of separate tools that don't talk to each other.\n\nWe added up the list prices of 15 common ones: $1,094 a month. Oceanic Funnels OS replaces them from $67 a month, with unlimited contacts and users.",
+dict(cap="Most businesses pay for a stack of separate tools that don't talk to each other.\n\nWe added up the starting prices of 15 common ones, taken from each company's own pricing page: $605.77 a month. Oceanic Funnels OS replaces them from $67 a month, with unlimited contacts and users.",
  tags="#allinone #crm #saas #smallbusiness",
  slides=[
-  dict(t="compare_cost", k="Fire your 15 apps", h="$1,094 a month vs [[$67 a month]]", left=[("CRM (HubSpot)","$100"),("Funnels (ClickFunnels)","$97"),("Courses (Kajabi)","$179"),("Reviews (Birdeye)","$299"),("Community (Skool)","$99"),("Call tracking (CallRail)","$55"),("Email (ActiveCampaign)","$49"),("+ 8 more tools","$216")], total="$1,094", ours="$67", src="Typical published starting prices, Oct 2026. Some are per seat or location."),
+  dict(t="compare_cost", k="Fire your 15 apps", h="$605.77 a month vs [[$67 a month]]", left=[("CRM (HubSpot)","$20"),("Funnels (ClickFunnels)","$97"),("Courses (Kajabi)","$179"),("Reviews (NiceJob)","$75"),("Call tracking (CallRail)","$50"),("Store (Shopify)","$39"),("SMS (SimpleTexting)","$39"),("+ 8 more tools","$106.77")], total="$605.77", ours="$67", src="Starting prices from each company's own pricing page, Oct 30 2026. Some per seat or billed yearly."),
   dict(t="list", k="All inside one login", h="What you [[stop juggling]]", items=[("One contact record per customer","Every message, booking and payment together"),("One inbox","Text, email, Facebook, Instagram, WhatsApp, chat"),("One bill","Instead of 15 renewals"),("Unlimited contacts and users","On every plan")]),
   cta("Keep one bill. [[Fire the rest.]]","See the full comparison and plans at oceanicfunnels.com", kicker="Oceanic Funnels"),
  ]),
