@@ -48,6 +48,23 @@ ROW_LABELS = {
 
 COMPETITORS = [
 {
+ "slug": "skool", "name": "Skool", "kind": "community and course platform",
+ "h1": "The Skool alternative with your community, CRM, email and SMS in one place",
+ "answer": "Skool's Pro plan is $99 a month per community plus a 2.9% transaction fee, and its Hobby plan is $9 a month plus 10%. Skool covers your community and courses, but email marketing, a website and funnels need separate tools. Oceanic Funnels OS includes paid communities, courses and memberships plus a CRM, email, SMS, funnels and AI agents, from $67 a month with no platform fee on your sales.",
+ "rows": {
+  "price": "$9/month (Hobby) or $99/month (Pro), per community",
+  "fee": "10% + 30c (Hobby) or 2.9% + 30c (Pro) per transaction",
+  "users": "1 admin on Hobby, up to 30 on Pro",
+  "courses": "Yes, community, courses and events",
+  "email": "No built-in email marketing",
+  "funnels": "No website or funnel builder",
+ },
+ "plans": [["Hobby", "$9/month plus a 10% transaction fee"], ["Pro", "$99/month ($82 billed yearly) plus a 2.9% transaction fee"]],
+ "better": "You only need a simple community with courses, and you want new members to find you through Skool's own discovery page.",
+ "switch": "Export your member list, recreate your community, courses and pricing in Oceanic Funnels OS (or let our team do it on Done-For-You), then invite your members and turn on email and SMS follow-up.",
+ "sources": [["Skool pricing 2026 (SchoolMaker, updated Sep 2026)", "https://schoolmaker.com/blog/skool-pricing"], ["Skool pricing 2026 (CartMango, Aug 2026)", "https://cartmango.com/skool-pricing/"]],
+},
+{
  "slug": "clickfunnels", "name": "ClickFunnels",
  "kind": "funnel builder",
  "h1": "The ClickFunnels alternative with CRM, SMS and AI built in",

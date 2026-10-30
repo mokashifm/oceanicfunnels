@@ -57,8 +57,8 @@ dict(
 dict(
  slug="speed-to-lead", cat="Lead response",
  title="Speed to lead: why replying in minutes wins the sale, and how to automate it",
- kw="Speed to Lead: Why Fast Response Wins and How to Automate It",
- desc="Speed to lead is how fast you respond to a new enquiry. Research shows the first business to reply usually wins. Here's how to reply in seconds automatically.",
+ kw="Speed to Lead: Meaning, Research and How to Automate It",
+ desc="Speed to lead means how fast you reply to a new lead. Harvard Business Review found replying within an hour made firms 7x likelier to qualify it. Here's how.",
  read=8,
  short="Speed to lead is the time between a new lead contacting you and your first reply. It matters because interest fades fast and many people contact several businesses at once. A widely cited Harvard Business Review study found companies that contacted leads within an hour were nearly seven times as likely to qualify them as those that waited even an hour longer. The fix is automation: an instant text and email, an AI agent that answers questions, and a booking link, so every lead gets a reply in seconds, day or night.",
  sections=[

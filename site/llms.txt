@@ -36,7 +36,7 @@
 - [Martial Arts and Dance Studios](https://oceanicfunnels.com/industries/martial-arts-dance-studios/): CRM for Martial Arts & Dance Studios
 - [Yoga and Pilates Studios](https://oceanicfunnels.com/industries/yoga-pilates-studios/): Yoga & Pilates Studio Marketing and Membership Software
 - [Personal Trainers](https://oceanicfunnels.com/industries/personal-trainers/): Personal Trainer CRM, Booking & Payment Software
-- [Swim Schools](https://oceanicfunnels.com/industries/swim-schools/): Swim School Enrolment & Parent Communication Software
+- [Swim Schools](https://oceanicfunnels.com/industries/swim-schools/): Swim School Booking & Enrolment Software
 
 ## Beauty and personal care
 - [Med Spas and Aesthetic Clinics](https://oceanicfunnels.com/industries/med-spas/): Med Spa CRM & Marketing Automation
@@ -81,7 +81,7 @@
 
 ## Guides
 - [What is missed call text back? How it works and how to set it up](https://oceanicfunnels.com/guides/missed-call-text-back/): Missed call text back sends an automatic text when you can't answer a call, so the caller doesn't ring your competitor. How it works and how to set it up.
-- [Speed to lead: why replying in minutes wins the sale, and how to automate it](https://oceanicfunnels.com/guides/speed-to-lead/): Speed to lead is how fast you respond to a new enquiry. Research shows the first business to reply usually wins. Here's how to reply in seconds automatically.
+- [Speed to lead: why replying in minutes wins the sale, and how to automate it](https://oceanicfunnels.com/guides/speed-to-lead/): Speed to lead means how fast you reply to a new lead. Harvard Business Review found replying within an hour made firms 7x likelier to qualify it. Here's how.
 - [How to set up an AI chat agent that answers leads and books appointments](https://oceanicfunnels.com/guides/ai-chat-agent-for-business/): An AI chat agent replies to leads on your website, SMS, Facebook, Instagram and WhatsApp, answers questions and books appointments. Here's how to set one up.
 - [AI receptionist for small business: how a voice AI agent answers your calls](https://oceanicfunnels.com/guides/ai-receptionist/): A voice AI receptionist answers your business calls, answers questions, books appointments and transfers urgent calls. Here's how it works and how to set it up.
 - [WhatsApp automation for business: what you can automate and what it costs](https://oceanicfunnels.com/guides/whatsapp-business-automation/): How businesses automate WhatsApp: instant replies, reminders, AI agents and broadcasts, plus how WhatsApp's 24-hour window and per-message pricing work.
@@ -118,6 +118,7 @@
 - [How to run a webinar that sells: live and on-demand webinar funnels](https://oceanicfunnels.com/guides/run-a-webinar/): Set up a live or on-demand webinar funnel with registration, reminders and follow-up, so more people attend and buy.
 
 ## Comparisons
+- [Oceanic Funnels vs Skool](https://oceanicfunnels.com/compare/skool/)
 - [Oceanic Funnels vs ClickFunnels](https://oceanicfunnels.com/compare/clickfunnels/)
 - [Oceanic Funnels vs Kajabi](https://oceanicfunnels.com/compare/kajabi/)
 - [Oceanic Funnels vs Funnelish](https://oceanicfunnels.com/compare/funnelish/)

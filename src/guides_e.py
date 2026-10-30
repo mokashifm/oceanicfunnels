@@ -131,6 +131,7 @@ dict(
  short="An online community gives your customers, students or members a place to talk, learn and stay engaged. In Oceanic Funnels OS, communities include groups, channels, posts, events with reminders, courses inside the group, and gamification with levels, a leaderboard and rewards. You can run free or paid groups, invite members with roles, and connect everything to your CRM and automations, so it works like Skool but lives next to your funnels, email and payments.",
  sections=[
   ("Why build your community here", """
+<p>Comparing platforms? See our side-by-side <a href="/compare/skool/">Oceanic Funnels vs Skool comparison</a>, including Skool's plans and transaction fees.</p>
 <ul>
 <li>Members, payments, courses and email in one system.</li>
 <li>Automations can welcome new members, reward activity and win back quiet ones.</li>

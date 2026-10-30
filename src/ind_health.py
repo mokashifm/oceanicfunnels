@@ -187,7 +187,7 @@ I("personal-trainers", "Personal Trainers", "Personal trainers", "Fitness and sp
    ("Can clients book and pay online?", "Yes. Clients can book consultations and sessions and pay for packages online.")]),
 
 I("swim-schools", "Swim Schools", "Swim schools", "Fitness and sports",
-  "Swim School Enrolment & Parent Communication Software",
+  "Swim School Booking & Enrolment Software",
   "Enrolment and parent communication for swim schools",
   "Fill every lesson and keep families enrolled term after term",
   "Trial lesson booking, enrolment payments, term reminders and parent messages for swim schools.",
