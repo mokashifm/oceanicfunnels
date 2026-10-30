@@ -873,6 +873,8 @@ LP_CSS = r"""
 .lp-book h2{color:#fff}
 .lp-book p{color:#C9D6D4;font-size:18px;max-width:56ch;margin:16px auto 0;line-height:1.55}
 .lp-book .lp-cta{justify-content:center}
+.lp-m{display:none}
+@media (max-width:600px){.lp-d{display:none}.lp-m{display:inline}.lp-head .nf-btn{padding:10px 16px;font-size:14.5px}.lp-book .nf-btn{white-space:normal;text-align:center;font-size:15.5px;padding:16px 22px;max-width:100%}}
 @media (max-width:900px){.lp-hero .in{grid-template-columns:1fr;gap:36px;padding-block:28px 56px}.lp-three,.lp-stats,.lp-vs{grid-template-columns:1fr}}
 """
 PAGE_CSS += LP_CSS
@@ -883,7 +885,7 @@ def lp_med_spa(cfg, fonts, logo):
     path = "/lp/med-spas/"
     book = "#book"
     mail = "mailto:" + cfg["email"] + "?subject=Free%20info%20call%20for%20my%20med%20spa"
-    head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{book}">Book a free info call</a></header>'
+    head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{book}"><span class="lp-d">Book a free info call</span><span class="lp-m">Free info call</span></a></header>'
     def phone(ch, msgs, tag=None):
         inner = "".join((f'<div class="lp-q">{E(t)}</div>' if w == "u" else f'<div class="lp-a"><b>{E(w)}</b>{E(t)}</div>') for w, t in msgs)
         return f'<div class="lp-phone"><div class="scr"><div class="bar"><span>{E(ch[0])}</span><span>{E(ch[1])}</span></div><div class="ch">{E(ch[2])}</div>{inner}{f"<span class=lp-tag>{E(tag)}</span>" if tag else ""}</div></div>'
