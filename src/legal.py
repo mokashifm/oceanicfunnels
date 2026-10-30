@@ -113,7 +113,7 @@ TERMS = [
 <li><b>Done-For-You plan:</b> includes a custom sales funnel and automated backend built by our team, plus ten edit requests or one new page each month. It has a one-time build fee of $997, charged with your first payment, in addition to the monthly fee. Once our team has started the build, the build fee is non-refundable.</li>
 <li><b>Extra funnels:</b> funnels built by our team beyond your plan are $297 one time per funnel. You can build unlimited funnels yourself on every plan.</li>
 <li>Monthly edit requests and pages do not roll over to the next month.</li>
-<li><b>Your part:</b> you agree to provide the content, logins, brand assets and approvals we need, on time. Timelines, including our "live in 14 days" target, start once we have what we need, and are extended by any delays on your side. If we miss the 14-day launch target for reasons within our control, your next month's Done-For-You fee is waived.</li>
+<li><b>Your part:</b> you agree to provide the content, logins, brand assets and approvals we need, on time. Timelines, including our "live in 14 days" target, start once we have what we need, and are extended by any delays on your side. If we miss the 14-day launch target for reasons within our control, your first month's Done-For-You fee is free and is credited to your next invoice. The one-time build fee still applies.</li>
 <li>You are responsible for reviewing and approving everything we build before it goes live, including claims in your copy and compliance with laws that apply to your business.</li>
 </ul>"""),
 

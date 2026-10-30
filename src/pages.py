@@ -873,6 +873,18 @@ LP_CSS = r"""
 .lp-book h2{color:#fff}
 .lp-book p{color:#C9D6D4;font-size:18px;max-width:56ch;margin:16px auto 0;line-height:1.55}
 .lp-book .lp-cta{justify-content:center}
+.lp-pains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}
+.lp-pain{background:#fff;border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:var(--r);padding:20px 20px;font-size:16px;line-height:1.45;color:var(--text)}
+.lp-pain b{display:block;font-family:var(--display);font-size:18px;letter-spacing:-.01em;color:var(--ink);margin-bottom:4px}
+.lp-three{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.lp-guar{margin:14px 0 4px;background:var(--aqua-l);color:var(--ink);border-radius:10px;padding:12px 14px;font-weight:600;font-size:15px;line-height:1.4}
+.lp-guar small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:4px}
+.lp-sticky{display:none}
+@media (max-width:1100px){.lp-three{grid-template-columns:repeat(2,minmax(0,1fr))!important}.lp-pains{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.lp-three,.lp-pains{grid-template-columns:1fr!important}
+.lp-sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(14,26,27,.94);backdrop-filter:blur(6px)}
+.lp-sticky .nf-btn{width:100%;justify-content:center}
+body:has(.lp-sticky){padding-bottom:76px}}
 .lp-m{display:none}
 @media (max-width:600px){.lp-d{display:none}.lp-m{display:inline}.lp-head .nf-btn{padding:10px 16px;font-size:14.5px}.lp-book .nf-btn{white-space:normal;text-align:center;font-size:15.5px;padding:16px 22px;max-width:100%}}
 @media (max-width:900px){.lp-hero .in{grid-template-columns:1fr;gap:36px;padding-block:28px 56px}.lp-three,.lp-stats,.lp-vs{grid-template-columns:1fr}}
@@ -895,10 +907,12 @@ def lp_med_spa(cfg, fonts, logo):
         ("u", "Saturday please!"),
         ("AI agent", "Booked for Saturday at 11:00. A $50 deposit link is on its way to hold your spot.")], "Booked in 2 minutes. Deposit paid.")
     three = [
-        (phone(("9:14 PM", "Friday", "Instagram DM"), [("u", "Do you do Botox? How much?"), ("AI agent", "We do! Pricing is per unit and your injector confirms it at your visit. Want Saturday 10:00 or 1:30?"), ("u", "1:30"), ("AI agent", "You're booked. Confirmation and intake form sent.")]),
-         "DMs answered in seconds, 24/7", "Your AI agent knows your menu, prices and policies, books the consultation and hands anything clinical to your team."),
+        (phone(("11:02 PM", "Wednesday", "Website chat"), [("u", "Do you do laser hair removal? How many sessions?"), ("AI agent", "We do! Most clients need several sessions a few weeks apart, and your provider sets your plan. Want a consultation Monday 5:00 or Tuesday 9:30?"), ("u", "Tuesday"), ("AI agent", "Booked. Confirmation and intake form sent.")]),
+         "Website and social enquiries answered 24/7", "Your AI agent knows your menu, prices and policies, books the consultation and hands anything clinical to your team."),
         (phone(("2:47 PM", "Tuesday", "Text message"), [("Clinic", "Hi, it's Glow Aesthetics. Sorry we missed your call, we're with a client. How can we help?"), ("u", "Looking to book a HydraFacial this week"), ("Clinic", "Thursday 11:00 or Friday 3:00? Book here: [link]")]),
          "No missed call goes to a competitor", "The moment a call goes unanswered, the caller gets a text from your number and the conversation keeps going."),
+        (phone(("9:00 AM", "Day before", "Text message"), [("Clinic", "Reminder: your consultation is tomorrow at 2:00 with Dr. Lee. Reply C to confirm or R to reschedule."), ("u", "R"), ("Clinic", "No problem! Pick a new time here: [link]. Your deposit carries over.")]),
+         "Fewer no-shows, deposits held", "Deposits at booking, reminders before every visit and a one-tap reschedule link, so empty chairs get refilled."),
         (phone(("10:00 AM", "Month 4", "Text message"), [("Clinic", "Hi Sarah! It's about 4 months since your last Botox. Want to book your next appointment before it wears off? [link]"), ("u", "Yes please, same injector"), ("Clinic", "Done! Booked with Jess on the 14th at 2:00.")]),
          "Clients rebooked on time", "Rebooking reminders timed to each treatment, so clients come back to you instead of whoever runs a promo that week."),
     ]
@@ -930,7 +944,18 @@ def lp_med_spa(cfg, fonts, logo):
   </div>
 </section>
 
-<section class="nf-band">
+<section class="nf-band lp-pains-band">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Sound familiar?</span>
+      <h2>Where med spas lose bookings <span class="g">every week</span></h2>
+      <p class="nf-sub">If two or more of these happen at your clinic, money is slipping out every week.</p>
+    </div>
+    <div class="lp-pains"><div class="lp-pain"><b>You pay for every lead</b> then someone replies hours later, after they've booked elsewhere.</div><div class="lp-pain"><b>The phone rings mid-treatment</b> and the caller hangs up and tries the next clinic on Google.</div><div class="lp-pain"><b>DMs from 10 PM</b> get answered at 10 AM, when the client has already moved on.</div><div class="lp-pain"><b>Free consults book</b> then never show, and a provider's hour disappears.</div><div class="lp-pain"><b>Botox clients drift past month four</b> because nobody reminds them it's time.</div><div class="lp-pain"><b>Happy clients leave</b> without ever leaving a Google review.</div><div class="lp-pain"><b>Past clients sit untouched</b> in your booking software, years of revenue nobody contacts.</div><div class="lp-pain"><b>Memberships and packages</b> tracked by hand, with failed payments nobody chases.</div></div>
+  </div>
+</section>
+
+<section class="nf-band" style="padding-top:0">
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
       <span class="nf-eyebrow">See it work</span>
@@ -1001,7 +1026,8 @@ def lp_med_spa(cfg, fonts, logo):
         <span class="plan">Done-For-You</span>
         <div class="amt"><span class="v">$297</span><small>/month</small></div>
         <p class="fee">+ $997 one-time build</p>
-        <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>No sales team needed</li><li>24/7 support</li><li>No contract, cancel anytime</li></ul>
+        <p class="lp-guar">Live in 14 days, or your first month is free.<small>The $997 build fee still applies. The 14 days start once we have your content and logins.</small></p>
+        <ul><li>Built and launched by our team</li><li>Founding price locked for life (first 50 clinics)</li><li>No sales team needed</li><li>24/7 support</li><li>No contract, cancel anytime</li></ul>
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
         <p class="small">Ready now? <a href="{CK}">Get it built for me</a>.</p>
       </aside>
@@ -1018,6 +1044,7 @@ def lp_med_spa(cfg, fonts, logo):
   </div>
 </section>
 
+<div class="lp-sticky"><a class="nf-btn nf-btn--aqua" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a></div>
 <section class="nf-band lp-book" id="book">
   <div class="nf-wrap">
     <span class="nf-eyebrow" style="color:var(--aqua)">Free, 15 minutes</span>
