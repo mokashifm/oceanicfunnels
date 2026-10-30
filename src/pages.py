@@ -26,10 +26,17 @@ CLARITY = """<script type="text/javascript">
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
 
-# Meta Pixel (dataset). Paste the dataset ID here and rebuild; empty = no pixel on the site.
-META_PIXEL_ID = "1759319485158087"
-if META_PIXEL_ID:
-    CLARITY += """
+# Meta Pixels: one dataset per industry. Path prefix -> dataset ID. Pages not listed get no pixel.
+META_PIXELS = {
+    "/lp/med-spas/": "1759319485158087",          # Med spa dataset
+    "/industries/med-spas/": "1759319485158087",
+}
+def pixel_for(path):
+    for pre, pid in META_PIXELS.items():
+        if path.startswith(pre):
+            return PIXEL_TPL.replace("PIXELID", pid)
+    return ""
+PIXEL_TPL = """
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','PIXELID');fbq('track','PageView');
@@ -37,7 +44,7 @@ if(location.pathname.indexOf('/lp/')===0||location.pathname.indexOf('/industries
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
 if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{content_name:h.split('/').pop()})}});
 </script>
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>""".replace("PIXELID", META_PIXEL_ID)
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>"""
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
 CAL_MED = "/lp/med-spas/book/"
 CAL_EMBED = "https://links.oceanicfunnels.com/widget/booking/0Fq9d6ETDejl4rKothS4"
@@ -843,6 +850,9 @@ def build_all(cfg, fonts, src, site):
     for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo)]:
         d = site + path
         os.makedirs(d, exist_ok=True)
+        px = pixel_for(path)
+        if px:
+            htm = htm.replace("</head>", px + "\n</head>", 1)
         open(d + "index.html", "w").write(htm)
     return [p for p, _ in out]
 
