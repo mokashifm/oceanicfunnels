@@ -25,6 +25,19 @@ CLARITY = """<script type="text/javascript">
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
+
+# Meta Pixel (dataset). Paste the dataset ID here and rebuild; empty = no pixel on the site.
+META_PIXEL_ID = ""
+if META_PIXEL_ID:
+    CLARITY += """
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','PIXELID');fbq('track','PageView');
+if(location.pathname.indexOf('/lp/')===0||location.pathname.indexOf('/industries/')===0){fbq('track','ViewContent',{content_name:location.pathname})}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{content_name:h.split('/').pop()})}});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>""".replace("PIXELID", META_PIXEL_ID)
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
 CK_IND = {"med-spas": "https://checkout.oceanicfunnels.com/oceanic_funnels_med-spas"}
 SOCIAL = [("Facebook", "https://www.facebook.com/oceanicfunnels"), ("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
