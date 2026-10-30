@@ -39,6 +39,7 @@ if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>""".replace("PIXELID", META_PIXEL_ID)
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
+CAL_MED = "https://links.oceanicfunnels.com/widget/bookings/os-install-your-med-spa-revenue-system"
 CK_IND = {"med-spas": "https://checkout.oceanicfunnels.com/oceanic_funnels_med-spas"}
 SOCIAL = [("Facebook", "https://www.facebook.com/oceanicfunnels"), ("LinkedIn", "https://www.linkedin.com/company/oceanicfunnels"), ("Instagram", "https://www.instagram.com/oceanicfunnels/")]
 def art(w): return ("an " if w[:1].lower() in "aeiou" else "a ") + w
@@ -928,8 +929,8 @@ PAGE_CSS += LP_CSS
 def lp_med_spa(cfg, fonts, logo):
     X = DEEP["med-spas"]
     path = "/lp/med-spas/"
-    book = "#book"
-    mail = "mailto:" + cfg["email"] + "?subject=Free%20info%20call%20for%20my%20med%20spa"
+    book = CAL_MED
+    mail = CAL_MED
     head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{book}"><span class="lp-d">Book a free info call</span><span class="lp-m">Free info call</span></a></header>'
     def phone(ch, msgs, tag=None):
         inner = "".join((f'<div class="lp-q">{E(t)}</div>' if w == "u" else f'<div class="lp-a"><b>{E(w)}</b>{E(t)}</div>') for w, t in msgs)
