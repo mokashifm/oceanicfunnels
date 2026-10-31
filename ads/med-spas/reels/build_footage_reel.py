@@ -45,6 +45,19 @@ REELS = {
        html='<span class="k ap" data-at=".1">Saturday</span><div class="cal ap" data-at=".3"><div class="lb">Saturday</div><div class="slot on"><b>10:00</b>Hydrafacial</div><div class="slot on"><b>10:30</b>Consultation<span class="tg">ARRIVED</span></div><div class="slot on"><b>12:30</b>Botox</div><div class="slot on"><b>2:00</b>Filler</div></div>'),
   dict(clip="C4", inp=0, vo=END_VO, html=END_HTML('Fewer no-shows. <span class="aq">Deposits held.</span>'), dim=True),
  ],
+ "D": [
+  dict(clip="D1", inp=0, vo="Botox wears off. The question is, who will your clients rebook with?",
+       html='<span class="k ap" data-at=".2">Month 4</span><div class="panel ap" data-at=".7"><h1>Botox wears off.<br><span class="aq">Who will they rebook with?</span></h1></div>'),
+  dict(clip="D2", inp=0, vo="Most clinics wait for clients to remember.",
+       html='<span class="k ap" data-at=".1">Your client list</span><div class="cal ap" data-at=".3"><div class="lb">Due for Botox</div><div class="row">Sarah M.<small>4 months ago</small></div><div class="row">Priya K.<small>4 months ago</small></div><div class="row">Emma L.<small>5 months ago</small></div></div>'),
+  dict(clip="D1", inp=4.0, vo="Your system remembers for you.",
+       html='<span class="k ap" data-at=".1">Automatic</span><div class="cal ap" data-at=".3"><div class="lb">Rebooking reminders</div><div class="tl"><div class="st ap" data-at=".5"><div class="dot">1</div><div><b>Day 0</b><span>Treatment done, review request sent</span></div></div><div class="st ap" data-at="1.1"><div class="dot">2</div><div><b>Month 3</b><span>Friendly check-in text</span></div></div><div class="st ap" data-at="1.7"><div class="dot">3</div><div><b>Month 4</b><span>Rebooking link with her injector</span></div></div></div></div>'),
+  dict(clip="D3", inp=0, minlen=5.6, vo="It texts each client at the right time, with a link to book their usual injector.",
+       html='<span class="k ap" data-at=".1">Text · Month 4</span><div class="ph ap" data-at=".2"><div class="a ap" data-at=".3"><span class="who">Your clinic</span>Hi Sarah! It\'s about 4 months since your last Botox. Want to book before it wears off?</div><div class="q ap" data-at="2.0">Yes please, same injector</div><div class="a ap" data-at="3.1"><span class="who">Your clinic</span>Done! Booked with Jess on the 14th at 2:00.</div></div>'),
+  dict(clip="D4", inp=0, vo="So they come back to you, not to the clinic running a promo that week.",
+       html='<span class="k ap" data-at=".1">Rebooked</span><div class="dash ap" data-at=".3"><div class="lb">Rebooked this month</div><div><span class="num cnt" data-to="23" data-at=".5">0</span><span class="up">from reminders</span></div><small>Example. Illustration only.</small></div>'),
+  dict(clip="D4", inp=0, vo=END_VO, html=END_HTML('Clients rebooked <span class="aq">before it wears off.</span>'), dim=True),
+ ],
 }
 SC = REELS[RID]; os.makedirs(WORK, exist_ok=True)
 from kokoro_onnx import Kokoro
