@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1920,height:384}});await p.goto('file://'+process.cwd()+'/banner.html');await p.waitForTimeout(500);await p.screenshot({path:'reddit-banner-1920x384.png'});
+await p.setViewportSize({width:1920,height:384});await p.screenshot({path:'crop-center.png',clip:{x:660,y:0,width:600,height:384}});await b.close()})();
