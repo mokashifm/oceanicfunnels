@@ -63,7 +63,7 @@ def schema():
                 "priceSpecification": spec if setup else spec[0]}
     graph = [
         {"@type": "Organization", "@id": org_id, "name": B, "url": CONFIG["domain"], "email": CONFIG["email"],
-         "logo": CONFIG["domain"] + "/icon-512.png", "sameAs": [u for _, u in pages.SOCIAL] + ["https://www.trustpilot.com/review/oceanicfunnels.com"],
+         "logo": CONFIG["domain"] + "/icon-512.png", "sameAs": [u for _, u in pages.SOCIAL] + ["https://www.trustpilot.com/review/oceanicfunnels.com", "https://www.crunchbase.com/organization/oceanic-funnels"],
          "address": {"@type": "PostalAddress", "addressLocality": "Bahawalpur", "addressCountry": "PK"},
          "areaServed": "Worldwide",
          "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": CONFIG["email"], "availableLanguage": "English",
