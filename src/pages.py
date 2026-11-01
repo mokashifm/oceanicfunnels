@@ -1,6 +1,7 @@
 """Builds the extra pages: /privacy/, /terms/, /compare/ and /compare/<competitor>/.
 Shares the homepage design: its stylesheet is extracted to /assets/site.css.
 """
+import tools
 import html, json, os, re
 import legal
 from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
@@ -244,7 +245,7 @@ def footer(cfg):
       <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
-      <div><span class="fh">Product</span><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
+      <div><span class="fh">Product</span><a href="/#features">Features</a><a href="/#all-in-one">All-in-one</a><a href="/#pricing">Pricing</a><a href="/guides/">Guides</a><a href="/tools/speed-to-lead-test/">Speed to Lead Test</a><a href="/#faq">FAQ</a></div>
       <div><span class="fh">Industries</span>{inds}<a href="/industries/">All industries</a></div>
       <div><span class="fh">Compare</span>{comp}<a href="/compare/">All comparisons</a></div>
       <div><span class="fh">Company</span><span>{E(cfg["email"])}</span><a href="/about/">About</a><a href="{cfg["login"]}">Log in</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a>{"".join(f'<a href="{u}" rel="me noopener" target="_blank">{n}</a>' for n, u in SOCIAL)}</div>
@@ -884,7 +885,8 @@ def build_all(cfg, fonts, src, site):
                       "How Oceanic Funnels collects, uses, shares and protects personal information, including SMS consent, cookies, analytics and your privacy rights.", legal.PRIVACY),
            legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
                       "The terms of service that apply when you use oceanicfunnels.com, use Oceanic Funnels OS or buy a Done-For-You build: billing, cancellation and data.", legal.TERMS),
-           hub_page(cfg, fonts, logo), about_page(cfg, fonts, logo)]
+           hub_page(cfg, fonts, logo), about_page(cfg, fonts, logo),
+           tools.speed_to_lead_test(cfg, fonts, logo, page, crumbs_html, faq_schema)]
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]

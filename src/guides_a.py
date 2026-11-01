@@ -116,7 +116,7 @@ dict(
 <p>Example: a form is submitted at 7:42pm and your first text goes out at 7:42pm and 20 seconds. Your speed to lead is 20 seconds. If the first reply is a call at 9:15am the next day, it's 13 hours and 33 minutes.</p>
 <p>Report the <b>median</b> as well as the average, because a few leads left overnight can hide behind a good average. Count only real replies: a message that answers the lead or books them, not an internal notification.</p>
 <h3>Test your own speed to lead</h3>
-<p>Fill out your own website form, send your own Instagram DM, and call your main number after hours. Time how long each takes to get a reply. Most owners are surprised by the result.</p>"""),
+<p>Fill out your own website form, send your own Instagram DM, and call your main number after hours. Time how long each takes to get a reply. Most owners are surprised by the result. Then take our free <a href="/tools/speed-to-lead-test/">Speed to Lead Test</a> to score your setup out of 100 and see your top fixes.</p>"""),
   ("Setting it up in Oceanic Funnels OS", """
 <p>In Oceanic Funnels OS, this is a workflow triggered by a new form submission, a new lead or an inbound message. It sends your instant reply, assigns the lead to a team member, creates a task and starts the follow-up sequence. Pair it with <a href="/guides/missed-call-text-back/">missed call text back</a> so phone leads get the same instant response, and an <a href="/guides/ai-chat-agent-for-business/">AI chat agent</a> for conversations outside business hours.</p>
 <p>On the Growth plan our team installs a speed-to-lead automation as one of your core automations in the first week. On Done-For-You, we build it into your full funnel and backend.</p>"""),
