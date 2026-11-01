@@ -49,9 +49,9 @@ dict(
 dict(
  slug="get-more-google-reviews", cat="Reviews",
  title="How to get more Google reviews automatically (without breaking the rules)",
- kw="How to Get More Google Reviews Automatically",
- desc="Most customers will leave a review if you ask at the right time. Here's how to automate Google review requests, what to say and what to avoid.",
- read=7,
+ kw="How to Get More Google Reviews Automatically (2026)",
+ desc="How to collect verified customer reviews automatically: send review requests to real customers after every job, what to say, and Google's rules.",
+ read=9, updated="2026-10-31",
  short="The simplest way to get more Google reviews is to ask every customer, at the moment they're happiest, with a direct link to your review page. Automate it: when a job is marked complete or an appointment is attended, send a short SMS or email with your review link. BrightLocal's 2026 survey found 83% of consumers who were asked to leave a review went on to write one. In Oceanic Funnels OS, connect your Google Business Profile and send review requests automatically from a workflow or manually from Reputation → Requests.",
  sections=[
   ("Why reviews matter more than ever", """
@@ -74,6 +74,15 @@ dict(
 <li><b>Don't set review quotas or ask for specific content.</b> Since April 2026, Google's policy also bars businesses from asking staff to collect a set number of reviews, or asking for reviews that include specific content, such as a staff member's name.</li>
 <li><b>Don't write or buy fake reviews.</b> 97% of consumers in BrightLocal's survey think businesses should be punished for fake reviews.</li>
 </ul>"""),
+  ("How to collect verified customer reviews automatically", """
+<p>A verified review is one written by someone who really bought from you. The easiest way to collect them automatically is to send review requests only from your own customer records, triggered by something that proves the purchase happened:</p>
+<ul>
+<li><b>An appointment marked as showed</b> in your calendar.</li>
+<li><b>A job or opportunity marked as won</b> in your pipeline.</li>
+<li><b>A payment received</b> or an order fulfilled.</li>
+</ul>
+<p>Because the request goes out from that event, every review link reaches a real customer, at the right moment, without anyone remembering to send it. Add one reminder a few days later for people who didn't open the first message, then stop.</p>
+<p>Ask every customer, not only the ones you expect to be happy: Google's policy says businesses must not "selectively solicit positive reviews".</p>"""),
   ("Reply to every review", """
 <p>The same survey found 89% of consumers expect owners to respond to reviews, and 50% are unlikely to choose a business that gives templated replies. Reply personally, thank people by name and address any issue calmly.</p>"""),
   ("How to automate review requests in Oceanic Funnels OS", """
@@ -87,6 +96,8 @@ dict(
  ],
  faqs=[
   ("Is it allowed to ask customers for Google reviews?", "Yes. Asking customers for reviews is fine. What Google prohibits is offering incentives for reviews and selectively asking only customers you expect to be positive."),
+  ("How can I collect verified customer reviews automatically?", "Trigger a review request from an event that proves the purchase, such as an appointment marked showed, a payment received or a job marked won. The request then only goes to real customers, automatically, by SMS or email."),
+  ("Can I send review requests only to happy customers?", "No. Google's policy prohibits selectively soliciting positive reviews. Send the same request to every customer and deal with complaints directly."),
   ("SMS or email for review requests?", "SMS usually gets a faster response because people read texts quickly. Email works well as a reminder or for customers without a mobile number."),
   ("How many reviews do I need?", "BrightLocal's 2026 survey found 47% of consumers won't use a business with fewer than 20 reviews, and most only look at reviews from the last three months, so aim for a steady flow."),
  ],

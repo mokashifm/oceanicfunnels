@@ -521,6 +521,7 @@ def compare_page(cfg, fonts, logo, c):
 </section>'''
     title = f"Oceanic Funnels vs {n}: The {n} Alternative | Oceanic Funnels"
     if len(title) > 62: title = f"Oceanic Funnels vs {n} | {n} Alternative"
+    if c.get("title"): title = c["title"]
     extra = [faq_schema(faqs)]
     desc = c["answer"]
     if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0] + "…"
@@ -787,7 +788,8 @@ def guide_page(cfg, fonts, logo, g):
     indl = "".join(f'<a href="/industries/{d["slug"]}/">{E(d["name"])}</a>' for d in inds)
     rel = [o for o in GUIDES if o["slug"] != g["slug"] and o["cat"] == g["cat"]] + [o for o in GUIDES if o["slug"] != g["slug"] and o["cat"] != g["cat"]]
     more = "".join(f'<a href="/guides/{o["slug"]}/">{E(o["kw"].split(":")[0])}</a>' for o in rel[:10]) + '<a href="/guides/">All guides</a>' 
-    date = datetime_fmt(GUIDE_DATE)
+    upd = g.get("updated", GUIDE_DATE)
+    date = datetime_fmt(upd)
     body = f'''<section class="nf-sub-hero">
   <div class="nf-wrap">
     {{{{HEADER}}}}
@@ -796,7 +798,7 @@ def guide_page(cfg, fonts, logo, g):
       <span class="nf-vs">{E(g["cat"])}</span>
       <h1 style="font-size:clamp(34px,4.6vw,58px)">{E(g["title"])}</h1>
       <p class="nf-sub">{E(g["desc"])}</p>
-      <div class="nf-meta"><span>By <b>Oceanic Funnels Team</b></span><span>Updated <time datetime="{GUIDE_DATE}">{date}</time></span><span>{g["read"]} min read</span></div>
+      <div class="nf-meta"><span>By <b>Oceanic Funnels Team</b></span><span>Updated <time datetime="{upd}">{date}</time></span><span>{g["read"]} min read</span></div>
     </div>
   </div>
 </section>
@@ -834,7 +836,7 @@ def guide_page(cfg, fonts, logo, g):
     title = f"{g['kw']} | Oceanic Funnels"
     if len(title) > 62: title = g["kw"]
     extra = [faq_schema(g["faqs"]), {"@type": "BlogPosting", "@id": cfg["domain"] + path + "#article", "headline": g["title"],
-             "description": g["desc"], "datePublished": GUIDE_DATE, "dateModified": GUIDE_DATE, "inLanguage": "en",
+             "description": g["desc"], "datePublished": GUIDE_DATE, "dateModified": upd, "inLanguage": "en",
              "author": {"@type": "Organization", "name": "Oceanic Funnels Team", "url": cfg["domain"] + "/"},
              "publisher": {"@id": cfg["domain"] + "/#org"}, "mainEntityOfPage": cfg["domain"] + path,
              "image": cfg["domain"] + "/og-image.png", "articleSection": g["cat"]}]
@@ -881,7 +883,7 @@ def build_all(cfg, fonts, src, site):
     out = [legal_page(cfg, fonts, logo, "privacy", "Privacy Policy | Oceanic Funnels", "Privacy Policy",
                       "How Oceanic Funnels collects, uses, shares and protects personal information, including SMS consent, cookies, analytics and your privacy rights.", legal.PRIVACY),
            legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
-                      "The terms that apply when you use oceanicfunnels.com and Oceanic Funnels OS.", legal.TERMS),
+                      "The terms of service that apply when you use oceanicfunnels.com, use Oceanic Funnels OS or buy a Done-For-You build: billing, cancellation and data.", legal.TERMS),
            hub_page(cfg, fonts, logo), about_page(cfg, fonts, logo)]
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]

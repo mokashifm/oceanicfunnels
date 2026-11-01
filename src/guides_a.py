@@ -56,17 +56,37 @@ dict(
 ),
 dict(
  slug="speed-to-lead", cat="Lead response",
- title="Speed to lead: why replying in minutes wins the sale, and how to automate it",
- kw="Speed to Lead: Meaning, Research and How to Automate It",
- desc="Speed to lead means how fast you reply to a new lead. Harvard Business Review found replying within an hour made firms 7x likelier to qualify it. Here's how.",
- read=8,
- short="Speed to lead is the time between a new lead contacting you and your first reply. It matters because interest fades fast and many people contact several businesses at once. A widely cited Harvard Business Review study found companies that contacted leads within an hour were nearly seven times as likely to qualify them as those that waited even an hour longer. The fix is automation: an instant text and email, an AI agent that answers questions, and a booking link, so every lead gets a reply in seconds, day or night.",
+ title="What is speed to lead? Meaning, statistics and software to automate it",
+ kw="Speed to Lead: Meaning, Statistics and Software (2026 Guide)",
+ desc="Speed to lead is how fast you reply to a new lead. See the HBR and MIT research, what speed to lead software does, and how to reply in seconds.",
+ read=11, updated="2026-10-31",
+ short="Speed to lead is the time between a new lead contacting you and your first reply. It matters because interest fades fast and many people contact several businesses at once. A widely cited Harvard Business Review study found companies that contacted leads within an hour were nearly seven times as likely to qualify them as those that waited even an hour longer. An earlier MIT and InsideSales study found the odds of reaching a lead dropped 100 times when the first call came at 30 minutes instead of 5. The fix is speed to lead software: an instant text and email, an AI agent that answers questions, and a booking link, so every lead gets a reply in seconds, day or night.",
  sections=[
   ("What speed to lead means", """
-<p>Every enquiry starts a clock. A form fill, a Facebook lead ad, a missed call, an Instagram DM. The person is thinking about their problem right now, and they may have contacted two or three other businesses in the same five minutes. Whoever responds first, with something useful, usually gets the conversation and often the sale.</p>"""),
-  ("What the research says", """
-<p>In a study published in Harvard Business Review, researchers looked at how quickly companies responded to web leads. Firms that tried to contact a lead within an hour were nearly seven times as likely to qualify that lead as firms that waited even an hour longer, and more than 60 times as likely as firms that waited 24 hours or more. Many companies in the study took far longer than an hour to respond at all.</p>
-<p>The exact numbers will vary by industry, but the pattern holds everywhere: the longer a lead waits, the colder it gets.</p>"""),
+<p>Speed to lead (also called lead response time) is the time between a lead contacting you and your first reply. Every enquiry starts a clock. A form fill, a Facebook lead ad, a missed call, an Instagram DM. The person is thinking about their problem right now, and they may have contacted two or three other businesses in the same five minutes. Whoever responds first, with something useful, usually gets the conversation and often the sale.</p>
+<p>You'll also see it written as "speed 2 lead" or "speed2lead". It's the same idea: reply first, reply fast.</p>"""),
+  ("Speed to lead statistics: what the research says", """
+<p><b>Harvard Business Review (2011).</b> In a study published in Harvard Business Review, researchers looked at how quickly companies responded to web leads. Firms that tried to contact a lead within an hour were nearly seven times as likely to qualify that lead as firms that waited even an hour longer, and more than 60 times as likely as firms that waited 24 hours or more. Many companies in the study took far longer than an hour to respond at all.</p>
+<p><b>MIT and InsideSales Lead Response Management Study (2007).</b> Using three years of data from six companies, more than 15,000 leads and over 100,000 call attempts, the researchers found:</p>
+<ul>
+<li>The odds of <b>contacting</b> a lead if called in 5 minutes versus 30 minutes drop <b>100 times</b>.</li>
+<li>The odds of <b>qualifying</b> a lead if called in 5 minutes versus 30 minutes drop <b>21 times</b>.</li>
+<li>Wednesdays and Thursdays were the best days to make contact, and 4 to 6pm the best time of day.</li>
+</ul>
+<p>Both studies are more than a decade old and were run on phone and web leads, so treat the exact multiples as a guide rather than a promise. The pattern has held up since: the longer a lead waits, the colder it gets. This is where the popular "5-minute rule" comes from: reply to every new lead within five minutes.</p>"""),
+  ("What is speed to lead software?", """
+<p>Speed to lead software replies to new leads automatically, the moment they arrive, and makes sure a person follows up fast. Instead of a lead sitting in an inbox until someone checks it, the software sends an instant text and email, alerts your team and starts a follow-up sequence.</p>
+<p>Look for these features when you compare speed to lead tools:</p>
+<ul>
+<li><b>Every lead source in one place:</b> website forms, funnels, Facebook and Instagram lead ads, calls, texts and social DMs.</li>
+<li><b>Instant SMS and email replies</b> that go out within seconds, 24/7.</li>
+<li><b><a href="/guides/missed-call-text-back/">Missed call text back</a></b>, so phone leads get the same instant reply.</li>
+<li><b>An AI agent</b> that answers questions and books appointments outside business hours.</li>
+<li><b>Team alerts and lead routing</b> (round robin or by territory), with a task to call.</li>
+<li><b>Automatic follow-up</b> that stops when the lead replies or books.</li>
+<li><b>Response-time reporting</b>, so you can see how fast each lead got a reply.</li>
+</ul>
+<p>Many businesses stitch this together from a CRM, a texting tool and a scheduler. Oceanic Funnels OS does all of it in one system.</p>"""),
   ("Why most businesses are slow", """
 <ul>
 <li><b>Leads arrive when you're busy.</b> On a job, with a client, or after hours.</li>
@@ -92,12 +112,17 @@ dict(
 </ul>"""),
  ],
  faqs=[
+  ("What does speed to lead mean?", "Speed to lead means how quickly you respond to a new lead after they contact you, from the moment they submit a form, call or message, to your first reply. The faster the reply, the better your chance of reaching and converting them."),
+  ("Is 'speed 2 lead' the same as speed to lead?", "Yes. 'Speed 2 lead' and 'speed2lead' are other ways of writing speed to lead. They all mean the time it takes to reply to a new lead."),
+  ("What is speed to lead software?", "Speed to lead software replies to new leads automatically within seconds by text and email, alerts your team, routes the lead to the right person and keeps following up until they reply or book."),
+  ("What is the 5-minute rule for leads?", "The 5-minute rule says you should contact every new lead within five minutes. It comes from lead response research such as the MIT and InsideSales study, which found contact odds dropped 100 times at 30 minutes compared with 5."),
   ("What is a good speed to lead?", "Automated replies should go out within seconds. For a human follow-up, aim for under five minutes during business hours. The research consistently shows that the first hour matters most."),
   ("Do automated replies feel impersonal?", "Not if they're written well. A short, friendly text that names your business and asks one easy question reads as personal, and it's far better than no reply at all."),
   ("Can an AI agent reply to leads at night?", "Yes. An AI agent can reply on SMS, email, website chat, Facebook, Instagram and WhatsApp, answer questions and book appointments around the clock."),
  ],
  related_ind=["real-estate", "insurance-agencies", "solar-installers", "mortgage-brokers", "roofing", "auto-dealerships"],
- sources=[("The Short Life of Online Sales Leads (Harvard Business Review, 2011)", "https://hbr.org/2011/03/the-short-life-of-online-sales-leads")],
+ sources=[("The Short Life of Online Sales Leads (Harvard Business Review, 2011)", "https://hbr.org/2011/03/the-short-life-of-online-sales-leads"),
+          ("Lead Response Management Study (Elkington and Oldroyd, MIT and InsideSales, 2007)", "https://www.mortech.com/hs-fs/hub/25649/file-13535879-pdf/docs/mit_study.pdf")],
 ),
 dict(
  slug="ai-chat-agent-for-business", cat="AI agents",

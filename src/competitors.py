@@ -48,9 +48,10 @@ ROW_LABELS = {
 
 COMPETITORS = [{'slug': 'skool',
   'name': 'Skool',
+  'title': 'Skool Alternative with CRM, Email, SMS and Funnels',
   'kind': 'community and course platform',
   'h1': 'The Skool alternative with your community, CRM, email and SMS in one place',
-  'answer': "Skool's Hobby plan is $9 a month with a 10% transaction fee, and its Pro plan is $99 a month with a 2.9% transaction fee. "
+  'answer': "Looking for a Skool alternative? Skool's Hobby plan is $9 a month with a 10% transaction fee, and its Pro plan is $99 a month with a 2.9% transaction fee. "
             "Skool's pricing page lists community, courses, videos and live calls, but not email marketing, a website or funnels. Oceanic "
             'Funnels OS includes paid communities, courses and memberships plus a CRM, email, SMS, funnels and AI agents, from $67 a month '
             'with no platform fee on your sales.',

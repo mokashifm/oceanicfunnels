@@ -89,19 +89,24 @@ dict(
 ),
 dict(
  slug="sales-pipeline-management", cat="CRM",
- title="Sales pipeline management: track every deal from new lead to won",
- kw="Sales Pipeline Management: Track Every Deal from Lead to Won",
- desc="How to set up a sales pipeline with stages that match your process, add opportunities automatically and stop deals from slipping through.",
- read=6,
- short="A sales pipeline shows every potential deal (opportunity) as a card in a stage, such as New Lead, Contacted, Booked, Quote Sent and Won. It shows what to do next and how much revenue is in play. In Oceanic Funnels OS, create one under Opportunities → Pipelines → Create New Pipeline, name your stages, then use workflows to create and move opportunities automatically when forms are submitted, calls booked or payments received.",
+ title="Sales pipeline management: stages, metrics and best practices",
+ kw="Sales Pipeline Management: Stages, Metrics and Best Practices",
+ desc="What sales pipeline management is, the stages to use, the 5 metrics to track and how to automate a CRM pipeline so no deal slips through.",
+ read=10, updated="2026-10-31",
+ short="Sales pipeline management is the process of tracking every potential deal through the stages of your sales process, and acting on it so deals keep moving to won. A sales pipeline shows every potential deal (opportunity) as a card in a stage, such as New Lead, Contacted, Booked, Quote Sent and Won. It shows what to do next and how much revenue is in play. In Oceanic Funnels OS, create one under Opportunities → Pipelines → Create New Pipeline, name your stages, then use workflows to create and move opportunities automatically when forms are submitted, calls booked or payments received.",
  sections=[
+  ("What is sales pipeline management?", """
+<p>A <b>sales pipeline</b> is a visual view of every deal you're working on, grouped by stage. <b>Sales pipeline management</b> is what you do with it: keeping each deal up to date, deciding the next step, spotting deals that have stalled and forecasting how much revenue is likely to close.</p>
+<p>A pipeline is not the same as a sales funnel. A funnel describes the buyer's journey and how many people drop off at each step. A pipeline describes your deals and what your team needs to do on each one. You need both: the funnel fills the pipeline, and the pipeline turns leads into revenue.</p>"""),
   ("Design stages that match how you sell", """
 <p>Each stage should describe where the customer is, not what you hope will happen. Examples:</p>
 <ul>
 <li><b>Service business:</b> New Lead → Contacted → Estimate Booked → Estimate Sent → Won → Lost.</li>
 <li><b>Coach or consultant:</b> New Lead → Call Booked → No Show → Proposal Sent → Won → Lost.</li>
 <li><b>Real estate:</b> New → Contacted → Showing → Offer → Under Contract → Closed.</li>
-</ul>"""),
+<li><b>Med spa or clinic:</b> New Lead → Contacted → Consult Booked → Consult Shown → Treatment Booked → Won → Lost.</li>
+</ul>
+<p>Keep it to five to eight stages. Each stage needs a clear exit rule, for example "a deal moves to Booked when an appointment is on the calendar".</p>"""),
   ("Set it up", """
 <ol class="nf-steps-list">
 <li>Go to <b>Opportunities → Pipelines</b> and click <b>Create New Pipeline</b>.</li>
@@ -111,14 +116,30 @@ dict(
 </ol>"""),
   ("Automate the pipeline", """
 <p>In a workflow, add a trigger such as Form Submitted, Customer Booked Appointment or Payment Received, then the <b>create or update opportunity</b> action with the pipeline, stage, status and value. Turn on <b>Allow Opportunity to Move</b> so the same deal moves forward instead of being duplicated.</p>"""),
-  ("Keep it clean", """
+  ("5 pipeline metrics to track", """
 <ul>
-<li>Every opportunity has an owner and a next step.</li>
-<li>Mark deals as lost with a reason, instead of leaving them to rot.</li>
-<li>Review the pipeline weekly with your team.</li>
+<li><b>Number of open deals</b> in each stage. Too many stuck in one stage shows where your process is breaking.</li>
+<li><b>Pipeline value:</b> the total value of open opportunities, by stage.</li>
+<li><b>Stage conversion rate:</b> the share of deals that move from one stage to the next.</li>
+<li><b>Win rate:</b> deals won divided by deals closed (won plus lost).</li>
+<li><b>Sales cycle length:</b> the average days from new lead to won.</li>
+</ul>
+<p>Multiply open pipeline value by your win rate for a simple revenue forecast. Use <a href="/guides/marketing-reporting-dashboards/">a reporting dashboard</a> to watch these numbers each week.</p>"""),
+  ("Sales pipeline management best practices", """
+<ul>
+<li><b>Every opportunity has an owner and a next step</b> with a due date.</li>
+<li><b>Reply fast.</b> New leads should get a reply within minutes. See our <a href="/guides/speed-to-lead/">speed to lead guide</a>.</li>
+<li><b>Let automation move deals</b> when a lead books, pays or replies, so the pipeline is always accurate.</li>
+<li><b>Follow up on stalled deals</b> with a task or automatic message after a set number of days in one stage.</li>
+<li><b>Mark deals as lost with a reason</b>, instead of leaving them to rot. Lost reasons show what to fix.</li>
+<li><b>Review the pipeline weekly</b> with your team, stage by stage.</li>
 </ul>"""),
  ],
  faqs=[
+  ("What is sales pipeline management?", "Sales pipeline management is the process of tracking every deal through the stages of your sales process, keeping each one up to date and acting on it so more deals close."),
+  ("What are the stages of a sales pipeline?", "Common stages are New Lead, Contacted, Appointment Booked, Proposal or Quote Sent, Won and Lost. Use stages that match how your customers actually buy."),
+  ("What is CRM pipeline management?", "CRM pipeline management means running your pipeline inside a CRM, so every deal is linked to the contact's messages, calls, bookings and payments, and automations can move deals for you."),
+  ("What is the difference between a sales pipeline and a sales funnel?", "A sales funnel shows the buyer's journey and how many people drop off at each step. A sales pipeline shows your open deals and the actions your team needs to take on each one."),
   ("What is an opportunity?", "An opportunity is a potential deal linked to a contact, with a pipeline stage, status and value."),
   ("Can I have more than one pipeline?", "Yes. Many businesses use separate pipelines, for example for new sales, renewals or different services."),
   ("Can opportunities move automatically?", "Yes. Workflows can create opportunities and move them between stages when contacts book, pay, reply or submit forms."),
@@ -163,12 +184,15 @@ dict(
 ),
 dict(
  slug="marketing-reporting-dashboards", cat="Reporting",
- title="Marketing reporting: dashboards that show where your customers come from",
- kw="Marketing Reporting Dashboards: Leads, Calls, Ads and Revenue",
- desc="How to set up dashboards and reports that show leads, calls, ad spend, bookings and revenue, so you know which marketing actually works.",
- read=6,
- short="Good marketing reporting answers three questions: how many leads came in, where they came from, and how many became paying customers. In Oceanic Funnels OS, dashboards show leads, opportunities, appointments, calls and revenue at a glance, and you can add widgets such as Meta ad spend, clicks, CPC and conversions. Custom reports (Reporting → Custom Reports) package these into reports you can send or schedule by email.",
+ title="Marketing reporting dashboard: KPIs, examples and how to build one",
+ kw="Marketing Reporting Dashboard: KPIs, Examples and Setup",
+ desc="What a marketing reporting dashboard should show: the KPIs, a funnel dashboard example, ad and lead source reports, and how to set one up.",
+ read=10, updated="2026-10-31",
+ short="A marketing reporting dashboard is one screen that shows how your marketing is performing: leads, cost, bookings and revenue by source. Good marketing reporting answers three questions: how many leads came in, where they came from, and how many became paying customers. In Oceanic Funnels OS, dashboards show leads, opportunities, appointments, calls and revenue at a glance, and you can add widgets such as Meta ad spend, clicks, CPC and conversions. Custom reports (Reporting → Custom Reports) package these into reports you can send or schedule by email.",
  sections=[
+  ("What is a marketing reporting dashboard?", """
+<p>A marketing reporting dashboard pulls numbers from your ads, website, forms, calls, calendar and payments into one place, so you don't have to log into five tools to see what's working. The best dashboards follow the customer from first click to payment, so you can see revenue by source, not just clicks.</p>
+<p>Most small businesses only need one dashboard with around ten numbers, checked weekly. More widgets don't mean better decisions.</p>"""),
   ("What to track", """
 <ul>
 <li><b>Leads</b> by source: Google, Facebook, referrals, organic.</li>
@@ -178,6 +202,27 @@ dict(
 <li><b>Revenue</b> and cost per customer.</li>
 <li><b>Calls</b> by source, with <a href="/guides/call-tracking/">call tracking</a>.</li>
 </ul>"""),
+  ("Marketing dashboard KPIs and how to calculate them", """
+<div class="nf-tablewrap" style="margin-top:16px"><table class="nf-table" style="min-width:0"><thead><tr><th>KPI</th><th>How to calculate it</th></tr></thead><tbody>
+<tr><td>Cost per lead (CPL)</td><td>Ad spend ÷ leads</td></tr>
+<tr><td>Lead to booking rate</td><td>Appointments booked ÷ leads</td></tr>
+<tr><td>Show rate</td><td>Appointments shown ÷ appointments booked</td></tr>
+<tr><td>Close rate</td><td>Customers won ÷ appointments shown</td></tr>
+<tr><td>Customer acquisition cost (CAC)</td><td>Total marketing and sales cost ÷ new customers</td></tr>
+<tr><td>Return on ad spend (ROAS)</td><td>Revenue from ads ÷ ad spend</td></tr>
+<tr><td>Average response time</td><td>Average time from lead to first reply</td></tr>
+</tbody></table></div>"""),
+  ("Example: a sales funnel reporting dashboard", """
+<p>A customer acquisition dashboard follows the same order as your funnel, so the weakest step stands out:</p>
+<ol>
+<li><b>Ad spend, impressions and clicks</b> by campaign.</li>
+<li><b>Leads</b> by source, with cost per lead.</li>
+<li><b>Appointments booked</b> and lead to booking rate.</li>
+<li><b>Shows and no-shows</b>, with show rate.</li>
+<li><b>Customers won</b>, close rate and revenue.</li>
+<li><b>CAC and ROAS</b> by source.</li>
+</ol>
+<p>If cost per lead is fine but bookings are low, fix your follow-up. If bookings are fine but shows are low, fix your <a href="/guides/reduce-appointment-no-shows/">reminders</a>. If shows are fine but close rate is low, fix the sales conversation or the offer.</p>"""),
   ("Dashboards vs custom reports", """
 <p><b>Dashboards</b> are for at-a-glance checks during the day. Add widgets from the dashboard's edit mode, including Meta Ads metrics once your ad account is connected. <b>Custom reports</b> are for packaged insights: go to <b>Reporting → Custom Reports</b>, add widgets, save, then send or schedule them by email.</p>"""),
   ("Make attribution work", """
@@ -188,8 +233,18 @@ dict(
 </ul>"""),
   ("Review weekly", """
 <p>Look at the same few numbers every week: leads, booked, shown, won, revenue, cost. When one drops, you know which step to fix.</p>"""),
+  ("Common reporting mistakes", """
+<ul>
+<li><b>Tracking clicks, not customers.</b> Clicks and likes don't pay bills. Report revenue by source.</li>
+<li><b>Leads with no source.</b> Without UTMs and tracked numbers, most leads end up as "direct" or "unknown".</li>
+<li><b>Too many widgets.</b> If nobody acts on a number, take it off the dashboard.</li>
+<li><b>Data in separate tools.</b> When ads, CRM and calendar don't talk to each other, the numbers never match. Keeping them in one system fixes that.</li>
+</ul>"""),
  ],
  faqs=[
+  ("What should a marketing reporting dashboard include?", "Leads by source, cost per lead, appointments booked and shown, customers won, revenue, customer acquisition cost and return on ad spend. Add response time if you sell by phone or text."),
+  ("What is a customer acquisition dashboard?", "A customer acquisition dashboard tracks every step from ad spend to new customer, including cost per lead, booking rate, show rate, close rate and customer acquisition cost."),
+  ("How often should I review marketing reports?", "Check your dashboard weekly and do a deeper monthly review. Daily checks are useful only while you're actively testing ads."),
   ("Can I see Facebook ad results in my dashboard?", "Yes. Connect your Meta ad account and add Meta Ads widgets for spend, clicks, conversions, CPC and more."),
   ("Can I email reports automatically?", "Yes. Custom reports can be sent or scheduled by email."),
   ("Does Done-For-You include reporting?", "Growth includes a monthly strategy call and report, and Done-For-You includes everything in Growth."),
@@ -236,7 +291,7 @@ dict(
  slug="email-marketing-campaigns", cat="Marketing",
  title="Email marketing for small business: how to send campaigns people open",
  kw="Email Marketing for Small Business: Send Campaigns People Open",
- desc="How to plan, build, target and schedule email campaigns and newsletters, and keep them out of spam.",
+ desc="How to plan, build, segment and schedule email marketing campaigns and newsletters that get opened, plus the setup that keeps them out of spam.",
  read=7,
  short="Email campaigns work when they go to people who asked for them, say one useful thing, and arrive from an authenticated domain. In Oceanic Funnels OS, verify a sending domain first, then go to Marketing → Email → Campaigns, build your email from a template, preview on desktop and mobile, pick recipients with smart lists or segments, and send now, schedule, or send in batches to pace large lists.",
  sections=[
@@ -279,8 +334,8 @@ dict(
  slug="social-media-scheduling", cat="Marketing",
  title="How to schedule social media posts for every platform from one place",
  kw="How to Schedule Social Media Posts from One Place",
- desc="Plan and schedule posts for Facebook, Instagram, LinkedIn, TikTok, Google Business Profile and more from one social planner.",
- read=5,
+ desc="Plan and schedule posts for Facebook, Instagram, LinkedIn, TikTok, Google Business Profile and more from one social planner, plus a weekly content plan.",
+ read=8, updated="2026-10-31",
  short="A social planner lets you write, schedule and publish posts to all your social accounts from one place. In Oceanic Funnels OS, go to Marketing → Social Planner, connect your accounts (Facebook pages and groups, Instagram, LinkedIn, TikTok, X and Google Business Profile), create a post, choose the accounts and schedule it. Posts can also be uploaded in bulk or sent for approval before they go live.",
  sections=[
   ("Why schedule instead of posting live", """
@@ -305,6 +360,25 @@ dict(
 <li><b>Monthly:</b> an offer or event.</li>
 </ul>
 <p>Repurpose your <a href="/guides/start-a-business-blog/">blog posts</a> and guides into short posts with a link back.</p>"""),
+  ("Batch a month of content in two hours", """
+<ol>
+<li><b>Pick your themes</b> for the month, such as one service, one common question and one offer.</li>
+<li><b>Write the posts in one sitting.</b> Twelve short posts covers three a week.</li>
+<li><b>Shoot or choose the media</b> in one go: photos of your work, short videos and graphics.</li>
+<li><b>Upload and schedule</b> everything in the social planner, using bulk upload for larger batches.</li>
+<li><b>Leave gaps</b> for timely posts, like a new review or a last-minute opening.</li>
+</ol>"""),
+  ("Adapt each post to the platform", """
+<ul>
+<li><b>Instagram and TikTok:</b> lead with vertical video or a strong image. The first line of the caption matters most.</li>
+<li><b>Facebook:</b> works for local updates, events, offers and community groups.</li>
+<li><b>LinkedIn:</b> best for B2B. Share lessons, results and opinions in a professional tone.</li>
+<li><b>Google Business Profile:</b> post offers, updates and events so they show on your Google listing.</li>
+<li><b>X:</b> short, frequent updates and replies.</li>
+</ul>
+<p>You can post the same idea everywhere, but edit the text and format for each account before you schedule.</p>"""),
+  ("Measure what works", """
+<p>Every month, check which posts brought clicks, messages and bookings, not just likes. Use UTM links on every post so leads from social show their source in your <a href="/guides/marketing-reporting-dashboards/">reporting dashboard</a>. Make more of what brings customers and drop what doesn't.</p>"""),
   ("Turn followers into leads", """
 <p>Point your bio link to a funnel or booking page, and let an <a href="/guides/ai-chat-agent-for-business/">AI agent</a> reply to Facebook and Instagram DMs so no message waits.</p>"""),
  ],
@@ -312,6 +386,8 @@ dict(
   ("Which platforms can I post to?", "Facebook pages and groups, Instagram, LinkedIn, TikTok, X and Google Business Profile."),
   ("Can posts be approved before they publish?", "Yes. Use Send Post for Approval so the owner or a manager signs off first."),
   ("Can I upload posts in bulk?", "Yes. Posts can be bulk uploaded to plan a month at a time."),
+  ("How often should a small business post on social media?", "Pick a schedule you can keep up with. Three posts a week on your main platforms is a realistic start for most small businesses. Consistency matters more than volume."),
+  ("Can I post the same content to every platform?", "Yes, but adapt the text, format and image size for each one. What works on LinkedIn usually needs rewriting for Instagram or TikTok."),
  ],
  related_ind=["restaurants", "salons-barbershops", "gyms-fitness-studios", "real-estate", "photographers", "churches"],
  sources=[],
