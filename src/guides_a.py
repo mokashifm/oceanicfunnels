@@ -59,11 +59,11 @@ dict(
  title="What is speed to lead? Meaning, statistics and software to automate it",
  kw="Speed to Lead: Meaning, Statistics and Software (2026 Guide)",
  desc="Speed to lead is how fast you reply to a new lead. See the HBR and MIT research, what speed to lead software does, and how to reply in seconds.",
- read=11, updated="2026-10-31",
+ read=13, updated="2026-11-01",
  short="Speed to lead is the time between a new lead contacting you and your first reply. It matters because interest fades fast and many people contact several businesses at once. A widely cited Harvard Business Review study found companies that contacted leads within an hour were nearly seven times as likely to qualify them as those that waited even an hour longer. An earlier MIT and InsideSales study found the odds of reaching a lead dropped 100 times when the first call came at 30 minutes instead of 5. The fix is speed to lead software: an instant text and email, an AI agent that answers questions, and a booking link, so every lead gets a reply in seconds, day or night.",
  sections=[
   ("What speed to lead means", """
-<p>Speed to lead (also called lead response time) is the time between a lead contacting you and your first reply. Every enquiry starts a clock. A form fill, a Facebook lead ad, a missed call, an Instagram DM. The person is thinking about their problem right now, and they may have contacted two or three other businesses in the same five minutes. Whoever responds first, with something useful, usually gets the conversation and often the sale.</p>
+<p>Speed to lead (also called lead response time) is the total time it takes a business to contact a prospect after they submit an enquiry, fill out a web form, call or show buying interest. Every enquiry starts a clock. A form fill, a Facebook lead ad, a missed call, an Instagram DM. The person is thinking about their problem right now, and they may have contacted two or three other businesses in the same five minutes. Whoever responds first, with something useful, usually gets the conversation and often the sale.</p>
 <p>You'll also see it written as "speed 2 lead" or "speed2lead". It's the same idea: reply first, reply fast.</p>"""),
   ("Speed to lead statistics: what the research says", """
 <p><b>Harvard Business Review (2011).</b> In a study published in Harvard Business Review, researchers looked at how quickly companies responded to web leads. Firms that tried to contact a lead within an hour were nearly seven times as likely to qualify that lead as firms that waited even an hour longer, and more than 60 times as likely as firms that waited 24 hours or more. Many companies in the study took far longer than an hour to respond at all.</p>
@@ -101,6 +101,22 @@ dict(
 <li><b>Alert a human.</b> Your team gets a notification and a task to call hot leads, with the conversation history already on the record.</li>
 <li><b>Follow up if there's no reply.</b> A short sequence of texts and emails over the next few days, stopping automatically when they respond or book.</li>
 </ol>"""),
+  ("7 ways to improve speed to lead", """
+<ol>
+<li><b>Automate instant replies.</b> Send a text and email with a booking link the second a form is submitted. No human should be needed for the first reply.</li>
+<li><b>Use an AI agent after hours.</b> Evenings and weekends are when many leads arrive and nobody is at a desk. An AI agent can answer questions, qualify and book around the clock.</li>
+<li><b>Route leads to the right person automatically.</b> Use round robin or rules by service, location or language, so every lead has an owner the moment it arrives.</li>
+<li><b>Cut form friction.</b> Ask only for what you need to reply: name, phone, email and one or two qualifying questions. Shorter forms get more submissions and faster replies.</li>
+<li><b>Text back missed calls.</b> Phone leads go cold fastest. <a href="/guides/missed-call-text-back/">Missed call text back</a> replies within seconds when nobody can pick up.</li>
+<li><b>Put alerts on your team's phones.</b> A push or SMS alert with the lead's details and a tap-to-call link beats an email that sits unread.</li>
+<li><b>Measure it every week.</b> Track average and slowest response times by person and by lead source, and fix the gaps.</li>
+</ol>"""),
+  ("How to calculate speed to lead", """
+<p><b>Speed to lead = time of first response − time the lead arrived.</b></p>
+<p>Example: a form is submitted at 7:42pm and your first text goes out at 7:42pm and 20 seconds. Your speed to lead is 20 seconds. If the first reply is a call at 9:15am the next day, it's 13 hours and 33 minutes.</p>
+<p>Report the <b>median</b> as well as the average, because a few leads left overnight can hide behind a good average. Count only real replies: a message that answers the lead or books them, not an internal notification.</p>
+<h3>Test your own speed to lead</h3>
+<p>Fill out your own website form, send your own Instagram DM, and call your main number after hours. Time how long each takes to get a reply. Most owners are surprised by the result.</p>"""),
   ("Setting it up in Oceanic Funnels OS", """
 <p>In Oceanic Funnels OS, this is a workflow triggered by a new form submission, a new lead or an inbound message. It sends your instant reply, assigns the lead to a team member, creates a task and starts the follow-up sequence. Pair it with <a href="/guides/missed-call-text-back/">missed call text back</a> so phone leads get the same instant response, and an <a href="/guides/ai-chat-agent-for-business/">AI chat agent</a> for conversations outside business hours.</p>
 <p>On the Growth plan our team installs a speed-to-lead automation as one of your core automations in the first week. On Done-For-You, we build it into your full funnel and backend.</p>"""),
@@ -116,6 +132,8 @@ dict(
   ("Is 'speed 2 lead' the same as speed to lead?", "Yes. 'Speed 2 lead' and 'speed2lead' are other ways of writing speed to lead. They all mean the time it takes to reply to a new lead."),
   ("What is speed to lead software?", "Speed to lead software replies to new leads automatically within seconds by text and email, alerts your team, routes the lead to the right person and keeps following up until they reply or book."),
   ("What is the 5-minute rule for leads?", "The 5-minute rule says you should contact every new lead within five minutes. It comes from lead response research such as the MIT and InsideSales study, which found contact odds dropped 100 times at 30 minutes compared with 5."),
+  ("How do you calculate speed to lead?", "Subtract the time the lead arrived from the time of your first real reply. For example, a form submitted at 7:42pm that gets a text at 7:42 and 20 seconds has a speed to lead of 20 seconds. Track the median as well as the average."),
+  ("How can I improve speed to lead?", "Automate an instant text and email reply, use an AI agent after hours, route leads to an owner automatically, shorten your forms, text back missed calls, alert your team on their phones, and review response times weekly."),
   ("What is a good speed to lead?", "Automated replies should go out within seconds. For a human follow-up, aim for under five minutes during business hours. The research consistently shows that the first hour matters most."),
   ("Do automated replies feel impersonal?", "Not if they're written well. A short, friendly text that names your business and asks one easy question reads as personal, and it's far better than no reply at all."),
   ("Can an AI agent reply to leads at night?", "Yes. An AI agent can reply on SMS, email, website chat, Facebook, Instagram and WhatsApp, answer questions and book appointments around the clock."),
