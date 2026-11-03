@@ -5,7 +5,7 @@ Treatment timings are typical published ranges, framed as "your providers set th
 DEEP = {
 "med-spas": dict(
  hook="Every unanswered DM is a filler appointment booked somewhere else",
- sub="We build your med spa a system that answers every enquiry in seconds, books paid consultations, and brings every client back on time for their next treatment. Done for you, live in 14 days.",
+ sub="We build your med spa a system that answers every enquiry in seconds, books paid consultations, and brings every client back on time for their next treatment. Built with you on our Scale plan, live in 14 days.",
  cta_h="Get your med spa's system built for you",
  cta_p="Treatment funnels, AI replies on Instagram, deposits, reminders, rebooking and memberships, built by our team and live in 14 days.",
  money_h=("Where med spas lose money", "every single week"),
@@ -53,14 +53,14 @@ DEEP = {
   "A reactivation campaign to your past client list",
   "A pipeline from enquiry to consult to treated to member, so you see every lead",
   "Meta Pixel, Conversions API and GA4, so your ads know who actually booked",
-  "A monthly report and strategy call",
+  "A dedicated account manager and builder to help you grow",
  ],
  calc=dict(enq=("Enquiries per month", 120, 10, 1000, 10),
            miss=("Wait too long for a reply", 30, 5, 80, 5),
            close=("Become clients if answered fast", 35, 5, 80, 5),
            val=("Average first-visit value", 450, 100, 3000, 50)),
  faqs=[
-  ("Does it replace our EMR or booking software?", "Most med spas keep their EMR for charts and clinical notes. Oceanic Funnels OS handles enquiries, consultation booking, reminders, rebooking, memberships, payments and marketing. During the Done-For-You build we review your current setup and agree with you which bookings live where."),
+  ("Does it replace our EMR or booking software?", "Most med spas keep their EMR for charts and clinical notes. Oceanic Funnels OS handles enquiries, consultation booking, reminders, rebooking, memberships, payments and marketing. During setup we review your current setup and agree with you which bookings live where."),
   ("Should patient charts or clinical notes go in the system?", "No. Keep charts and clinical notes in your EMR, and use Oceanic Funnels OS for marketing, scheduling, payments and follow-up. Your AI agent is set up to pass clinical questions to your team rather than answer them."),
   ("Can the AI agent answer Instagram DMs?", "Yes. It answers Instagram and Facebook messages, website chat and texts, using your menu, prices and policies, and books consultations into your calendar."),
   ("Can we take deposits for consultations?", "Yes. Take a deposit or card on file when clients book, which cuts no-shows on free consultations."),
@@ -68,7 +68,7 @@ DEEP = {
   ("Can we use before-and-after photos?", "Only with each client's written consent. We can add a photo consent form to your intake process."),
   ("We already run ads. What changes?", "We install the Meta Pixel, Conversions API and GA4, and send every lead into your pipeline, so you can see which ads lead to booked treatments, not just clicks."),
   ("How fast will it be live?", "Usually within 14 days of getting your content, logins and approvals. Your team reviews everything before it goes live."),
-  ("What does Done-For-You cost?", "A one-time $997 build fee plus $297 a month. Cancel anytime. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
+  ("What does it cost?", "$297 a month on our Scale plan, with no build fee. Cancel anytime. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
  ],
 ),
 }

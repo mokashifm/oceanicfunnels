@@ -540,6 +540,29 @@
 .nf-addons span{font-family:var(--display);font-weight:600;color:var(--aqua-d);white-space:nowrap}
 .nf-found{text-align:center;margin-top:26px;font-size:15px;color:var(--text)}
 .nf-found b{color:var(--coral-d)}
+.nf-prices--4{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.nf-prices--4 .nf-price{padding:36px 22px 26px}
+.nf-prices--4 .nf-price .amt{font-size:52px}
+.nf-compare-wrap{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+.nf-ct{font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.nf-cs{font-size:14.5px;color:var(--muted);margin-top:6px}
+.nf-ftable-scroll{margin-top:18px}
+.nf-ftable{width:100%;border-collapse:collapse;font-size:14.5px;table-layout:fixed}
+.nf-ftable col.cf{width:40%}.nf-ftable col.cp{width:15%}
+.nf-ftable tr.grp td{background:var(--mist);text-align:center;font-family:var(--display);font-size:11.5px;font-weight:700;color:var(--muted);padding:10px 1px;border-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.nf-ftable thead th{position:sticky;top:0;background:#fff;z-index:1;padding:12px 8px;border-bottom:2px solid var(--ink);text-align:center;font-family:var(--display);color:var(--ink);vertical-align:bottom}
+.nf-ftable thead th.f{text-align:left}
+.nf-ftable thead th b{display:block;font-size:15px}
+.nf-ftable thead th small{display:block;font-family:var(--body);font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+.nf-ftable tbody th{text-align:left;font-weight:500;color:var(--text);padding:10px 8px;border-bottom:1px solid var(--line)}
+.nf-ftable td{text-align:center;padding:10px 6px;border-bottom:1px solid var(--line)}
+.nf-ftable tbody th{overflow-wrap:anywhere}
+.nf-ftable tr.grp th{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--aqua-d);background:var(--mist);padding:10px 8px;border-bottom:0}
+.nf-ftable .yes{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:13px;font-weight:800}
+.nf-ftable .no{display:inline-grid;place-items:center;width:24px;height:24px;color:#B4C2BF;font-size:14px;font-weight:700}
+.nf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:1100px){.nf-prices--4{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;gap:32px 16px}}
+@media (max-width:640px){.nf-prices--4{grid-template-columns:1fr;max-width:480px}.nf-compare-wrap{padding:20px 12px}.nf-ftable{font-size:13px}.nf-ftable thead th{padding:10px 3px}.nf-ftable thead th b{font-size:13px}.nf-ftable thead th small{font-size:11px}.nf-ftable tbody th{padding:9px 4px}.nf-ftable td{padding:9px 2px}.nf-ftable col.cf{width:36%}.nf-ftable col.cp{width:16%}.nf-ftable tr.grp td{font-size:10px;letter-spacing:-.01em}.nf-ftable tr.grp th{font-size:11px;letter-spacing:.04em}.nf-ftable .yes,.nf-ftable .no{width:20px;height:20px;font-size:11px}}
 @media (max-width:1060px){.nf-stack,.nf-extras{grid-template-columns:1fr}}
 @media (max-width:680px){.nf-hatch::after{width:34%;height:16%}.nf-stack-old,.nf-stack-new{padding:28px 22px}}
 </style>
@@ -568,7 +591,7 @@
     <div class="nf-hero-in">
       <span class="nf-badge"><i aria-hidden="true"></i>All-in-one sales funnel system</span>
       <h1>Stop fishing for customers. <em>Build the net.</em></h1>
-      <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. One system from $97 a month, or we build it all for you.</p>
+      <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. Funnels and a store from $17 a month, and the full system from $97.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#features">See what's inside</a>
@@ -579,10 +602,10 @@
   <div class="nf-wrap nf-hcard-wrap">
     <div class="nf-hcard nf-hatch">
       <div>
-        <span class="nf-eyebrow">Done-For-You plan</span>
-        <h2>Your million-dollar sales funnel. Built for you.</h2>
-        <p>Our team builds your sales funnel and the full automated backend behind it: follow-up, booking, payments and reviews. You get the keys to a net that's already catching leads.</p>
-        <a class="nf-btn nf-btn--line-w" href="#pricing">See Done-For-You</a>
+        <span class="nf-eyebrow">Scale plan</span>
+        <h2>Grow with a team behind you.</h2>
+        <p>On Scale you get every feature and all the AI, plus a dedicated account manager and a builder who work with you to grow and scale your business.</p>
+        <a class="nf-btn nf-btn--line-w" href="#pricing">See Scale</a>
       </div>
       <div>
         <figure class="nf-app" aria-label="Oceanic Funnels OS dashboard example showing 10,000 visitors narrowing to 126 customers">
@@ -759,7 +782,7 @@
         <li><span class="k">Replaces</span><span>Funnel builder, email and SMS tools, CRM, scheduler, website chat, reviews, invoicing</span></li>
         <li><span class="k">Key metrics</span><span>Speed to lead, lead-to-customer rate, revenue per lead</span></li>
         <li><span class="k">Best for</span><span>Local service businesses, coaches, consultants, agencies and online sellers</span></li>
-        <li><span class="k">Oceanic OS</span><span>From $97 a month with unlimited contacts and users</span></li>
+        <li><span class="k">Oceanic OS</span><span>From $17 a month. The full system with unlimited contacts and users from $97</span></li>
       </ul>
     </div>
   </div>
@@ -830,13 +853,13 @@
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
       <span class="nf-eyebrow">How it works (4 steps)</span>
-      <h2>From sign-up to a working net <span class="g">in 14 days</span></h2>
+      <h2>From sign-up to a working net, <span class="g">step by step</span></h2>
     </div>
     <ol class="nf-steps">
-      <li><h3>Pick your plan</h3><span class="d">Day 1</span><p>Start on OS and build it yourself, or choose Growth or Done-For-You and let our team handle it.</p></li>
-      <li><h3>We set up your net</h3><span class="d">Days 2–7</span><p>Domain, business email, phone number, text registration, automations and your AI agent, set up for you.</p></li>
-      <li><h3>Go live</h3><span class="d">Days 7–14</span><p>Your funnel and automations start catching, replying to and booking every lead that comes in.</p></li>
-      <li><h3>Keep growing</h3><span class="d">Every month</span><p>Edit requests, strategy calls and reports keep your net getting stronger month after month.</p></li>
+      <li><h3>Pick your plan</h3><span class="d">Day 1</span><p>Launch for funnels and a store, Growth for the full system, AI Pro to add AI, or Scale to work with a dedicated account manager and builder.</p></li>
+      <li><h3>Set up your net</h3><span class="d">Week 1</span><p>Connect your domain, business email, phone number and text registration, then switch on your automations and, on AI Pro and Scale, your AI agent.</p></li>
+      <li><h3>Go live</h3><span class="d">Week 2</span><p>Your funnel and automations start catching, replying to and booking every lead that comes in.</p></li>
+      <li><h3>Keep growing</h3><span class="d">Every month</span><p>Add funnels, automations and campaigns as you grow. On Scale, your account manager and builder help you get there.</p></li>
     </ol>
   </div>
 </section>
@@ -886,46 +909,24 @@
 <section class="nf-band nf-pricing" id="pricing">
   <div class="nf-wrap">
     <div class="nf-center nf-c">
-      <span class="nf-eyebrow">Pricing (3 plans)</span>
-      <h2>Pick how much <span class="g">we do for you</span></h2>
-      <p class="nf-sub">Every plan includes the full Oceanic Funnels OS with unlimited contacts and users. The difference is how much our team builds and runs for you.</p>
+      <span class="nf-eyebrow">Pricing (4 plans)</span>
+      <h2>Pick the plan <span class="g">that fits</span></h2>
+      <p class="nf-sub">Start with funnels and a store, move to the full system, switch on AI, or have our team help you scale. Unlimited funnels and websites on every plan.</p>
     </div>
-    <div class="nf-prices">
-      <article class="nf-price">
-        <span class="plan">OS</span>
-        <div class="amt"><span class="v">$97</span> <small>/month</small></div>
-        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
-        <p class="for">The full system. You build and run it yourself.</p>
-        <ul><li class="lead">Everything to catch, follow up and close:</li><li>Unlimited contacts and users</li><li>Unlimited funnels and websites</li><li>CRM and sales pipelines</li><li>Email and SMS automations</li><li>Calendars and booking</li><li>One inbox for every channel</li><li>Invoices, payments and text-to-pay</li><li>Ticket support, 24-hour reply</li></ul>
-        <a class="nf-btn nf-btn--ink" href="{{PLAN1}}">Start with OS</a>
-        <p class="after">30-day money-back guarantee</p>
-      </article>
-      <article class="nf-price nf-price--pop">
-        <span class="pop">MOST POPULAR</span>
-        <span class="plan">Growth</span>
-        <div class="amt"><span class="v">$197</span> <small>/month</small></div>
-        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
-        <p class="for">Everything set up for you and kept running.</p>
-        <ul><li class="lead">Everything in OS, plus:</li><li>Done-for-you setup in week one</li><li>Domain, email, phone and text registration</li><li>5 core automations installed</li><li>1 AI chat agent trained on your business</li><li>Niche template installed and branded</li><li>24/7 live chat and WhatsApp support</li><li>5 edit requests every month</li><li>Monthly strategy call and report</li></ul>
-        <a class="nf-btn nf-btn--aqua" href="{{PLAN2}}">Get Growth</a>
-        <p class="after">30-day money-back guarantee</p>
-      </article>
-      <article class="nf-price">
-        <span class="plan">Done-For-You</span>
-        <div class="amt"><span class="v">$297</span> <small>/month</small></div>
-        <p class="fee">+ $997 one-time build fee</p>
-        <p class="for">We build your funnel and the full backend.</p>
-        <ul><li class="lead">Everything in Growth, plus:</li><li>Your sales funnel built from scratch</li><li>Strategy, copy and design included</li><li>Full automated backend</li><li>AI chat agent and Voice AI setup</li><li>Meta Pixel, Conversions API and GA4</li><li>Dedicated account manager</li><li>10 edits or 1 new page every month</li><li>Quarterly funnel tune-up</li></ul>
-        <a class="nf-btn nf-btn--ink" href="{{PLAN3}}">Build my net</a>
-        <p class="after">Cancel anytime · live in 14 days</p>
-      </article>
+    <div class="nf-prices nf-prices--4">
+      {{PRICING_CARDS}}
+    </div>
+    <div class="nf-compare-wrap" id="compare-plans">
+      <h3 class="nf-ct">Compare every feature</h3>
+      <p class="nf-cs">{{FEATURE_N}} features across 4 plans. ✓ included, ✕ not included.</p>
+      <div class="nf-ftable-scroll">{{PRICING_TABLE}}</div>
     </div>
     <div class="nf-extras">
-      <div class="nf-usage"><b>Pay-as-you-go usage</b><p>Email, SMS and calls are billed from your account wallet at transparent per-use rates. AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do.</p><p class="unl"><b>Unlimited funnels on every plan.</b> Build as many funnels and websites as you want yourself, at no extra cost.</p></div>
+      <div class="nf-usage"><b>Pay-as-you-go usage</b><p>Email, SMS and calls are billed from your account wallet at transparent per-use rates. On AI Pro and Scale, AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do.</p><p class="unl"><b>Unlimited funnels on every plan.</b> Build as many funnels and websites as you like yourself.</p></div>
       <ul class="nf-addons" aria-label="Add-ons">
-        <li><div><b>WhatsApp messaging</b><small>Plus WhatsApp's per-message fees</small></div><span>+$19/month</span></li>
-        <li><div><b>AI Agent Unlimited</b><small>Optional: unlimited AI replies and voice minutes</small></div><span>+$147/month</span></li>
-        <li><div><b>Extra funnel built by our team</b><small>Done for you, beyond your plan</small></div><span>$297 one time</span></li>
+        <li><div><b>WhatsApp messaging</b><small>Growth and up. Plus WhatsApp's per-message fees</small></div><span>+$19/month</span></li>
+        <li><div><b>AI Agent Unlimited</b><small>AI Pro and Scale: unlimited AI replies and voice minutes</small></div><span>+$147/month</span></li>
+        <li><div><b>Extra funnel built by our team</b><small>Built for you, on any plan</small></div><span>$297 one time</span></li>
       </ul>
     </div>
     <p class="nf-found"><b>Founding member offer:</b> the first 50 businesses keep their price for life, even when our prices go up.</p>
@@ -945,11 +946,11 @@
         <tbody>
           <tr><th scope="row">Logins to manage</th><td>One per tool</td><td>Their tools, not yours</td><td class="us">✓ One login for everything</td></tr>
           <tr><th scope="row">Contacts and users</th><td>Often priced per contact</td><td>Depends on their tools</td><td class="us">✓ Unlimited</td></tr>
-          <tr><th scope="row">Setup</th><td>You do it</td><td>Separate project fee</td><td class="us">✓ Done for you on Growth</td></tr>
-          <tr><th scope="row">Sales funnel build</th><td>You build it</td><td>Extra project</td><td class="us">✓ Included in Done-For-You</td></tr>
-          <tr><th scope="row">AI agents</th><td>Another tool to buy</td><td>Rarely included</td><td class="us">✓ Built in</td></tr>
-          <tr><th scope="row">Support</th><td>Separate for each tool</td><td>Office hours</td><td class="us">✓ 24/7 live on Growth</td></tr>
-          <tr><th scope="row">Monthly cost</th><td>Adds up with every tool</td><td>Retainer plus tools</td><td class="us">✓ One bill from $97</td></tr>
+          <tr><th scope="row">Setup</th><td>You do it</td><td>Separate project fee</td><td class="us">✓ Guided by your team on Scale</td></tr>
+          <tr><th scope="row">Help to grow</th><td>You figure it out</td><td>Extra project</td><td class="us">✓ Account manager and builder on Scale</td></tr>
+          <tr><th scope="row">AI agents</th><td>Another tool to buy</td><td>Rarely included</td><td class="us">✓ Built in on AI Pro and Scale</td></tr>
+          <tr><th scope="row">Support</th><td>Separate for each tool</td><td>Office hours</td><td class="us">✓ 24/7 support</td></tr>
+          <tr><th scope="row">Monthly cost</th><td>Adds up with every tool</td><td>Retainer plus tools</td><td class="us">✓ One bill, full system from $97</td></tr>
         </tbody>
       </table>
     </div>
@@ -978,9 +979,9 @@
         <h2>Ready to build your net?</h2>
         <p class="nf-sub">Pick a plan today and start catching every lead this week.</p>
         <ul class="nf-audit">
-          <li>Unlimited contacts and users on every plan</li>
+          <li>Unlimited contacts and users on Growth, AI Pro and Scale</li>
           <li>Founding price locked in for life</li>
-          <li>30-day money-back guarantee on OS and Growth</li>
+          <li>30-day money-back guarantee on Growth and AI Pro</li>
         </ul>
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
       </div>

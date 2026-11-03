@@ -117,7 +117,7 @@ dict(
  faqs=[
   ("Can lessons unlock over time?", "Yes. Use drip schedules to control when lessons become available after someone joins."),
   ("Can I sell a subscription membership?", "Yes. Offers can be one-time purchases or recurring subscriptions."),
-  ("Is course hosting included?", "Yes. Courses, memberships and communities are included on every plan."),
+  ("Is course hosting included?", "Yes. Courses, memberships and communities are included on Growth, AI Pro and Scale."),
  ],
  related_ind=["course-creators", "coaches-consultants", "personal-trainers", "yoga-pilates-studios", "tutoring-learning-centers", "lash-brow-nail-studios"],
  sources=[],

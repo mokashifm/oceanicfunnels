@@ -72,7 +72,7 @@ BASE = [
  "funnels": ["Home valuation funnel", "Property listing and showing funnel", "First-time buyer guide funnel", "Open-house sign-in page"],
  "faqs": [
    ("Can it handle leads from property portals?", "Yes, as long as the portal can send leads by email, webhook or an integration. Each new lead is added to your CRM and starts your instant follow-up."),
-   ("Can my whole team use it?", "Yes. Users are unlimited on every plan, and leads can be assigned to agents automatically, with each agent seeing their own pipeline and conversations."),
+   ("Can my whole team use it?", "Yes. Users are unlimited on Growth, AI Pro and Scale, and leads can be assigned to agents automatically, with each agent seeing their own pipeline and conversations."),
  ],
 },
 {
@@ -106,7 +106,7 @@ BASE = [
  ],
  "funnels": ["Lead magnet and email course", "Webinar or masterclass funnel", "Application and discovery-call funnel", "Course or membership sales page"],
  "faqs": [
-   ("Can I host my course and community here?", "Yes. Courses, memberships and communities are included on every plan, connected to the same contact records, payments and automations."),
+   ("Can I host my course and community here?", "Yes. Courses, memberships and communities are included on Growth, AI Pro and Scale, connected to the same contact records, payments and automations."),
    ("Can I sell payment plans?", "Yes. You can sell one-time, subscription and payment-plan offers from order forms, with automatic reminders when a payment fails."),
  ],
 },
@@ -428,8 +428,8 @@ BASE = [
 ]
 
 GENERIC_FAQ = [
-  ("Do you set it up for me?", "On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($297 a month plus a one-time $997 build fee) we build your sales funnel and the full automated backend for your business."),
-  ("How much does it cost?", "Oceanic Funnels OS starts at $97 a month with unlimited contacts and users. Usage like SMS, email and AI is pay-as-you-go, and WhatsApp is a +$19/month add-on."),
+  ("Do you set it up for me?", "On the Scale plan ($297 a month), a dedicated account manager and a builder work with you to set up your system and grow your business. On Growth and AI Pro, you build it yourself with our templates and guides."),
+  ("How much does it cost?", "Plans start at $17 a month for funnels, websites and a store. The full system with unlimited contacts and users is $97 a month on Growth, AI Pro adds every AI feature for $197 a month, and Scale adds a dedicated account manager and builder for $297 a month. Usage like SMS, email and AI is pay-as-you-go, and WhatsApp is a +$19/month add-on."),
 ]
 
 from ind_trades import TRADES

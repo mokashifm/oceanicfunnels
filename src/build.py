@@ -6,6 +6,7 @@ Outputs:
 """
 import json, html, os, datetime
 import pages
+import plans
 
 CONFIG = {
     "brand": "Oceanic Funnels",
@@ -14,7 +15,8 @@ CONFIG = {
     "path": "/",                                  # homepage
     "email": "hello@oceanicfunnels.com",
     # Replace these with your real links (checkout / order form per plan, app login, contact calendar)
-    "plan1": "https://checkout.oceanicfunnels.com/oceanic_funnels", "plan2": "https://checkout.oceanicfunnels.com/oceanic_funnels", "plan3": "https://checkout.oceanicfunnels.com/oceanic_funnels",
+    "plans": {"launch": "https://checkout.oceanicfunnels.com/oceanic_funnels", "growth": "https://checkout.oceanicfunnels.com/oceanic_funnels",
+              "aipro": "https://checkout.oceanicfunnels.com/oceanic_funnels", "scale": "https://checkout.oceanicfunnels.com/oceanic_funnels"},
     "login": "https://app.oceanicfunnels.com", "book_url": "#get-started",
     "updated": datetime.date.today().isoformat(),
 }
@@ -22,27 +24,29 @@ B, P = CONFIG["brand"], CONFIG["product"]
 
 FAQ = [
     (f"What is {P}?",
-     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill, starting at $97 a month."),
+     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. Plans start at $17 a month for funnels, websites and a store, and the full system starts at $97 a month."),
     ("What is a sales funnel?",
      "A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel."),
-    ("What is included in the $97 OS plan?",
-     "The full system: unlimited contacts and users, funnels, websites and forms, CRM and sales pipelines, email and SMS automations, calendars and booking, one inbox for every channel, invoices and payments, reviews and courses. You build and run it yourself, with ticket support that replies within 24 hours."),
-    ("What is the difference between Growth and Done-For-You?",
-     "Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($297 a month plus a one-time $997 build fee) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month."),
+    ("What are the plans?",
+     "There are four plans: " + plans.summary_text() + ". Every plan is month to month."),
+    ("What is the difference between Growth and AI Pro?",
+     "Growth ($97 a month) includes every feature except AI: CRM and pipelines, phone, SMS and email, calendars, automation workflows, funnels and websites, payments, courses and communities, reviews and reporting. AI Pro ($197 a month) adds all the AI features: Conversation AI, Voice AI, Content AI, Reviews AI, Workflow AI, Website and Funnel AI, AI Studio, Agent Studio, the AI Knowledge Base and Ask AI."),
+    ("What do I get on Scale?",
+     "Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder who helps you grow and scale your business."),
     ("Are contacts really unlimited?",
-     "Yes. Every plan includes unlimited contacts and unlimited team users. You never pay more because your list or your team grows."),
+     "Yes. Growth, AI Pro and Scale include unlimited contacts and unlimited team users. You never pay more because your list or your team grows."),
     ("How do email, SMS and AI costs work?",
-     "Email, SMS and calls are pay-as-you-go, billed from your account wallet at transparent per-use rates. AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do. If you want unlimited AI replies and voice minutes, add AI Agent Unlimited for $147 a month."),
+     "Email, SMS and calls are pay-as-you-go, billed from your account wallet at transparent per-use rates. On AI Pro and Scale, AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do. If you want unlimited AI replies and voice minutes, add AI Agent Unlimited for $147 a month."),
     ("Can I build more than one funnel?",
      "Yes. Every plan includes unlimited funnels and websites that you build yourself. If you want our team to build an extra funnel for you, it is $297 one time per funnel."),
     ("Is WhatsApp included?",
      "WhatsApp messaging is an add-on for $19 a month. WhatsApp's own per-message fees are billed from your account wallet, and replies inside an open customer conversation are often free."),
     ("How long does setup take?",
-     "On OS you can start building the moment you sign up. On Growth, your system is set up within the first week. On Done-For-You, your sales funnel and automated backend go live within 14 days, or your next month is free."),
+     "On every plan you can start building the moment you sign up. On Scale, your dedicated account manager and builder work with you to set up your system and keep growing it."),
     ("Can I move my contacts from my current tools?",
-     "Yes. You can import contacts from a spreadsheet or your current CRM. On Growth and Done-For-You, our team does the import for you."),
+     "Yes. On Growth, AI Pro and Scale you can import contacts from a spreadsheet or your current CRM. On Scale, your account manager can help you with the import."),
     ("Is there a contract or a guarantee?",
-     "No contracts. Every plan is month to month and you can cancel anytime. OS and Growth also come with a 30-day money-back guarantee."),
+     "No contracts. Every plan is month to month and you can cancel anytime. Growth and AI Pro also come with a 30-day money-back guarantee."),
     ("Who is behind Oceanic Funnels?",
      "Oceanic Funnels is a company based in Bahawalpur, Pakistan, working with businesses worldwide. You sign up, pay, get onboarded and get support directly from our team. Support is 24/7: our team replies within the same hour and our AI support assistant answers straight away."),
     ("What happens to my data if I cancel?",
@@ -54,13 +58,10 @@ FAQ = [
 def schema():
     url = CONFIG["domain"] + CONFIG["path"]
     org_id = CONFIG["domain"] + "/#org"
-    def offer(name, price, setup=None):
-        spec = [{"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "USD",
-                 "unitText": "MONTH", "billingDuration": 1, "billingIncrement": 1}]
-        if setup:
-            spec.append({"@type": "UnitPriceSpecification", "price": setup, "priceCurrency": "USD", "name": "One-time build fee"})
+    def offer(name, price):
         return {"@type": "Offer", "name": name, "price": price, "priceCurrency": "USD",
-                "priceSpecification": spec if setup else spec[0]}
+                "priceSpecification": {"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "USD",
+                                       "unitText": "MONTH", "billingDuration": 1, "billingIncrement": 1}}
     graph = [
         {"@type": "Organization", "@id": org_id, "name": B, "url": CONFIG["domain"], "email": CONFIG["email"],
          "logo": CONFIG["domain"] + "/icon-512.png", "sameAs": [u for _, u in pages.SOCIAL] + ["https://www.trustpilot.com/review/oceanicfunnels.com", "https://www.crunchbase.com/organization/oceanic-funnels"],
@@ -77,7 +78,7 @@ def schema():
          "serviceType": "All-in-one sales funnel, CRM and marketing automation software",
          "provider": {"@id": org_id}, "areaServed": "Worldwide",
          "description": "All-in-one sales funnel, CRM and marketing automation system with unlimited contacts, users and funnels: funnels and websites, email and SMS automations, AI agents, calendars, one inbox for every channel, invoices and payments, reviews and courses.",
-         "offers": [offer("OS", "97"), offer("Growth", "197"), offer("Done-For-You", "297", "997")]},
+         "offers": [offer(p["name"], str(p["price"])) for p in plans.PLANS]},
     ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=1)
 
@@ -119,15 +120,15 @@ def replaces_html():
         f'<td data-l="Oceanic Funnels" class="us">✓ Included</td></tr>' for f, t, c, u, _ in REPLACES)
     rows += (f'<tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">{len(REPLACES)} separate tools</td>'
              f'<td data-l="Their price" class="num">${tot:,.2f}<small>/mo</small></td>'
-             f'<td data-l="Oceanic Funnels" class="us"><b>$97</b>/month</td></tr>')
+             f'<td data-l="Oceanic Funnels" class="us"><b>$97</b>/month on Growth</td></tr>')
     src = " · ".join(f'<a href="{l}" rel="nofollow noopener" target="_blank">{t}</a>' for _, t, _, _, l in REPLACES)
     return rows, str(len(REPLACES)), f"{tot:,.2f}", src
 
 def body():
     src = open("body.src.html").read()
     rep = {"{{BRAND}}": B, "{{BOOK}}": CONFIG["book_url"], "{{EMAIL}}": CONFIG["email"],
-           "{{LOGIN}}": CONFIG["login"], "{{PLAN1}}": CONFIG["plan1"], "{{PLAN2}}": CONFIG["plan2"],
-           "{{PLAN3}}": CONFIG["plan3"], "{{FAQ}}": faq_html(), "{{FAQ_N}}": str(len(FAQ)),
+           "{{LOGIN}}": CONFIG["login"], "{{PRICING_CARDS}}": plans.cards_html(CONFIG["plans"]),
+           "{{PRICING_TABLE}}": plans.table_html(), "{{FEATURE_N}}": str(plans.n_features()), "{{FAQ}}": faq_html(), "{{FAQ_N}}": str(len(FAQ)),
            "{{UPDATED}}": datetime.date.fromisoformat(CONFIG["updated"]).strftime("%B %Y"), "{{FOOTER}}": pages.footer(CONFIG), "{{CHECKOUT}}": pages.CK}
     r_rows, r_n, r_tot, r_src = replaces_html()
     from industries import INDUSTRIES, CATEGORIES
@@ -216,7 +217,7 @@ from industries import INDUSTRIES as _IND, CATEGORIES as _CAT
 from competitors import COMPETITORS as _CMP
 _d = CONFIG["domain"]
 _llms = [f"# {B}", "",
-  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $97/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $297/month plus a one-time $997 build fee (we build your sales funnel and backend). All plans are month to month.", "",
+  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: " + plans.summary_text() + ". All plans are month to month.", "",
   "## Company", "- Oceanic Funnels is a company based in Bahawalpur, Pakistan, serving businesses worldwide. Customers sign up, pay, are onboarded and get support directly from the Oceanic Funnels team.", "- Support: 24/7. The team replies within the same hour; an AI support assistant replies instantly. Email: hello@oceanicfunnels.com", "- Customers own their data: contacts and data can be exported at any time, connected domains stay in the customer's name, and all plans are month to month with no lock-in.", f"- [About Oceanic Funnels]({_d}/about/)", "",
   "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", f"- [Guides]({_d}/guides/): how-to guides on lead response, AI agents, reviews, texting compliance and funnels", ""]
 for c in _CAT:

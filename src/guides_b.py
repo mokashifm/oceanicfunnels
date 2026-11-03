@@ -145,7 +145,7 @@ dict(
   ("The 2026 change: privacy policy and terms URLs", """
 <p>From June 30, 2026, new A2P 10DLC campaign submissions must include both a privacy policy URL and a terms and conditions URL, and both must be valid, publicly accessible pages. Existing approved campaigns aren't affected.</p>"""),
   ("Registering in Oceanic Funnels OS", """
-<p>In Oceanic Funnels OS, go to <b>Settings → Phone Numbers → Trust Center</b>. The registration walks you through your business profile (legal name, tax ID and address), brand, campaign (use case and sample messages with opt-out language) and consent (how contacts opt in), then a review screen before you submit. Approval times vary, so start as soon as your website and policies are live. On the Growth and Done-For-You plans, text registration is part of the setup our team does for you, including your privacy policy and terms pages.</p>"""),
+<p>In Oceanic Funnels OS, go to <b>Settings → Phone Numbers → Trust Center</b>. The registration walks you through your business profile (legal name, tax ID and address), brand, campaign (use case and sample messages with opt-out language) and consent (how contacts opt in), then a review screen before you submit. Approval times vary, so start as soon as your website and policies are live. On the Scale plan, your account manager and builder help you with text registration, including your privacy policy and terms pages.</p>"""),
  ],
  faqs=[
   ("Do I need A2P 10DLC registration?", "If you send texts to US numbers from a local 10-digit business number using software, yes. Toll-free numbers use a separate toll-free verification process instead."),
@@ -244,7 +244,7 @@ dict(
 </ul>
 <p>Change one thing at a time, such as the headline or the offer, and compare.</p>"""),
   ("Building funnels in Oceanic Funnels OS", """
-<p>Oceanic Funnels OS includes unlimited funnels and websites on every plan, with a drag-and-drop builder, forms, surveys, calendars, order forms and checkout, all connected to the CRM, email, SMS and automations. Build it yourself on the OS plan, or on Done-For-You our team builds your sales funnel and the automated backend for you. See <a href="/#pricing">pricing</a>.</p>"""),
+<p>Oceanic Funnels OS includes unlimited funnels and websites on every plan, with a drag-and-drop builder, forms, surveys, calendars, order forms and checkout, all connected to the CRM, email, SMS and automations. Build it yourself on any plan, or on Scale work with a dedicated builder who helps you build and grow it. See <a href="/#pricing">pricing</a>.</p>"""),
  ],
  faqs=[
   ("What's the difference between a website and a sales funnel?", "A website has many pages for many purposes. A sales funnel is a focused path with one offer and one action, built to turn visitors into leads or customers."),
@@ -285,7 +285,7 @@ dict(
   ("Step 5: Follow up and keep it running", """
 <p>Send one or two follow-ups to people who didn't reply, then stop. Afterwards, turn reactivation into an always-on automation: anyone who hasn't booked in a set number of months gets a check-in automatically.</p>"""),
   ("Doing it in Oceanic Funnels OS", """
-<p>Import your list, tag segments, and build a workflow that sends the SMS or email, waits for a reply and routes responders to your AI agent or team. Bookings go straight into your calendar with reminders. On Done-For-You, our team builds this for you as part of your backend.</p>"""),
+<p>Import your list, tag segments, and build a workflow that sends the SMS or email, waits for a reply and routes responders to your AI agent or team. Bookings go straight into your calendar with reminders. On Scale, your builder helps you set this up.</p>"""),
  ],
  faqs=[
   ("Is it legal to text old leads?", "Only text people who have given you permission to contact them by text, and always include a way to opt out. Rules vary by country, so check what applies to you. In the US, your number must also be registered for business texting."),
@@ -331,7 +331,7 @@ dict(
 <li>Turn on <b>Order Bump</b>, choose the bump product and save.</li>
 <li>Add an upsell step after the checkout step in the funnel for your one-click offer.</li>
 </ol>
-<p>Funnel checkouts in Oceanic Funnels OS support two-step order forms, order bumps and upsell pages after purchase. Abandoned checkouts can trigger an automatic follow-up sequence. On Done-For-You, our team builds the checkout and follow-up for you.</p>"""),
+<p>Funnel checkouts in Oceanic Funnels OS support two-step order forms, order bumps and upsell pages after purchase. Abandoned checkouts can trigger an automatic follow-up sequence. On Scale, your builder helps you set up the checkout and follow-up.</p>"""),
  ],
  faqs=[
   ("Do order bumps annoy customers?", "Not when they're relevant and inexpensive. A single, clearly described add-on is easy to skip and often welcome."),
@@ -378,7 +378,7 @@ dict(
   ("All-in-one vs a stack of tools", """
 <p>Many businesses glue together a CRM, an email tool, a texting tool, a scheduler and a funnel builder. Each one has its own bill and login, and leads slip through the gaps between them. An all-in-one system keeps everything connected. See the <a href="/#all-in-one">tools Oceanic Funnels OS replaces</a> and what they'd cost separately.</p>"""),
   ("Oceanic Funnels OS as your CRM", """
-<p>Oceanic Funnels OS includes the CRM, pipelines, unified inbox, email, two-way SMS, AI agents, calendars, payments, reviews and unlimited funnels, with unlimited contacts and users from $97 a month. On Growth, our team sets it up for you in the first week. See how it works for <a href="/industries/">your industry</a>.</p>"""),
+<p>Oceanic Funnels OS includes the CRM, pipelines, unified inbox, email, two-way SMS, AI agents, calendars, payments, reviews and unlimited funnels, with unlimited contacts and users. The full system starts at $97 a month, and AI agents are included from $197 a month on AI Pro. See how it works for <a href="/industries/">your industry</a>.</p>"""),
  ],
  faqs=[
   ("What does CRM stand for?", "Customer relationship management. It's the system a business uses to keep track of contacts, conversations, deals and follow-up."),

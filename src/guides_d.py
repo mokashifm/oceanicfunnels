@@ -42,7 +42,7 @@ dict(
  faqs=[
   ("Do I need technical skills to build workflows?", "No. Workflows use a visual builder, ready-made templates and an AI builder that drafts workflows from a plain-English description."),
   ("Can one workflow have more than one trigger?", "Yes. You can add several triggers to one workflow and use filters to control when each fires."),
-  ("Will you build my workflows?", "On Growth, our team installs five core automations in your first week. On Done-For-You, we build your full automated backend."),
+  ("Will you build my workflows?", "Automation workflows are included from the Growth plan. On Scale, your account manager and builder help you build them."),
  ],
  related_ind=["home-services", "real-estate", "coaches-consultants", "gyms-fitness-studios", "med-spas", "insurance-agencies"],
  sources=[],
@@ -82,7 +82,7 @@ dict(
  faqs=[
   ("How are duplicate contacts handled?", "Existing contacts are matched by email first, then phone. Choose Update Only or Create & Update to control what happens to matches."),
   ("Can I import deals or opportunities?", "Yes. Import contacts and opportunities together from Opportunities → Import. Each opportunity needs a matching contact and an owner who exists as a user."),
-  ("Will you import my contacts for me?", "On Growth and Done-For-You, our team does the import for you."),
+  ("Will you import my contacts for me?", "On the Scale plan, your account manager can help you with the import."),
  ],
  related_ind=["real-estate", "dental-practices", "gyms-fitness-studios", "insurance-agencies", "accountants-cpas", "nonprofits"],
  sources=[],
@@ -247,7 +247,7 @@ dict(
   ("How often should I review marketing reports?", "Check your dashboard weekly and do a deeper monthly review. Daily checks are useful only while you're actively testing ads."),
   ("Can I see Facebook ad results in my dashboard?", "Yes. Connect your Meta ad account and add Meta Ads widgets for spend, clicks, conversions, CPC and more."),
   ("Can I email reports automatically?", "Yes. Custom reports can be sent or scheduled by email."),
-  ("Does Done-For-You include reporting?", "Growth includes a monthly strategy call and report, and Done-For-You includes everything in Growth."),
+  ("Which plans include reporting?", "Dashboards and reporting are included on Growth, AI Pro and Scale."),
  ],
  related_ind=["home-services", "real-estate", "med-spas", "solar-installers", "auto-dealerships", "dental-practices"],
  sources=[],
@@ -325,7 +325,7 @@ dict(
  faqs=[
   ("Do I need a sending domain?", "Yes. A verified sending domain is required before sending campaigns, and it's essential for deliverability."),
   ("Can I schedule email campaigns?", "Yes. Schedule for a future date and time, or use batch sending to pace large sends."),
-  ("How much does email cost?", "Email sending is pay-as-you-go from your wallet, with no per-contact pricing. Contacts are unlimited on every plan."),
+  ("How much does email cost?", "Email sending is pay-as-you-go from your wallet, with no per-contact pricing. Contacts are unlimited on Growth, AI Pro and Scale."),
  ],
  related_ind=["ecommerce-brands", "course-creators", "restaurants", "financial-advisors", "nonprofits", "churches"],
  sources=[],

@@ -313,6 +313,6 @@ I("course-creators", "Course Creators", "Course creators", "Coaching, education 
    ("Communities", "A community area for your students."),
    ("Affiliate manager", "Run an affiliate program with tracked commissions.")],
   ["Free challenge funnel", "Webinar registration", "Course sales page with upsell", "Membership page"],
-  [("Can I host my course here instead of a separate platform?", "Yes. Courses, memberships and communities are included on every plan, connected to your funnels, email and payments."),
+  [("Can I host my course here instead of a separate platform?", "Yes. Courses, memberships and communities are included on Growth, AI Pro and Scale, connected to your funnels, email and payments."),
    ("Can I run an affiliate program?", "Yes. The affiliate manager lets you create commission plans and track affiliate sales.")]),
 ]

@@ -41,7 +41,7 @@ dict(
 <li>Send yourself a test, then click <b>Save</b>.</li>
 <li>Set the incoming call timeout in the same Voice area. Around 10 to 20 seconds works for most businesses: long enough to answer, short enough that the text arrives while the caller is still holding their phone.</li>
 </ol>
-<p>To send texts in the US, your number needs to be registered for business texting (A2P 10DLC for local numbers, or toll-free verification). We cover that in our <a href="/guides/a2p-10dlc-registration/">A2P 10DLC guide</a>. On the Growth and Done-For-You plans, our team sets all of this up for you.</p>"""),
+<p>To send texts in the US, your number needs to be registered for business texting (A2P 10DLC for local numbers, or toll-free verification). We cover that in our <a href="/guides/a2p-10dlc-registration/">A2P 10DLC guide</a>. On the Scale plan, your account manager and builder help you set all of this up.</p>"""),
   ("Make it smarter with an AI agent", """
 <p>Missed call text back starts the conversation. An <a href="/guides/ai-chat-agent-for-business/">AI chat agent</a> can finish it: answer common questions, collect details and book an appointment straight into your calendar, any time of day. For calls, a <a href="/guides/ai-receptionist/">voice AI receptionist</a> can answer the phone itself.</p>"""),
  ],
@@ -119,7 +119,7 @@ dict(
 <p>Fill out your own website form, send your own Instagram DM, and call your main number after hours. Time how long each takes to get a reply. Most owners are surprised by the result. Then take our free <a href="/tools/speed-to-lead-test/">Speed to Lead Test</a> to score your setup out of 100 and see your top fixes.</p>"""),
   ("Setting it up in Oceanic Funnels OS", """
 <p>In Oceanic Funnels OS, this is a workflow triggered by a new form submission, a new lead or an inbound message. It sends your instant reply, assigns the lead to a team member, creates a task and starts the follow-up sequence. Pair it with <a href="/guides/missed-call-text-back/">missed call text back</a> so phone leads get the same instant response, and an <a href="/guides/ai-chat-agent-for-business/">AI chat agent</a> for conversations outside business hours.</p>
-<p>On the Growth plan our team installs a speed-to-lead automation as one of your core automations in the first week. On Done-For-You, we build it into your full funnel and backend.</p>"""),
+<p>Speed-to-lead automations are included from the Growth plan, and AI replies from AI Pro. On Scale, your builder sets them up with you.</p>"""),
   ("What to measure", """
 <ul>
 <li><b>Time to first response:</b> aim for under a minute for automated replies and under five minutes for a human follow-up during business hours.</li>
@@ -190,7 +190,7 @@ dict(
   ("Which channels can the AI agent reply on?", "SMS, email, website chat, Facebook, Instagram and WhatsApp. WhatsApp requires the +$19/month WhatsApp add-on plus WhatsApp's own message fees."),
   ("Can the AI agent book appointments?", "Yes. Connect a calendar and the agent can offer available times, book, reschedule and cancel appointments."),
   ("Will it make things up?", "Agents answer from the information and instructions you give them. Testing in suggestive mode and giving clear instructions on when to hand over to a human keeps answers accurate."),
-  ("Do you set it up for me?", "On the Growth plan our team sets up and trains one AI chat agent on your business. On Done-For-You we set up both chat and voice AI."),
+  ("Do you set it up for me?", "AI agents are included on AI Pro and Scale. On Scale, your account manager and builder help you set up and train your chat and voice AI agents."),
  ],
  related_ind=["med-spas", "coaches-consultants", "gyms-fitness-studios", "real-estate", "soccer-clubs-academies", "travel-agencies"],
  sources=[],
@@ -238,7 +238,7 @@ dict(
 <li>Review call summaries in the first week and tighten the prompt where callers got stuck.</li>
 </ul>"""),
   ("Costs", """
-<p>Voice AI in Oceanic Funnels OS is pay-as-you-go, billed by the minute from your wallet. If you take a lot of calls, AI Agent Unlimited (+$147/month) covers unlimited AI replies and voice minutes. On the Done-For-You plan, our team builds and tunes your voice AI agent for you.</p>"""),
+<p>Voice AI in Oceanic Funnels OS is pay-as-you-go, billed by the minute from your wallet. If you take a lot of calls, AI Agent Unlimited (+$147/month) covers unlimited AI replies and voice minutes. Voice AI is included on AI Pro and Scale, and on Scale your builder helps you set up and tune your voice agent.</p>"""),
  ],
  faqs=[
   ("Can the AI receptionist transfer a call to me?", "Yes. Add a call transfer action with your phone number, and tell the agent when to use it, such as emergencies or when the caller asks for a person."),
@@ -281,7 +281,7 @@ dict(
 <li>Create and submit your message templates for approval, such as appointment reminders and follow-ups.</li>
 <li>Turn on WhatsApp in your calendar notifications, workflows and AI agent channels.</li>
 </ol>
-<p>On the Growth and Done-For-You plans, our team handles this setup with you.</p>"""),
+<p>On the Scale plan, your account manager and builder help you with this setup.</p>"""),
   ("Best practices", """
 <ul>
 <li>Only message people who have opted in to WhatsApp messages from you.</li>

@@ -3,7 +3,7 @@
 These are a starting draft, not legal advice: have a lawyer review them.
 """
 
-EFFECTIVE = "October 26, 2026"
+EFFECTIVE = "November 3, 2026"
 ENTITY = "Oceanic Funnels"
 ADDRESS = "Bahawalpur, Pakistan"
 LAW = "Pakistan"
@@ -11,7 +11,7 @@ EMAIL = "hello@oceanicfunnels.com"
 
 PRIVACY = [
 ("Who we are", f"""
-<p>This Privacy Policy explains how {ENTITY} ("Oceanic Funnels", "we", "us") collects, uses and protects personal information when you visit oceanicfunnels.com, contact us, or use Oceanic Funnels OS and our done-for-you services (together, the "Services").</p>
+<p>This Privacy Policy explains how {ENTITY} ("Oceanic Funnels", "we", "us") collects, uses and protects personal information when you visit oceanicfunnels.com, contact us, or use Oceanic Funnels OS and our account management and build services (together, the "Services").</p>
 <p>You can reach us at <b>{EMAIL}</b>. We are based in {ADDRESS}.</p>"""),
 
 ("Information we collect", """
@@ -29,7 +29,7 @@ PRIVACY = [
 
 ("How we use information", """
 <ul>
-<li>To provide, set up, maintain and support the Services, including done-for-you builds.</li>
+<li>To provide, set up, maintain and support the Services, including account management and builds.</li>
 <li>To process payments, manage subscriptions and send receipts and account notices.</li>
 <li>To respond to questions and provide customer support.</li>
 <li>To send product updates and marketing about our own Services, which you can opt out of at any time.</li>
@@ -81,7 +81,7 @@ PRIVACY = [
 
 TERMS = [
 ("Agreement", f"""
-<p>These Terms of Service ("Terms") are an agreement between you and {ENTITY} ("Oceanic Funnels", "we", "us") and govern your use of oceanicfunnels.com, Oceanic Funnels OS (the "Platform") and our done-for-you services (together, the "Services"). By creating an account, paying for a plan or using the Services, you agree to these Terms. If you use the Services for a business, you confirm you can accept these Terms on its behalf.</p>"""),
+<p>These Terms of Service ("Terms") are an agreement between you and {ENTITY} ("Oceanic Funnels", "we", "us") and govern your use of oceanicfunnels.com, Oceanic Funnels OS (the "Platform") and our account management and build services (together, the "Services"). By creating an account, paying for a plan or using the Services, you agree to these Terms. If you use the Services for a business, you confirm you can accept these Terms on its behalf.</p>"""),
 
 ("Your account", """
 <ul>
@@ -107,21 +107,20 @@ TERMS = [
 <li>Usage charges and wallet balances are non-refundable except where required by law.</li>
 </ul>"""),
 
-("Done-for-you services", """
+("Plans and account services", """
 <ul>
-<li><b>Growth plan:</b> includes setup of your account in the first week, five core automations, one AI chat agent, a niche template, and five edit requests each month.</li>
-<li><b>Done-For-You plan:</b> includes a custom sales funnel and automated backend built by our team, plus ten edit requests or one new page each month. It has a one-time build fee of $997, charged with your first payment, in addition to the monthly fee. Once our team has started the build, the build fee is non-refundable.</li>
+<li><b>Plans:</b> Launch ($17 a month) includes unlimited sales funnels, websites and an e-commerce store only. Growth ($97 a month) includes every feature except AI features. AI Pro ($197 a month) includes every feature, including AI features. Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale your business. The features in each plan are listed on our pricing page.</li>
+<li><b>Scale services:</b> your account manager and builder work with you on setting up and growing your system. There is no build fee.</li>
 <li><b>Extra funnels:</b> funnels built by our team beyond your plan are $297 one time per funnel. You can build unlimited funnels yourself on every plan.</li>
-<li>Monthly edit requests and pages do not roll over to the next month.</li>
-<li><b>Your part:</b> you agree to provide the content, logins, brand assets and approvals we need, on time. Timelines, including our "live in 14 days" target, start once we have what we need, and are extended by any delays on your side. If we miss the 14-day launch target for reasons within our control, your first month's Done-For-You fee is free and is credited to your next invoice. The one-time build fee still applies.</li>
+<li><b>Your part:</b> you agree to provide the content, logins, brand assets and approvals we need, on time. Timelines, including our "live in 14 days" target on Scale, start once we have what we need, and are extended by any delays on your side. If we miss the 14-day launch target on Scale for reasons within our control, your first month's Scale fee is free and is credited to your next invoice.</li>
 <li>You are responsible for reviewing and approving everything we build before it goes live, including claims in your copy and compliance with laws that apply to your business.</li>
 </ul>"""),
 
 ("Cancellation and refunds", """
 <ul>
 <li>You can cancel any time from your account or by emailing hello@oceanicfunnels.com. Cancellation takes effect at the end of your current billing period, and you keep access until then.</li>
-<li><b>30-day money-back guarantee:</b> if you cancel the OS or Growth plan within 30 days of your first payment for your first subscription, we will refund that first subscription payment. This does not cover usage charges, add-ons, third-party fees or one-time build fees.</li>
-<li>The 30-day money-back guarantee does not apply to the Done-For-You plan, because our team starts building your funnel and backend right away.</li>
+<li><b>30-day money-back guarantee:</b> if you cancel the Growth or AI Pro plan within 30 days of your first payment for your first subscription, we will refund that first subscription payment. This does not cover usage charges, add-ons, third-party fees or extra funnel builds.</li>
+<li>The 30-day money-back guarantee does not apply to the Launch or Scale plans.</li>
 <li>Except as stated above or required by law, payments are non-refundable.</li>
 </ul>"""),
 

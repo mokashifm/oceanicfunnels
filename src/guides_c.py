@@ -36,7 +36,7 @@ dict(
  ],
  faqs=[
   ("Can I use my own domain?", "Yes. Connect your domain from the website's Settings tab, automatically with supported providers or by adding DNS records manually. SSL is added automatically."),
-  ("Do I need a developer?", "No. Websites are built with a drag-and-drop builder and templates. On the Done-For-You plan our team builds your sales funnel for you, and an extra funnel can be built for you by our team for $297."),
+  ("Do I need a developer?", "No. Websites are built with a drag-and-drop builder and templates. On the Scale plan a dedicated builder helps you build and grow your funnels, and on any plan our team can build an extra funnel for you for $297."),
   ("How many websites can I build?", "Unlimited websites and funnels are included on every plan."),
  ],
  related_ind=["home-services", "law-firms", "dental-practices", "restaurants", "contractors-remodelers", "photographers"],

@@ -539,6 +539,29 @@
 .nf-addons span{font-family:var(--display);font-weight:600;color:var(--aqua-d);white-space:nowrap}
 .nf-found{text-align:center;margin-top:26px;font-size:15px;color:var(--text)}
 .nf-found b{color:var(--coral-d)}
+.nf-prices--4{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.nf-prices--4 .nf-price{padding:36px 22px 26px}
+.nf-prices--4 .nf-price .amt{font-size:52px}
+.nf-compare-wrap{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+.nf-ct{font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.nf-cs{font-size:14.5px;color:var(--muted);margin-top:6px}
+.nf-ftable-scroll{margin-top:18px}
+.nf-ftable{width:100%;border-collapse:collapse;font-size:14.5px;table-layout:fixed}
+.nf-ftable col.cf{width:40%}.nf-ftable col.cp{width:15%}
+.nf-ftable tr.grp td{background:var(--mist);text-align:center;font-family:var(--display);font-size:11.5px;font-weight:700;color:var(--muted);padding:10px 1px;border-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.nf-ftable thead th{position:sticky;top:0;background:#fff;z-index:1;padding:12px 8px;border-bottom:2px solid var(--ink);text-align:center;font-family:var(--display);color:var(--ink);vertical-align:bottom}
+.nf-ftable thead th.f{text-align:left}
+.nf-ftable thead th b{display:block;font-size:15px}
+.nf-ftable thead th small{display:block;font-family:var(--body);font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+.nf-ftable tbody th{text-align:left;font-weight:500;color:var(--text);padding:10px 8px;border-bottom:1px solid var(--line)}
+.nf-ftable td{text-align:center;padding:10px 6px;border-bottom:1px solid var(--line)}
+.nf-ftable tbody th{overflow-wrap:anywhere}
+.nf-ftable tr.grp th{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--aqua-d);background:var(--mist);padding:10px 8px;border-bottom:0}
+.nf-ftable .yes{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:13px;font-weight:800}
+.nf-ftable .no{display:inline-grid;place-items:center;width:24px;height:24px;color:#B4C2BF;font-size:14px;font-weight:700}
+.nf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:1100px){.nf-prices--4{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;gap:32px 16px}}
+@media (max-width:640px){.nf-prices--4{grid-template-columns:1fr;max-width:480px}.nf-compare-wrap{padding:20px 12px}.nf-ftable{font-size:13px}.nf-ftable thead th{padding:10px 3px}.nf-ftable thead th b{font-size:13px}.nf-ftable thead th small{font-size:11px}.nf-ftable tbody th{padding:9px 4px}.nf-ftable td{padding:9px 2px}.nf-ftable col.cf{width:36%}.nf-ftable col.cp{width:16%}.nf-ftable tr.grp td{font-size:10px;letter-spacing:-.01em}.nf-ftable tr.grp th{font-size:11px;letter-spacing:.04em}.nf-ftable .yes,.nf-ftable .no{width:20px;height:20px;font-size:11px}}
 @media (max-width:1060px){.nf-stack,.nf-extras{grid-template-columns:1fr}}
 @media (max-width:680px){.nf-hatch::after{width:34%;height:16%}.nf-stack-old,.nf-stack-new{padding:28px 22px}}
 

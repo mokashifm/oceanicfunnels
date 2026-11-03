@@ -7,21 +7,21 @@ CHECKED = "October 30, 2026"
 
 # Oceanic Funnels OS values, reused on every page
 OF = {
-    "price": "From $97/month, one bill",
-    "contacts": "Unlimited on every plan",
-    "users": "Unlimited on every plan",
+    "price": "From $17/month (Launch), full system $97/month",
+    "contacts": "Unlimited on Growth, AI Pro and Scale",
+    "users": "Unlimited on Growth, AI Pro and Scale",
     "funnels": "Unlimited funnels and websites",
     "crm": "CRM and sales pipelines built in",
     "sms": "Built-in SMS and two-way texting",
     "email": "Email campaigns and automations built in",
     "booking": "Calendars, booking and reminders built in",
     "courses": "Courses, memberships and communities",
-    "ai": "AI chat and voice agents built in",
-    "setup": "Done for you on Growth and Done-For-You plans",
+    "ai": "AI chat and voice agents on AI Pro ($197/month) and Scale",
+    "setup": "Account manager and builder on Scale ($297/month)",
     "fee": "No platform fee on your sales",
     "onboard": "No onboarding fee",
     "store": "Online store, products and checkout built in",
-    "support": "Ticket support on OS, 24/7 live support on Growth, a team that builds it on Done-For-You",
+    "support": "24/7 support, plus a dedicated account manager and builder on Scale",
     "traffic": "No visitor limits on your funnels",
     "allinone": "Funnels, CRM, email, SMS, booking, payments and reviews in one system",
 }
@@ -37,7 +37,7 @@ ROW_LABELS = {
     "booking": "Appointment booking",
     "courses": "Courses and memberships",
     "ai": "AI agents",
-    "setup": "Done-for-you setup",
+    "setup": "Hands-on help",
     "fee": "Fees on your sales",
     "onboard": "Onboarding fee",
     "store": "Online store and checkout",
@@ -53,8 +53,8 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Skool alternative with your community, CRM, email and SMS in one place',
   'answer': "Looking for a Skool alternative? Skool's Hobby plan is $9 a month with a 10% transaction fee, and its Pro plan is $99 a month with a 2.9% transaction fee. "
             "Skool's pricing page lists community, courses, videos and live calls, but not email marketing, a website or funnels. Oceanic "
-            'Funnels OS includes paid communities, courses and memberships plus a CRM, email, SMS, funnels and AI agents, from $97 a month '
-            'with no platform fee on your sales.',
+            'Funnels OS includes paid communities, courses and memberships plus a CRM, email, SMS and funnels, from $97 a month '
+            'with no platform fee on your sales. AI agents are included from $197 a month on AI Pro.',
   'rows': {'price': '$9/month (Hobby) or $99/month (Pro)',
            'fee': '10% (Hobby) or 2.9% (Pro) per transaction',
            'courses': 'Unlimited courses, videos and live calls',
@@ -62,16 +62,17 @@ COMPETITORS = [{'slug': 'skool',
            'funnels': "Not listed on Skool's pricing page"},
   'plans': [('Hobby', '$9/month, 10% transaction fee'), ('Pro', '$99/month, 2.9% transaction fee')],
   'better': "You only need a simple community with courses, and you want new members to find you through Skool's own discovery page.",
-  'switch': 'Export your member list, recreate your community, courses and pricing in Oceanic Funnels OS (or let our team do it on '
-            'Done-For-You), then invite your members and turn on email and SMS follow-up.',
+  'switch': 'Export your member list, recreate your community, courses and pricing in Oceanic Funnels OS (or get help from your builder on '
+            'Scale), then invite your members and turn on email and SMS follow-up.',
   'sources': [('Skool pricing (skool.com)', 'https://www.skool.com/pricing')]},
  {'slug': 'clickfunnels',
   'name': 'ClickFunnels',
   'kind': 'funnel builder',
   'h1': 'The ClickFunnels alternative with CRM, SMS and AI built in',
   'answer': "ClickFunnels' Launch plan is $97 a month ($81 billed yearly) for 10,000 contacts and 2 team members. Oceanic Funnels OS "
-            'includes unlimited funnels too, plus a full CRM, built-in two-way SMS, AI agents, booking and payments, with unlimited '
-            'contacts and users from $97 a month.',
+            'includes unlimited funnels too. Funnels, websites and a store alone start at $17 a month on Launch, and the full system '
+            'with a CRM, built-in two-way SMS, booking and payments is $97 a month with unlimited contacts and users. AI agents are '
+            'included from $197 a month on AI Pro.',
   'rows': {'price': 'From $97/month (Launch), $81/month billed yearly',
            'contacts': '10,000 on Launch, 75,000 on Scale, 150,000 on Optimize',
            'users': '2 team members on Launch, 5 on Scale',
@@ -81,7 +82,7 @@ COMPETITORS = [{'slug': 'skool',
             ('Optimize', '$297/month ($248 yearly), 150K contacts, 10 team members'),
             ('Dominate', '$5,997/year, annual only, 400K contacts')],
   'better': "You only need funnel pages, and you're happy inside the ClickFunnels community and training.",
-  'switch': 'Rebuild your funnels in Oceanic Funnels OS (or let our team do it on the Done-For-You plan), import your contacts from a CSV '
+  'switch': 'Rebuild your funnels in Oceanic Funnels OS (or get help from your builder on the Scale plan), import your contacts from a CSV '
             'export, and turn on the built-in SMS and follow-up automations you were paying other tools for.',
   'sources': [('ClickFunnels pricing (clickfunnels.com)', 'https://www.clickfunnels.com/pricing')]},
  {'slug': 'kajabi',
@@ -90,7 +91,8 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Kajabi alternative with unlimited contacts, CRM and SMS',
   'answer': "Kajabi's Basic plan is $179 a month ($143 billed yearly) for 5 products, 2,500 contacts and 2 admin users, and it charges an "
             'extra 2% when you use a third-party payment provider. Oceanic Funnels OS includes courses, memberships and communities too, '
-            'plus a full CRM, two-way SMS, AI agents, booking and an online store, with unlimited contacts and users from $97 a month.',
+            'plus a full CRM, two-way SMS, booking and an online store, with unlimited contacts and users from $97 a month. AI agents '
+            'are included from $197 a month on AI Pro.',
   'rows': {'price': 'From $179/month (Basic), $143/month billed yearly',
            'contacts': '2,500 on Basic, 25,000 on Growth, 100,000 on Pro',
            'users': '2 admin users on Basic, 11 on Growth, 26 on Pro',
@@ -100,16 +102,17 @@ COMPETITORS = [{'slug': 'skool',
             ('Growth', '$249/month ($199 yearly), 50 products, 25,000 contacts'),
             ('Pro', '$499/month ($399 yearly), unlimited products, 100,000 contacts')],
   'better': "You're a creator who only sells courses and digital products, and you like Kajabi's creator-focused templates.",
-  'switch': 'Export your contacts and course content, rebuild your courses, memberships and sales pages in Oceanic Funnels OS (or let our '
-            'team do it on Done-For-You), then turn on SMS follow-up and booking.',
+  'switch': 'Export your contacts and course content, rebuild your courses, memberships and sales pages in Oceanic Funnels OS (or get help '
+            'from your builder on Scale), then turn on SMS follow-up and booking.',
   'sources': [('Kajabi pricing (kajabi.com)', 'https://www.kajabi.com/pricing')]},
  {'slug': 'funnelish',
   'name': 'Funnelish',
   'kind': 'ecommerce funnel builder',
   'h1': 'The Funnelish alternative with a full CRM and no visitor caps',
   'answer': 'Funnelish is a checkout and funnel builder for online stores, with a Basic plan at $49 a month for up to 20,000 visitors, 20 '
-            'funnels, 1 store and 2 team members. Oceanic Funnels OS gives you unlimited funnels plus a CRM, email, SMS, AI agents, '
-            'booking and courses, with unlimited contacts and users from $97 a month.',
+            'funnels, 1 store and 2 team members. Oceanic Funnels gives you unlimited funnels, websites and a store from $17 a month on '
+            'Launch. The full system adds a CRM, email, SMS, booking and courses with unlimited contacts and users for $97 a month, '
+            'and AI agents are included from $197 a month on AI Pro.',
   'rows': {'price': 'From $49/month (Basic), $41/month billed yearly',
            'traffic': 'Up to 20,000 visitors a month on Basic',
            'funnels': '20 ecommerce funnels on Basic',
@@ -129,8 +132,9 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'ecommerce platform',
   'h1': 'The Shopify alternative with funnels, CRM, SMS and booking built in',
   'answer': "Shopify's Basic plan is $39 a month, and it charges a 2% fee on Basic when you use a third-party payment provider. Oceanic "
-            'Funnels OS includes an online store and checkout, plus sales funnels, a CRM, email, SMS, AI agents, booking and courses, from '
-            '$97 a month with no platform fee on your sales.',
+            'Funnels includes an online store, checkout and sales funnels from $17 a month on Launch, with no platform fee on your '
+            'sales. The full system adds a CRM, email, SMS, booking and courses for $97 a month, and AI agents are included from $197 '
+            'a month on AI Pro.',
   'rows': {'price': 'From $39/month (Basic), $29/month billed yearly',
            'fee': '2% on Basic with a third-party payment provider (1% Grow, 0.6% Advanced)',
            'users': 'No additional staff accounts on Basic, 5 on Grow',
@@ -141,7 +145,7 @@ COMPETITORS = [{'slug': 'skool',
             ('Plus', 'Starts at $2,300/month')],
   'better': "You run a large online store with a big catalog and depend on Shopify's theme and app ecosystem.",
   'switch': 'Export your products and customers from Shopify, import them into Oceanic Funnels OS, and build your store and sales funnels '
-            'in one place. On Done-For-You, our team builds it for you.',
+            'in one place. On Scale, your builder helps you build it.',
   'sources': [('Shopify pricing (shopify.com)', 'https://www.shopify.com/pricing')]},
  {'slug': 'hubspot',
   'name': 'HubSpot',
@@ -163,7 +167,7 @@ COMPETITORS = [{'slug': 'skool',
   'better': "You're a larger company with a dedicated marketing team, you need HubSpot's advanced reporting and enterprise permissions, "
             'and your budget allows for per-seat and per-contact growth.',
   'switch': 'Export your contacts and deals from HubSpot, import them into Oceanic Funnels OS, and rebuild your key emails, forms and '
-            'pipelines. On Growth and Done-For-You, our team does the setup for you.',
+            'pipelines. On Scale, your account manager and builder help with the setup.',
   'sources': [('Marketing Hub pricing (hubspot.com)', 'https://www.hubspot.com/pricing/marketing'),
               ('Sales Hub pricing (hubspot.com)', 'https://www.hubspot.com/pricing/sales'),
               ('SMS requirements (HubSpot Knowledge Base)', 'https://knowledge.hubspot.com/sms/set-up-sms-messaging')]},
@@ -202,7 +206,7 @@ COMPETITORS = [{'slug': 'skool',
   'better': "You've been on Keap for years with complex automations you don't want to rebuild, and the price difference doesn't matter to "
             'your business.',
   'switch': 'Export your contacts, tags and products from Keap, import them into Oceanic Funnels OS, and rebuild your key campaigns. On '
-            'Done-For-You, our team rebuilds your funnel and backend for you.',
+            'Scale, your builder helps you rebuild your funnel and backend.',
   'sources': [('Keap pricing (keap.com)', 'https://keap.com/pricing')]},
  {'slug': 'klaviyo',
   'name': 'Klaviyo',
@@ -237,8 +241,8 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'enterprise CRM',
   'h1': 'The Salesforce alternative built for small businesses',
   'answer': 'Salesforce is priced per user: Starter Suite is $25 a month per user, billed monthly or yearly, and Pro Suite is $100 per '
-            'user, billed yearly with a contract. Oceanic Funnels OS includes the CRM, funnels, email, SMS, AI agents and booking with '
-            'unlimited users from $97 a month.',
+            'user, billed yearly with a contract. Oceanic Funnels OS includes the CRM, funnels, email, SMS and booking with '
+            'unlimited users from $97 a month, and AI agents from $197 a month on AI Pro.',
   'rows': {'price': 'Starter Suite from $25/user/month',
            'users': 'Priced per user (Pro Suite $100/user/month, billed yearly)',
            'crm': 'CRM'},
@@ -248,7 +252,7 @@ COMPETITORS = [{'slug': 'skool',
             ('Sales Cloud Advanced', '$395/user/month, billed yearly')],
   'better': "You're a large company with complex sales processes, many departments and an in-house admin or Salesforce partner.",
   'switch': 'Export your accounts, contacts and opportunities, import them into Oceanic Funnels OS, and set up your pipeline. Most small '
-            'teams are running in a week, or our team sets it up for you.',
+            'teams are running in a week, or on Scale your account manager and builder help you set it up.',
   'sources': [('Small business pricing (salesforce.com)', 'https://www.salesforce.com/small-business/pricing/'),
               ('Sales Cloud pricing (salesforce.com)', 'https://www.salesforce.com/products/sales-cloud-pricing/')]},
  {'slug': 'linktree',
@@ -256,8 +260,8 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'link-in-bio tool',
   'h1': 'The Linktree alternative that turns clicks into customers',
   'answer': 'Linktree is a link-in-bio page with a free plan and paid plans from $9 a month ($7 billed yearly). Its pricing page lists 0% '
-            'fees on sales from the Pro plan up. Oceanic Funnels OS gives you full funnels and websites, plus the CRM, email, SMS and '
-            'booking to follow up with every visitor, from $97 a month.',
+            'fees on sales from the Pro plan up. Oceanic Funnels gives you full funnels and websites from $17 a month on Launch, and '
+            'the full system adds the CRM, email, SMS and booking to follow up with every visitor for $97 a month.',
   'rows': {'price': 'Free; paid plans from $9/month ($7 billed yearly)',
            'fee': '0% fees on sales on Pro and Premium',
            'funnels': 'Link-in-bio page'},

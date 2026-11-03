@@ -241,7 +241,7 @@ def footer(cfg):
   <div class="nf-wrap nf-foot-top">
     <div>
       <h2>Stop fishing. Build the net.</h2>
-      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system, from $97 a month.</p>
+      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system. Plans from $17 a month.</p>
       <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
@@ -348,12 +348,12 @@ def legal_page(cfg, fonts, logo, slug, title, h1, intro, sections):
 
 ABOUT = [
  ("Who we are", """<p>Oceanic Funnels is the company behind Oceanic Funnels OS, an all-in-one sales funnel, CRM and marketing automation system for small and growing businesses. We sell it, set it up, build on it and support it.</p>
-<p>You can run the system yourself on the OS plan, or have our team set it up (Growth) or build your sales funnel and full automated backend for you (Done-For-You).</p>"""),
+<p>Start with funnels, websites and a store on Launch, run the full system yourself on Growth, add every AI feature on AI Pro, or work with a dedicated account manager and builder on Scale.</p>"""),
  ("Where we are", """<p>Oceanic Funnels is based in Bahawalpur, Pakistan, and works with businesses worldwide. All plans are priced in US dollars.</p>"""),
- ("Who you deal with", """<p>You deal with Oceanic Funnels directly. You sign up and pay with us, our team onboards you and builds your system, and our team answers your support requests. There is no third party between you and the people who look after your account.</p>"""),
+ ("Who you deal with", """<p>You deal with Oceanic Funnels directly. You sign up and pay with us, our team onboards you and answers your support requests, and on Scale your dedicated account manager and builder work with you directly. There is no third party between you and the people who look after your account.</p>"""),
  ("Support", """<ul><li><b>24/7 support.</b> Our team replies within the same hour, day or night.</li><li><b>Instant answers.</b> Our AI support assistant replies straight away while a person picks up your request.</li><li><b>Email:</b> <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></li></ul>"""),
  ("Your data and your freedom to leave", """<ul><li><b>You own your contacts.</b> Export your contacts and data at any time.</li><li><b>Your domain stays in your name.</b> If you connect your own domain, it is registered to you, not to us.</li><li><b>No lock-in.</b> Every plan is month to month. Cancel anytime.</li></ul>"""),
- ("Plans", """<ul><li><b>OS:</b> $97 a month. The full system, you build and run it yourself.</li><li><b>Growth:</b> $197 a month. Set up for you in the first week, with 24/7 support.</li><li><b>Done-For-You:</b> $297 a month plus a one-time $997 build. We build your sales funnel and full automated backend, live in 14 days.</li></ul><p>OS and Growth include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> for details.</p>"""),
+ ("Plans", """<ul><li><b>Launch:</b> $17 a month. Unlimited sales funnels, websites and an e-commerce store.</li><li><b>Growth:</b> $97 a month. Every feature except AI.</li><li><b>AI Pro:</b> $197 a month. Every feature, including all AI.</li><li><b>Scale:</b> $297 a month. Everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale.</li></ul><p>Every plan is month to month. Growth and AI Pro include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> to compare every feature.</p>"""),
 ]
 
 def about_page(cfg, fonts, logo):
@@ -393,13 +393,13 @@ def compare_page(cfg, fonts, logo, c):
     plans = "".join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in c["plans"])
     srcs = " · ".join(f'<a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a>' for t, u in c["sources"])
     more = "".join(f'<a href="/compare/{o["slug"]}/">vs {E(o["name"])}</a>' for o in COMPETITORS if o["slug"] != c["slug"])
-    cheap = f'Oceanic Funnels OS starts at $97 a month with unlimited contacts and users on every plan. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
+    cheap = f'Oceanic Funnels plans start at $17 a month for funnels, websites and a store. The full system with CRM, email, SMS and automations is $97 a month, and AI Pro, with every AI feature, is $197 a month. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
     faqs = [
       (f"What is the difference between Oceanic Funnels and {n}?", c["answer"]),
       (f"Is Oceanic Funnels OS cheaper than {n}?", cheap + " Usage like SMS and AI is pay-as-you-go."),
       (f"How do I switch from {n}?", c["switch"]),
       (f"When is {n} the better choice?", c["better"]),
-      ("Will you build it for me?", "Yes. On the Growth plan ($197 a month) our team sets up your system in the first week. On the Done-For-You plan ($297 a month plus a one-time $997 build fee) we build your sales funnel and the full automated backend for you."),
+      ("Will you help me build it?", "Yes. On the Scale plan ($297 a month), a dedicated account manager and a builder work with you to set up, grow and scale your system. If you only need one extra funnel built, our team can build it for $297 one time."),
     ]
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
     body = f'''<section class="nf-sub-hero">
@@ -409,7 +409,7 @@ def compare_page(cfg, fonts, logo, c):
       {crumbs_html(crumbs)}
       <span class="nf-vs">Oceanic Funnels <i>vs</i> {E(n)}</span>
       <h1>{E(c["h1"])}</h1>
-      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. From $97 a month, or we build it all for you.</p>
+      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. Plans from $17 a month, with the full system from $97.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#comparison">See the comparison</a>
@@ -430,8 +430,8 @@ def compare_page(cfg, fonts, logo, c):
       <ul class="nf-facts">
         <li><span class="k">Oceanic Funnels</span><span>All-in-one sales funnel, CRM and automation system</span></li>
         <li><span class="k">{E(n)}</span><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
-        <li><span class="k">Starts at</span><span>$97/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
-        <li><span class="k">Contacts</span><span>Unlimited on every Oceanic plan</span></li>
+        <li><span class="k">Starts at</span><span>$17/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
+        <li><span class="k">Contacts</span><span>Unlimited on Growth, AI Pro and Scale</span></li>
       </ul>
     </div>
   </div>
@@ -462,8 +462,8 @@ def compare_page(cfg, fonts, logo, c):
     <div class="nf-two">
       <div class="nf-box ink">
         <h3>Oceanic Funnels OS</h3>
-        <ul class="nf-plist"><li><b>OS</b><span>$97/month</span></li><li><b>Growth (set up for you)</b><span>$197/month</span></li><li><b>Done-For-You (we build it)</b><span>$297/month + $997 one-time build</span></li></ul>
-        <p style="margin-top:16px">Unlimited contacts, users and funnels on every plan. SMS, email and AI usage is pay-as-you-go.</p>
+        <ul class="nf-plist"><li><b>Launch (funnels, websites, store)</b><span>$17/month</span></li><li><b>Growth (every feature except AI)</b><span>$97/month</span></li><li><b>AI Pro (every feature and all AI)</b><span>$197/month</span></li><li><b>Scale (plus account manager and builder)</b><span>$297/month</span></li></ul>
+        <p style="margin-top:16px">Unlimited funnels on every plan, and unlimited contacts and users from Growth up. SMS, email and AI usage is pay-as-you-go.</p>
       </div>
       <div class="nf-box">
         <h3>{E(n)}</h3>
@@ -593,27 +593,27 @@ def deep_sections(d, X):
         <div class="row"><span>Per month</span><span id="dc-r3"></span></div>
         <div class="big">Per year, first visits only<strong id="dc-r4"></strong></div>
         <p class="note">Before rebooking, memberships or referrals. A model, not a promise.</p>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#done-for-you">Stop the leak <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#scale-plan">Stop the leak <span class="ar" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="nf-band nf-dark" id="done-for-you">
+<section class="nf-band nf-dark" id="scale-plan">
   <div class="nf-wrap">
     <div class="nf-caps">
-      <span class="nf-eyebrow">Done-For-You</span>
+      <span class="nf-eyebrow">Scale plan</span>
       <h2>{E(X["dfy_h"][0])} <span class="g">{E(X["dfy_h"][1])}</span></h2>
     </div>
     <div class="nf-dfy">
       <ul class="nf-dfy-list">{dfy}</ul>
       <aside class="nf-dfy-card">
-        <span class="plan">Done-For-You</span>
+        <span class="plan">Scale</span>
         <div class="amt"><span class="v">$297</span><small>/month</small></div>
-        <p class="fee">+ $997 one-time build</p>
-        <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>Dedicated account manager</li><li>24/7 support</li><li>Cancel anytime</li></ul>
+        <p class="fee">No build fee</p>
+        <ul><li>Every feature, including all AI</li><li>Dedicated account manager</li><li>A builder who sets it up with you</li><li>Live in 14 days</li><li>Cancel anytime</li></ul>
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d["slug"], CK)}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
-        <p class="small">Rather build it yourself? <a href="/#pricing">Start on OS from $97/month</a>.</p>
+        <p class="small">Rather build it yourself? <a href="/#pricing">Start on Growth from $97/month</a>.</p>
       </aside>
     </div>
   </div>
@@ -662,7 +662,7 @@ def industry_page(cfg, fonts, logo, d):
       <p class="nf-sub"><b>{E(hook)}.</b> {E(sub)}</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d['slug'], CK) if X else CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
-        <a class="nf-btn nf-btn--line" href="{"#done-for-you" if X else "#how-it-runs"}">{"See what we build" if X else "See how it runs"}</a>
+        <a class="nf-btn nf-btn--line" href="{"#scale-plan" if X else "#how-it-runs"}">{"See what we build" if X else "See how it runs"}</a>
       </div>
     </div>
   </div>
@@ -680,7 +680,7 @@ def industry_page(cfg, fonts, logo, d):
         <li><span class="k">Leads from</span><span>Funnels, ads, social DMs, calls and your website</span></li>
         <li><span class="k">Replies</span><span>Within seconds, by SMS, email, WhatsApp and AI agent</span></li>
         <li><span class="k">Booking</span><span>Calendars with automatic reminders</span></li>
-        <li><span class="k">Starts at</span><span>$97/month, unlimited contacts and users</span></li>
+        <li><span class="k">Starts at</span><span>$97/month for the full system, unlimited contacts and users</span></li>
       </ul>
     </div>
   </div>
@@ -708,7 +708,7 @@ def industry_page(cfg, fonts, logo, d):
     <ul class="nf-feat">{autos}</ul>
     <div class="nf-two">
       <div class="nf-box"><h3>Funnels you can launch</h3><ul class="nf-chips">{funnels}</ul></div>
-      <div class="nf-box ink"><h3>Never lose a lead again</h3><p>Missed call text back, instant replies, AI agents and reminders mean every call, form and DM gets answered, day or night. Unlimited contacts and users on every plan.</p></div>
+      <div class="nf-box ink"><h3>Never lose a lead again</h3><p>Missed call text back, instant replies, AI agents and reminders mean every call, form and DM gets answered, day or night. Unlimited contacts and users from the Growth plan up.</p></div>
     </div>
   </div>
 </section>
@@ -809,7 +809,7 @@ def guide_page(cfg, fonts, logo, g):
     <article class="nf-doc">
       <div class="nf-answer"><b class="k">The short answer</b><p>{E(g["short"])}</p></div>
       {secs}
-      <div class="nf-gcta"><div><b>Want this set up for you?</b><span>On Growth and Done-For-You, our team builds it into your system.</span></div><a class="nf-btn nf-btn--ink" href="{CK}">Build my net</a></div>
+      <div class="nf-gcta"><div><b>Want help setting this up?</b><span>On Scale, your dedicated account manager and builder help you set it up and grow.</span></div><a class="nf-btn nf-btn--ink" href="{CK}">Build my net</a></div>
       {srcs}
     </article>
   </div>
@@ -825,7 +825,7 @@ def guide_page(cfg, fonts, logo, g):
 <section class="nf-band" style="padding-top:0">
   <div class="nf-wrap">
     <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
-      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system, from $97 a month.</p></div>
+      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system. Plans from $17 a month.</p></div>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <h2 class="nf-more-h">Built for these industries</h2>
@@ -884,7 +884,7 @@ def build_all(cfg, fonts, src, site):
     out = [legal_page(cfg, fonts, logo, "privacy", "Privacy Policy | Oceanic Funnels", "Privacy Policy",
                       "How Oceanic Funnels collects, uses, shares and protects personal information, including SMS consent, cookies, analytics and your privacy rights.", legal.PRIVACY),
            legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
-                      "The terms of service that apply when you use oceanicfunnels.com, use Oceanic Funnels OS or buy a Done-For-You build: billing, cancellation and data.", legal.TERMS),
+                      "The terms of service that apply when you use oceanicfunnels.com, use Oceanic Funnels OS and our account services: billing, cancellation and data.", legal.TERMS),
            hub_page(cfg, fonts, logo), about_page(cfg, fonts, logo),
            tools.speed_to_lead_test(cfg, fonts, logo, page, crumbs_html, faq_schema)]
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
@@ -1025,8 +1025,8 @@ def lp_med_spa(cfg, fonts, logo):
         "Your client list and pipeline, from enquiry to member",
         "Online calendar, deposits, payments and memberships",
         "All your automations running 24/7",
-        "24/7 support and changes when you need them",
-        "A monthly report and strategy call",
+        "24/7 support",
+        "A dedicated account manager and builder to help you grow",
         "Founding price locked for life (first 50 clinics)",
         "No contract, cancel anytime"])
     faqs = [
@@ -1035,7 +1035,7 @@ def lp_med_spa(cfg, fonts, logo):
         ("Do you run our ads?", "No. We build and run the system that catches and converts your leads. If you run ads, we install the Meta Pixel, Conversions API and GA4 so you can see which ads lead to booked treatments."),
         ("How fast will it be live?", "Usually within 14 days of getting your content, logins and approvals. Your team reviews everything before it goes live."),
         ("What happens to our data if we cancel?", "You keep it. You can export your contacts and data at any time, your domain stays in your name, and every plan is month to month with no lock-in."),
-        ("What does it cost?", "A one-time $997 build fee plus $297 a month, with no contract. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
+        ("What does it cost?", "$297 a month on our Scale plan, with no build fee and no contract. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
     ]
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
     body = f'''<section class="lp-hero">
@@ -1132,14 +1132,14 @@ def lp_med_spa(cfg, fonts, logo):
     </div>
     <div class="lp-pay">
       <article class="nf-price">
-        <span class="plan">One-time build</span>
-        <div class="amt"><span class="v">$997</span> <small>once</small></div>
-        <p class="for"><b>We build it for you.</b> Our team sets up your whole system and launches it in 14 days.</p>
-        <ul><li class="lead">What we build:</li>{build}</ul>
-        <p class="after">Paid once, at checkout</p>
+        <span class="plan">Setup</span>
+        <div class="amt"><span class="v">$0</span> <small>build fee</small></div>
+        <p class="for"><b>Built with you, included.</b> Your builder sets up your whole system with you and launches it in 14 days.</p>
+        <ul><li class="lead">What we set up:</li>{build}</ul>
+        <p class="after">No build fee</p>
       </article>
       <article class="nf-price nf-price--pop nf-hatch">
-        <span class="plan">Every month</span>
+        <span class="plan">Scale plan</span>
         <div class="amt"><span class="v">$297</span> <small>/month</small></div>
         <p class="for"><b>You use the system, we look after it.</b> Your clinic runs on it every day. We keep it working.</p>
         <ul><li class="lead">Every month you get:</li>{monthly}</ul>
@@ -1147,7 +1147,7 @@ def lp_med_spa(cfg, fonts, logo):
       </article>
     </div>
     <div class="lp-sum nf-hatch" style="--hc:var(--coral)">
-      <div class="row"><span>First month</span><b>$997 + $297 = $1,294</b></div>
+      <div class="row"><span>First month</span><b>$297, no build fee</b></div>
       <div class="row"><span>After that</span><b>$297/month, cancel anytime</b></div>
       <p class="lp-guar">If you're not live in 14 days, your first $297 month is free.<small>The 14 days start once we have your content and logins.</small></p>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
@@ -1242,7 +1242,7 @@ def lp_med_book(cfg, fonts, logo):
         <li>Clear pricing, no pressure, no pitch deck</li>
       </ul>
       <div class="meta"><span>15 minutes</span><span>No obligation</span><span>Free</span></div>
-      <p class="price">$997 one-time build, then $297/month. No contract.</p>
+      <p class="price">$297/month on our Scale plan. No build fee, no contract.</p>
     </div>
     <div class="lp-cal">
       <iframe src="{CAL_EMBED}" allow="payment" scrolling="no" id="0Fq9d6ETDejl4rKothS4_1793371640258" title="Book your free info call"></iframe>

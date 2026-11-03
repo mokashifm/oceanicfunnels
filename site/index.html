@@ -103,7 +103,21 @@
    "offers": [
     {
      "@type": "Offer",
-     "name": "OS",
+     "name": "Launch",
+     "price": "17",
+     "priceCurrency": "USD",
+     "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "17",
+      "priceCurrency": "USD",
+      "unitText": "MONTH",
+      "billingDuration": 1,
+      "billingIncrement": 1
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "Growth",
      "price": "97",
      "priceCurrency": "USD",
      "priceSpecification": {
@@ -117,7 +131,7 @@
     },
     {
      "@type": "Offer",
-     "name": "Growth",
+     "name": "AI Pro",
      "price": "197",
      "priceCurrency": "USD",
      "priceSpecification": {
@@ -131,25 +145,17 @@
     },
     {
      "@type": "Offer",
-     "name": "Done-For-You",
+     "name": "Scale",
      "price": "297",
      "priceCurrency": "USD",
-     "priceSpecification": [
-      {
-       "@type": "UnitPriceSpecification",
-       "price": "297",
-       "priceCurrency": "USD",
-       "unitText": "MONTH",
-       "billingDuration": 1,
-       "billingIncrement": 1
-      },
-      {
-       "@type": "UnitPriceSpecification",
-       "price": "997",
-       "priceCurrency": "USD",
-       "name": "One-time build fee"
-      }
-     ]
+     "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "297",
+      "priceCurrency": "USD",
+      "unitText": "MONTH",
+      "billingDuration": 1,
+      "billingIncrement": 1
+     }
     }
    ]
   }
@@ -708,6 +714,29 @@
 .nf-addons span{font-family:var(--display);font-weight:600;color:var(--aqua-d);white-space:nowrap}
 .nf-found{text-align:center;margin-top:26px;font-size:15px;color:var(--text)}
 .nf-found b{color:var(--coral-d)}
+.nf-prices--4{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.nf-prices--4 .nf-price{padding:36px 22px 26px}
+.nf-prices--4 .nf-price .amt{font-size:52px}
+.nf-compare-wrap{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+.nf-ct{font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.nf-cs{font-size:14.5px;color:var(--muted);margin-top:6px}
+.nf-ftable-scroll{margin-top:18px}
+.nf-ftable{width:100%;border-collapse:collapse;font-size:14.5px;table-layout:fixed}
+.nf-ftable col.cf{width:40%}.nf-ftable col.cp{width:15%}
+.nf-ftable tr.grp td{background:var(--mist);text-align:center;font-family:var(--display);font-size:11.5px;font-weight:700;color:var(--muted);padding:10px 1px;border-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.nf-ftable thead th{position:sticky;top:0;background:#fff;z-index:1;padding:12px 8px;border-bottom:2px solid var(--ink);text-align:center;font-family:var(--display);color:var(--ink);vertical-align:bottom}
+.nf-ftable thead th.f{text-align:left}
+.nf-ftable thead th b{display:block;font-size:15px}
+.nf-ftable thead th small{display:block;font-family:var(--body);font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+.nf-ftable tbody th{text-align:left;font-weight:500;color:var(--text);padding:10px 8px;border-bottom:1px solid var(--line)}
+.nf-ftable td{text-align:center;padding:10px 6px;border-bottom:1px solid var(--line)}
+.nf-ftable tbody th{overflow-wrap:anywhere}
+.nf-ftable tr.grp th{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--aqua-d);background:var(--mist);padding:10px 8px;border-bottom:0}
+.nf-ftable .yes{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:13px;font-weight:800}
+.nf-ftable .no{display:inline-grid;place-items:center;width:24px;height:24px;color:#B4C2BF;font-size:14px;font-weight:700}
+.nf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:1100px){.nf-prices--4{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;gap:32px 16px}}
+@media (max-width:640px){.nf-prices--4{grid-template-columns:1fr;max-width:480px}.nf-compare-wrap{padding:20px 12px}.nf-ftable{font-size:13px}.nf-ftable thead th{padding:10px 3px}.nf-ftable thead th b{font-size:13px}.nf-ftable thead th small{font-size:11px}.nf-ftable tbody th{padding:9px 4px}.nf-ftable td{padding:9px 2px}.nf-ftable col.cf{width:36%}.nf-ftable col.cp{width:16%}.nf-ftable tr.grp td{font-size:10px;letter-spacing:-.01em}.nf-ftable tr.grp th{font-size:11px;letter-spacing:.04em}.nf-ftable .yes,.nf-ftable .no{width:20px;height:20px;font-size:11px}}
 @media (max-width:1060px){.nf-stack,.nf-extras{grid-template-columns:1fr}}
 @media (max-width:680px){.nf-hatch::after{width:34%;height:16%}.nf-stack-old,.nf-stack-new{padding:28px 22px}}
 </style>
@@ -736,7 +765,7 @@
     <div class="nf-hero-in">
       <span class="nf-badge"><i aria-hidden="true"></i>All-in-one sales funnel system</span>
       <h1>Stop fishing for customers. <em>Build the net.</em></h1>
-      <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. One system from $97 a month, or we build it all for you.</p>
+      <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. Funnels and a store from $17 a month, and the full system from $97.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#features">See what's inside</a>
@@ -747,10 +776,10 @@
   <div class="nf-wrap nf-hcard-wrap">
     <div class="nf-hcard nf-hatch">
       <div>
-        <span class="nf-eyebrow">Done-For-You plan</span>
-        <h2>Your million-dollar sales funnel. Built for you.</h2>
-        <p>Our team builds your sales funnel and the full automated backend behind it: follow-up, booking, payments and reviews. You get the keys to a net that's already catching leads.</p>
-        <a class="nf-btn nf-btn--line-w" href="#pricing">See Done-For-You</a>
+        <span class="nf-eyebrow">Scale plan</span>
+        <h2>Grow with a team behind you.</h2>
+        <p>On Scale you get every feature and all the AI, plus a dedicated account manager and a builder who work with you to grow and scale your business.</p>
+        <a class="nf-btn nf-btn--line-w" href="#pricing">See Scale</a>
       </div>
       <div>
         <figure class="nf-app" aria-label="Oceanic Funnels OS dashboard example showing 10,000 visitors narrowing to 126 customers">
@@ -795,7 +824,7 @@
       <p class="nf-repl-m">✓ Every one of these is included in Oceanic Funnels OS</p>
       <table class="nf-table">
         <thead><tr><th scope="col">Feature</th><th scope="col">Replaces</th><th scope="col" class="num">Their price</th><th scope="col" class="us">Oceanic Funnels</th></tr></thead>
-        <tbody><tr><th scope="row">CRM and sales pipelines</th><td data-l="Replaces"><span class="nf-tool">HubSpot Sales Hub</span></td><td data-l="Their price" class="num">$20<small>/mo per seat</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Sales funnels</th><td data-l="Replaces"><span class="nf-tool">ClickFunnels</span></td><td data-l="Their price" class="num">$97<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Website builder</th><td data-l="Replaces"><span class="nf-tool">Wix</span></td><td data-l="Their price" class="num">$17.77<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Online store and checkout</th><td data-l="Replaces"><span class="nf-tool">Shopify</span></td><td data-l="Their price" class="num">$39<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Email marketing</th><td data-l="Replaces"><span class="nf-tool">ActiveCampaign</span></td><td data-l="Their price" class="num">$15<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Two-way SMS</th><td data-l="Replaces"><span class="nf-tool">SimpleTexting</span></td><td data-l="Their price" class="num">$39<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Forms and surveys</th><td data-l="Replaces"><span class="nf-tool">Typeform</span></td><td data-l="Their price" class="num">$29<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Appointment booking</th><td data-l="Replaces"><span class="nf-tool">Calendly</span></td><td data-l="Their price" class="num">$10<small>/mo per seat, billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Courses and memberships</th><td data-l="Replaces"><span class="nf-tool">Kajabi</span></td><td data-l="Their price" class="num">$179<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Communities</th><td data-l="Replaces"><span class="nf-tool">Skool</span></td><td data-l="Their price" class="num">$9<small>/mo + 10% of sales</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Call tracking</th><td data-l="Replaces"><span class="nf-tool">CallRail</span></td><td data-l="Their price" class="num">$50<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Review requests</th><td data-l="Replaces"><span class="nf-tool">NiceJob</span></td><td data-l="Their price" class="num">$75<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Document signing</th><td data-l="Replaces"><span class="nf-tool">DocuSign</span></td><td data-l="Their price" class="num">$11<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Social media planner</th><td data-l="Replaces"><span class="nf-tool">Buffer</span></td><td data-l="Their price" class="num">$6<small>/mo per channel</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Link-in-bio page</th><td data-l="Replaces"><span class="nf-tool">Linktree</span></td><td data-l="Their price" class="num">$9<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">15 separate tools</td><td data-l="Their price" class="num">$605.77<small>/mo</small></td><td data-l="Oceanic Funnels" class="us"><b>$97</b>/month</td></tr></tbody>
+        <tbody><tr><th scope="row">CRM and sales pipelines</th><td data-l="Replaces"><span class="nf-tool">HubSpot Sales Hub</span></td><td data-l="Their price" class="num">$20<small>/mo per seat</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Sales funnels</th><td data-l="Replaces"><span class="nf-tool">ClickFunnels</span></td><td data-l="Their price" class="num">$97<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Website builder</th><td data-l="Replaces"><span class="nf-tool">Wix</span></td><td data-l="Their price" class="num">$17.77<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Online store and checkout</th><td data-l="Replaces"><span class="nf-tool">Shopify</span></td><td data-l="Their price" class="num">$39<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Email marketing</th><td data-l="Replaces"><span class="nf-tool">ActiveCampaign</span></td><td data-l="Their price" class="num">$15<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Two-way SMS</th><td data-l="Replaces"><span class="nf-tool">SimpleTexting</span></td><td data-l="Their price" class="num">$39<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Forms and surveys</th><td data-l="Replaces"><span class="nf-tool">Typeform</span></td><td data-l="Their price" class="num">$29<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Appointment booking</th><td data-l="Replaces"><span class="nf-tool">Calendly</span></td><td data-l="Their price" class="num">$10<small>/mo per seat, billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Courses and memberships</th><td data-l="Replaces"><span class="nf-tool">Kajabi</span></td><td data-l="Their price" class="num">$179<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Communities</th><td data-l="Replaces"><span class="nf-tool">Skool</span></td><td data-l="Their price" class="num">$9<small>/mo + 10% of sales</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Call tracking</th><td data-l="Replaces"><span class="nf-tool">CallRail</span></td><td data-l="Their price" class="num">$50<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Review requests</th><td data-l="Replaces"><span class="nf-tool">NiceJob</span></td><td data-l="Their price" class="num">$75<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Document signing</th><td data-l="Replaces"><span class="nf-tool">DocuSign</span></td><td data-l="Their price" class="num">$11<small>/mo billed yearly</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Social media planner</th><td data-l="Replaces"><span class="nf-tool">Buffer</span></td><td data-l="Their price" class="num">$6<small>/mo per channel</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr><th scope="row">Link-in-bio page</th><td data-l="Replaces"><span class="nf-tool">Linktree</span></td><td data-l="Their price" class="num">$9<small>/mo</small></td><td data-l="Oceanic Funnels" class="us">✓ Included</td></tr><tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">15 separate tools</td><td data-l="Their price" class="num">$605.77<small>/mo</small></td><td data-l="Oceanic Funnels" class="us"><b>$97</b>/month on Growth</td></tr></tbody>
       </table>
     </div>
     <p class="nf-replnote">Starting price of one popular tool per job, taken from each company's own pricing page on October 30, 2026. Where a company shows only yearly-billed pricing, we show that. Per-seat and per-channel prices are shown for one. Usage like SMS, email and AI is billed separately on every platform, including ours.</p>
@@ -927,7 +956,7 @@
         <li><span class="k">Replaces</span><span>Funnel builder, email and SMS tools, CRM, scheduler, website chat, reviews, invoicing</span></li>
         <li><span class="k">Key metrics</span><span>Speed to lead, lead-to-customer rate, revenue per lead</span></li>
         <li><span class="k">Best for</span><span>Local service businesses, coaches, consultants, agencies and online sellers</span></li>
-        <li><span class="k">Oceanic OS</span><span>From $97 a month with unlimited contacts and users</span></li>
+        <li><span class="k">Oceanic OS</span><span>From $17 a month. The full system with unlimited contacts and users from $97</span></li>
       </ul>
     </div>
   </div>
@@ -998,13 +1027,13 @@
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
       <span class="nf-eyebrow">How it works (4 steps)</span>
-      <h2>From sign-up to a working net <span class="g">in 14 days</span></h2>
+      <h2>From sign-up to a working net, <span class="g">step by step</span></h2>
     </div>
     <ol class="nf-steps">
-      <li><h3>Pick your plan</h3><span class="d">Day 1</span><p>Start on OS and build it yourself, or choose Growth or Done-For-You and let our team handle it.</p></li>
-      <li><h3>We set up your net</h3><span class="d">Days 2–7</span><p>Domain, business email, phone number, text registration, automations and your AI agent, set up for you.</p></li>
-      <li><h3>Go live</h3><span class="d">Days 7–14</span><p>Your funnel and automations start catching, replying to and booking every lead that comes in.</p></li>
-      <li><h3>Keep growing</h3><span class="d">Every month</span><p>Edit requests, strategy calls and reports keep your net getting stronger month after month.</p></li>
+      <li><h3>Pick your plan</h3><span class="d">Day 1</span><p>Launch for funnels and a store, Growth for the full system, AI Pro to add AI, or Scale to work with a dedicated account manager and builder.</p></li>
+      <li><h3>Set up your net</h3><span class="d">Week 1</span><p>Connect your domain, business email, phone number and text registration, then switch on your automations and, on AI Pro and Scale, your AI agent.</p></li>
+      <li><h3>Go live</h3><span class="d">Week 2</span><p>Your funnel and automations start catching, replying to and booking every lead that comes in.</p></li>
+      <li><h3>Keep growing</h3><span class="d">Every month</span><p>Add funnels, automations and campaigns as you grow. On Scale, your account manager and builder help you get there.</p></li>
     </ol>
   </div>
 </section>
@@ -1054,46 +1083,24 @@
 <section class="nf-band nf-pricing" id="pricing">
   <div class="nf-wrap">
     <div class="nf-center nf-c">
-      <span class="nf-eyebrow">Pricing (3 plans)</span>
-      <h2>Pick how much <span class="g">we do for you</span></h2>
-      <p class="nf-sub">Every plan includes the full Oceanic Funnels OS with unlimited contacts and users. The difference is how much our team builds and runs for you.</p>
+      <span class="nf-eyebrow">Pricing (4 plans)</span>
+      <h2>Pick the plan <span class="g">that fits</span></h2>
+      <p class="nf-sub">Start with funnels and a store, move to the full system, switch on AI, or have our team help you scale. Unlimited funnels and websites on every plan.</p>
     </div>
-    <div class="nf-prices">
-      <article class="nf-price">
-        <span class="plan">OS</span>
-        <div class="amt"><span class="v">$97</span> <small>/month</small></div>
-        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
-        <p class="for">The full system. You build and run it yourself.</p>
-        <ul><li class="lead">Everything to catch, follow up and close:</li><li>Unlimited contacts and users</li><li>Unlimited funnels and websites</li><li>CRM and sales pipelines</li><li>Email and SMS automations</li><li>Calendars and booking</li><li>One inbox for every channel</li><li>Invoices, payments and text-to-pay</li><li>Ticket support, 24-hour reply</li></ul>
-        <a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Start with OS</a>
-        <p class="after">30-day money-back guarantee</p>
-      </article>
-      <article class="nf-price nf-price--pop">
-        <span class="pop">MOST POPULAR</span>
-        <span class="plan">Growth</span>
-        <div class="amt"><span class="v">$197</span> <small>/month</small></div>
-        <p class="fee" aria-hidden="true" style="visibility:hidden">&nbsp;</p>
-        <p class="for">Everything set up for you and kept running.</p>
-        <ul><li class="lead">Everything in OS, plus:</li><li>Done-for-you setup in week one</li><li>Domain, email, phone and text registration</li><li>5 core automations installed</li><li>1 AI chat agent trained on your business</li><li>Niche template installed and branded</li><li>24/7 live chat and WhatsApp support</li><li>5 edit requests every month</li><li>Monthly strategy call and report</li></ul>
-        <a class="nf-btn nf-btn--aqua" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Get Growth</a>
-        <p class="after">30-day money-back guarantee</p>
-      </article>
-      <article class="nf-price">
-        <span class="plan">Done-For-You</span>
-        <div class="amt"><span class="v">$297</span> <small>/month</small></div>
-        <p class="fee">+ $997 one-time build fee</p>
-        <p class="for">We build your funnel and the full backend.</p>
-        <ul><li class="lead">Everything in Growth, plus:</li><li>Your sales funnel built from scratch</li><li>Strategy, copy and design included</li><li>Full automated backend</li><li>AI chat agent and Voice AI setup</li><li>Meta Pixel, Conversions API and GA4</li><li>Dedicated account manager</li><li>10 edits or 1 new page every month</li><li>Quarterly funnel tune-up</li></ul>
-        <a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Build my net</a>
-        <p class="after">Cancel anytime · live in 14 days</p>
-      </article>
+    <div class="nf-prices nf-prices--4">
+      <article class="nf-price"><span class="plan">Launch</span><div class="amt"><span class="v">$17</span> <small>/month</small></div><p class="for">Sell online with funnels, websites and a store.</p><ul><li class="lead">Build and sell online:</li><li>Unlimited sales funnels</li><li>Unlimited websites</li><li>E-commerce store</li></ul><a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Start with Launch</a><p class="after">Cancel anytime</p></article><article class="nf-price"><span class="plan">Growth</span><div class="amt"><span class="v">$97</span> <small>/month</small></div><p class="for">The full system to catch, follow up and close, without AI.</p><ul><li class="lead">Everything in Launch, plus:</li><li>CRM, contacts and sales pipelines</li><li>Phone system and missed call text back</li><li>SMS and email marketing</li><li>Calendars and appointments</li><li>Automation workflows</li><li>Invoices, payments and subscriptions</li><li>Courses, communities and client portal</li><li>Reviews, social planner and ad manager</li><li>Dashboards, reporting and integrations</li></ul><a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Get Growth</a><p class="after">30-day money-back guarantee</p></article><article class="nf-price nf-price--pop"><span class="pop">MOST POPULAR</span><span class="plan">AI Pro</span><div class="amt"><span class="v">$197</span> <small>/month</small></div><p class="for">Every feature, including all AI.</p><ul><li class="lead">Everything in Growth, plus:</li><li>Conversation AI for chat, SMS and social</li><li>Voice AI that answers your calls</li><li>Content AI and Reviews AI</li><li>Workflow AI and Website and Funnel AI</li><li>AI Studio and Agent Studio</li><li>AI Knowledge Base and Ask AI</li></ul><a class="nf-btn nf-btn--aqua" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Get AI Pro</a><p class="after">30-day money-back guarantee</p></article><article class="nf-price"><span class="plan">Scale</span><div class="amt"><span class="v">$297</span> <small>/month</small></div><p class="for">Everything in AI Pro, plus people to help you grow.</p><ul><li class="lead">Everything in AI Pro, plus:</li><li>A dedicated account manager</li><li>A builder who helps you grow and scale your business</li></ul><a class="nf-btn nf-btn--ink" href="https://checkout.oceanicfunnels.com/oceanic_funnels">Scale with us</a><p class="after">Cancel anytime</p></article>
+    </div>
+    <div class="nf-compare-wrap" id="compare-plans">
+      <h3 class="nf-ct">Compare every feature</h3>
+      <p class="nf-cs">54 features across 4 plans. ✓ included, ✕ not included.</p>
+      <div class="nf-ftable-scroll"><table class="nf-ftable"><caption class="nf-sr">Features included in each plan</caption><colgroup><col class="cf"><col class="cp"><col class="cp"><col class="cp"><col class="cp"></colgroup><thead><tr><th scope="col" class="f">Feature</th><th scope="col"><b>Launch</b><small>$17/mo</small></th><th scope="col"><b>Growth</b><small>$97/mo</small></th><th scope="col"><b>AI Pro</b><small>$197/mo</small></th><th scope="col"><b>Scale</b><small>$297/mo</small></th></tr></thead><tbody><tr class="grp"><th scope="rowgroup">CRM and communication</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Customer Relationship Manager (CRM)</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Contact Management</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Sales Pipelines and Opportunities</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Phone System</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Missed Call Text Back</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">SMS Marketing</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Email Builder and Marketing</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Calendar and Appointments</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Automation Workflows</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">Funnels and websites</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Funnel Builder</th><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Website Builder</th><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Forms</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Surveys</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Quizzes</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Chat Widget</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">QR Code Builder</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Blog Builder</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">WordPress Hosting</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">Marketing and reputation</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Social Media Planner</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Ad Manager</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Reputation Management</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Review Requests</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Business Listings</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Video Testimonials</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Affiliate Manager</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">Payments and commerce</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Invoices and Estimates</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Documents and Contracts</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Payment Links</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Products and Payments</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Subscriptions</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">E-commerce Store</th><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Gift Cards</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">Courses, community and services</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Courses and Memberships</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Communities</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Certificates</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Client Portal</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Services and Rentals</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Events and Webinars</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">AI</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Conversation AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Voice AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Content AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Reviews AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Workflow AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Website and Funnel AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">AI Studio</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Agent Studio</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">AI Knowledge Base</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Ask AI</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">Reporting and integrations</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Dashboards and Reporting</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Ad Tracking and Attribution</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Integrations</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">API and Webhooks</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr class="grp"><th scope="rowgroup">Your team</th><td aria-hidden="true">Launch</td><td aria-hidden="true">Growth</td><td aria-hidden="true">AI Pro</td><td aria-hidden="true">Scale</td></tr><tr><th scope="row">Dedicated Account Manager</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr><tr><th scope="row">Builder to Help You Grow and Scale</th><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="no" role="img" aria-label="Not included">✕</span></td><td><span class="yes" role="img" aria-label="Included">✓</span></td></tr></tbody></table></div>
     </div>
     <div class="nf-extras">
-      <div class="nf-usage"><b>Pay-as-you-go usage</b><p>Email, SMS and calls are billed from your account wallet at transparent per-use rates. AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do.</p><p class="unl"><b>Unlimited funnels on every plan.</b> Build as many funnels and websites as you want yourself, at no extra cost.</p></div>
+      <div class="nf-usage"><b>Pay-as-you-go usage</b><p>Email, SMS and calls are billed from your account wallet at transparent per-use rates. On AI Pro and Scale, AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do.</p><p class="unl"><b>Unlimited funnels on every plan.</b> Build as many funnels and websites as you like yourself.</p></div>
       <ul class="nf-addons" aria-label="Add-ons">
-        <li><div><b>WhatsApp messaging</b><small>Plus WhatsApp's per-message fees</small></div><span>+$19/month</span></li>
-        <li><div><b>AI Agent Unlimited</b><small>Optional: unlimited AI replies and voice minutes</small></div><span>+$147/month</span></li>
-        <li><div><b>Extra funnel built by our team</b><small>Done for you, beyond your plan</small></div><span>$297 one time</span></li>
+        <li><div><b>WhatsApp messaging</b><small>Growth and up. Plus WhatsApp's per-message fees</small></div><span>+$19/month</span></li>
+        <li><div><b>AI Agent Unlimited</b><small>AI Pro and Scale: unlimited AI replies and voice minutes</small></div><span>+$147/month</span></li>
+        <li><div><b>Extra funnel built by our team</b><small>Built for you, on any plan</small></div><span>$297 one time</span></li>
       </ul>
     </div>
     <p class="nf-found"><b>Founding member offer:</b> the first 50 businesses keep their price for life, even when our prices go up.</p>
@@ -1113,11 +1120,11 @@
         <tbody>
           <tr><th scope="row">Logins to manage</th><td>One per tool</td><td>Their tools, not yours</td><td class="us">✓ One login for everything</td></tr>
           <tr><th scope="row">Contacts and users</th><td>Often priced per contact</td><td>Depends on their tools</td><td class="us">✓ Unlimited</td></tr>
-          <tr><th scope="row">Setup</th><td>You do it</td><td>Separate project fee</td><td class="us">✓ Done for you on Growth</td></tr>
-          <tr><th scope="row">Sales funnel build</th><td>You build it</td><td>Extra project</td><td class="us">✓ Included in Done-For-You</td></tr>
-          <tr><th scope="row">AI agents</th><td>Another tool to buy</td><td>Rarely included</td><td class="us">✓ Built in</td></tr>
-          <tr><th scope="row">Support</th><td>Separate for each tool</td><td>Office hours</td><td class="us">✓ 24/7 live on Growth</td></tr>
-          <tr><th scope="row">Monthly cost</th><td>Adds up with every tool</td><td>Retainer plus tools</td><td class="us">✓ One bill from $97</td></tr>
+          <tr><th scope="row">Setup</th><td>You do it</td><td>Separate project fee</td><td class="us">✓ Guided by your team on Scale</td></tr>
+          <tr><th scope="row">Help to grow</th><td>You figure it out</td><td>Extra project</td><td class="us">✓ Account manager and builder on Scale</td></tr>
+          <tr><th scope="row">AI agents</th><td>Another tool to buy</td><td>Rarely included</td><td class="us">✓ Built in on AI Pro and Scale</td></tr>
+          <tr><th scope="row">Support</th><td>Separate for each tool</td><td>Office hours</td><td class="us">✓ 24/7 support</td></tr>
+          <tr><th scope="row">Monthly cost</th><td>Adds up with every tool</td><td>Retainer plus tools</td><td class="us">✓ One bill, full system from $97</td></tr>
         </tbody>
       </table>
     </div>
@@ -1128,22 +1135,23 @@
 <section class="nf-band" id="faq" style="padding-top:0">
   <div class="nf-wrap nf-faq">
     <div>
-      <span class="nf-eyebrow">FAQ (14)</span>
+      <span class="nf-eyebrow">FAQ (15)</span>
       <h2>Questions, <span class="g">answered</span></h2>
       <p class="nf-sub">Straight answers to what business owners ask before they switch to one system.</p>
     </div>
     <div class="nf-faq-list">
-<details class="nf-q" open><summary><h3>What is Oceanic Funnels OS?</h3><span aria-hidden="true">+</span></summary><p>Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill, starting at $97 a month.</p></details>
+<details class="nf-q" open><summary><h3>What is Oceanic Funnels OS?</h3><span aria-hidden="true">+</span></summary><p>Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. Plans start at $17 a month for funnels, websites and a store, and the full system starts at $97 a month.</p></details>
 <details class="nf-q"><summary><h3>What is a sales funnel?</h3><span aria-hidden="true">+</span></summary><p>A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel.</p></details>
-<details class="nf-q"><summary><h3>What is included in the $97 OS plan?</h3><span aria-hidden="true">+</span></summary><p>The full system: unlimited contacts and users, funnels, websites and forms, CRM and sales pipelines, email and SMS automations, calendars and booking, one inbox for every channel, invoices and payments, reviews and courses. You build and run it yourself, with ticket support that replies within 24 hours.</p></details>
-<details class="nf-q"><summary><h3>What is the difference between Growth and Done-For-You?</h3><span aria-hidden="true">+</span></summary><p>Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($297 a month plus a one-time $997 build fee) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month.</p></details>
-<details class="nf-q"><summary><h3>Are contacts really unlimited?</h3><span aria-hidden="true">+</span></summary><p>Yes. Every plan includes unlimited contacts and unlimited team users. You never pay more because your list or your team grows.</p></details>
-<details class="nf-q"><summary><h3>How do email, SMS and AI costs work?</h3><span aria-hidden="true">+</span></summary><p>Email, SMS and calls are pay-as-you-go, billed from your account wallet at transparent per-use rates. AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do. If you want unlimited AI replies and voice minutes, add AI Agent Unlimited for $147 a month.</p></details>
+<details class="nf-q"><summary><h3>What are the plans?</h3><span aria-hidden="true">+</span></summary><p>There are four plans: Launch $17/month (unlimited sales funnels, websites and an e-commerce store), Growth $97/month (every feature except AI), AI Pro $197/month (every feature, including all AI), and Scale $297/month (everything in AI Pro plus a dedicated account manager and a builder to help you grow and scale). Every plan is month to month.</p></details>
+<details class="nf-q"><summary><h3>What is the difference between Growth and AI Pro?</h3><span aria-hidden="true">+</span></summary><p>Growth ($97 a month) includes every feature except AI: CRM and pipelines, phone, SMS and email, calendars, automation workflows, funnels and websites, payments, courses and communities, reviews and reporting. AI Pro ($197 a month) adds all the AI features: Conversation AI, Voice AI, Content AI, Reviews AI, Workflow AI, Website and Funnel AI, AI Studio, Agent Studio, the AI Knowledge Base and Ask AI.</p></details>
+<details class="nf-q"><summary><h3>What do I get on Scale?</h3><span aria-hidden="true">+</span></summary><p>Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder who helps you grow and scale your business.</p></details>
+<details class="nf-q"><summary><h3>Are contacts really unlimited?</h3><span aria-hidden="true">+</span></summary><p>Yes. Growth, AI Pro and Scale include unlimited contacts and unlimited team users. You never pay more because your list or your team grows.</p></details>
+<details class="nf-q"><summary><h3>How do email, SMS and AI costs work?</h3><span aria-hidden="true">+</span></summary><p>Email, SMS and calls are pay-as-you-go, billed from your account wallet at transparent per-use rates. On AI Pro and Scale, AI agents are pay-as-you-go too: chat replies are billed by the tokens they use and voice calls by the minute, so you only pay for what your agents actually do. If you want unlimited AI replies and voice minutes, add AI Agent Unlimited for $147 a month.</p></details>
 <details class="nf-q"><summary><h3>Can I build more than one funnel?</h3><span aria-hidden="true">+</span></summary><p>Yes. Every plan includes unlimited funnels and websites that you build yourself. If you want our team to build an extra funnel for you, it is $297 one time per funnel.</p></details>
 <details class="nf-q"><summary><h3>Is WhatsApp included?</h3><span aria-hidden="true">+</span></summary><p>WhatsApp messaging is an add-on for $19 a month. WhatsApp&#x27;s own per-message fees are billed from your account wallet, and replies inside an open customer conversation are often free.</p></details>
-<details class="nf-q"><summary><h3>How long does setup take?</h3><span aria-hidden="true">+</span></summary><p>On OS you can start building the moment you sign up. On Growth, your system is set up within the first week. On Done-For-You, your sales funnel and automated backend go live within 14 days, or your next month is free.</p></details>
-<details class="nf-q"><summary><h3>Can I move my contacts from my current tools?</h3><span aria-hidden="true">+</span></summary><p>Yes. You can import contacts from a spreadsheet or your current CRM. On Growth and Done-For-You, our team does the import for you.</p></details>
-<details class="nf-q"><summary><h3>Is there a contract or a guarantee?</h3><span aria-hidden="true">+</span></summary><p>No contracts. Every plan is month to month and you can cancel anytime. OS and Growth also come with a 30-day money-back guarantee.</p></details>
+<details class="nf-q"><summary><h3>How long does setup take?</h3><span aria-hidden="true">+</span></summary><p>On every plan you can start building the moment you sign up. On Scale, your dedicated account manager and builder work with you to set up your system and keep growing it.</p></details>
+<details class="nf-q"><summary><h3>Can I move my contacts from my current tools?</h3><span aria-hidden="true">+</span></summary><p>Yes. On Growth, AI Pro and Scale you can import contacts from a spreadsheet or your current CRM. On Scale, your account manager can help you with the import.</p></details>
+<details class="nf-q"><summary><h3>Is there a contract or a guarantee?</h3><span aria-hidden="true">+</span></summary><p>No contracts. Every plan is month to month and you can cancel anytime. Growth and AI Pro also come with a 30-day money-back guarantee.</p></details>
 <details class="nf-q"><summary><h3>Who is behind Oceanic Funnels?</h3><span aria-hidden="true">+</span></summary><p>Oceanic Funnels is a company based in Bahawalpur, Pakistan, working with businesses worldwide. You sign up, pay, get onboarded and get support directly from our team. Support is 24/7: our team replies within the same hour and our AI support assistant answers straight away.</p></details>
 <details class="nf-q"><summary><h3>What happens to my data if I cancel?</h3><span aria-hidden="true">+</span></summary><p>You keep it. You can export your contacts and data at any time, your domain stays in your name, and every plan is month to month with no lock-in.</p></details>
 <details class="nf-q"><summary><h3>What is founding member pricing?</h3><span aria-hidden="true">+</span></summary><p>The first 50 businesses to join keep the price they signed up at for life, even when our prices go up, as long as their plan stays active.</p></details>
@@ -1159,9 +1167,9 @@
         <h2>Ready to build your net?</h2>
         <p class="nf-sub">Pick a plan today and start catching every lead this week.</p>
         <ul class="nf-audit">
-          <li>Unlimited contacts and users on every plan</li>
+          <li>Unlimited contacts and users on Growth, AI Pro and Scale</li>
           <li>Founding price locked in for life</li>
-          <li>30-day money-back guarantee on OS and Growth</li>
+          <li>30-day money-back guarantee on Growth and AI Pro</li>
         </ul>
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
       </div>
@@ -1179,7 +1187,7 @@
   <div class="nf-wrap nf-foot-top">
     <div>
       <h2>Stop fishing. Build the net.</h2>
-      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system, from $97 a month.</p>
+      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system. Plans from $17 a month.</p>
       <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
