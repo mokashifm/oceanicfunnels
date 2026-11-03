@@ -18,7 +18,7 @@ POSTS = [
 "A new lead fills in your form. They're interested right now, and they've probably contacted two or three other businesses too.\n\nWhoever replies first gets the conversation. Whoever replies tomorrow gets ignored.\n\nAutomate the first reply: a text and an email within seconds of every new lead, with a link to book. Your team picks it up from there.",
 "#speedtolead #sales #leadgeneration #smallbusiness"),
 ("Tool tip", "Stop paying for 15 apps that don't talk to each other.",
-"Funnel builder. Email tool. SMS tool. CRM. Scheduler. Chat widget. Review tool. Invoicing. Course platform...\n\nEach one has its own bill, its own login and its own copy of your customer list.\n\nOceanic Funnels OS puts all of it in one system with one contact record per customer, so every message, booking and payment sits in one place. Unlimited contacts and users, from $67 a month.",
+"Funnel builder. Email tool. SMS tool. CRM. Scheduler. Chat widget. Review tool. Invoicing. Course platform...\n\nEach one has its own bill, its own login and its own copy of your customer list.\n\nOceanic Funnels OS puts all of it in one system with one contact record per customer, so every message, booking and payment sits in one place. Unlimited contacts and users, from $97 a month.",
 "#allinone #crm #marketingautomation #smallbusiness"),
 # ---- Day 3
 ("No-shows", "An empty appointment slot is money you can't get back.",
@@ -92,7 +92,7 @@ POSTS = [
 "#ecommerce #abandonedcart #onlinestore #automation"),
 # ---- Day 13
 ("Coaches", "Stop running your coaching business from five different tools.",
-"A funnel to capture leads. A calendar for discovery calls. Payments for your programme. A course area for members. A community for clients. Email to stay in touch.\n\nAll in one place, with one login and one bill.\n\nUnlimited contacts and users, from $67 a month.",
+"A funnel to capture leads. A calendar for discovery calls. Payments for your programme. A course area for members. A community for clients. Email to stay in touch.\n\nAll in one place, with one login and one bill.\n\nUnlimited contacts and users, from $97 a month.",
 "#coaching #onlinecoach #courses #smallbusiness"),
 ("Quick tip", "Your first reply to a lead should end with a question.",
 "\"Thanks for getting in touch!\" ends the conversation.\n\n\"Thanks for getting in touch! Is this for you or your business?\" keeps it going.\n\nA simple question gets more replies, and replies turn into bookings. Build it into your automatic first message.",
@@ -151,7 +151,7 @@ POSTS = [
 "Every extra field is another reason to leave.\n\nAsk only what you need to reply properly: name, phone or email, and one question about what they need.\n\nThen let the automation handle the rest: instant reply, tag by interest, and the right follow-up sequence.",
 "#leadcapture #forms #conversion #marketingtips"),
 ("Done for you", "You don't need to learn the software. You need the system working.",
-"OS: run it yourself, from $67 a month.\nGrowth: we set it up for you in week one.\nDone-For-You: our team builds your whole system, live in 14 days.\n\nEvery plan includes unlimited contacts, users and funnels.\n\nPick how much you want us to do at oceanicfunnels.com",
+"OS: run it yourself, from $97 a month.\nGrowth: we set it up for you in week one.\nDone-For-You: our team builds your whole system, live in 14 days.\n\nEvery plan includes unlimited contacts, users and funnels.\n\nPick how much you want us to do at oceanicfunnels.com",
 "#smallbusiness #marketingautomation #crm #salesfunnel"),
 # ---- Day 22
 ("Chiropractors", "New patient enquiries need answers today, not next week.",
@@ -214,7 +214,7 @@ POSTS = [
 "For most small businesses, the answer is yes. Every reply, reminder and follow-up depends on someone remembering.\n\nThe goal isn't to work less. It's to stop losing customers when you're busy, off or asleep.\n\nThat's what a 24/7 system is for.",
 "#smallbusiness #entrepreneur #automation #growth"),
 ("Get started", "Stop fishing for customers. Build the net.",
-"Funnels, CRM, AI agents, booking, reminders, reviews, payments and follow-up in one system that works 24/7.\n\nUnlimited contacts, users and funnels. No contracts.\n\nRun it yourself from $67 a month, or let our team build it for you.\n\noceanicfunnels.com",
+"Funnels, CRM, AI agents, booking, reminders, reviews, payments and follow-up in one system that works 24/7.\n\nUnlimited contacts, users and funnels. No contracts.\n\nRun it yourself from $97 a month, or let our team build it for you.\n\noceanicfunnels.com",
 "#oceanicfunnels #salesfunnel #crm #marketingautomation"),
 ]
 

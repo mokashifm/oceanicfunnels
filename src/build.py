@@ -22,10 +22,10 @@ B, P = CONFIG["brand"], CONFIG["product"]
 
 FAQ = [
     (f"What is {P}?",
-     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill, starting at $67 a month."),
+     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill, starting at $97 a month."),
     ("What is a sales funnel?",
      "A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel."),
-    ("What is included in the $67 OS plan?",
+    ("What is included in the $97 OS plan?",
      "The full system: unlimited contacts and users, funnels, websites and forms, CRM and sales pipelines, email and SMS automations, calendars and booking, one inbox for every channel, invoices and payments, reviews and courses. You build and run it yourself, with ticket support that replies within 24 hours."),
     ("What is the difference between Growth and Done-For-You?",
      "Growth ($197 a month) sets up the system for you in the first week, installs five core automations and an AI chat agent trained on your business, and adds 24/7 live support, five edit requests a month and a monthly strategy call. Done-For-You ($297 a month plus a one-time $997 build fee) adds a custom sales funnel built from scratch with strategy, copy and design, a full automated backend, a dedicated account manager and ten edits or one new page every month."),
@@ -77,7 +77,7 @@ def schema():
          "serviceType": "All-in-one sales funnel, CRM and marketing automation software",
          "provider": {"@id": org_id}, "areaServed": "Worldwide",
          "description": "All-in-one sales funnel, CRM and marketing automation system with unlimited contacts, users and funnels: funnels and websites, email and SMS automations, AI agents, calendars, one inbox for every channel, invoices and payments, reviews and courses.",
-         "offers": [offer("OS", "67"), offer("Growth", "197"), offer("Done-For-You", "297", "997")]},
+         "offers": [offer("OS", "97"), offer("Growth", "197"), offer("Done-For-You", "297", "997")]},
     ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=1)
 
@@ -119,7 +119,7 @@ def replaces_html():
         f'<td data-l="Oceanic Funnels" class="us">✓ Included</td></tr>' for f, t, c, u, _ in REPLACES)
     rows += (f'<tr class="tot"><th scope="row">Overall</th><td data-l="Replaces">{len(REPLACES)} separate tools</td>'
              f'<td data-l="Their price" class="num">${tot:,.2f}<small>/mo</small></td>'
-             f'<td data-l="Oceanic Funnels" class="us"><b>$67</b>/month</td></tr>')
+             f'<td data-l="Oceanic Funnels" class="us"><b>$97</b>/month</td></tr>')
     src = " · ".join(f'<a href="{l}" rel="nofollow noopener" target="_blank">{t}</a>' for _, t, _, _, l in REPLACES)
     return rows, str(len(REPLACES)), f"{tot:,.2f}", src
 
@@ -216,7 +216,7 @@ from industries import INDUSTRIES as _IND, CATEGORIES as _CAT
 from competitors import COMPETITORS as _CMP
 _d = CONFIG["domain"]
 _llms = [f"# {B}", "",
-  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $67/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $297/month plus a one-time $997 build fee (we build your sales funnel and backend). All plans are month to month.", "",
+  "> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: OS $97/month (build it yourself), Growth $197/month (set up for you, 24/7 support), Done-For-You $297/month plus a one-time $997 build fee (we build your sales funnel and backend). All plans are month to month.", "",
   "## Company", "- Oceanic Funnels is a company based in Bahawalpur, Pakistan, serving businesses worldwide. Customers sign up, pay, are onboarded and get support directly from the Oceanic Funnels team.", "- Support: 24/7. The team replies within the same hour; an AI support assistant replies instantly. Email: hello@oceanicfunnels.com", "- Customers own their data: contacts and data can be exported at any time, connected domains stay in the customer's name, and all plans are month to month with no lock-in.", f"- [About Oceanic Funnels]({_d}/about/)", "",
   "## Key pages", f"- [Home and pricing]({_d}/): what's included, pricing and FAQ", f"- [Industries]({_d}/industries/): how each industry uses the system", f"- [Comparisons]({_d}/compare/): Oceanic Funnels vs other tools", f"- [Guides]({_d}/guides/): how-to guides on lead response, AI agents, reviews, texting compliance and funnels", ""]
 for c in _CAT:

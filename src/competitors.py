@@ -7,7 +7,7 @@ CHECKED = "October 30, 2026"
 
 # Oceanic Funnels OS values, reused on every page
 OF = {
-    "price": "From $67/month, one bill",
+    "price": "From $97/month, one bill",
     "contacts": "Unlimited on every plan",
     "users": "Unlimited on every plan",
     "funnels": "Unlimited funnels and websites",
@@ -53,7 +53,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Skool alternative with your community, CRM, email and SMS in one place',
   'answer': "Looking for a Skool alternative? Skool's Hobby plan is $9 a month with a 10% transaction fee, and its Pro plan is $99 a month with a 2.9% transaction fee. "
             "Skool's pricing page lists community, courses, videos and live calls, but not email marketing, a website or funnels. Oceanic "
-            'Funnels OS includes paid communities, courses and memberships plus a CRM, email, SMS, funnels and AI agents, from $67 a month '
+            'Funnels OS includes paid communities, courses and memberships plus a CRM, email, SMS, funnels and AI agents, from $97 a month '
             'with no platform fee on your sales.',
   'rows': {'price': '$9/month (Hobby) or $99/month (Pro)',
            'fee': '10% (Hobby) or 2.9% (Pro) per transaction',
@@ -71,7 +71,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The ClickFunnels alternative with CRM, SMS and AI built in',
   'answer': "ClickFunnels' Launch plan is $97 a month ($81 billed yearly) for 10,000 contacts and 2 team members. Oceanic Funnels OS "
             'includes unlimited funnels too, plus a full CRM, built-in two-way SMS, AI agents, booking and payments, with unlimited '
-            'contacts and users from $67 a month.',
+            'contacts and users from $97 a month.',
   'rows': {'price': 'From $97/month (Launch), $81/month billed yearly',
            'contacts': '10,000 on Launch, 75,000 on Scale, 150,000 on Optimize',
            'users': '2 team members on Launch, 5 on Scale',
@@ -90,7 +90,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Kajabi alternative with unlimited contacts, CRM and SMS',
   'answer': "Kajabi's Basic plan is $179 a month ($143 billed yearly) for 5 products, 2,500 contacts and 2 admin users, and it charges an "
             'extra 2% when you use a third-party payment provider. Oceanic Funnels OS includes courses, memberships and communities too, '
-            'plus a full CRM, two-way SMS, AI agents, booking and an online store, with unlimited contacts and users from $67 a month.',
+            'plus a full CRM, two-way SMS, AI agents, booking and an online store, with unlimited contacts and users from $97 a month.',
   'rows': {'price': 'From $179/month (Basic), $143/month billed yearly',
            'contacts': '2,500 on Basic, 25,000 on Growth, 100,000 on Pro',
            'users': '2 admin users on Basic, 11 on Growth, 26 on Pro',
@@ -109,7 +109,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Funnelish alternative with a full CRM and no visitor caps',
   'answer': 'Funnelish is a checkout and funnel builder for online stores, with a Basic plan at $49 a month for up to 20,000 visitors, 20 '
             'funnels, 1 store and 2 team members. Oceanic Funnels OS gives you unlimited funnels plus a CRM, email, SMS, AI agents, '
-            'booking and courses, with unlimited contacts and users from $67 a month.',
+            'booking and courses, with unlimited contacts and users from $97 a month.',
   'rows': {'price': 'From $49/month (Basic), $41/month billed yearly',
            'traffic': 'Up to 20,000 visitors a month on Basic',
            'funnels': '20 ecommerce funnels on Basic',
@@ -130,7 +130,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Shopify alternative with funnels, CRM, SMS and booking built in',
   'answer': "Shopify's Basic plan is $39 a month, and it charges a 2% fee on Basic when you use a third-party payment provider. Oceanic "
             'Funnels OS includes an online store and checkout, plus sales funnels, a CRM, email, SMS, AI agents, booking and courses, from '
-            '$67 a month with no platform fee on your sales.',
+            '$97 a month with no platform fee on your sales.',
   'rows': {'price': 'From $39/month (Basic), $29/month billed yearly',
            'fee': '2% on Basic with a third-party payment provider (1% Grow, 0.6% Advanced)',
            'users': 'No additional staff accounts on Basic, 5 on Grow',
@@ -149,7 +149,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The HubSpot alternative without per-seat and per-contact pricing',
   'answer': "HubSpot prices by seat and by marketing contact. Texting needs Marketing Hub Professional or Enterprise plus HubSpot's "
             'Marketing SMS add-on, and Professional is $890 a month ($800 billed yearly) with a required $3,000 onboarding fee. Oceanic '
-            'Funnels OS includes the CRM, email, SMS, funnels and booking with unlimited contacts and users from $67 a month.',
+            'Funnels OS includes the CRM, email, SMS, funnels and booking with unlimited contacts and users from $97 a month.',
   'rows': {'price': 'Marketing Hub Starter $20/seat/month (monthly billing)',
            'contacts': '1,000 marketing contacts on Starter, 2,000 on Professional',
            'users': 'Priced per seat (3 Core Seats on Professional)',
@@ -173,7 +173,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The ActiveCampaign alternative with funnels, SMS and booking included',
   'answer': 'ActiveCampaign is an email automation tool priced by contact count, starting at $15 a month billed yearly for 1,000 contacts '
             'with 1 user seat. Oceanic Funnels OS includes email automation plus funnels, built-in SMS, booking, payments and a CRM, with '
-            'unlimited contacts and users from $67 a month.',
+            'unlimited contacts and users from $97 a month.',
   'rows': {'price': 'From $15/month billed yearly, for 1,000 contacts',
            'contacts': 'Price rises with your contact count',
            'users': '1 user seat on Starter and Plus, 3 on Pro, 5 on Enterprise',
@@ -193,7 +193,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Keap alternative at a fraction of the price',
   'answer': 'Keap starts at $299 a month, or $2,988 billed yearly, with 2 users included and extra users at $39 a month each. '
             'Implementation is required and priced separately, and annual contracts carry a $299 early termination fee. Oceanic Funnels OS '
-            'includes CRM, automations, SMS, funnels, booking and payments with unlimited contacts and users from $67 a month.',
+            'includes CRM, automations, SMS, funnels, booking and payments with unlimited contacts and users from $97 a month.',
   'rows': {'price': 'From $299/month, or $2,988 billed yearly',
            'contacts': 'Price depends on your contact count',
            'users': '2 users included, extra users $39/month each',
@@ -210,7 +210,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Klaviyo alternative for service businesses',
   'answer': 'Klaviyo is an email and SMS tool billed on active profiles. Its free plan covers up to 250 active profiles and 500 email '
             'sends a month, and paid plans are priced by profile count. Oceanic Funnels OS includes email and SMS too, plus funnels, a CRM '
-            'pipeline, booking and invoicing, with unlimited contacts from $67 a month.',
+            'pipeline, booking and invoicing, with unlimited contacts from $97 a month.',
   'rows': {'price': 'Free up to 250 active profiles; paid plans priced by profile count',
            'contacts': 'Billed on active profiles',
            'sms': 'Free plan includes $5 of mobile messages a month'},
@@ -225,7 +225,7 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'CRM',
   'h1': 'The Zoho CRM alternative with funnels and messaging in one place',
   'answer': 'Zoho CRM is free for up to 3 users, and its paid editions are priced per user. Oceanic Funnels OS puts the CRM, funnels, '
-            'email, SMS, booking and payments in one system with unlimited users from $67 a month.',
+            'email, SMS, booking and payments in one system with unlimited users from $97 a month.',
   'rows': {'price': 'Free for up to 3 users; paid editions priced per user', 'users': 'Priced per user', 'crm': 'CRM'},
   'plans': [('Free', 'Up to 3 users'), ('Standard, Professional, Enterprise, Ultimate', "Priced per user on Zoho's pricing page")],
   'better': 'You already use several Zoho apps like Books and Desk, and you want your CRM inside that ecosystem.',
@@ -238,7 +238,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Salesforce alternative built for small businesses',
   'answer': 'Salesforce is priced per user: Starter Suite is $25 a month per user, billed monthly or yearly, and Pro Suite is $100 per '
             'user, billed yearly with a contract. Oceanic Funnels OS includes the CRM, funnels, email, SMS, AI agents and booking with '
-            'unlimited users from $67 a month.',
+            'unlimited users from $97 a month.',
   'rows': {'price': 'Starter Suite from $25/user/month',
            'users': 'Priced per user (Pro Suite $100/user/month, billed yearly)',
            'crm': 'CRM'},
@@ -257,7 +257,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Linktree alternative that turns clicks into customers',
   'answer': 'Linktree is a link-in-bio page with a free plan and paid plans from $9 a month ($7 billed yearly). Its pricing page lists 0% '
             'fees on sales from the Pro plan up. Oceanic Funnels OS gives you full funnels and websites, plus the CRM, email, SMS and '
-            'booking to follow up with every visitor, from $67 a month.',
+            'booking to follow up with every visitor, from $97 a month.',
   'rows': {'price': 'Free; paid plans from $9/month ($7 billed yearly)',
            'fee': '0% fees on sales on Pro and Premium',
            'funnels': 'Link-in-bio page'},

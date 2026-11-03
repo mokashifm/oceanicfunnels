@@ -378,7 +378,7 @@ dict(
   ("All-in-one vs a stack of tools", """
 <p>Many businesses glue together a CRM, an email tool, a texting tool, a scheduler and a funnel builder. Each one has its own bill and login, and leads slip through the gaps between them. An all-in-one system keeps everything connected. See the <a href="/#all-in-one">tools Oceanic Funnels OS replaces</a> and what they'd cost separately.</p>"""),
   ("Oceanic Funnels OS as your CRM", """
-<p>Oceanic Funnels OS includes the CRM, pipelines, unified inbox, email, two-way SMS, AI agents, calendars, payments, reviews and unlimited funnels, with unlimited contacts and users from $67 a month. On Growth, our team sets it up for you in the first week. See how it works for <a href="/industries/">your industry</a>.</p>"""),
+<p>Oceanic Funnels OS includes the CRM, pipelines, unified inbox, email, two-way SMS, AI agents, calendars, payments, reviews and unlimited funnels, with unlimited contacts and users from $97 a month. On Growth, our team sets it up for you in the first week. See how it works for <a href="/industries/">your industry</a>.</p>"""),
  ],
  faqs=[
   ("What does CRM stand for?", "Customer relationship management. It's the system a business uses to keep track of contacts, conversations, deals and follow-up."),

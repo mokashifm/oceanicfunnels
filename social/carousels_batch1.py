@@ -45,7 +45,7 @@ dict(cap="Your business shouldn't stop selling when you close.\n\nHere's an exam
   dict(t="cover_text", k="While you sleep", h="Your business keeps working [[while you sleep.]]", sub="An example night with automations and AI agents running in the background.", swipe=True),
   dict(t="timeline", k="Evening", h="9 PM to midnight", items=[("9:14 PM","Instagram DM","Someone asks what lip filler costs. The AI agent answers in seconds and books a consultation."),("10:02 PM","Missed call","A text goes back instantly. The caller books online."),("11:38 PM","Abandoned checkout","A reminder email and text bring the visitor back to finish.")]),
   dict(t="timeline", k="Overnight", h="Midnight to morning", items=[("1:47 AM","Invoice paid","A customer pays from the text-to-pay link you never had to chase."),("6:00 AM","Reminders sent","Everyone booked today gets a reminder with a reschedule link."),("7:30 AM","Old leads woken up","A reactivation campaign goes out. Replies are waiting in your inbox.")]),
-  cta("Stop fishing for customers. [[Build the net.]]","One system for funnels, CRM, AI agents, booking, reminders, reviews and payments. From $67 a month, or built for you.", kicker="Oceanic Funnels"),
+  cta("Stop fishing for customers. [[Build the net.]]","One system for funnels, CRM, AI agents, booking, reminders, reviews and payments. From $97 a month, or built for you.", kicker="Oceanic Funnels"),
  ]),
 # 3 (Oct 29 AM) speed to lead HBR
 dict(cap="Harvard Business Review studied 1.25 million sales leads. Companies that contacted a lead within an hour were nearly 7 times as likely to qualify it as companies that waited just one hour longer.\n\nSwipe for the numbers and how to never be slow again.",
@@ -75,10 +75,10 @@ dict(cap="Old reviews don't sell. In BrightLocal's 2026 survey, 74% of consumers
   cta("Fresh reviews, [[on autopilot.]]","Oceanic Funnels sends a review request after every visit and lets you reply to reviews from one place."),
  ]),
 # 6 (Oct 30 PM) about us: 15 apps
-dict(cap="Most businesses pay for a stack of separate tools that don't talk to each other.\n\nWe added up the starting prices of 15 common ones, taken from each company's own pricing page: $605.77 a month. Oceanic Funnels OS replaces them from $67 a month, with unlimited contacts and users.",
+dict(cap="Most businesses pay for a stack of separate tools that don't talk to each other.\n\nWe added up the starting prices of 15 common ones, taken from each company's own pricing page: $605.77 a month. Oceanic Funnels OS replaces them from $97 a month, with unlimited contacts and users.",
  tags="#allinone #crm #saas #smallbusiness",
  slides=[
-  dict(t="compare_cost", k="Fire your 15 apps", h="$605.77 a month vs [[$67 a month]]", left=[("CRM (HubSpot)","$20"),("Funnels (ClickFunnels)","$97"),("Courses (Kajabi)","$179"),("Reviews (NiceJob)","$75"),("Call tracking (CallRail)","$50"),("Store (Shopify)","$39"),("SMS (SimpleTexting)","$39"),("+ 8 more tools","$106.77")], total="$605.77", ours="$67", src="Starting prices from each company's own pricing page, Oct 30 2026. Some per seat or billed yearly."),
+  dict(t="compare_cost", k="Fire your 15 apps", h="$605.77 a month vs [[$97 a month]]", left=[("CRM (HubSpot)","$20"),("Funnels (ClickFunnels)","$97"),("Courses (Kajabi)","$179"),("Reviews (NiceJob)","$75"),("Call tracking (CallRail)","$50"),("Store (Shopify)","$39"),("SMS (SimpleTexting)","$39"),("+ 8 more tools","$106.77")], total="$605.77", ours="$97", src="Starting prices from each company's own pricing page, Oct 30 2026. Some per seat or billed yearly."),
   dict(t="list", k="All inside one login", h="What you [[stop juggling]]", items=[("One contact record per customer","Every message, booking and payment together"),("One inbox","Text, email, Facebook, Instagram, WhatsApp, chat"),("One bill","Instead of 15 renewals"),("Unlimited contacts and users","On every plan")]),
   cta("Keep one bill. [[Fire the rest.]]","See the full comparison and plans at oceanicfunnels.com", kicker="Oceanic Funnels"),
  ]),
@@ -98,7 +98,7 @@ dict(cap="What happens when you miss a call with Oceanic Funnels?\n\nThe caller 
   dict(t="cover_text", k="Missed calls", h="You missed the call. [[You didn't miss the customer.]]", swipe=True),
   dict(t="chat", k="What the caller gets", h="A text, [[seconds after the missed call]]", msgs=[("biz","Hi, it's Bright Smile Dental. Sorry we missed your call! How can we help?"),("u","Do you have anything for a cleaning this week?"),("biz","We do! Thursday 10:30 or Friday 2:00. Book here: [booking link]"),("u","Thursday works, booked. Thanks!")], src="Illustration. Business name is an example."),
   dict(t="list", k="Why it works", h="It turns a hang-up into [[a conversation]]", items=[("Instant","Sent automatically while you're busy"),("From your business number","So they recognise you"),("24/7","Nights and weekends too"),("Two-way","Your team or AI agent replies in one inbox")]),
-  cta("Never lose a caller [[to voicemail again.]]","Missed call text back is included in Oceanic Funnels OS, from $67 a month.", kicker="Oceanic Funnels"),
+  cta("Never lose a caller [[to voicemail again.]]","Missed call text back is included in Oceanic Funnels OS, from $97 a month.", kicker="Oceanic Funnels"),
  ]),
 # 9 (Nov 1 AM) responding to reviews
 dict(cap="89% of consumers expect business owners to respond to reviews, according to BrightLocal's 2026 survey. And half are put off by generic, copy-paste replies.\n\nSwipe for what customers expect and how fast.",
@@ -132,7 +132,7 @@ dict(cap="Three ways to work with Oceanic Funnels. Every plan includes the full 
  tags="#oceanicfunnels #crm #salesfunnel #smallbusiness",
  slides=[
   dict(t="cover_text", k="Plans", h="Pick how much [[we do for you.]]", sub="Same system on every plan. Unlimited contacts, users and funnels.", swipe=True),
-  dict(t="plans", k="Three ways to start", h="Run it yourself, or [[let us build it]]", plans=[("OS","$67","/month","Run it yourself. Full system, ticket support."),("Growth","$197","/month","We set it up for you in week one, with 24/7 support."),("Done-For-You","$297","/month + $997 build","Our team builds your whole system. Live in 14 days.")]),
+  dict(t="plans", k="Three ways to start", h="Run it yourself, or [[let us build it]]", plans=[("OS","$97","/month","Run it yourself. Full system, ticket support."),("Growth","$197","/month","We set it up for you in week one, with 24/7 support."),("Done-For-You","$297","/month + $997 build","Our team builds your whole system. Live in 14 days.")]),
   dict(t="list", k="On every plan", h="No catches", items=[("No contracts","Month to month, cancel anytime"),("30-day money-back guarantee","On OS and Growth"),("Founding member pricing","The first 50 businesses keep their price for life"),("Pay-as-you-go usage","Texts, emails and AI replies, paid from your wallet")]),
   cta("Start this week.", "Compare plans at oceanicfunnels.com", kicker="Oceanic Funnels"),
  ]),
@@ -360,7 +360,7 @@ dict(cap="Coaches and course creators: stop running your business from five diff
  slides=[
   dict(t="cover_text", k="Coaches", h="Your whole coaching business [[in one login.]]", swipe=True),
   dict(t="compare", k="Before vs after", h="Five tools vs [[one system]]", lh="Before", left=["Funnel builder","Calendar app","Course platform","Community app","Email tool"], rh="After", right=["Funnels and websites","Discovery call booking","Courses and memberships","Paid communities","Email and SMS follow-up"]),
-  cta("One system. [[One bill.]]","Unlimited contacts and users, from $67 a month.", kicker="Oceanic Funnels"),
+  cta("One system. [[One bill.]]","Unlimited contacts and users, from $97 a month.", kicker="Oceanic Funnels"),
  ]),
 # 39 (Nov 16 AM) prompt: review themes
 dict(cap="Your customers have already written your best marketing. This prompt finds it in your reviews.",
@@ -376,7 +376,7 @@ dict(cap="Founding member offer: the first 50 businesses on Oceanic Funnels keep
  tags="#oceanicfunnels #smallbusiness #crm #marketingautomation",
  slides=[
   dict(t="cover_stat", k="Founding members", big="50", h="businesses keep their price [[for life.]]", swipe=True),
-  dict(t="plans", k="Lock in today", h="Founding prices, [[locked]]", plans=[("OS","$67","/month","Run it yourself."),("Growth","$197","/month","Set up for you in week one."),("Done-For-You","$297","/month + $997 build","Built by our team.")]),
+  dict(t="plans", k="Lock in today", h="Founding prices, [[locked]]", plans=[("OS","$97","/month","Run it yourself."),("Growth","$197","/month","Set up for you in week one."),("Done-For-You","$297","/month + $997 build","Built by our team.")]),
   cta("Lock in [[your price.]]","oceanicfunnels.com", kicker="Oceanic Funnels"),
  ]),
 # 41 (Nov 17 AM) AI voice scams
@@ -525,7 +525,7 @@ dict(cap="Not sure whether to build it yourself or have us set it up? Here's the
  tags="#oceanicfunnels #crm #smallbusiness #marketingautomation",
  slides=[
   dict(t="cover_text", k="OS or Growth?", h="Build it yourself, [[or have it set up?]]", swipe=True),
-  dict(t="compare", k="The difference", h="OS vs [[Growth]]", lh="OS · $67/month", left=["The full system","Unlimited contacts and users","Ticket support","You set it up"], rh="Growth · $197/month", right=["Everything in OS","We set it up in week one","24/7 support","Text registration handled"]),
+  dict(t="compare", k="The difference", h="OS vs [[Growth]]", lh="OS · $97/month", left=["The full system","Unlimited contacts and users","Ticket support","You set it up"], rh="Growth · $197/month", right=["Everything in OS","We set it up in week one","24/7 support","Text registration handled"]),
   cta("Pick what fits [[your time.]]","Both include a 30-day money-back guarantee. oceanicfunnels.com", kicker="Oceanic Funnels"),
  ]),
 # 59 (Nov 26 AM) AI augments
@@ -537,7 +537,7 @@ dict(cap="Will AI replace your team? Small business owners who use it say no: 87
   cta("AI handles the waiting. [[Your team handles the people.]]","That's the balance we build at Oceanic Funnels."),
  ]),
 # 60 (Nov 26 PM) final CTA
-dict(cap="Funnels, CRM, AI agents, booking, reminders, reviews, payments and follow-up in one system that works 24/7. Run it yourself from $67 a month, or let our team build it for you.",
+dict(cap="Funnels, CRM, AI agents, booking, reminders, reviews, payments and follow-up in one system that works 24/7. Run it yourself from $97 a month, or let our team build it for you.",
  tags="#oceanicfunnels #salesfunnel #crm #marketingautomation",
  slides=[
   dict(t="cover_text", k="Oceanic Funnels", h="Stop fishing for customers. [[Build the net.]]", swipe=True),

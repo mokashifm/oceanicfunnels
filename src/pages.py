@@ -241,7 +241,7 @@ def footer(cfg):
   <div class="nf-wrap nf-foot-top">
     <div>
       <h2>Stop fishing. Build the net.</h2>
-      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system, from $67 a month.</p>
+      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system, from $97 a month.</p>
       <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
@@ -353,7 +353,7 @@ ABOUT = [
  ("Who you deal with", """<p>You deal with Oceanic Funnels directly. You sign up and pay with us, our team onboards you and builds your system, and our team answers your support requests. There is no third party between you and the people who look after your account.</p>"""),
  ("Support", """<ul><li><b>24/7 support.</b> Our team replies within the same hour, day or night.</li><li><b>Instant answers.</b> Our AI support assistant replies straight away while a person picks up your request.</li><li><b>Email:</b> <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></li></ul>"""),
  ("Your data and your freedom to leave", """<ul><li><b>You own your contacts.</b> Export your contacts and data at any time.</li><li><b>Your domain stays in your name.</b> If you connect your own domain, it is registered to you, not to us.</li><li><b>No lock-in.</b> Every plan is month to month. Cancel anytime.</li></ul>"""),
- ("Plans", """<ul><li><b>OS:</b> $67 a month. The full system, you build and run it yourself.</li><li><b>Growth:</b> $197 a month. Set up for you in the first week, with 24/7 support.</li><li><b>Done-For-You:</b> $297 a month plus a one-time $997 build. We build your sales funnel and full automated backend, live in 14 days.</li></ul><p>OS and Growth include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> for details.</p>"""),
+ ("Plans", """<ul><li><b>OS:</b> $97 a month. The full system, you build and run it yourself.</li><li><b>Growth:</b> $197 a month. Set up for you in the first week, with 24/7 support.</li><li><b>Done-For-You:</b> $297 a month plus a one-time $997 build. We build your sales funnel and full automated backend, live in 14 days.</li></ul><p>OS and Growth include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> for details.</p>"""),
 ]
 
 def about_page(cfg, fonts, logo):
@@ -393,7 +393,7 @@ def compare_page(cfg, fonts, logo, c):
     plans = "".join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in c["plans"])
     srcs = " · ".join(f'<a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a>' for t, u in c["sources"])
     more = "".join(f'<a href="/compare/{o["slug"]}/">vs {E(o["name"])}</a>' for o in COMPETITORS if o["slug"] != c["slug"])
-    cheap = f'Oceanic Funnels OS starts at $67 a month with unlimited contacts and users on every plan. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
+    cheap = f'Oceanic Funnels OS starts at $97 a month with unlimited contacts and users on every plan. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
     faqs = [
       (f"What is the difference between Oceanic Funnels and {n}?", c["answer"]),
       (f"Is Oceanic Funnels OS cheaper than {n}?", cheap + " Usage like SMS and AI is pay-as-you-go."),
@@ -409,7 +409,7 @@ def compare_page(cfg, fonts, logo, c):
       {crumbs_html(crumbs)}
       <span class="nf-vs">Oceanic Funnels <i>vs</i> {E(n)}</span>
       <h1>{E(c["h1"])}</h1>
-      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. From $67 a month, or we build it all for you.</p>
+      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. From $97 a month, or we build it all for you.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#comparison">See the comparison</a>
@@ -430,7 +430,7 @@ def compare_page(cfg, fonts, logo, c):
       <ul class="nf-facts">
         <li><span class="k">Oceanic Funnels</span><span>All-in-one sales funnel, CRM and automation system</span></li>
         <li><span class="k">{E(n)}</span><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
-        <li><span class="k">Starts at</span><span>$67/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
+        <li><span class="k">Starts at</span><span>$97/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
         <li><span class="k">Contacts</span><span>Unlimited on every Oceanic plan</span></li>
       </ul>
     </div>
@@ -462,7 +462,7 @@ def compare_page(cfg, fonts, logo, c):
     <div class="nf-two">
       <div class="nf-box ink">
         <h3>Oceanic Funnels OS</h3>
-        <ul class="nf-plist"><li><b>OS</b><span>$67/month</span></li><li><b>Growth (set up for you)</b><span>$197/month</span></li><li><b>Done-For-You (we build it)</b><span>$297/month + $997 one-time build</span></li></ul>
+        <ul class="nf-plist"><li><b>OS</b><span>$97/month</span></li><li><b>Growth (set up for you)</b><span>$197/month</span></li><li><b>Done-For-You (we build it)</b><span>$297/month + $997 one-time build</span></li></ul>
         <p style="margin-top:16px">Unlimited contacts, users and funnels on every plan. SMS, email and AI usage is pay-as-you-go.</p>
       </div>
       <div class="nf-box">
@@ -613,7 +613,7 @@ def deep_sections(d, X):
         <p class="fee">+ $997 one-time build</p>
         <ul><li>Built and launched by our team</li><li>Live in 14 days</li><li>Dedicated account manager</li><li>24/7 support</li><li>Cancel anytime</li></ul>
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d["slug"], CK)}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
-        <p class="small">Rather build it yourself? <a href="/#pricing">Start on OS from $67/month</a>.</p>
+        <p class="small">Rather build it yourself? <a href="/#pricing">Start on OS from $97/month</a>.</p>
       </aside>
     </div>
   </div>
@@ -680,7 +680,7 @@ def industry_page(cfg, fonts, logo, d):
         <li><span class="k">Leads from</span><span>Funnels, ads, social DMs, calls and your website</span></li>
         <li><span class="k">Replies</span><span>Within seconds, by SMS, email, WhatsApp and AI agent</span></li>
         <li><span class="k">Booking</span><span>Calendars with automatic reminders</span></li>
-        <li><span class="k">Starts at</span><span>$67/month, unlimited contacts and users</span></li>
+        <li><span class="k">Starts at</span><span>$97/month, unlimited contacts and users</span></li>
       </ul>
     </div>
   </div>
@@ -825,7 +825,7 @@ def guide_page(cfg, fonts, logo, g):
 <section class="nf-band" style="padding-top:0">
   <div class="nf-wrap">
     <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
-      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system, from $67 a month.</p></div>
+      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system, from $97 a month.</p></div>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <h2 class="nf-more-h">Built for these industries</h2>

@@ -218,7 +218,7 @@ POSTS = [
 "Across the US, UK, Canada and Australia, most small businesses now use AI regularly.\n\nThe winners won't be the ones with the most AI tools. They'll be the ones who use AI to reply faster, follow up every time, and never miss a customer.\n\nThat's what we build at Oceanic Funnels.",
 "#ai #smallbusiness #future #automation"),
 ("Get started", "Put AI to work in your business this month.",
-"An AI agent on your website and social messages. Missed call text back. Booking with reminders. Follow-up that never forgets.\n\nAll in one system that works 24/7, from $67 a month, or built for you by our team.\n\noceanicfunnels.com",
+"An AI agent on your website and social messages. Missed call text back. Booking with reminders. Follow-up that never forgets.\n\nAll in one system that works 24/7, from $97 a month, or built for you by our team.\n\noceanicfunnels.com",
 "#oceanicfunnels #aiagents #automation #smallbusiness"),
 ]
 
