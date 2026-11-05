@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ink:#0E1A1B;--aqua:#3DE3C8;--aqua-d:#0A7F6E;--aqua-l:#DDF7F2;--coral:#FF7657;--coral-l:#FFE6DF;--mist:#F4F8F7;--line:#E3EAE8;--muted:#5B6967;--sky:#D8F1FA;--skyd:#1C7FA3;--vio:#EDE7FF;--viod:#6A4FD6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;font-family:Inter,sans-serif;color:var(--ink);display:grid;grid-template-columns:220px 1fr;background:#fff;overflow:hidden}
+.d{font-family:"Inter Display",Inter,sans-serif}
+nav{background:var(--ink);color:#C9D6D4;padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+nav img{width:150px;margin:2px 6px 22px}
+nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:14px;font-weight:500}
+nav a i{width:16px;height:16px;border-radius:4px;border:2px solid #4E6362;display:inline-block}
+nav a.on{background:#1C2E2F;color:#fff}nav a.on i{border-color:var(--aqua);background:var(--aqua)}
+nav .loc{margin-top:auto;background:#162728;border-radius:10px;padding:12px;font-size:12.5px}
+nav .loc b{display:block;color:#fff;font-size:13.5px}
+main{display:flex;flex-direction:column;min-width:0}
+.top{height:64px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 26px}
+.top h1{font-size:21px;letter-spacing:-.02em}
+.top .r{display:flex;gap:10px;align-items:center}
+.pill{font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:99px;padding:7px 14px}
+.pill.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:18px 26px 6px}
+.k{border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.k small{font-size:12.5px;color:var(--muted);font-weight:500}
+.k b{display:block;font-size:26px;letter-spacing:-.03em;margin-top:4px}
+.k em{font-style:normal;font-size:12px;font-weight:600;color:var(--aqua-d)}
+.cal{flex:1;margin:12px 26px 0;border:1px solid var(--line);border-radius:12px 12px 0 0;display:grid;grid-template-columns:60px repeat(5,1fr);grid-template-rows:44px repeat(9,64px);overflow:hidden;position:relative}
+.h{border-bottom:1px solid var(--line);border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;padding-left:12px;font-size:12px;color:var(--muted);font-weight:600}
+.h b{font-size:15px;color:var(--ink)}
+.h.today b{color:var(--aqua-d)}
+.t{font-size:11px;color:var(--muted);text-align:right;padding:4px 8px 0 0;border-bottom:1px solid var(--line)}
+.c{border-left:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ev{position:absolute;border-radius:9px;padding:7px 9px;font-size:11.5px;line-height:1.3;overflow:hidden;border-left:4px solid}
+.ev b{display:block;font-size:12.5px}
+.ev span{display:inline-block;margin-top:4px;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 7px;background:#fff}
+.a{background:var(--aqua-l);border-color:var(--aqua-d);color:#0B4C43}.a span{color:var(--aqua-d)}
+.o{background:var(--coral-l);border-color:var(--coral);color:#7A2A17}.o span{color:#BF3A1F}
+.s{background:var(--sky);border-color:var(--skyd);color:#0F4A60}.s span{color:var(--skyd)}
+.v{background:var(--vio);border-color:var(--viod);color:#3A2A80}.v span{color:var(--viod)}
+</style></head><body>
+<nav><img src="/home/claude/oceanicfunnels/site/assets/logo-dark.svg" alt="">
+<a><i></i>Dashboard</a><a><i></i>Conversations</a><a class="on"><i></i>Calendars</a><a><i></i>Contacts</a><a><i></i>Opportunities</a><a><i></i>Payments</a><a><i></i>AI Agents</a><a><i></i>Sites &amp; Funnels</a><a><i></i>Reputation</a><a><i></i>Reporting</a>
+<div class="loc"><b>Glow Aesthetics</b>Med Spa · Austin, TX</div></nav>
+<main>
+<div class="top"><h1 class="d">Calendar · This week</h1><div class="r"><span class="pill">All providers</span><span class="pill">Week</span><span class="pill dark">+ New appointment</span></div></div>
+<div class="kpis">
+<div class="k"><small>Appointments booked</small><b class="d">47</b><em>31 booked by AI agent</em></div>
+<div class="k"><small>Deposits collected</small><b class="d">$2,350</b><em>47 of 47 paid</em></div>
+<div class="k"><small>Avg. first reply</small><b class="d">9 sec</b><em>24/7 on DM, SMS and web</em></div>
+<div class="k"><small>Rebookings due</small><b class="d">18</b><em>Reminders scheduled</em></div>
+</div>
+<div class="cal" id="cal">
+<div class="h"></div><div class="h">MON<b>Nov 9</b></div><div class="h today">TUE<b>Nov 10</b></div><div class="h">WED<b>Nov 11</b></div><div class="h">THU<b>Nov 12</b></div><div class="h">FRI<b>Nov 13</b></div>
+</div>
+</main>
+<script>
+const cal=document.getElementById('cal');const hours=['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM'];
+hours.forEach(h=>{cal.insertAdjacentHTML('beforeend',`<div class="t">${h}</div>`+'<div class="c"></div>'.repeat(5))});
+const E=[[0,0,1,'a','Botox · Sarah M.','Deposit paid $50'],[0,2,1.5,'o','Lip filler · Jess R.','Deposit paid $100'],[0,5,1,'s','HydraFacial · Maria L.','Deposit paid $50'],
+[1,0.5,1,'v','Consult · Ashley K.','Booked by AI'],[1,2,1,'a','Botox · Nina P.','Deposit paid $50'],[1,3.5,1.5,'o','Cheek filler · Dana W.','Deposit paid $100'],[1,6,1,'s','Microneedling · Lea T.','Deposit paid $50'],
+[2,0,1.5,'o','Lip filler · Kayla B.','Deposit paid $100'],[2,2.5,1,'v','Consult · Priya S.','Booked by AI'],[2,4,1,'a','Botox · Emma J.','Deposit paid $50'],[2,6.5,1,'a','Dysport · Olivia C.','Deposit paid $50'],
+[3,1,1,'s','Chemical peel · Ruth A.','Deposit paid $50'],[3,3,1,'a','Botox · Megan F.','Deposit paid $50'],[3,5,1.5,'o','Lip filler · Zoe H.','Deposit paid $100'],
+[4,0,1,'v','Consult · Hannah G.','Booked by AI'],[4,1.5,1,'a','Botox · Chloe D.','Deposit paid $50'],[4,3,1,'s','HydraFacial · Ivy N.','Deposit paid $50'],[4,5,1,'a','Botox touch-up · Amy V.','Deposit paid $50'],[4,6.5,1,'v','Consult · Grace E.','Booked by AI']];
+const r=cal.getBoundingClientRect();const colW=(r.width-60)/5;
+E.forEach(([d,s,l,c,t,tag])=>{cal.insertAdjacentHTML('beforeend',`<div class="ev ${c}" style="left:${60+d*colW+5}px;top:${44+s*64+4}px;width:${colW-10}px;height:${l*64-8}px"><b>${t}</b>${l>=1?`<span>${tag}</span>`:''}</div>`)});
+</script></body></html>
