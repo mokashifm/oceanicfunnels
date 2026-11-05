@@ -46,7 +46,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{content_name:h.split('/').pop()})}});
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>"""
-CK = "https://checkout.oceanicfunnels.com/oceanic_funnels"
+CK = "https://checkout.oceanicfunnels.com/oceanic_funnels-page"
 CAL_MED = "/lp/med-spas/book/"
 CAL_EMBED = "https://links.oceanicfunnels.com/widget/booking/0Fq9d6ETDejl4rKothS4"
 CK_IND = {"med-spas": "https://checkout.oceanicfunnels.com/oceanic_funnels_med-spas"}

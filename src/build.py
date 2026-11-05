@@ -15,8 +15,8 @@ CONFIG = {
     "path": "/",                                  # homepage
     "email": "hello@oceanicfunnels.com",
     # Replace these with your real links (checkout / order form per plan, app login, contact calendar)
-    "plans": {"launch": "https://checkout.oceanicfunnels.com/oceanic_funnels", "growth": "https://checkout.oceanicfunnels.com/oceanic_funnels",
-              "aipro": "https://checkout.oceanicfunnels.com/oceanic_funnels", "scale": "https://checkout.oceanicfunnels.com/oceanic_funnels"},
+    "plans": {"launch": "https://checkout.oceanicfunnels.com/oceanic_funnels-page", "growth": "https://checkout.oceanicfunnels.com/oceanic_funnels-page",
+              "aipro": "https://checkout.oceanicfunnels.com/oceanic_funnels-page", "scale": "https://checkout.oceanicfunnels.com/oceanic_funnels-page"},
     "login": "https://app.oceanicfunnels.com", "book_url": "#get-started",
     "updated": datetime.date.today().isoformat(),
 }
