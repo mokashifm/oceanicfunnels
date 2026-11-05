@@ -5,7 +5,7 @@ from html import escape as E
 PLANS = [
     dict(key="launch", name="Launch", price=17,
          pitch="Sell online with funnels, websites and a store.",
-         bullets=["Build and sell online:", "Unlimited sales funnels", "Unlimited websites", "E-commerce store"],
+         bullets=["Build and sell online:", "Unlimited sales funnels", "Unlimited websites", "E-commerce store", "Collect payments", "Keep your contacts in one place", "No email or SMS sending"],
          cta="Start with Launch", after="Cancel anytime"),
     dict(key="growth", name="Growth", price=97,
          pitch="The full system to catch, follow up and close, without AI.",
@@ -29,7 +29,7 @@ PLAN_BY = {p["key"]: p for p in PLANS}
 
 AI = ["Conversation AI", "Voice AI", "Content AI", "Reviews AI", "Workflow AI", "Website and Funnel AI",
       "AI Studio", "Agent Studio", "AI Knowledge Base", "Ask AI"]
-LAUNCH = {"Funnel Builder", "Website Builder", "E-commerce Store"}
+LAUNCH = {"Funnel Builder", "Website Builder", "E-commerce Store", "Products and Payments", "Contact Management"}
 TEAM = ["Dedicated Account Manager", "Builder to Help You Grow and Scale"]
 
 FEATURES = [
@@ -68,7 +68,8 @@ def cards_html(links):
     out = []
     for p in PLANS:
         pop = p.get("pop")
-        lis = "".join(f'<li class="lead">{E(b)}</li>' if i == 0 else f"<li>{E(b)}</li>" for i, b in enumerate(p["bullets"]))
+        lis = "".join(f'<li class="lead">{E(b)}</li>' if i == 0 else (f'<li class="x">✕ {E(b[3].upper() + b[4:])}</li>' if b.startswith("No ") else f"<li>{E(b)}</li>")
+                      for i, b in enumerate(p["bullets"]))
         out.append(
             f'<article class="nf-price{" nf-price--pop" if pop else ""}">'
             + ('<span class="pop">MOST POPULAR</span>' if pop else "")
@@ -98,6 +99,6 @@ def table_html():
 
 def summary_text():
     """Plain-text plan summary used in FAQs, llms.txt and legal."""
-    return ("Launch $17/month (unlimited sales funnels, websites and an e-commerce store), "
+    return ("Launch $17/month (unlimited sales funnels, websites and an e-commerce store, with payments and contacts but no email or SMS sending), "
             "Growth $97/month (every feature except AI), AI Pro $197/month (every feature, including all AI), "
             "and Scale $297/month (everything in AI Pro plus a dedicated account manager and a builder to help you grow and scale)")

@@ -109,7 +109,7 @@ TERMS = [
 
 ("Plans and account services", """
 <ul>
-<li><b>Plans:</b> Launch ($17 a month) includes unlimited sales funnels, websites and an e-commerce store only. Growth ($97 a month) includes every feature except AI features. AI Pro ($197 a month) includes every feature, including AI features. Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale your business. The features in each plan are listed on our pricing page.</li>
+<li><b>Plans:</b> Launch ($17 a month) includes unlimited sales funnels, websites and an e-commerce store, with payment collection and contact storage. It does not include sending email or SMS, or any other feature. Growth ($97 a month) includes every feature except AI features. AI Pro ($197 a month) includes every feature, including AI features. Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale your business. The features in each plan are listed on our pricing page.</li>
 <li><b>Scale services:</b> your account manager and builder work with you on setting up and growing your system. There is no build fee.</li>
 <li><b>Extra funnels:</b> funnels built by our team beyond your plan are $297 one time per funnel. You can build unlimited funnels yourself on every plan.</li>
 <li><b>Your part:</b> you agree to provide the content, logins, brand assets and approvals we need, on time. Timelines, including our "live in 14 days" target on Scale, start once we have what we need, and are extended by any delays on your side. If we miss the 14-day launch target on Scale for reasons within our control, your first month's Scale fee is free and is credited to your next invoice.</li>

@@ -1,6 +1,6 @@
 # Oceanic Funnels
 
-> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: Launch $17/month (unlimited sales funnels, websites and an e-commerce store), Growth $97/month (every feature except AI), AI Pro $197/month (every feature, including all AI), and Scale $297/month (everything in AI Pro plus a dedicated account manager and a builder to help you grow and scale). All plans are month to month.
+> Oceanic Funnels OS is an all-in-one sales funnel, CRM and marketing automation system for businesses: funnels and websites, CRM and pipelines, email, two-way SMS, WhatsApp (add-on), AI chat and voice agents, calendars and booking, payments, reviews, courses and communities. Unlimited contacts and users. Plans: Launch $17/month (unlimited sales funnels, websites and an e-commerce store, with payments and contacts but no email or SMS sending), Growth $97/month (every feature except AI), AI Pro $197/month (every feature, including all AI), and Scale $297/month (everything in AI Pro plus a dedicated account manager and a builder to help you grow and scale). All plans are month to month.
 
 ## Company
 - Oceanic Funnels is a company based in Bahawalpur, Pakistan, serving businesses worldwide. Customers sign up, pay, are onboarded and get support directly from the Oceanic Funnels team.
