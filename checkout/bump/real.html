@@ -1,0 +1,77 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{width:1600px;height:1000px;position:relative;overflow:hidden}
+img.sc{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.glass{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 28%,rgba(255,255,255,0) 42%)}
+.floor{position:absolute;border-radius:50%;filter:blur(18px)}
+
+/* ---------- LAPTOP ---------- */
+.lap{position:absolute;left:330px;top:70px;width:980px}
+.lid{position:relative;width:900px;height:585px;margin:0 auto;border-radius:30px 30px 8px 8px;
+  background:linear-gradient(180deg,#3a3d42,#1e2023);padding:3px;box-shadow:0 2px 0 #55595f inset}
+.bez{position:relative;width:100%;height:100%;border-radius:27px 27px 6px 6px;background:#050506;padding:22px 22px 30px}
+.cam{position:absolute;left:50%;top:9px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#3d4a66,#0b0d12 70%)}
+.lscr{position:relative;width:100%;height:100%;border-radius:6px;overflow:hidden;background:#fff}
+.hinge{width:900px;height:10px;margin:0 auto;background:linear-gradient(#2b2d31,#0f1012);border-radius:0 0 4px 4px}
+.deck{position:relative;width:980px;height:26px;margin:0 auto;border-radius:3px 3px 22px 22px;
+  background:linear-gradient(180deg,#e9ebee 0%,#d4d7db 35%,#b8bcc2 70%,#8f949b 100%);
+  box-shadow:0 1px 0 #fff inset,0 -1px 0 #9aa0a6 inset}
+.deck:before{content:"";position:absolute;left:50%;top:0;width:150px;height:10px;margin-left:-75px;border-radius:0 0 12px 12px;
+  background:linear-gradient(180deg,#bfc3c8,#d9dcdf)}
+.lap-fl{left:300px;top:660px;width:1040px;height:46px;background:rgba(14,26,27,.42)}
+
+/* ---------- TABLET ---------- */
+.tab{position:absolute;left:150px;top:300px;width:420px;height:590px;border-radius:36px;
+  background:linear-gradient(145deg,#4b4f55,#26282c 45%,#3a3d42);padding:3px;
+  box-shadow:0 40px 60px -20px rgba(14,26,27,.55),0 18px 30px rgba(14,26,27,.25)}
+.tab-b{width:100%;height:100%;border-radius:33px;background:#060607;padding:18px;position:relative}
+.tab-b .cam{top:7px}
+.tscr{position:relative;width:100%;height:100%;border-radius:18px;overflow:hidden;background:#fff}
+.tab-fl{left:150px;top:860px;width:440px;height:40px;background:rgba(14,26,27,.45)}
+
+/* ---------- PHONE ---------- */
+.ph{position:absolute;left:1150px;top:330px;width:270px;height:560px;border-radius:52px;
+  background:linear-gradient(150deg,#d9dce0,#8e939a 35%,#c8ccd1 60%,#7d828a);padding:4px;
+  box-shadow:0 40px 60px -20px rgba(14,26,27,.55),0 18px 30px rgba(14,26,27,.25)}
+.ph-b{width:100%;height:100%;border-radius:48px;background:#050506;padding:11px;position:relative}
+.island{position:absolute;left:50%;top:22px;width:86px;height:25px;margin-left:-43px;border-radius:20px;background:#000;z-index:3}
+.pscr{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:#fff}
+.btn{position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#7d828a,#c9cdd2)}
+.ph-fl{left:1140px;top:860px;width:300px;height:38px;background:rgba(14,26,27,.45)}
+.sb{height:46px;display:flex;align-items:center;justify-content:space-between;padding:6px 24px 0 30px;background:#EEF5F3;font-family:Inter,sans-serif}
+.sb b{font-size:14px;font-weight:600;color:#0E1A1B}
+.ic{display:flex;gap:5px;align-items:center}
+.sig{width:16px;height:10px;background:linear-gradient(90deg,#0E1A1B 0 3px,transparent 3px 4.5px,#0E1A1B 4.5px 7.5px,transparent 7.5px 9px,#0E1A1B 9px 12px,transparent 12px 13.5px,#0E1A1B 13.5px);clip-path:polygon(0 100%,100% 0,100% 100%)}
+.wifi{width:14px;height:10px;border-radius:14px 14px 0 0;background:#0E1A1B;clip-path:polygon(50% 100%,0 20%,100% 20%)}
+.bat{width:23px;height:11px;border:1.5px solid #0E1A1B;border-radius:3px;position:relative;background:linear-gradient(90deg,#0E1A1B 0 75%,transparent 75%);background-clip:content-box;padding:1px}
+</style></head>
+<body>
+<div class="floor lap-fl"></div>
+<div class="floor tab-fl"></div>
+<div class="floor ph-fl"></div>
+
+<div class="lap">
+  <div class="lid"><div class="bez"><span class="cam"></span>
+    <div class="lscr"><img class="sc" src="s-laptop.png" alt=""><div class="glass"></div></div>
+  </div></div>
+  <div class="hinge"></div>
+  <div class="deck"></div>
+</div>
+
+<div class="tab"><div class="tab-b"><span class="cam"></span>
+  <div class="tscr"><img class="sc" src="s-tablet.png" alt=""><div class="glass"></div></div>
+</div></div>
+
+<div class="ph">
+  <span class="btn" style="left:-3px;top:120px;height:30px"></span>
+  <span class="btn" style="left:-3px;top:165px;height:52px"></span>
+  <span class="btn" style="left:-3px;top:228px;height:52px"></span>
+  <span class="btn" style="right:-3px;top:180px;height:80px"></span>
+  <div class="ph-b"><span class="island"></span>
+    <div class="pscr"><div class="sb"><b>9:41</b><span class="ic"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div><img class="sc" src="s-phone.png" alt="" style="height:calc(100% - 46px)"><div class="glass"></div></div>
+  </div>
+</div>
+</body></html>
