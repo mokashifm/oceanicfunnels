@@ -4,11 +4,22 @@ G_D = [
 dict(
  slug="workflow-automation", cat="Automation",
  title="Workflow automation for small business: triggers, actions and recipes",
- kw="Workflow Automation for Small Business: A Practical Guide",
+ kw="Business Workflow Automation: A Practical Small Business Guide",
  desc="How workflow automation works: triggers, actions, if/else branches and ready-made recipes, plus the first five automations every business should build.",
- read=9,
+ read=11, updated="2026-11-05",
  short="A workflow is an automated sequence that starts when something happens (a trigger) and then runs steps for you (actions). For example: when a form is submitted, send a text, create an opportunity, assign it to a salesperson and remind them to call. In Oceanic Funnels OS you can build a workflow with AI, start from a ready-made template, or build from scratch: add a trigger, add actions, use if/else branches for different paths, test it with a fresh contact and publish.",
  sections=[
+  ("What is business workflow automation?", """
+<p>Business workflow automation means letting software run the repeat steps in your business: replying to new leads, sending reminders, moving deals through your pipeline, asking for reviews and chasing unpaid invoices. You set the rules once, and the system follows them every time, day or night.</p>
+<p>Common examples by area:</p>
+<ul>
+<li><b>Sales:</b> reply to every new lead in seconds, assign it to a person and follow up until they book.</li>
+<li><b>Bookings:</b> confirmations, reminders, no-show follow-up and rebooking.</li>
+<li><b>Payments:</b> send invoices, remind about overdue payments and thank customers when they pay.</li>
+<li><b>Reputation:</b> ask for a review after every job or visit.</li>
+<li><b>Marketing:</b> welcome new subscribers and win back past customers.</li>
+<li><b>Team:</b> create tasks and send alerts so nothing waits in an inbox.</li>
+</ul>"""),
   ("Triggers, actions and branches", """
 <ul>
 <li><b>Triggers</b> start a workflow: form submitted, appointment booked, tag added, payment received, call status, quiz or survey submitted and many more. A workflow can have several triggers, and filters narrow when they fire.</li>
@@ -40,6 +51,7 @@ dict(
 <p>Write messages the way you'd text a customer yourself, stop sequences when someone replies or books, and always make it easy to reach a person.</p>"""),
  ],
  faqs=[
+  ("What is business workflow automation?", "It is using software to run the repeat steps in your business automatically, such as lead replies, reminders, pipeline updates, review requests and invoice follow-up, based on rules you set once."),
   ("Do I need technical skills to build workflows?", "No. Workflows use a visual builder, ready-made templates and an AI builder that drafts workflows from a plain-English description."),
   ("Can one workflow have more than one trigger?", "Yes. You can add several triggers to one workflow and use filters to control when each fires."),
   ("Will you build my workflows?", "Automation workflows are included from the Growth plan. On Scale, your account manager and builder help you build them."),

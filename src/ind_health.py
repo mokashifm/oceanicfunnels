@@ -265,8 +265,8 @@ I("daycares-preschools", "Daycares and Preschools", "Daycares", "Coaching, educa
    ("Can we bill tuition automatically?", "Yes. Set up weekly or monthly recurring tuition payments with receipts.")]),
 
 I("driving-schools", "Driving Schools", "Driving schools", "Coaching, education and online",
-  "Driving School Booking & Student CRM",
-  "Booking and student CRM for driving schools",
+  "Driving School CRM & Lesson Booking Software",
+  "Driving school CRM and lesson booking software",
   "Book more lessons and keep instructors' diaries full",
   "Lesson booking, package sales, reminders and review requests for driving schools and instructors.",
   "driving schools",

@@ -45,9 +45,9 @@ dict(
 dict(
  slug="website-seo-checklist", cat="Websites and SEO",
  title="Website SEO checklist: the settings that help you rank on Google",
- kw="Website SEO Checklist: Settings That Help You Rank on Google",
+ kw="Website SEO Checklist and SEO Features List (2026)",
  desc="A practical website SEO checklist: page titles, meta descriptions, social images, canonical links, XML sitemap, redirects, schema markup and content.",
- read=8,
+ read=10, updated="2026-11-05",
  short="The on-site SEO basics are: a unique title and meta description on every page, one clear H1, a social sharing image, canonical links to avoid duplicates, an XML sitemap submitted to Google Search Console, 301 redirects for old URLs, schema markup that describes your business, fast mobile pages, and helpful content that answers real questions. In Oceanic Funnels OS, page SEO lives under each page's Settings → SEO Meta Data, the sitemap and robots.txt under Settings → Domains, and redirects under Settings → URL Redirects.",
  sections=[
   ("1. Titles and meta descriptions", """
@@ -79,8 +79,28 @@ dict(
 <li>A steady flow of <a href="/guides/get-more-google-reviews/">Google reviews</a>.</li>
 <li>Links from local partners, associations and press.</li>
 </ul>"""),
+  ("SEO features list: what your website builder should have", """
+<p>If you're choosing a website or funnel builder, check that it lets you control these SEO settings without a developer:</p>
+<div class="nf-tablewrap" style="margin-top:16px"><table class="nf-table" style="min-width:0"><thead><tr><th>SEO feature</th><th>Why it matters</th></tr></thead><tbody>
+<tr><td>Custom page title and meta description</td><td>Controls what shows in search results</td></tr>
+<tr><td>Custom URL slugs</td><td>Short, readable URLs with your keyword</td></tr>
+<tr><td>Heading control (H1, H2, H3)</td><td>Helps search engines understand the page</td></tr>
+<tr><td>Image alt text</td><td>Describes images for search and screen readers</td></tr>
+<tr><td>Social sharing image (Open Graph)</td><td>Controls the preview when your page is shared</td></tr>
+<tr><td>Canonical URL</td><td>Avoids duplicate content</td></tr>
+<tr><td>Automatic XML sitemap</td><td>Helps search engines find every page</td></tr>
+<tr><td>Robots.txt and noindex controls</td><td>Keeps thank-you and test pages out of search</td></tr>
+<tr><td>301 redirects</td><td>Keeps rankings when URLs change</td></tr>
+<tr><td>Schema markup (structured data)</td><td>Helps you earn rich results and AI answers</td></tr>
+<tr><td>Custom code in the page head</td><td>For analytics, verification and extra schema</td></tr>
+<tr><td>Free SSL (https)</td><td>Required for trust and rankings</td></tr>
+<tr><td>Fast, mobile-friendly pages</td><td>Speed and mobile use affect rankings</td></tr>
+<tr><td>Blog</td><td>Lets you publish content that answers questions</td></tr>
+</tbody></table></div>
+<p>Oceanic Funnels OS lets you set page titles, descriptions, URLs, social images, redirects, sitemaps and custom head code (for schema and analytics) on its websites, funnels and blogs.</p>"""),
  ],
  faqs=[
+  ("What is an SEO features list?", "It is a checklist of the SEO settings a website or page should have, such as titles, meta descriptions, headings, alt text, canonical URLs, an XML sitemap, redirects and schema markup. Use it to audit your site or compare website builders."),
   ("How long does SEO take?", "It varies, but new pages and new domains commonly take a few months to rank for competitive terms. Long, specific searches usually rank sooner."),
   ("Do I need to submit my sitemap?", "Google can find pages on its own, but submitting your XML sitemap in Google Search Console and Bing Webmaster Tools helps new pages get discovered faster."),
   ("What is AEO?", "Answer engine optimisation means structuring content so AI assistants and Google's AI answers can quote it: direct answers, clear headings, FAQs and schema markup."),
@@ -263,11 +283,14 @@ dict(
 dict(
  slug="website-live-chat-widget", cat="Websites and SEO",
  title="How to add live chat to your website and answer every visitor",
- kw="Add Live Chat to Your Website: Setup Guide",
+ kw="How to Add Live Chat to Your Website (Step by Step)",
  desc="Add a live chat widget to your website or funnel so visitors can message you, your team or an AI agent, with every chat landing in one inbox.",
- read=5,
+ read=8, updated="2026-11-05",
  short="A live chat widget lets website visitors message you without leaving the page. In Oceanic Funnels OS, create one under Sites → Chat Widget: choose Live Chat (or SMS/email chat, WhatsApp, or the all-in-one widget), match it to your brand and save. Then select it in your website or funnel settings, or paste the embed code into your site. Every chat lands in your Conversations inbox, where your team or an AI agent can reply.",
  sections=[
+  ("What is a live chat widget?", """
+<p>A live chat widget is a small chat bubble in the corner of your website. Visitors tap it, type a question and get an answer without calling, emailing or leaving the page. For a small business it works like a front desk that never closes, especially when an AI agent answers outside business hours.</p>
+<p>Live chat helps most on pages where people hesitate: pricing, booking, quote and checkout pages. A quick answer to one question is often the difference between a visitor who leaves and a lead who books.</p>"""),
   ("Which chat widget to choose", """
 <ul>
 <li><b>Live chat:</b> real-time chat on the page.</li>
@@ -282,6 +305,21 @@ dict(
 <li>On sites built in Oceanic Funnels OS, open the website or funnel <b>Settings</b> and select the widget in the Chat Widget section.</li>
 <li>On other sites, click <b>Get Code</b>, copy the code and paste it into your site's tracking code area.</li>
 </ol>"""),
+  ("Where to paste the live chat embed code", """
+<p>If your site isn't built in Oceanic Funnels OS, you add the widget with a short embed code. Paste it once and it shows on every page:</p>
+<ul>
+<li><b>Website builders:</b> look for a setting called "custom code", "code injection" or "footer code" and paste the code into the footer (body end) area.</li>
+<li><b>Self-hosted sites:</b> paste the code just before the closing <code>&lt;/body&gt;</code> tag in your theme's footer, or use a header and footer scripts plugin.</li>
+<li><b>Online stores:</b> add it to your theme's main layout file, just before <code>&lt;/body&gt;</code>, so it appears on product and checkout pages too.</li>
+</ul>
+<p>After you save, open your site in a private browser window and send a test message to check it arrives in your inbox.</p>"""),
+  ("Live chat vs chatbot vs AI agent", """
+<ul>
+<li><b>Live chat:</b> a person on your team replies in real time. Great during business hours, but only as good as your reply speed.</li>
+<li><b>Chatbot:</b> follows a fixed script of buttons and questions. Fine for simple routing, frustrating for real questions.</li>
+<li><b>AI agent:</b> understands free-text questions, answers from your own information, collects contact details and books appointments. Your team can take over any conversation.</li>
+</ul>
+<p>Most businesses get the best result from an AI agent that answers first and hands over to a person when needed.</p>"""),
   ("Answer chats 24/7 with an AI agent", """
 <p>Connect an <a href="/guides/ai-chat-agent-for-business/">AI chat agent</a> to the widget so visitors get instant answers and can book appointments outside business hours, with your team taking over when needed.</p>"""),
   ("Tips", """
@@ -289,9 +327,13 @@ dict(
 <li>Use a friendly greeting that invites a question, like "Need a quote? Ask us anything."</li>
 <li>Reply fast during business hours; slow live chat is worse than no chat.</li>
 <li>Collect a phone number or email early so you can follow up if they leave.</li>
+<li>Show the widget on mobile too. Most visitors will see it on a phone, so keep the bubble small and out of the way of your buttons.</li>
+<li>Check your chat conversations weekly. The questions people ask are the best ideas for your website copy and FAQs.</li>
 </ul>"""),
  ],
  faqs=[
+  ("How do I add live chat to my website?", "Create a chat widget, match it to your brand, then either select it in your website or funnel settings, or paste its embed code into your site's footer. Every message lands in your Conversations inbox."),
+  ("Where do I paste the live chat embed code?", "Paste it once into your site's footer code area, just before the closing body tag, so the widget shows on every page. Website builders usually call this setting custom code, code injection or footer code."),
   ("Where do chat messages go?", "All chats land in the Conversations inbox, next to SMS, email and social messages."),
   ("Can I add the chat widget to a WordPress site?", "Yes. Copy the widget's embed code and add it to your site's header or footer code."),
   ("Can an AI agent answer website chats?", "Yes. An AI chat agent can reply to website chats, answer questions and book appointments."),

@@ -298,9 +298,9 @@ dict(
 dict(
  slug="order-bumps-and-upsells", cat="Sales funnels",
  title="Order bumps and upsells: how to raise your average order value",
- kw="Order Bumps and Upsells: How to Raise Average Order Value",
+ kw="Order Bump vs Upsell: Differences, Examples and Setup",
  desc="Order bumps and one-click upsells increase how much each customer spends. Here's how they work, what to offer and how to set them up in your checkout.",
- read=6,
+ read=8, updated="2026-11-05",
  short="An order bump is a small, related add-on offered with a checkbox on the checkout page, such as express shipping or a bonus guide. An upsell is a second offer shown right after purchase, often bought in one click without re-entering card details. Both raise average order value because they're offered when the customer has already decided to buy. Keep bumps cheap and closely related to the main product, and make upsells a natural next step.",
  sections=[
   ("Order bump vs upsell vs downsell", """
@@ -308,7 +308,15 @@ dict(
 <li><b>Order bump:</b> a tick-box add-on on the order form, before payment.</li>
 <li><b>Upsell:</b> an offer on the page after purchase, accepted in one click.</li>
 <li><b>Downsell:</b> a smaller alternative shown if they decline the upsell.</li>
-</ul>"""),
+</ul>
+<div class="nf-tablewrap" style="margin-top:16px"><table class="nf-table" style="min-width:0"><thead><tr><th></th><th>Order bump</th><th>Upsell</th></tr></thead><tbody>
+<tr><td>When it shows</td><td>On the order form, before payment</td><td>After payment, on the next page</td></tr>
+<tr><td>How they accept</td><td>Tick a box</td><td>Click a button (one click, no card re-entry)</td></tr>
+<tr><td>Typical price</td><td>Small, a fraction of the main product</td><td>Can be higher than the main product</td></tr>
+<tr><td>Best for</td><td>Quick, related add-ons</td><td>The next step, a bundle or a done-for-you version</td></tr>
+<tr><td>Risk</td><td>Too many bumps clutter the checkout</td><td>Too many upsells feel pushy</td></tr>
+</tbody></table></div>
+<p>Many funnels use both: one bump on the order form and one upsell after purchase.</p>"""),
   ("What makes a good order bump", """
 <ul>
 <li>Directly related to what they're buying.</li>
@@ -334,6 +342,7 @@ dict(
 <p>Funnel checkouts in Oceanic Funnels OS support two-step order forms, order bumps and upsell pages after purchase. Abandoned checkouts can trigger an automatic follow-up sequence. On Scale, your builder helps you set up the checkout and follow-up.</p>"""),
  ],
  faqs=[
+  ("What is the difference between an order bump and an upsell?", "An order bump is a tick-box add-on on the order form, before payment. An upsell is a separate offer shown after payment, accepted with one click. Bumps are small and related, and upsells are usually the bigger next step."),
   ("Do order bumps annoy customers?", "Not when they're relevant and inexpensive. A single, clearly described add-on is easy to skip and often welcome."),
   ("How many upsells should I offer?", "One upsell, and optionally one downsell, is usually enough. More than that can frustrate buyers."),
   ("Can I follow up with people who abandon checkout?", "Yes. With a two-step order form, contacts are saved after the first step, so you can send automatic reminders to those who don't complete payment."),
