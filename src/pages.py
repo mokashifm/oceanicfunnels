@@ -612,7 +612,7 @@ def deep_sections(d, X):
         <div class="amt"><span class="v">$297</span><small>/month</small></div>
         <p class="fee">No build fee</p>
         <ul><li>Every feature, including all AI</li><li>Dedicated account manager</li><li>A builder who sets it up with you</li><li>Live in 14 days</li><li>Cancel anytime</li></ul>
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d["slug"], CK)}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Get it built for me <span class="ar" aria-hidden="true">→</span></a>
         <p class="small">Rather build it yourself? <a href="/#pricing">Start on Growth from $97/month</a>.</p>
       </aside>
     </div>
@@ -661,7 +661,7 @@ def industry_page(cfg, fonts, logo, d):
       <h1>{E(d["h1"])}</h1>
       <p class="nf-sub"><b>{E(hook)}.</b> {E(sub)}</p>
       <div class="nf-hero-cta">
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d['slug'], CK) if X else CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="{"#scale-plan" if X else "#how-it-runs"}">{"See what we build" if X else "See how it runs"}</a>
       </div>
     </div>
@@ -729,7 +729,7 @@ def industry_page(cfg, fonts, logo, d):
   <div class="nf-wrap">
     <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
       <div><h2>{E(X["cta_h"]) if X else "Stop fishing for customers. Build the net."}</h2><p>{E(X["cta_p"]) if X else "One system for funnels, CRM, SMS, WhatsApp, AI agents, booking and payments. Or let our team build it for you."}</p></div>
-      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK_IND.get(d['slug'], CK) if X else CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
+      <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">{"Get it built for me" if X else "Build my net"} <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <h2 class="nf-more-h">Guides for {E(W)}</h2>
     <div class="nf-more" aria-label="Guides">{guides}<a href="/guides/">All guides</a></div>
@@ -1026,16 +1026,16 @@ def lp_med_spa(cfg, fonts, logo):
         "Online calendar, deposits, payments and memberships",
         "All your automations running 24/7",
         "24/7 support",
-        "A dedicated account manager and builder to help you grow",
+        "Every AI feature: chat and voice agents, content and reviews AI",
         "Founding price locked for life (first 50 clinics)",
         "No contract, cancel anytime"])
     faqs = [
         ("Do we need a sales team or appointment setters?", "No. The AI agent answers enquiries, books consultations and sends deposit links, and automations handle reminders, no-shows and rebooking. Your front desk only steps in when a client needs a person."),
         ("Does it replace our EMR or booking software?", "Most med spas keep their EMR for charts and clinical notes. Oceanic Funnels handles enquiries, consultation booking, reminders, rebooking, memberships, payments and marketing. We agree with you which bookings live where."),
         ("Do you run our ads?", "No. We build and run the system that catches and converts your leads. If you run ads, we install the Meta Pixel, Conversions API and GA4 so you can see which ads lead to booked treatments."),
-        ("How fast will it be live?", "Usually within 14 days of getting your content, logins and approvals. Your team reviews everything before it goes live."),
+        ("How fast will it be live?", "With Done-For-You Setup, usually within 14 days of getting your content, logins and approvals, and your team reviews everything before it goes live. If you set it up yourself, you can start building the day you sign up."),
         ("What happens to our data if we cancel?", "You keep it. You can export your contacts and data at any time, your domain stays in your name, and every plan is month to month with no lock-in."),
-        ("What does it cost?", "$297 a month on our Scale plan, with no build fee and no contract. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
+        ("What does it cost?", "The system is $197 a month on our AI Pro plan, with no contract. If you want us to build it all for you, add Done-For-You Setup for a one-time $997. Usage like texts, emails and AI replies is pay-as-you-go from your wallet."),
     ]
     faq = "\n".join(f'<details class="nf-q"{" open" if i == 0 else ""}><summary><h3>{E(q)}</h3><span aria-hidden="true">+</span></summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(faqs))
     body = f'''<section class="lp-hero">
@@ -1044,8 +1044,8 @@ def lp_med_spa(cfg, fonts, logo):
     <div>
       <span class="lp-kick">For med spas and aesthetic clinics</span>
       <h1>Stop losing Botox and filler bookings to <em>slow replies.</em></h1>
-      <p class="sub">We build your med spa a system that answers every DM, call and enquiry in seconds, books consultations with a deposit and rebooks clients on time. No sales team needed. Set up for you in 14 days.</p>
-      <div class="lp-ticks"><span>Live in 14 days</span><span>No contract</span><span>You own the system</span></div>
+      <p class="sub">We build your med spa a system that answers every DM, call and enquiry in seconds, books consultations with a deposit and rebooks clients on time. No sales team needed. Run it yourself, or have us build it for you in 14 days.</p>
+      <div class="lp-ticks"><span>Done for you in 14 days</span><span>No contract</span><span>You own the system</span></div>
       <div class="lp-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
       </div>
@@ -1132,26 +1132,26 @@ def lp_med_spa(cfg, fonts, logo):
     </div>
     <div class="lp-pay">
       <article class="nf-price">
-        <span class="plan">Setup</span>
-        <div class="amt"><span class="v">$0</span> <small>build fee</small></div>
-        <p class="for"><b>Built with you, included.</b> Your builder sets up your whole system with you and launches it in 14 days.</p>
-        <ul><li class="lead">What we set up:</li>{build}</ul>
-        <p class="after">No build fee</p>
+        <span class="plan">AI Pro plan</span>
+        <div class="amt"><span class="v">$197</span> <small>/month</small></div>
+        <p class="for"><b>The system your clinic runs on.</b> Every feature, including the AI agent that answers and books for you 24/7.</p>
+        <ul><li class="lead">Every month you get:</li>{monthly}</ul>
+        <p class="after">30-day money-back guarantee. Texts, emails, calls and AI replies are pay-as-you-go from your account wallet.</p>
       </article>
       <article class="nf-price nf-price--pop nf-hatch">
-        <span class="plan">Scale plan</span>
-        <div class="amt"><span class="v">$297</span> <small>/month</small></div>
-        <p class="for"><b>You use the system, we look after it.</b> Your clinic runs on it every day. We keep it working.</p>
-        <ul><li class="lead">Every month you get:</li>{monthly}</ul>
-        <p class="after">Texts, emails, calls and AI replies are pay-as-you-go from your account wallet.</p>
+        <span class="plan">Done-For-You Setup</span>
+        <div class="amt"><span class="v">$997</span> <small>one time</small></div>
+        <p class="for"><b>Optional: we build it for you.</b> Our team sets up your whole system and launches it in 14 days.</p>
+        <ul><li class="lead">What we build:</li>{build}</ul>
+        <p class="after">Add it at checkout. Paid once.</p>
       </article>
     </div>
     <div class="lp-sum nf-hatch" style="--hc:var(--coral)">
-      <div class="row"><span>First month</span><b>$297, no build fee</b></div>
-      <div class="row"><span>After that</span><b>$297/month, cancel anytime</b></div>
-      <p class="lp-guar">If you're not live in 14 days, your first $297 month is free.<small>The 14 days start once we have your content and logins.</small></p>
+      <div class="row"><span>Set it up yourself</span><b>$197 today, then $197/month</b></div>
+      <div class="row"><span>Done for you</span><b>$1,194 today ($997 setup + first month), then $197/month</b></div>
+      <p class="lp-guar">With Done-For-You Setup, if you're not live in 14 days, your first $197 month is free.<small>The 14 days start once we have your content and logins. Cancel the plan anytime.</small></p>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{book}">Install my revenue system <span class="ar" aria-hidden="true">→</span></a>
-      <p class="small">Ready now? <a href="{CK_IND["med-spas"]}">Get it built for me</a>.</p>
+      <p class="small">Ready now? <a href="{CK_IND["med-spas"]}">Go to checkout</a>.</p>
     </div>
   </div>
 </section>
@@ -1182,7 +1182,7 @@ var w=e*m,k=w*c;$("dc-r1").textContent=n(w);$("dc-r2").textContent=n(k);$("dc-r3
 ["dc-enq","dc-miss","dc-close","dc-val"].forEach(function(i){{$(i).addEventListener("input",u)}});u();}})();
 </script>'''
     return lp_shell(cfg, fonts, logo, path, "Med Spa Booking System, Built for You | Oceanic Funnels",
-               "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.", body)
+               "Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Run it yourself or have it built for you in 14 days.", body)
 
 def lp_shell(cfg, fonts, logo, path, title, desc, body, book=None, cta=True):
     book = book or CAL_MED
@@ -1191,7 +1191,7 @@ def lp_shell(cfg, fonts, logo, path, title, desc, body, book=None, cta=True):
     i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
     mini = ('<footer class="nf-foot"><div class="nf-wrap nf-foot-top" style="grid-template-columns:1fr"><div style="max-width:640px">'
             '<h2>Stop fishing. Build the net.</h2>'
-            '<p>Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Built for your med spa in 14 days.</p>'
+            '<p>Every DM, call and enquiry answered in seconds, booked with a deposit and rebooked on time. Run it yourself or have it built for you in 14 days.</p>'
             + (f'<a class="nf-btn nf-btn--aqua" href="{book}">Install my revenue system</a>' if cta else '') + '</div></div>'
             f'<div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
             '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>'
@@ -1242,7 +1242,7 @@ def lp_med_book(cfg, fonts, logo):
         <li>Clear pricing, no pressure, no pitch deck</li>
       </ul>
       <div class="meta"><span>15 minutes</span><span>No obligation</span><span>Free</span></div>
-      <p class="price">$297/month on our Scale plan. No build fee, no contract.</p>
+      <p class="price">$197/month on AI Pro, plus optional Done-For-You Setup for $997 one time. No contract.</p>
     </div>
     <div class="lp-cal">
       <iframe src="{CAL_EMBED}" allow="payment" scrolling="no" id="0Fq9d6ETDejl4rKothS4_1793371640258" title="Book your free info call"></iframe>
@@ -1281,16 +1281,16 @@ def lp_med_welcome(cfg, fonts, logo):
   {head}
   <div class="nf-wrap lp-done">
     <div class="ok" aria-hidden="true">&#10003;</div>
-    <h1>Welcome aboard. Your build has started.</h1>
+    <h1>Welcome aboard. You&#39;re in.</h1>
     <p class="sub">Your payment went through. Your receipt and your login invite are on their way by email. Here is what happens next.</p>
     <ol class="lp-prep">
       <li><span><b>Check your email for your login invite</b>Open the email from us, set your password and sign in to your system. Check spam if it is not in your inbox.</span></li>
-      <li><span><b>Fill in your onboarding form</b>We email it to you. It covers your logo, treatment menu and prices, providers, booking and cancellation policies, and any before-and-after photos you have consent to use.</span></li>
-      <li><span><b>Give us access to your accounts</b>Admin access to your Instagram and Facebook page and your website or domain. Your business phone line is set up inside the system.</span></li>
-      <li><span><b>We build and launch in 14 days</b>The 14 days start once we have your onboarding form and access. Your team reviews everything before it goes live.</span></li>
+      <li><span><b>Added Done-For-You Setup? Fill in your onboarding form</b>We email it to you. It covers your logo, treatment menu and prices, providers, booking and cancellation policies, and any before-and-after photos you have consent to use.</span></li>
+      <li><span><b>Give us access to your accounts</b>For Done-For-You Setup: admin access to your Instagram and Facebook page and your website or domain. Your business phone line is set up inside the system.</span></li>
+      <li><span><b>We build and launch in 14 days</b>With Done-For-You Setup, the 14 days start once we have your onboarding form and access, and your team reviews everything before it goes live. Setting it up yourself? You can start building as soon as you sign in.</span></li>
     </ol>
     <p class="sub" style="font-size:15px;margin-top:26px">Questions? Email <a href="mailto:{E(cfg["email"])}" style="color:var(--aqua-d);font-weight:600">{E(cfg["email"])}</a></p>
   </div>
 </section>'''
-    return lp_shell(cfg, fonts, logo, path, "Welcome to Oceanic Funnels | Your Med Spa Build Has Started",
-                    "Your med spa system build has started.", body, cta=False)
+    return lp_shell(cfg, fonts, logo, path, "Welcome to Oceanic Funnels | Your Account Is Ready",
+                    "Welcome to Oceanic Funnels. Here is what happens next.", body, cta=False)
