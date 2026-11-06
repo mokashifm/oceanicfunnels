@@ -30,12 +30,24 @@ body.fb{width:1640px;height:624px}
 .fb .dev{left:860px;top:120px;width:520px}
 /* LINKEDIN 1512x256 -> rendered 2x 3024x512 */
 body.li{width:1512px;height:256px}
-.li .wrap{left:330px;top:0;height:256px;width:620px}
+.li .wrap{left:330px;top:0;height:256px;width:650px}
 .li .tx img{width:150px;margin-bottom:12px}
 .li .tx h1{font-size:34px}
-.li .tx p{font-size:14.5px;line-height:1.4;margin-top:9px}
+.li .tx p{font-size:14.5px;line-height:1.4;margin-top:9px;max-width:650px}
 .li .url{font-size:13px;padding:7px 14px;margin-top:12px}
 .li .dev{left:930px;top:-6px;width:430px}
+.viz{position:absolute}
+.chart{position:absolute;left:0;top:0;width:100%;height:100%}
+.ic{position:absolute;display:flex;align-items:center;gap:10px;background:rgba(14,26,27,.82);border:1px solid rgba(255,255,255,.14);border-radius:14px;color:#fff;font-weight:600;white-space:nowrap;box-shadow:0 14px 30px rgba(0,0,0,.35);backdrop-filter:blur(6px)}
+.ic svg{fill:none;stroke:#0E1A1B;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;background:var(--aqua);border-radius:10px;flex:none}
+.ic.i3 svg,.ic.i4 svg{background:#FF7657;stroke:#fff}
+.ic.i2 svg{background:#5FC8E8}
+.fb .viz{left:870px;top:96px;width:520px;height:400px}
+.fb .ic{font-size:16px;padding:9px 14px 9px 9px}.fb .ic svg{width:34px;height:34px;padding:7px}
+.fb .i1{left:-20px;top:40px}.fb .i2{left:150px;top:-14px}.fb .i3{left:10px;top:210px}.fb .i4{left:330px;top:300px}.fb .i5{left:250px;top:160px}
+.li .viz{left:1040px;top:24px;width:300px;height:208px}
+.li .ic{font-size:11.5px;padding:5px 10px 5px 5px;border-radius:10px;gap:7px}.li .ic svg{width:24px;height:24px;padding:5px;border-radius:7px}
+.li .i1{left:-50px;top:30px}.li .i2{left:70px;top:-12px}.li .i3{left:-60px;top:140px}.li .i4{left:210px;top:172px}.li .i5{left:160px;top:82px}
 </style></head>
 <body>
 <div class="bg"></div><div class="grid"></div>
@@ -46,7 +58,30 @@ body.li{width:1512px;height:256px}
   <div class="chips"><span>AI agents 24/7</span><span>Bookings with deposits</span><span>Missed call text back</span></div>
   <span class="url">oceanicfunnels.com</span>
 </div></div>
-<img class="dev" src="devices-hi.png" alt="">
+<div class="viz">
+  <svg class="chart" viewBox="0 0 520 360" aria-hidden="true">
+    <defs>
+      <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DE3C8"/><stop offset="1" stop-color="#3DE3C8" stop-opacity=".15"/></linearGradient>
+      <linearGradient id="bar2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FC8E8" stop-opacity=".8"/><stop offset="1" stop-color="#5FC8E8" stop-opacity=".08"/></linearGradient>
+      <linearGradient id="line" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF7657"/><stop offset="1" stop-color="#FFB29F"/></linearGradient>
+      <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <line x1="20" y1="340" x2="500" y2="340" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+    <rect x="40"  y="280" width="52" height="60"  rx="10" fill="url(#bar2)"/>
+    <rect x="120" y="240" width="52" height="100" rx="10" fill="url(#bar2)"/>
+    <rect x="200" y="200" width="52" height="140" rx="10" fill="url(#bar)"/>
+    <rect x="280" y="150" width="52" height="190" rx="10" fill="url(#bar)"/>
+    <rect x="360" y="95"  width="52" height="245" rx="10" fill="url(#bar)"/>
+    <rect x="440" y="40"  width="52" height="300" rx="10" fill="url(#bar)"/>
+    <path d="M30 300 C 120 280, 170 250, 226 214 S 330 150, 386 112 S 450 60, 470 34" fill="none" stroke="url(#line)" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M448 30 L478 26 L470 56" fill="none" stroke="#FFB29F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="ic i1"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg><span>Booked</span></div>
+  <div class="ic i2"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.7A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg><span>Replied in 9s</span></div>
+  <div class="ic i3"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></svg><span>Deposit paid</span></div>
+  <div class="ic i4"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><span>5-star review</span></div>
+  <div class="ic i5"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span>AI agent 24/7</span></div>
+</div>
 <script>
 const m=location.hash.slice(1)||'fb';document.body.className=m;
 if(m==='li'){document.querySelector('.chips').remove()}
