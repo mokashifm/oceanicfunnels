@@ -1380,6 +1380,16 @@ LAUNCH_CSS = r"""
 .ln-feat .ico{width:44px;height:44px;border-radius:12px;background:var(--aqua-l);display:grid;place-items:center;margin-bottom:14px}
 .ln-feat .ico svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:900px){.ln-hin{grid-template-columns:1fr;gap:40px;padding-block:20px 64px}.ln-gal{grid-template-columns:1fr}.ln-toast{left:6px;top:auto;bottom:6px}.ln-ph{right:-4px;width:31%}.ln-dev{padding:0 10px 40px 0}}
+.ln-bar{background:var(--ink);color:#fff;font-size:14.5px}
+.ln-bar-in{display:flex;justify-content:center;align-items:center;gap:8px 18px;flex-wrap:wrap;padding-block:10px;text-align:center}
+.ln-bar s,.ln-hp s{opacity:.6}.ln-bar b{color:var(--aqua)}
+.ln-cd{display:inline-flex;gap:4px;align-items:baseline;font-weight:600;white-space:nowrap}
+.ln-cd i{font-style:normal;font-variant-numeric:tabular-nums;font-weight:800;background:rgba(61,227,200,.16);color:var(--aqua);border-radius:6px;padding:2px 6px;min-width:2.1em;text-align:center}
+.ln-hp{margin-top:14px;font-size:17px;color:var(--ink)}.ln-hp b{font-weight:800}
+.ln-price .amt s{font-size:30px;color:#8FA3A0;font-weight:600;margin-right:10px;letter-spacing:-.02em}
+.ln-pr-cd{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-size:14px;color:#DDE7E5}
+.ln-ended .ln-cd{display:none}
+@media(max-width:600px){.ln-bar{font-size:13.5px}.ln-bar-in{flex-wrap:nowrap;gap:8px}}
 .ln-pz{background:linear-gradient(180deg,#fff 0%,#EEF6F4 100%)}
 .ln-pz-head{text-align:center}.ln-pz-head h2,.ln-pz-head .lead{margin-inline:auto}
 .ln-pz-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;max-width:1040px;margin:44px auto 0;align-items:stretch}
@@ -1448,7 +1458,8 @@ def lp_launch(cfg, fonts, logo):
                   for f, t, d, alt in [("sales", "A sales page for a guide", "Sell a recipe book, workbook or any digital download.", "Example sales page for a meal prep guide"),
                                        ("store", "An online store", "Show off your products, set prices and take orders.", "Example online store selling handmade ceramics"),
                                        ("teach", "A page for printable resources", "Turn what you teach into a kit people can buy.", "Example page selling a teacher's reading kit")])
-    body = f'''<section class="lp-hero nf-hatch">
+    body = f'''<div class="ln-bar" data-cd><div class="nf-wrap ln-bar-in"><span class="lp-d">Launch price <s>$37</s> <b>$17/month</b>. The price goes up to $37 on November 20.</span><span class="lp-m"><s>$37</s> <b>$17/month</b> ends in</span><span class="ln-cd" aria-label="Time left at $17"><i data-u="d">0</i>d <i data-u="h">00</i>h <i data-u="m">00</i>m <i data-u="s">00</i>s</span></div></div>
+<section class="lp-hero nf-hatch">
   {head}
   <div class="nf-wrap ln-hin">
     <div class="ln-copy">
@@ -1457,6 +1468,7 @@ def lp_launch(cfg, fonts, logo):
       <p class="ln-hook">Your business idea isn't going to launch itself.</p>
       <p class="sub">Build unlimited sales funnels, professional websites and online stores. Add your products, connect payments and give your business a real place online. No coding. No developer needed.</p>
       <div class="lp-cta">{btn()}</div>
+      <p class="ln-hp"><s>$37</s> <b>$17/month</b> until November 20</p>
       <p class="ln-note">Month-to-month. Cancel anytime. No mandatory setup fee.</p>
     </div>
     <div class="ln-dev" aria-label="Example: a sales page and checkout built with Launch" role="img">
@@ -1502,7 +1514,8 @@ def lp_launch(cfg, fonts, logo):
   <p class="lead">You don't need a huge software investment to start building your online presence.</p></div>
   <div class="ln-pz-grid">
     <div class="ln-price">
-      <div class="ln-pr-top"><div><span class="pl">Launch plan</span><div class="amt">$17<small>/month</small></div></div><span class="ln-pr-badge">No setup fee</span></div>
+      <div class="ln-pr-top"><div><span class="pl">Launch plan</span><div class="amt"><s>$37</s>$17<small>/month</small></div></div><span class="ln-pr-badge">No setup fee</span></div>
+      <div class="ln-pr-cd" data-cd><span>Price goes up to $37 on November 20</span><span class="ln-cd"><i data-u="d">0</i>d <i data-u="h">00</i>h <i data-u="m">00</i>m <i data-u="s">00</i>s</span></div>
       <p class="tag">Everything you need to build your pages and start selling.</p>
       <ul>{"".join(f"<li>{E(i)}</li>" for i in incl)}</ul>
       {btn()}
@@ -1538,6 +1551,12 @@ def lp_launch(cfg, fonts, logo):
 <script>
 (function(){{var h={{"b":"Build an Online Store and Take Payments.","d":"Invest $17 in Yourself. Sell What You Know Online."}};
 var v=(new URLSearchParams(location.search).get("utm_content")||"").toLowerCase();if(h[v]){{document.getElementById("ln-h1").textContent=h[v]}}}})();
+(function(){{var end=new Date("2026-11-20T00:00:00-05:00").getTime(),B=document.querySelectorAll("[data-cd]");
+function p(n){{return n<10?"0"+n:""+n}}
+function t(){{var ms=end-Date.now();if(ms<=0){{B.forEach(function(b){{b.style.display="none"}});return false}}
+var s=Math.floor(ms/1000),v={{d:Math.floor(s/86400),h:p(Math.floor(s%86400/3600)),m:p(Math.floor(s%3600/60)),s:p(s%60)}};
+document.querySelectorAll(".ln-cd i").forEach(function(i){{i.textContent=v[i.dataset.u]}});return true}}
+if(t())setInterval(t,1000)}})();
 (function(){{var d=[["New order: $27.00","30-Day Meal Prep Plan, just now"],["New order: $32.00","Morning Mug, just now"],["New order: $19.00","Reading Comprehension Kit, just now"]];
 var R=document.querySelectorAll(".ln-rot"),tb=document.getElementById("ln-tb"),ts=document.getElementById("ln-ts"),dev=document.querySelector(".ln-dev"),i=0,hold=false;
 if(!R.length)return;dev.addEventListener("mouseenter",function(){{hold=true}});dev.addEventListener("mouseleave",function(){{hold=false}});
