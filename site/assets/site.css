@@ -922,6 +922,20 @@ body:has(.lp-sticky){padding-bottom:76px}}
 .ln-pr-cd{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-size:14px;color:#DDE7E5}
 .ln-ended .ln-cd{display:none}
 @media(max-width:600px){.ln-bar{font-size:13.5px}.ln-bar-in{flex-wrap:nowrap;gap:8px}}
+.ln-galsec{background:linear-gradient(180deg,#F4F8F7,#EAF3F1)}
+.ln-stop{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.ln-stop::before{content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(61,227,200,.22),rgba(61,227,200,0) 70%)}
+.ln-stop-in{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+.ln-stop h2{color:#fff}.ln-stop .lead{color:#C9D6D4}.ln-stop .ln-hook{color:var(--aqua)}
+.ln-need{background:#fff;color:var(--ink);border-radius:22px;padding:26px;box-shadow:0 40px 70px -40px rgba(0,0,0,.7)}
+.ln-need-h{font-size:14px;font-weight:600;color:var(--muted)}
+.ln-need ul{list-style:none;display:grid;gap:12px;margin-top:16px}
+.ln-need li{display:flex;gap:14px;align-items:flex-start;background:#F4F8F7;border-radius:14px;padding:16px}
+.ln-need .ck{flex:none;width:30px;height:30px;border-radius:50%;background:var(--aqua);color:var(--ink);display:grid;place-items:center;font-weight:800}
+.ln-need b{display:block;font-size:16.5px}.ln-need small{font-size:14px;color:var(--text)}
+.ln-need-f{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-weight:600}
+.ln-need-f b{font-family:var(--display);font-size:24px;letter-spacing:-.02em}
+@media(max-width:900px){.ln-stop-in{grid-template-columns:1fr;gap:32px}}
 .ln-pz{background:linear-gradient(180deg,#fff 0%,#EEF6F4 100%)}
 .ln-pz-head{text-align:center}.ln-pz-head h2,.ln-pz-head .lead{margin-inline:auto}
 .ln-pz-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;max-width:1040px;margin:44px auto 0;align-items:stretch}
