@@ -27,7 +27,7 @@ CLARITY = """<script type="text/javascript">
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
 
-# Meta Pixels. Funnels (/lp/...) keep their own dataset; every other page uses the global Oceanic Funnels pixel.
+# Meta Pixels. The med spa funnel keeps its own dataset; every other page (site + funnels) uses the global pixel.
 META_PIXELS = {
     "/lp/med-spas/": "1759319485158087",          # Med spa funnel dataset
 }
@@ -36,8 +36,6 @@ def pixel_for(path):
     for pre, pid in META_PIXELS.items():
         if path.startswith(pre):
             return PIXEL_TPL.replace("PIXELID", pid)
-    if path.startswith("/lp/"):
-        return ""                                  # other funnels: no website pixel
     return PIXEL_TPL.replace("PIXELID", GLOBAL_PIXEL)
 PIXEL_TPL = """
 <script>
@@ -893,7 +891,7 @@ def build_all(cfg, fonts, src, site):
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
-    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo), lp_med_welcome(cfg, fonts, logo)]:
+    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo), lp_med_welcome(cfg, fonts, logo), lp_launch(cfg, fonts, logo)]:
         d = site + path
         os.makedirs(d, exist_ok=True)
         px = pixel_for(path)
@@ -1297,3 +1295,176 @@ def lp_med_welcome(cfg, fonts, logo):
 </section>'''
     return lp_shell(cfg, fonts, logo, path, "Welcome to Oceanic Funnels | Your Account Is Ready",
                     "Welcome to Oceanic Funnels. Here is what happens next.", body, cta=False)
+
+
+# ---------------- Launch $17 ad landing page ----------------
+LAUNCH_CK = CK   # TODO: swap to the Launch-only checkout URL when it exists
+LAUNCH_CSS = r"""
+.ln-sec{padding-block:72px}
+.ln-sec.alt{background:#F4F8F7}
+.ln-sec h2{font-family:var(--display);font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.035em;max-width:22ch}
+.ln-sec .lead{font-size:18px;line-height:1.6;color:var(--text);margin-top:16px;max-width:60ch}
+.ln-center{text-align:center}.lp-book.ln-sec h2{margin-inline:auto}.ln-center h2,.ln-center .lead{margin-inline:auto}
+.ln-hook{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ink);margin-top:18px}
+.ln-note{font-size:14px;color:var(--muted);margin-top:12px}
+.ln-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:8px}
+.ln-win{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 24px 50px -32px rgba(14,26,27,.45)}
+.ln-win .tb{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#EEF3F2;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted)}
+.ln-win .tb i{width:8px;height:8px;border-radius:50%;background:#D5DEDC;display:inline-block}
+.ln-win .tb span{margin-left:8px;background:#fff;border-radius:6px;padding:2px 8px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ln-win .pg{padding:16px;font-size:12.5px;line-height:1.45;color:var(--text);min-height:250px;display:flex;flex-direction:column;gap:9px}
+.ln-win .pg .k{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d)}
+.ln-win .pg h4{font-family:var(--display);font-size:17px;line-height:1.1;color:var(--ink);letter-spacing:-.02em}
+.ln-win .img{height:62px;border-radius:9px;background:linear-gradient(135deg,#DEF4F0,#FBEEE9)}
+.ln-win .bt{align-self:flex-start;background:var(--ink);color:#fff;font-weight:700;font-size:11.5px;border-radius:999px;padding:7px 12px}
+.ln-win .fld{border:1px solid var(--line);border-radius:7px;padding:7px 9px;color:var(--muted);font-size:11.5px}
+.ln-win .row{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.ln-win .ok{width:34px;height:34px;border-radius:50%;background:var(--aqua);display:grid;place-items:center;font-weight:800;color:var(--ink)}
+.ln-cap{text-align:center;font-family:var(--display);font-weight:700;font-size:15px;margin-top:12px;color:var(--ink)}
+.ln-cap small{display:block;font-family:inherit;font-weight:400;color:var(--muted);font-size:13px}
+.ln-feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.ln-feat div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.ln-feat b{display:block;font-family:var(--display);font-size:19px;color:var(--ink);letter-spacing:-.01em}
+.ln-feat p{margin-top:8px;font-size:15.5px;line-height:1.5;color:var(--text)}
+.ln-steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.ln-steps li{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.ln-steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--aqua);font-family:var(--display);font-weight:700}
+.ln-steps b{display:block;font-family:var(--display);font-size:19px;margin-top:14px;color:var(--ink)}
+.ln-steps p{margin-top:6px;font-size:15.5px;line-height:1.5;color:var(--text)}
+.ln-who{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:40px}
+.ln-who div{background:#fff;border:1px solid var(--line);border-top:4px solid var(--aqua);border-radius:var(--r);padding:20px;font-size:15px;line-height:1.5;color:var(--text)}
+.ln-who b{display:block;font-family:var(--display);font-size:17px;color:var(--ink);margin-bottom:6px}
+.ln-price{max-width:520px;margin:40px auto 0;background:var(--ink);color:#fff;border-radius:22px;padding:34px 32px;text-align:left}
+.ln-price .pl{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua)}
+.ln-price .amt{font-family:var(--display);font-size:64px;font-weight:700;letter-spacing:-.05em;line-height:1;margin-top:10px}
+.ln-price .amt small{font-size:20px;letter-spacing:0;color:#C9D6D4;font-weight:600}
+.ln-price .tag{color:#C9D6D4;margin-top:10px;font-size:16px}
+.ln-price ul{list-style:none;display:grid;gap:10px;margin-top:22px;font-size:16px}
+.ln-price li::before{content:"\2713";color:var(--aqua);font-weight:700;margin-right:10px}
+.ln-price .nf-btn{width:100%;justify-content:center;margin-top:26px}
+.ln-price .fine{font-size:13.5px;color:#B9C9C6;text-align:center;margin-top:10px}
+.ln-good{max-width:520px;margin:16px auto 0;font-size:14.5px;line-height:1.55;color:var(--text);background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.ln-faq{max-width:780px;margin:36px auto 0;display:grid;gap:10px}
+.ln-faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.ln-faq summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:17px;color:var(--ink);list-style:none}
+.ln-faq summary::-webkit-details-marker{display:none}
+.ln-faq summary::after{content:"+";float:right;color:var(--muted)}
+.ln-faq details[open] summary::after{content:"\2212"}
+.ln-faq p{margin-top:10px;font-size:15.5px;line-height:1.55;color:var(--text)}
+@media(max-width:1000px){.ln-who{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.ln-flow,.ln-feat,.ln-steps{grid-template-columns:1fr}.ln-sec{padding-block:52px}.ln-price{padding:28px 22px}}
+@media(max-width:520px){.ln-who{grid-template-columns:1fr}}
+"""
+PAGE_CSS += LAUNCH_CSS
+
+
+def lp_launch(cfg, fonts, logo):
+    path = "/lp/launch/"
+    ck = LAUNCH_CK
+    btn = lambda t="Start Building for $17/Month", cls="nf-btn--aqua nf-btn--lg": f'<a class="nf-btn {cls}" href="{ck}">{E(t)} →</a>'
+    head = f'<header class="lp-head nf-wrap">{logo}<a class="nf-btn nf-btn--ink" href="{ck}"><span class="lp-d">Start for $17/month</span><span class="lp-m">Start for $17</span></a></header>'
+    win = lambda url, inner: f'<div class="ln-win"><div class="tb"><i></i><i></i><i></i><span>{E(url)}</span></div><div class="pg">{inner}</div></div>'
+    flow = f'''<div class="ln-flow">
+  <div>{win("yourbrand.com/guide", '<span class="k">New guide</span><h4>The 30-Day Meal Prep Plan</h4><div class="img"></div><p>Simple recipes, shopping lists and a weekly plan you can start tonight.</p><span class="bt">Get the guide · $27</span>')}<p class="ln-cap">1. Sales page<small>Explains your offer</small></p></div>
+  <div>{win("yourbrand.com/checkout", '<span class="k">Checkout</span><h4>Complete your order</h4><div class="row"><span>30-Day Meal Prep Plan</span><b>$27.00</b></div><div class="fld">Email address</div><div class="fld">Card number</div><span class="bt">Pay $27.00</span>')}<p class="ln-cap">2. Checkout<small>Takes the payment</small></p></div>
+  <div>{win("yourbrand.com/thank-you", '<div class="ok">✓</div><h4>You are in!</h4><p>Your guide is on its way to your inbox. Thanks for your order.</p><span class="bt">Download now</span>')}<p class="ln-cap">3. Thank-you page<small>Delivers what they bought</small></p></div>
+</div>'''
+    feats = [("Unlimited Sales Funnels", "Build sales pages, checkout journeys and thank-you pages for your products and services."),
+             ("Unlimited Websites", "Create professional websites that represent your brand. Connect your own domain and publish."),
+             ("Your Own Online Store", "Add products, create storefront pages and give customers somewhere to shop."),
+             ("Built-In Payment Collection", "Connect a supported payment provider and accept payments through your store or checkout."),
+             ("Drag-and-Drop Page Builder", "Choose a template, customize the design, add your content and publish without writing code."),
+             ("One Place to Build and Sell", "Manage your websites, funnels, storefronts and selling pages from one Oceanic Funnels account.")]
+    who = [("Coaches, teachers and nurses", "Turn what you know into guides, classes or sessions people can buy."),
+           ("Entrepreneurs", "Give your new business idea a website or funnel people can actually visit."),
+           ("Online Sellers", "Build an online storefront, show your products and accept payments."),
+           ("Creators", "Create sales pages for your templates, resources and other products."),
+           ("Small Businesses", "Build a professional online presence without hiring a developer for every new page.")]
+    incl = ["Unlimited sales funnels", "Unlimited websites", "Online store builder", "Product pages and checkout",
+            "Payment provider integration", "Drag-and-drop page editing", "Custom domain connection", "Ready-to-customize templates"]
+    faqs = [("Can I build a complete sales funnel?", "Yes. You can create sales pages, checkout pages and thank-you pages for your products and offers."),
+            ("Can I create an online store?", "Yes. Add products, build your storefront and connect a supported payment provider."),
+            ("Do I need coding experience?", "No. Oceanic Funnels includes a visual page builder, so you can create and customize pages without writing code."),
+            ("Can I connect my own domain?", "Yes. You can connect a domain you own. Domain registration is separate if you need to buy one."),
+            ("Can I collect payments?", "Yes. Connect a supported payment account to accept payments. Standard payment-processing fees may apply."),
+            ("Does Launch include email and SMS marketing?", "No. Email and SMS marketing tools are available on Growth, with usage charges."),
+            ("Can I upgrade later?", "Yes. You can move to Growth when you need more tools, such as CRM pipelines, lead capture forms and marketing automation."),
+            ("Can your team build everything for me?", "Yes. Optional Done-For-You Setup is available for $997, with a defined scope of work."),
+            ("Can I cancel anytime?", "Yes. Launch is a month-to-month subscription with no long-term contract.")]
+    faq_schema = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}
+    body = f'''<section class="lp-hero nf-hatch">
+  {head}
+  <div class="nf-wrap" style="padding-block:40px 64px;text-align:center">
+    <span class="lp-kick">Oceanic Funnels Launch · $17/month</span>
+    <h1 id="ln-h1" style="font-family:var(--display);font-size:clamp(38px,5.4vw,66px);line-height:1.02;letter-spacing:-.045em;margin:14px auto 0;max-width:18ch">Build Your First Sales Funnel. Start Selling Online.</h1>
+    <p class="ln-hook">Your business idea isn't going to launch itself.</p>
+    <p class="sub" style="font-size:19px;line-height:1.55;margin:14px auto 0;max-width:58ch;color:var(--text)">Build unlimited sales funnels, professional websites and online stores. Add your products, connect payments and give your business a real place online. No coding. No developer needed.</p>
+    <div class="lp-cta" style="justify-content:center">{btn()}</div>
+    <p class="ln-note">Month-to-month. Cancel anytime. No mandatory setup fee.</p>
+  </div>
+  <div class="nf-wrap" style="padding-bottom:64px">{flow}<p class="ln-note" style="text-align:center">Example funnel. Illustration of what you can build.</p></div>
+</section>
+<section class="ln-sec"><div class="nf-wrap ln-center">
+  <h2>Stop Planning. Start Building.</h2>
+  <p class="lead">You have the idea. Maybe it's a product you've wanted to sell, a skill you could turn into a business, or an online store you've been thinking about launching. But an idea doesn't become a business just because you keep thinking about it.</p>
+  <p class="lead">At some point, you need to build something: a website people can visit, a sales page that explains your offer, and a checkout where customers can buy. That's where Oceanic Funnels comes in.</p>
+  <p class="ln-hook">Start building your business online for $17 a month.</p>
+</div></section>
+<section class="ln-sec alt"><div class="nf-wrap">
+  <h2>Your Idea. Your Website. Your Sales Funnel. Your Store.</h2>
+  <p class="lead">Everything you need to start selling online.</p>
+  <div class="ln-feat">{"".join(f"<div><b>{E(t)}</b><p>{E(d)}</p></div>" for t, d in feats)}</div>
+  <div class="lp-cta">{btn()}</div>
+</div></section>
+<section class="ln-sec"><div class="nf-wrap">
+  <h2>From Idea to Live Website in 3 Steps.</h2>
+  <ol class="ln-steps">
+    <li><b>Choose your starting point</b><p>Start with a funnel, website or online store. Pick a template or build from scratch.</p></li>
+    <li><b>Make it yours</b><p>Add your brand, products, images, content, pricing and payment connection.</p></li>
+    <li><b>Publish and share</b><p>Make your page live, share your link and give people a way to buy.</p></li>
+  </ol>
+  <p class="ln-hook">Your first launch doesn't have to be perfect. It just has to begin.</p>
+</div></section>
+<section class="ln-sec alt"><div class="nf-wrap">
+  <h2>For People Ready to Build Something of Their Own.</h2>
+  <div class="ln-who">{"".join(f"<div><b>{E(t)}</b>{E(d)}</div>" for t, d in who)}</div>
+  <p class="lead">Whatever you're building, start with one offer and grow from there.</p>
+</div></section>
+<section class="ln-sec" id="pricing"><div class="nf-wrap ln-center">
+  <h2>Big Ideas Don't Always Need Big Budgets.</h2>
+  <p class="lead">You don't need a huge software investment to start building your online presence.</p>
+  <div class="ln-price">
+    <span class="pl">Launch plan</span>
+    <div class="amt">$17<small>/month</small></div>
+    <p class="tag">Build your next move with Oceanic Funnels Launch.</p>
+    <ul>{"".join(f"<li>{E(i)}</li>" for i in incl)}</ul>
+    {btn()}
+    <p class="fine">Cancel anytime. No long-term contract. No mandatory setup fee.</p>
+  </div>
+  <p class="ln-good"><b>Good to know:</b> Launch is focused on building websites, funnels and stores. Lead forms, email and SMS marketing, CRM pipelines and automated follow-ups are available on higher plans. Payment-processing fees, domain purchases and applicable taxes may cost extra.</p>
+</div></section>
+<section class="ln-sec alt"><div class="nf-wrap">
+  <h2 class="ln-center" style="margin-inline:auto;text-align:center">Frequently Asked Questions</h2>
+  <div class="ln-faq">{"".join(f"<details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in faqs)}</div>
+</div></section>
+<section class="lp-book ln-sec"><div class="nf-wrap">
+  <h2>Another Month of Planning, or Your First Step Forward?</h2>
+  <p>You've already spent time thinking about the business you want to build. Now give that idea a real place online. Your website. Your funnel. Your store.</p>
+  <p style="color:#fff;font-weight:700">The first step starts at $17/month.</p>
+  <div class="lp-cta">{btn("Invest $17 in Your Next Step")}</div>
+  <p style="font-size:14px">Month-to-month. Cancel anytime.</p>
+</div></section>
+<div class="lp-sticky">{btn("Start Building for $17/Month", "nf-btn--aqua")}</div>
+<script>
+(function(){{var h={{"b":"Build an Online Store and Take Payments.","d":"Invest $17 in Yourself. Sell What You Know Online."}};
+var v=(new URLSearchParams(location.search).get("utm_content")||"").toLowerCase();if(h[v]){{document.getElementById("ln-h1").textContent=h[v]}}}})();
+</script>'''
+    htm = page(cfg, fonts, path, "Build Your First Sales Funnel for $17/Month | Oceanic Funnels",
+               "Build unlimited sales funnels, websites and online stores and take payments. No coding. $17/month, cancel anytime.",
+               [("Home", "/"), ("Launch", path)], body, logo, extra=(faq_schema,))
+    htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
+    mini = (f'<footer class="nf-foot"><div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
+            '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>'
+            '<div class="nf-wordmark" aria-hidden="true">OCEANIC</div></footer>')
+    return path, htm[:i] + mini + htm[j:]
