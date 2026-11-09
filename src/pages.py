@@ -1360,6 +1360,9 @@ LAUNCH_CSS = r"""
 .ln-lap .base{height:14px;margin:0 -6%;background:linear-gradient(#E3E6E9,#A9AFB6);border-radius:0 0 16px 16px}
 .ln-ph{position:absolute;right:-14px;bottom:0;width:29%;border:7px solid #1B1F22;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 30px 50px -25px rgba(14,26,27,.6)}
 .ln-ph img{width:100%;height:auto;display:block}
+.ln-rot{display:grid}.ln-rot img{grid-area:1/1;opacity:0;transition:opacity .7s ease}.ln-rot img.on{opacity:1}
+.ln-toast b,.ln-toast small{transition:opacity .3s}
+@media(prefers-reduced-motion:reduce){.ln-rot img,.ln-toast b,.ln-toast small{transition:none}}
 .ln-toast{position:absolute;left:-28px;top:56%;display:flex;gap:12px;align-items:center;background:#fff;border-radius:16px;padding:12px 18px 12px 12px;box-shadow:0 24px 44px -20px rgba(14,26,27,.5);animation:lnIn .6s .9s both}
 .ln-toast .ic{width:38px;height:38px;border-radius:50%;background:var(--aqua);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:17px;flex:none}
 .ln-toast b{display:block;font-size:15px;color:var(--ink)}.ln-toast small{font-size:12.5px;color:var(--muted)}
@@ -1435,9 +1438,9 @@ def lp_launch(cfg, fonts, logo):
       <p class="ln-note">Month-to-month. Cancel anytime. No mandatory setup fee.</p>
     </div>
     <div class="ln-dev" aria-label="Example: a sales page and checkout built with Launch" role="img">
-      <div class="ln-lap"><div class="scr"><img src="/assets/launch/sales.webp" alt="" width="1920" height="1200" fetchpriority="high"></div><div class="base"></div></div>
-      <div class="ln-ph"><img src="/assets/launch/checkout.webp" alt="" width="585" height="1170"></div>
-      <div class="ln-toast"><span class="ic">$</span><div><b>New order: $27.00</b><small>30-Day Meal Prep Plan, just now</small></div></div>
+      <div class="ln-lap"><div class="scr ln-rot"><img class="on" src="/assets/launch/sales.webp" alt="" width="1920" height="1200" fetchpriority="high"><img src="/assets/launch/store.webp" alt="" width="1920" height="1200" loading="lazy"><img src="/assets/launch/teach.webp" alt="" width="1920" height="1200" loading="lazy"></div><div class="base"></div></div>
+      <div class="ln-ph ln-rot"><img class="on" src="/assets/launch/checkout.webp" alt="" width="585" height="1170"><img src="/assets/launch/checkout-store.webp" alt="" width="585" height="1170" loading="lazy"><img src="/assets/launch/checkout-teach.webp" alt="" width="585" height="1170" loading="lazy"></div>
+      <div class="ln-toast"><span class="ic">$</span><div><b id="ln-tb">New order: $27.00</b><small id="ln-ts">30-Day Meal Prep Plan, just now</small></div></div>
     </div>
   </div>
 </section>
@@ -1500,6 +1503,11 @@ def lp_launch(cfg, fonts, logo):
 <script>
 (function(){{var h={{"b":"Build an Online Store and Take Payments.","d":"Invest $17 in Yourself. Sell What You Know Online."}};
 var v=(new URLSearchParams(location.search).get("utm_content")||"").toLowerCase();if(h[v]){{document.getElementById("ln-h1").textContent=h[v]}}}})();
+(function(){{var d=[["New order: $27.00","30-Day Meal Prep Plan, just now"],["New order: $32.00","Morning Mug, just now"],["New order: $19.00","Reading Comprehension Kit, just now"]];
+var R=document.querySelectorAll(".ln-rot"),tb=document.getElementById("ln-tb"),ts=document.getElementById("ln-ts"),dev=document.querySelector(".ln-dev"),i=0,hold=false;
+if(!R.length)return;dev.addEventListener("mouseenter",function(){{hold=true}});dev.addEventListener("mouseleave",function(){{hold=false}});
+setInterval(function(){{if(hold||document.hidden)return;i=(i+1)%3;R.forEach(function(r){{var im=r.querySelectorAll("img");im.forEach(function(x,k){{x.classList.toggle("on",k===i)}})}});
+tb.style.opacity=ts.style.opacity=0;setTimeout(function(){{tb.textContent=d[i][0];ts.textContent=d[i][1];tb.style.opacity=ts.style.opacity=1}},300)}},3000)}})();
 </script>'''
     htm = page(cfg, fonts, path, "Build Your First Sales Funnel for $17/Month | Oceanic Funnels",
                "Build unlimited sales funnels, websites and online stores and take payments. No coding. $17/month, cancel anytime.",
