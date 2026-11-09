@@ -1,20 +1,23 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>
-body{width:1280px;height:800px;background:#EEF4FF;color:#14213D}
+body{width:1280px;height:800px;background:#F2F6FF;color:#14213D}
 nav{display:flex;justify-content:space-between;align-items:center;padding:26px 64px}
 .lg{font-family:Grotesk;font-weight:700;font-size:24px}.lg i{font-style:normal;color:#3B6FE0}
 nav span{font-size:15px;color:#4A5878;margin-left:28px}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:30px 64px;align-items:center}
-.note{font-family:Caveat;font-weight:700;font-size:30px;color:#E0643B}
-h1{font-family:Grotesk;font-weight:700;font-size:62px;line-height:1;letter-spacing:-.03em;margin-top:8px}
-p.s{font-size:19px;line-height:1.55;color:#3F4C6B;margin-top:20px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:26px 64px;align-items:center}
+.note{font-family:Caveat;font-weight:700;font-size:32px;color:#E0643B}
+h1{font-family:Grotesk;font-weight:700;font-size:64px;line-height:.98;letter-spacing:-.03em;margin-top:6px}
+p.s{font-size:19px;line-height:1.55;color:#3F4C6B;margin-top:18px}
 .grades{display:flex;gap:10px;margin-top:22px}.grades span{background:#fff;border:1.5px solid #C9D6F2;border-radius:10px;padding:8px 14px;font-weight:600;font-size:15px}
-.buy{display:flex;align-items:center;gap:18px;margin-top:28px}.btn{background:#3B6FE0;color:#fff;font-weight:700;font-size:18px;padding:18px 30px;border-radius:12px}
+.buy{display:flex;align-items:center;gap:18px;margin-top:28px}.btn{background:#3B6FE0;color:#fff;font-weight:700;font-size:18px;padding:18px 30px;border-radius:12px;box-shadow:0 10px 24px -10px #3B6FE0}
 .pr{font-family:Grotesk;font-weight:700;font-size:34px}
-.stack{position:relative;height:520px}
-.sh{position:absolute;width:330px;height:430px;background:#fff;border-radius:10px;box-shadow:0 20px 40px -20px rgba(20,33,61,.4);padding:28px}
-.sh h4{font-family:Grotesk;font-size:20px}.ln{height:10px;border-radius:5px;background:#E3EAF7;margin-top:14px}
-.box{display:flex;gap:10px;margin-top:18px}.box i{width:22px;height:22px;border:2px solid #C9D6F2;border-radius:6px}
-.star{position:absolute;right:30px;top:20px;width:110px;height:110px;border-radius:50%;background:#FFC93C;display:grid;place-items:center;text-align:center;font-family:Grotesk;font-weight:700;font-size:18px;line-height:1.05;transform:rotate(10deg)}
+.art{position:relative;height:560px}
+.blob{position:absolute;right:20px;top:40px;width:470px;height:470px;border-radius:50%;background:#FFE58A}
+.bk{position:absolute;width:250px;height:330px;border-radius:6px 16px 16px 6px;padding:30px 24px;color:#fff;box-shadow:18px 26px 40px -18px rgba(20,33,61,.5),inset 10px 0 0 rgba(0,0,0,.14)}
+.bk small{font-size:12px;font-weight:700;letter-spacing:.05em;opacity:.9}
+.bk b{display:block;font-family:Grotesk;font-size:34px;line-height:1;margin-top:12px}
+.bk em{display:block;font-style:normal;margin-top:12px;font-size:14px;opacity:.9}
+.bk .icon{position:absolute;bottom:26px;left:24px;font-size:56px}
+.pin{position:absolute;right:40px;top:30px;width:120px;height:120px;border-radius:50%;background:#E0643B;color:#fff;display:grid;place-items:center;text-align:center;font-family:Grotesk;font-weight:700;font-size:20px;line-height:1.05;transform:rotate(10deg);box-shadow:0 12px 24px -10px rgba(0,0,0,.35)}
 </style></head><body>
 <nav><div class="lg">Ms. Rivera's <i>Classroom</i></div><div><span>Resources</span><span>Freebies</span><span>About</span></div></nav>
 <div class="hero"><div>
@@ -23,8 +26,9 @@ p.s{font-size:19px;line-height:1.55;color:#3F4C6B;margin-top:20px}
 <p class="s">120 printable worksheets with answer keys. Print, copy and teach, with no prep on Sunday night.</p>
 <div class="grades"><span>Grade 3</span><span>Grade 4</span><span>Grade 5</span></div>
 <div class="buy"><span class="btn">Buy the kit</span><span class="pr">$19</span></div>
-</div><div class="stack">
-<div class="sh" style="left:70px;top:60px;transform:rotate(-8deg)"></div>
-<div class="sh" style="left:120px;top:40px;transform:rotate(3deg)"><h4>Main Idea &amp; Details</h4><div class="ln"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:90%"></div><div class="box"><i></i><div class="ln" style="flex:1;margin:6px 0 0"></div></div><div class="box"><i></i><div class="ln" style="flex:1;margin:6px 0 0"></div></div><div class="box"><i></i><div class="ln" style="flex:1;margin:6px 0 0"></div></div><div class="ln" style="margin-top:26px"></div><div class="ln" style="width:70%"></div></div>
-<div class="star">120<br>pages</div>
+</div><div class="art"><div class="blob"></div>
+<div class="bk" style="left:40px;top:130px;background:linear-gradient(160deg,#F28B50,#E0643B);transform:rotate(-12deg)"><small>BOOK 1</small><b>Main Idea</b><em>40 worksheets</em><div class="icon">📖</div></div>
+<div class="bk" style="left:330px;top:120px;background:linear-gradient(160deg,#5ACB9A,#2FA77A);transform:rotate(9deg)"><small>BOOK 3</small><b>Making Inferences</b><em>40 worksheets</em><div class="icon">💡</div></div>
+<div class="bk" style="left:180px;top:70px;background:linear-gradient(160deg,#5B8CF0,#3B6FE0);transform:rotate(-2deg)"><small>BOOK 2</small><b>Story Elements</b><em>40 worksheets</em><div class="icon">✏️</div></div>
+<div class="pin">120<br>pages</div>
 </div></div></body></html>
