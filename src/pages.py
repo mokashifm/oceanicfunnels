@@ -1351,6 +1351,32 @@ LAUNCH_CSS = r"""
 .ln-faq summary::after{content:"+";float:right;color:var(--muted)}
 .ln-faq details[open] summary::after{content:"\2212"}
 .ln-faq p{margin-top:10px;font-size:15.5px;line-height:1.55;color:var(--text)}
+.ln-hin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:center;padding-block:28px 88px}
+.ln-copy h1{font-family:var(--display);font-size:clamp(38px,4.8vw,62px);line-height:1.02;letter-spacing:-.045em;margin-top:14px;max-width:16ch}
+.ln-copy .sub{font-size:18.5px;line-height:1.55;margin-top:14px;max-width:46ch;color:var(--text)}
+.ln-dev{position:relative;padding-bottom:36px}
+.ln-lap .scr{border:10px solid #1B1F22;border-bottom-width:14px;border-radius:18px 18px 6px 6px;overflow:hidden;background:#1B1F22;aspect-ratio:16/10;box-shadow:0 40px 70px -40px rgba(14,26,27,.6)}
+.ln-lap img,.ln-bw img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.ln-lap .base{height:14px;margin:0 -6%;background:linear-gradient(#E3E6E9,#A9AFB6);border-radius:0 0 16px 16px}
+.ln-ph{position:absolute;right:-14px;bottom:0;width:29%;border:7px solid #1B1F22;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 30px 50px -25px rgba(14,26,27,.6)}
+.ln-ph img{width:100%;height:auto;display:block}
+.ln-toast{position:absolute;left:-28px;top:56%;display:flex;gap:12px;align-items:center;background:#fff;border-radius:16px;padding:12px 18px 12px 12px;box-shadow:0 24px 44px -20px rgba(14,26,27,.5);animation:lnIn .6s .9s both}
+.ln-toast .ic{width:38px;height:38px;border-radius:50%;background:var(--aqua);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:17px;flex:none}
+.ln-toast b{display:block;font-size:15px;color:var(--ink)}.ln-toast small{font-size:12.5px;color:var(--muted)}
+@keyframes lnIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ln-toast{animation:none}}
+.ln-gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.ln-gal figure{margin:0}
+.ln-bw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 26px 50px -34px rgba(14,26,27,.5)}
+.ln-bw .tb{display:flex;gap:6px;align-items:center;padding:9px 12px;background:#EEF3F2;border-bottom:1px solid var(--line)}
+.ln-bw .tb i{width:8px;height:8px;border-radius:50%;background:#D5DEDC}
+.ln-bw .im{aspect-ratio:16/10}
+.ln-gal figcaption{margin-top:14px}
+.ln-gal figcaption b{display:block;font-family:var(--display);font-size:18px;color:var(--ink)}
+.ln-gal figcaption span{font-size:15px;color:var(--text)}
+.ln-feat .ico{width:44px;height:44px;border-radius:12px;background:var(--aqua-l);display:grid;place-items:center;margin-bottom:14px}
+.ln-feat .ico svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:900px){.ln-hin{grid-template-columns:1fr;gap:40px;padding-block:20px 64px}.ln-gal{grid-template-columns:1fr}.ln-toast{left:6px;top:auto;bottom:6px}.ln-ph{right:-4px;width:31%}.ln-dev{padding:0 10px 40px 0}}
 @media(max-width:1000px){.ln-who{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.ln-flow,.ln-feat,.ln-steps{grid-template-columns:1fr}.ln-sec{padding-block:52px}.ln-price{padding:28px 22px}}
 @media(max-width:520px){.ln-who{grid-template-columns:1fr}}
@@ -1392,18 +1418,34 @@ def lp_launch(cfg, fonts, logo):
             ("Can your team build everything for me?", "Yes. Optional Done-For-You Setup is available for $997, with a defined scope of work."),
             ("Can I cancel anytime?", "Yes. Launch is a month-to-month subscription with no long-term contract.")]
     faq_schema = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}
+    ICO = {'Unlimited Sales Funnels': '<path d="M3 4h18l-7 8v6l-4 2v-8z"/>', 'Unlimited Websites': '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>', 'Your Own Online Store': '<path d="M4 8h16l-1 12H5z"/><path d="M9 8a3 3 0 0 1 6 0"/>', 'Built-In Payment Collection': '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>', 'Drag-and-Drop Page Builder': '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M15 3h6v6M9 21H3v-6"/>', 'One Place to Build and Sell': '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'}
+    gal = "".join(f'<figure><div class="ln-bw"><div class="tb"><i></i><i></i><i></i></div><div class="im"><img src="/assets/launch/{f}.webp" alt="{E(alt)}" width="1920" height="1200" loading="lazy"></div></div><figcaption><b>{E(t)}</b><span>{E(d)}</span></figcaption></figure>'
+                  for f, t, d, alt in [("sales", "A sales page for a guide", "Sell a recipe book, workbook or any digital download.", "Example sales page for a meal prep guide"),
+                                       ("store", "An online store", "List your products, set prices and take orders.", "Example online store selling handmade ceramics"),
+                                       ("teach", "A page for printable resources", "Turn what you teach into a kit people can buy.", "Example page selling a teacher's reading kit")])
     body = f'''<section class="lp-hero nf-hatch">
   {head}
-  <div class="nf-wrap" style="padding-block:40px 64px;text-align:center">
-    <span class="lp-kick">Oceanic Funnels Launch · $17/month</span>
-    <h1 id="ln-h1" style="font-family:var(--display);font-size:clamp(38px,5.4vw,66px);line-height:1.02;letter-spacing:-.045em;margin:14px auto 0;max-width:18ch">Build Your First Sales Funnel. Start Selling Online.</h1>
-    <p class="ln-hook">Your business idea isn't going to launch itself.</p>
-    <p class="sub" style="font-size:19px;line-height:1.55;margin:14px auto 0;max-width:58ch;color:var(--text)">Build unlimited sales funnels, professional websites and online stores. Add your products, connect payments and give your business a real place online. No coding. No developer needed.</p>
-    <div class="lp-cta" style="justify-content:center">{btn()}</div>
-    <p class="ln-note">Month-to-month. Cancel anytime. No mandatory setup fee.</p>
+  <div class="nf-wrap ln-hin">
+    <div class="ln-copy">
+      <span class="lp-kick">Oceanic Funnels Launch, $17/month</span>
+      <h1 id="ln-h1">Build Your First Sales Funnel. Start Selling Online.</h1>
+      <p class="ln-hook">Your business idea isn't going to launch itself.</p>
+      <p class="sub">Build unlimited sales funnels, professional websites and online stores. Add your products, connect payments and give your business a real place online. No coding. No developer needed.</p>
+      <div class="lp-cta">{btn()}</div>
+      <p class="ln-note">Month-to-month. Cancel anytime. No mandatory setup fee.</p>
+    </div>
+    <div class="ln-dev" aria-label="Example: a sales page and checkout built with Launch" role="img">
+      <div class="ln-lap"><div class="scr"><img src="/assets/launch/sales.webp" alt="" width="1920" height="1200" fetchpriority="high"></div><div class="base"></div></div>
+      <div class="ln-ph"><img src="/assets/launch/checkout.webp" alt="" width="585" height="1170"></div>
+      <div class="ln-toast"><span class="ic">$</span><div><b>New order: $27.00</b><small>30-Day Meal Prep Plan, just now</small></div></div>
+    </div>
   </div>
-  <div class="nf-wrap" style="padding-bottom:64px">{flow}<p class="ln-note" style="text-align:center">Example funnel. Illustration of what you can build.</p></div>
 </section>
+<section class="ln-sec"><div class="nf-wrap">
+  <h2>What you can build with Launch</h2>
+  <p class="lead">Example pages for the kinds of businesses that start on Launch. Pick a template, swap in your own words and products, and publish.</p>
+  <div class="ln-gal">{gal}</div>
+</div></section>
 <section class="ln-sec"><div class="nf-wrap ln-center">
   <h2>Stop Planning. Start Building.</h2>
   <p class="lead">You have the idea. Maybe it's a product you've wanted to sell, a skill you could turn into a business, or an online store you've been thinking about launching. But an idea doesn't become a business just because you keep thinking about it.</p>
@@ -1413,7 +1455,7 @@ def lp_launch(cfg, fonts, logo):
 <section class="ln-sec alt"><div class="nf-wrap">
   <h2>Your Idea. Your Website. Your Sales Funnel. Your Store.</h2>
   <p class="lead">Everything you need to start selling online.</p>
-  <div class="ln-feat">{"".join(f"<div><b>{E(t)}</b><p>{E(d)}</p></div>" for t, d in feats)}</div>
+  <div class="ln-feat">{"".join(f'<div><span class="ico"><svg viewBox="0 0 24 24">{ICO[t]}</svg></span><b>{E(t)}</b><p>{E(d)}</p></div>' for t, d in feats)}</div>
   <div class="lp-cta">{btn()}</div>
 </div></section>
 <section class="ln-sec"><div class="nf-wrap">

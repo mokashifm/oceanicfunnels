@@ -1,0 +1,8 @@
+@font-face{font-family:Fraunces;font-weight:400;src:url(node_modules/@fontsource/fraunces/files/fraunces-latin-400-normal.woff2)}
+@font-face{font-family:Fraunces;font-weight:600;src:url(node_modules/@fontsource/fraunces/files/fraunces-latin-600-normal.woff2)}
+@font-face{font-family:Fraunces;font-weight:700;src:url(node_modules/@fontsource/fraunces/files/fraunces-latin-700-normal.woff2)}
+@font-face{font-family:DMSerif;font-weight:400;src:url(node_modules/@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:500;src:url(node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2)}
+@font-face{font-family:Grotesk;font-weight:700;src:url(node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}body{overflow:hidden;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
