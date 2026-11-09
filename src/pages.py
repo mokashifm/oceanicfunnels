@@ -891,7 +891,7 @@ def build_all(cfg, fonts, src, site):
     out += [compare_page(cfg, fonts, logo, c) for c in COMPETITORS]
     out += [industries_hub(cfg, fonts, logo)] + [industry_page(cfg, fonts, logo, d) for d in INDUSTRIES]
     out += [guides_hub(cfg, fonts, logo)] + [guide_page(cfg, fonts, logo, g) for g in GUIDES]
-    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo), lp_med_welcome(cfg, fonts, logo), lp_launch(cfg, fonts, logo)]:
+    for path, htm in out + [lp_med_spa(cfg, fonts, logo), lp_med_book(cfg, fonts, logo), lp_med_booked(cfg, fonts, logo), lp_med_welcome(cfg, fonts, logo), lp_launch(cfg, fonts, logo), thank_you(cfg, fonts, logo)]:
         d = site + path
         os.makedirs(d, exist_ok=True)
         px = pixel_for(path)
@@ -1593,6 +1593,49 @@ tb.style.opacity=ts.style.opacity=0;setTimeout(function(){{tb.textContent=d[i][0
                "Build unlimited sales funnels, websites and online stores and take payments. No coding. $17/month, cancel anytime.",
                [("Home", "/"), ("Launch", path)], body, logo, extra=(faq_schema,))
     htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
+    mini = (f'<footer class="nf-foot"><div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
+            '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>'
+            '<div class="nf-wordmark" aria-hidden="true">OCEANIC</div></footer>')
+    return path, htm[:i] + mini + htm[j:]
+
+
+# ---------------- Global thank-you page (all plans, all funnels) ----------------
+def thank_you(cfg, fonts, logo):
+    path = "/thank-you/"
+    head = f'<header class="lp-head nf-wrap">{logo}</header>'
+    body = f'''<section class="lp-hero nf-hatch">
+  {head}
+  <div class="nf-wrap lp-done">
+    <div class="ok" aria-hidden="true">&#10003;</div>
+    <h1>You&#39;re in. Welcome to Oceanic Funnels.</h1>
+    <p class="sub" id="ty-sub">Your payment went through. Your receipt and your login invite are on their way by email.</p>
+    <ol class="lp-prep">
+      <li><span><b>Check your email for your login invite</b>Open the email from us, set your password and sign in. If it isn&#39;t in your inbox within a few minutes, check spam or promotions.</span></li>
+      <li><span><b>Pick a template</b>Start with a sales page, website or store template, or build from scratch.</span></li>
+      <li><span><b>Add your offer and connect payments</b>Put in your words, photos and prices, then connect your payment account.</span></li>
+      <li><span><b>Publish and share your link</b>Your page is live the moment you publish. Share the link wherever your customers are.</span></li>
+    </ol>
+    <p class="sub" id="ty-dfy" style="display:none;font-size:16px;margin-top:22px"><b>Added Done-For-You Setup?</b> We&#39;ll email you an onboarding form. Your setup starts once we have it.</p>
+    <p class="sub" style="font-size:15px;margin-top:26px">Questions? Email <a href="mailto:{E(cfg["email"])}" style="color:var(--aqua-d);font-weight:600">{E(cfg["email"])}</a></p>
+  </div>
+</section>
+<script>
+(function(){{
+var q=new URLSearchParams(location.search),plan=(q.get("plan")||"").toLowerCase(),oid=q.get("order_id")||q.get("order")||q.get("oid")||"";
+var P={{"launch":["Launch",17],"growth":["Growth",97],"ai-pro":["AI Pro",197],"aipro":["AI Pro",197],"scale":["Scale",297],"dfy":["Done-For-You Setup",997]}};
+var p=P[plan];if(p){{document.getElementById("ty-sub").textContent="Your "+p[0]+" plan is active. Your receipt and your login invite are on their way by email."}}
+if(q.get("dfy")==="1"||plan==="dfy"){{document.getElementById("ty-dfy").style.display="block"}}
+if(!p||typeof fbq!=="function")return;
+var key="of_purchase_"+(oid||plan);try{{if(localStorage.getItem(key))return;localStorage.setItem(key,"1")}}catch(e){{}}
+var v=p[1]+(q.get("dfy")==="1"&&plan!=="dfy"?997:0),opt=oid?{{eventID:oid}}:{{}};
+fbq("track","Purchase",{{value:v,currency:"USD",content_name:p[0]}},opt);
+}})();
+</script>'''
+    htm = page(cfg, fonts, path, "Welcome to Oceanic Funnels | You're In",
+               "Your Oceanic Funnels account is ready. Here is what happens next.",
+               [("Home", "/"), ("Thank you", path)], body, logo)
+    htm = htm.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, nofollow">')
     i = htm.find('<footer class="nf-foot">'); j = htm.find('</footer>', i) + len('</footer>')
     mini = (f'<footer class="nf-foot"><div class="nf-wrap nf-foot-bot"><span>© 2026 {E(cfg["brand"])}. All rights reserved.</span>'
             '<span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>'
