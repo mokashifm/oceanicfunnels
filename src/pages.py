@@ -1380,6 +1380,28 @@ LAUNCH_CSS = r"""
 .ln-feat .ico{width:44px;height:44px;border-radius:12px;background:var(--aqua-l);display:grid;place-items:center;margin-bottom:14px}
 .ln-feat .ico svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:900px){.ln-hin{grid-template-columns:1fr;gap:40px;padding-block:20px 64px}.ln-gal{grid-template-columns:1fr}.ln-toast{left:6px;top:auto;bottom:6px}.ln-ph{right:-4px;width:31%}.ln-dev{padding:0 10px 40px 0}}
+.ln-pz{background:linear-gradient(180deg,#fff 0%,#EEF6F4 100%)}
+.ln-pz-head{text-align:center}.ln-pz-head h2,.ln-pz-head .lead{margin-inline:auto}
+.ln-pz-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;max-width:1040px;margin:44px auto 0;align-items:stretch}
+.ln-pz .ln-price{max-width:none;margin:0;display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 40px 70px -40px rgba(14,26,27,.65)}
+.ln-pz .ln-price::after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(61,227,200,.28),rgba(61,227,200,0) 70%);pointer-events:none}
+.ln-pr-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ln-pr-badge{background:rgba(61,227,200,.14);color:var(--aqua);border:1px solid rgba(61,227,200,.4);font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.ln-pz .ln-price ul{grid-template-columns:1fr 1fr;gap:12px 18px;font-size:15.5px}
+.ln-pz .ln-price .nf-btn{margin-top:auto}
+.ln-pz .ln-price ul{margin-bottom:28px}
+.ln-pz .ln-price li{display:flex;gap:10px;line-height:1.4}.ln-pz .ln-price li::before{margin:0;flex:none}
+.ln-pz-side{display:flex;flex-direction:column;gap:14px;text-align:left}
+.ln-pz-side h3{font-family:var(--display);font-size:19px;letter-spacing:-.01em;color:var(--ink)}
+.ln-after,.ln-why,.ln-up{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.ln-after ol{list-style:none;counter-reset:a;display:grid;gap:14px;margin-top:16px}
+.ln-after li{counter-increment:a;display:grid;grid-template-columns:30px 1fr;column-gap:12px}
+.ln-after li::before{content:counter(a);grid-row:1/3;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--aqua);font-family:var(--display);font-weight:700;font-size:14px;display:grid;place-items:center}
+.ln-after b{font-size:16px;color:var(--ink)}.ln-after span{font-size:14.5px;color:var(--text);line-height:1.45}
+.ln-why{background:var(--aqua-l);border-color:transparent}
+.ln-why p,.ln-up p{margin-top:6px;font-size:15px;line-height:1.5;color:var(--text)}
+.ln-fees{font-size:13px;color:var(--muted);padding-inline:4px}
+@media(max-width:860px){.ln-pz-grid{grid-template-columns:1fr}.ln-pz .ln-price ul{grid-template-columns:1fr}}
 @media(max-width:1000px){.ln-who{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.ln-flow,.ln-feat,.ln-steps{grid-template-columns:1fr}.ln-sec{padding-block:52px}.ln-price{padding:28px 22px}}
 @media(max-width:520px){.ln-who{grid-template-columns:1fr}}
@@ -1475,18 +1497,31 @@ def lp_launch(cfg, fonts, logo):
   <div class="ln-who">{"".join(f"<div><b>{E(t)}</b>{E(d)}</div>" for t, d in who)}</div>
   <p class="lead">Whatever you're building, start with one offer and grow from there.</p>
 </div></section>
-<section class="ln-sec" id="pricing"><div class="nf-wrap ln-center">
-  <h2>Big Ideas Don't Always Need Big Budgets.</h2>
-  <p class="lead">You don't need a huge software investment to start building your online presence.</p>
-  <div class="ln-price">
-    <span class="pl">Launch plan</span>
-    <div class="amt">$17<small>/month</small></div>
-    <p class="tag">Build your next move with Oceanic Funnels Launch.</p>
-    <ul>{"".join(f"<li>{E(i)}</li>" for i in incl)}</ul>
-    {btn()}
-    <p class="fine">Cancel anytime. No long-term contract. No mandatory setup fee.</p>
+<section class="ln-sec ln-pz" id="pricing"><div class="nf-wrap">
+  <div class="ln-pz-head"><h2>Big Ideas Don't Always Need Big Budgets.</h2>
+  <p class="lead">You don't need a huge software investment to start building your online presence.</p></div>
+  <div class="ln-pz-grid">
+    <div class="ln-price">
+      <div class="ln-pr-top"><div><span class="pl">Launch plan</span><div class="amt">$17<small>/month</small></div></div><span class="ln-pr-badge">No setup fee</span></div>
+      <p class="tag">Everything you need to build your pages and start selling.</p>
+      <ul>{"".join(f"<li>{E(i)}</li>" for i in incl)}</ul>
+      {btn()}
+      <p class="fine">Month-to-month. Cancel anytime. No long-term contract.</p>
+    </div>
+    <div class="ln-pz-side">
+      <div class="ln-after">
+        <h3>What happens after you sign up</h3>
+        <ol>
+          <li><b>Your login arrives by email</b><span>Open your account and you're in.</span></li>
+          <li><b>Pick a template</b><span>Choose a sales page, website or store to start from.</span></li>
+          <li><b>Publish and share your link</b><span>Add your offer and price, connect payments and go live.</span></li>
+        </ol>
+      </div>
+      <div class="ln-why"><h3>Why only $17?</h3><p>Launch gives you the tools to build and sell, and leaves out email, SMS and AI. That's how we keep it at $17.</p></div>
+      <div class="ln-up"><h3>Need more later?</h3><p>Add email and SMS marketing, lead forms, a CRM and automated follow-ups anytime with Growth ($97/month).</p></div>
+      <p class="ln-fees">Payment-processing fees, domain purchases and applicable taxes may cost extra.</p>
+    </div>
   </div>
-  <p class="ln-good"><b>Good to know:</b> Launch is focused on building websites, funnels and stores. Lead forms, email and SMS marketing, CRM pipelines and automated follow-ups are available on higher plans. Payment-processing fees, domain purchases and applicable taxes may cost extra.</p>
 </div></section>
 <section class="ln-sec alt"><div class="nf-wrap">
   <h2 class="ln-center" style="margin-inline:auto;text-align:center">Frequently Asked Questions</h2>
