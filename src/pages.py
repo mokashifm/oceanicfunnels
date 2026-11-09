@@ -27,21 +27,24 @@ CLARITY = """<script type="text/javascript">
     })(window, document, "clarity", "script", "z3wchhfmwo");
 </script>"""
 
-# Meta Pixels: one dataset per industry. Path prefix -> dataset ID. Pages not listed get no pixel.
+# Meta Pixels. Funnels (/lp/...) keep their own dataset; every other page uses the global Oceanic Funnels pixel.
 META_PIXELS = {
-    "/lp/med-spas/": "1759319485158087",          # Med spa dataset
-    "/industries/med-spas/": "1759319485158087",
+    "/lp/med-spas/": "1759319485158087",          # Med spa funnel dataset
 }
+GLOBAL_PIXEL = "2113854352568666"                # Oceanic Funnels website (global)
 def pixel_for(path):
     for pre, pid in META_PIXELS.items():
         if path.startswith(pre):
             return PIXEL_TPL.replace("PIXELID", pid)
-    return ""
+    if path.startswith("/lp/"):
+        return ""                                  # other funnels: no website pixel
+    return PIXEL_TPL.replace("PIXELID", GLOBAL_PIXEL)
 PIXEL_TPL = """
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','PIXELID');fbq('track','PageView');
 if(location.pathname.indexOf('/lp/')===0||location.pathname.indexOf('/industries/')===0){fbq('track','ViewContent',{content_name:location.pathname})}
+var pr=document.getElementById('pricing');if(pr&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){fbq('track','ViewContent',{content_name:'pricing'});io.disconnect()}},{threshold:.3});io.observe(pr)}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
 if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{content_name:h.split('/').pop()})}});
 </script>

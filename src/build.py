@@ -183,7 +183,7 @@ seo_head = f"""<meta charset="utf-8">
 <meta name="twitter:image" content="{CONFIG['domain']}/og-image.png">"""
 os.makedirs(SITE, exist_ok=True)
 open(f"{SITE}/index.html", "w").write(
-    f'<!doctype html>\n<html lang="en">\n<head>\n{seo_head}\n{head}<style>html,body{{margin:0;background:#FFFFFF}}</style>\n{pages.CLARITY}\n</head>\n<body>\n{page}\n</body>\n</html>\n')
+    f'<!doctype html>\n<html lang="en">\n<head>\n{seo_head}\n{head}<style>html,body{{margin:0;background:#FFFFFF}}</style>\n{pages.CLARITY}\n{pages.pixel_for("/")}\n</head>\n<body>\n{page}\n</body>\n</html>\n')
 today = CONFIG["updated"]
 open(f"{SITE}/robots.txt", "w").write(f"""User-agent: *
 Allow: /
