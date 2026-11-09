@@ -1469,9 +1469,9 @@ def lp_launch(cfg, fonts, logo):
     faq_schema = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}
     ICO = {'Unlimited Sales Funnels': '<path d="M3 4h18l-7 8v6l-4 2v-8z"/>', 'Unlimited Websites': '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>', 'Your Own Online Store': '<path d="M4 8h16l-1 12H5z"/><path d="M9 8a3 3 0 0 1 6 0"/>', 'Built-In Payment Collection': '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>', 'Drag-and-Drop Page Builder': '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M15 3h6v6M9 21H3v-6"/>', 'One Place to Build and Sell': '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'}
     gal = "".join(f'<figure><div class="ln-bw"><div class="tb"><i></i><i></i><i></i></div><div class="im"><img src="/assets/launch/{f}.webp" alt="{E(alt)}" width="1920" height="1200" loading="lazy"></div></div><figcaption><b>{E(t)}</b><span>{E(d)}</span></figcaption></figure>'
-                  for f, t, d, alt in [("sales", "A sales page for a guide", "Sell a recipe book, workbook or any digital download.", "Example sales page for a meal prep guide"),
-                                       ("store", "An online store", "Show off your products, set prices and take orders.", "Example online store selling handmade ceramics"),
-                                       ("teach", "A page for printable resources", "Turn what you teach into a kit people can buy.", "Example page selling a teacher's reading kit")])
+                  for f, t, d, alt in [("sales", "Sales funnels for any offer", "A sales page, checkout and thank-you page for a product, service, program or download. Shown: a recipe guide.", "Example sales page for a meal prep guide"),
+                                       ("store", "Online stores", "Product pages, prices and checkout for anything you ship or deliver. Shown: handmade ceramics.", "Example online store selling handmade ceramics"),
+                                       ("teach", "Websites for your business", "A home for your brand, your services and your digital products. Shown: a teacher's resource site.", "Example website selling a teacher's reading kit")])
     body = f'''<div class="ln-bar" data-cd><div class="nf-wrap ln-bar-in"><span class="lp-d">Launch price <s>$37</s> <b>$17/month</b>. The price goes up to $37 on November 20.</span><span class="lp-m"><s>$37</s> <b>$17/month</b> ends in</span><span class="ln-cd" aria-label="Time left at $17"><i data-u="d">0</i>d <i data-u="h">00</i>h <i data-u="m">00</i>m <i data-u="s">00</i>s</span></div></div>
 <section class="lp-hero nf-hatch">
   {head}
@@ -1494,7 +1494,7 @@ def lp_launch(cfg, fonts, logo):
 </section>
 <section class="ln-sec ln-galsec"><div class="nf-wrap">
   <h2>What you can build with Launch</h2>
-  <p class="lead">Example pages for the kinds of businesses that start on Launch. Pick a template, swap in your own words and products, and publish.</p>
+  <p class="lead">Whatever you sell, Launch gives you the pages to sell it: products, services, programs or digital downloads. Pick a template, add your own words and products, and publish.</p>
   <div class="ln-gal">{gal}</div>
 </div></section>
 <section class="ln-sec ln-stop"><div class="nf-wrap ln-stop-in">
