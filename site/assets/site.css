@@ -689,6 +689,7 @@
 .nf-doc code{font-size:14px;background:var(--mist);padding:2px 6px;border-radius:6px}
 .nf-doc h2{scroll-margin-top:24px}
 .nf-doc .nf-srcs{margin-top:8px}
+.nf-doc ul.nf-check{list-style:none;padding-left:0}.nf-doc ul.nf-check li{position:relative;padding-left:30px}.nf-doc ul.nf-check li::before{content:"\2713";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:12px;font-weight:800;display:grid;place-items:center;margin-top:3px}
 .nf-gcta{background:var(--aqua-l);border-radius:var(--r);padding:26px 28px;margin:8px 0 28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .nf-gcta b{font-family:var(--display);font-size:20px;color:var(--ink);display:block}
 .nf-gcta span{font-size:15px;color:var(--text)}

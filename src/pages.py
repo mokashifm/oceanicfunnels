@@ -12,7 +12,8 @@ from guides_b import G_B
 from guides_c import G_C
 from guides_d import G_D
 from guides_e import G_E
-GUIDES = G_A + G_B + G_C + G_D + G_E
+from guides_expand import apply as _expand
+GUIDES = _expand(G_A + G_B + G_C + G_D + G_E)
 GUIDE_CATS = ["Lead response", "AI agents", "Messaging", "Lead capture", "Booking", "CRM", "Automation", "Follow-up", "Reviews", "Sales funnels", "Websites and SEO", "Ecommerce and payments", "Courses and communities", "Marketing", "Reporting", "Compliance"]
 assert all(g["cat"] in GUIDE_CATS for g in GUIDES), [g["cat"] for g in GUIDES if g["cat"] not in GUIDE_CATS]
 assert len({g['slug'] for g in GUIDES}) == len(GUIDES)
@@ -184,6 +185,7 @@ PAGE_CSS += r"""
 .nf-doc code{font-size:14px;background:var(--mist);padding:2px 6px;border-radius:6px}
 .nf-doc h2{scroll-margin-top:24px}
 .nf-doc .nf-srcs{margin-top:8px}
+.nf-doc ul.nf-check{list-style:none;padding-left:0}.nf-doc ul.nf-check li{position:relative;padding-left:30px}.nf-doc ul.nf-check li::before{content:"\2713";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:12px;font-weight:800;display:grid;place-items:center;margin-top:3px}
 .nf-gcta{background:var(--aqua-l);border-radius:var(--r);padding:26px 28px;margin:8px 0 28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .nf-gcta b{font-family:var(--display);font-size:20px;color:var(--ink);display:block}
 .nf-gcta span{font-size:15px;color:var(--text)}
@@ -793,6 +795,13 @@ def guide_page(cfg, fonts, logo, g):
     indl = "".join(f'<a href="/industries/{d["slug"]}/">{E(d["name"])}</a>' for d in inds)
     rel = [o for o in GUIDES if o["slug"] != g["slug"] and o["cat"] == g["cat"]] + [o for o in GUIDES if o["slug"] != g["slug"] and o["cat"] != g["cat"]]
     more = "".join(f'<a href="/guides/{o["slug"]}/">{E(o["kw"].split(":")[0])}</a>' for o in rel[:10]) + '<a href="/guides/">All guides</a>' 
+    pbox = ""
+    if g.get("plan") == "launch":
+        pbox = (f'<div class="nf-gcta"><div><b>Build this on Launch for $17/month</b><span>Unlimited funnels and websites, an online store, checkout and payments. No coding. Cancel anytime.</span></div>'
+                f'<a class="nf-btn nf-btn--ink" href="/lp/launch/?utm_source=site&amp;utm_medium=guide&amp;utm_campaign={g["slug"]}">Start for $17/month</a></div>')
+    elif g.get("plan_box"):
+        t, d, u, b = g["plan_box"]
+        pbox = f'<div class="nf-gcta"><div><b>{E(t)}</b><span>{E(d)}</span></div><a class="nf-btn nf-btn--ink" href="{u}">{E(b)}</a></div>'
     upd = g.get("updated", GUIDE_DATE)
     date = datetime_fmt(upd)
     body = f'''<section class="nf-sub-hero">
@@ -812,8 +821,9 @@ def guide_page(cfg, fonts, logo, g):
     <aside class="nf-toc"><b>In this guide</b><ol>{toc}</ol></aside>
     <article class="nf-doc">
       <div class="nf-answer"><b class="k">The short answer</b><p>{E(g["short"])}</p></div>
+      {pbox}
       {secs}
-      <div class="nf-gcta"><div><b>Want help setting this up?</b><span>On Scale, your dedicated account manager and builder help you set it up and grow.</span></div><a class="nf-btn nf-btn--ink" href="{CK}">Build my net</a></div>
+      {pbox if pbox else '<div class="nf-gcta"><div><b>Want help setting this up?</b><span>On Scale, your dedicated account manager and builder help you set it up and grow.</span></div><a class="nf-btn nf-btn--ink" href="' + CK + '">Build my net</a></div>'}
       {srcs}
     </article>
   </div>
