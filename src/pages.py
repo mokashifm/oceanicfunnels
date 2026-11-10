@@ -40,11 +40,14 @@ def pixel_for(path):
 PIXEL_TPL = """
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','PIXELID');fbq('track','PageView');
-if(location.pathname.indexOf('/lp/')===0||location.pathname.indexOf('/industries/')===0){fbq('track','ViewContent',{content_name:location.pathname})}
-var pr=document.getElementById('pricing');if(pr&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){fbq('track','ViewContent',{content_name:'pricing'});io.disconnect()}},{threshold:.3});io.observe(pr)}
+fbq('init','PIXELID');
+window.ofT=function(n,d){var id=n+'.'+Date.now().toString(36)+'.'+Math.random().toString(36).slice(2,10);d=d||{};fbq('track',n,d,{eventID:id});
+try{var body=JSON.stringify({p:'PIXELID',e:n,id:id,d:d,u:location.href});if(navigator.sendBeacon){navigator.sendBeacon('/api/e',new Blob([body],{type:'application/json'}))}else{fetch('/api/e',{method:'POST',body:body,keepalive:true,headers:{'Content-Type':'application/json'}})}}catch(x){}};
+ofT('PageView');
+if(location.pathname.indexOf('/lp/')===0||location.pathname.indexOf('/industries/')===0){ofT('ViewContent',{content_name:location.pathname})}
+var pr=document.getElementById('pricing');if(pr&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){ofT('ViewContent',{content_name:'pricing'});io.disconnect()}},{threshold:.3});io.observe(pr)}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
-if(h.indexOf('checkout.oceanicfunnels.com')>-1){fbq('track','InitiateCheckout',{content_name:h.split('/').pop()})}});
+if(h.indexOf('checkout.oceanicfunnels.com')>-1){ofT('InitiateCheckout',{content_name:h.split('/').pop()})}});
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PIXELID&ev=PageView&noscript=1"></noscript>"""
 CK = "https://checkout.oceanicfunnels.com/oceanic_funnels-page"
