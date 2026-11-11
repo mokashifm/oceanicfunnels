@@ -1311,7 +1311,7 @@ def lp_med_welcome(cfg, fonts, logo):
 
 
 # ---------------- Launch $17 ad landing page ----------------
-LAUNCH_CK = CK   # TODO: swap to the Launch-only checkout URL when it exists
+LAUNCH_CK = "https://checkout.oceanicfunnels.com/oceanic_funnels-launch-offer"
 LAUNCH_CSS = r"""
 .ln-sec{padding-block:72px}
 .ln-sec.alt{background:#F4F8F7}
