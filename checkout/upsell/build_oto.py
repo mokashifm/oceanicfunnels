@@ -4,10 +4,7 @@
 CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .oto{--ink:#0E1A1B;--aqua:#3DE3C8;--aqd:#0E9C87;--aql:#DDF7F2;--red:#E0242B;--redd:#B81A20;--mist:#EEF5F3;--line:#DCE6E3;--mut:#5B6967;
- font-family:Inter,system-ui,sans-serif;color:#25302F;background:transparent;padding:22px 0 10px;position:relative;z-index:0;isolation:isolate}
-/* full-width pattern: behind each block AND the whole page, so the GHL button section matches */
-.oto:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;background:#F3F7F6 url(https://assets.cdn.filesafe.space/NgdMDKbJ5CKK0QEKnkDw/media/6679e1ebcb186051ca415a59.png) repeat center top fixed}
-html body{background:#F3F7F6 url(https://assets.cdn.filesafe.space/NgdMDKbJ5CKK0QEKnkDw/media/6679e1ebcb186051ca415a59.png) repeat center top fixed!important;overflow-x:hidden}
+ font-family:Inter,system-ui,sans-serif;color:#25302F;background:transparent;padding:22px 0 10px}
 .oto.top{padding-bottom:6px}.oto.rest{padding-top:6px}
 .oto *{box-sizing:border-box;margin:0;padding:0}
 .oto-w{max-width:860px;margin:0 auto;padding:0 18px}
