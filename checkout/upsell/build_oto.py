@@ -1,6 +1,8 @@
 # Builds the one-click upsell ($97) and downsell ($67) pages for GHL as ONE custom-code block each.
 # The red buttons in the design click two native GHL buttons (texts OTO-YES / OTO-NO) that the script hides.
 
+from oto_rest import rest
+
 CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .oto{--ink:#0E1A1B;--aqua:#3DE3C8;--aqd:#0E9C87;--aql:#DDF7F2;--red:#E0242B;--redd:#B81A20;--mist:#EEF5F3;--line:#DCE6E3;--mut:#5B6967;
@@ -196,77 +198,7 @@ def page(kind):
   <div id="oto-buy"></div>
 </div></section>
 '''
-    html = f'''<!-- OCEANIC FUNNELS {kind.upper()} ({p}) BLOCK 2 of 2: Custom Code element BELOW your GHL buttons. Red buttons scroll back up to them. -->
-<section class="oto rest"><div class="oto-w">
-
-  <div class="oto-sec oto-split">
-    <div>
-      <h2>{q}</h2>
-      <p class="oto-p">{pain_intro}</p>
-      <ul class="oto-x">{li(pain)}</ul>
-      <p class="oto-p"><b>{pain_end}</b></p>
-    </div>
-    <div class="oto-chart" aria-hidden="true">
-      <div class="t"><span>YOUR SALES</span><b>Live</b></div>
-      <div class="oto-bars"><i style="height:12%"></i><i style="height:22%"></i><i style="height:34%"></i><i style="height:52%"></i><i style="height:70%"></i><i style="height:94%"></i></div>
-      <div class="n"><span>Wk 1</span><span>Wk 2</span><span>Wk 3</span><span>Wk 4</span><span>Wk 5</span><span>Wk 6</span></div>
-      <div class="oto-toast"><i>$</i><span><b>New order</b> from your sales page</span></div>
-    </div>
-  </div>
-
-  <div class="oto-sec oto-card">
-    <div class="oto-card-in">{FUNNEL_SVG}<div><h2>{diff_h}</h2>{diff}</div></div>
-    <div class="oto-band"><h3>{band}</h3>{B}</div>
-  </div>
-
-  <div class="oto-sec oto-split rev">
-    <div class="oto-phone"><img src="{IMG}checkout.webp" alt="A checkout page on a phone" width="585" height="1170"></div>
-    <div>
-      <span class="oto-tag">For {p}</span>
-      <h2>What you're <em>getting</em></h2>
-      <ul class="oto-ok">{li(get)}</ul>
-    </div>
-  </div>
-  {B}
-
-  <div class="oto-sec oto-panel">
-    <div class="oto-panel-h"><h3>Here's what makes this powerful&hellip;</h3></div>
-    <div class="oto-panel-b">
-      <p class="oto-p" style="margin-top:0">You don't get a template and a "good luck." Our team builds your funnel the way we build every funnel:</p>
-      <ul class="oto-ok">
-        <li><b>Clear structure</b> that walks visitors from your offer to checkout</li>
-        <li><b>Your offer positioned clearly</b> on the page</li>
-        <li><b>Set up to sell</b>, with your checkout connected and ready</li>
-      </ul>
-      <p class="oto-p"><b>You're not doing this alone.</b></p>
-      {B}
-    </div>
-  </div>
-
-  <div class="oto-sec oto-panel oto-real"><div class="oto-panel-b">
-    <h2>Let's be real</h2><div class="line"></div>
-    <p class="oto-p">Without a sales funnel, you can't sell your offer. You're just preparing.</p>
-    <p class="oto-p">This upgrade helps you:</p>
-    <ul class="oto-ok"><li>Get your offer live</li><li>Start collecting customers</li><li>Move toward your first sale faster</li></ul>
-    <p class="oto-price">One-time upgrade &ndash; <em>{p}</em></p>
-    <p class="oto-note">One-time payment, no subscription. This offer is only available on this page.</p>
-    <h2 style="margin-top:30px;font-size:32px">Ready to get set up?</h2>
-    <p class="oto-p">Stop trying to figure everything out on your own. Let us build your funnel so you can focus on getting paid.</p>
-    {B}
-  </div></div>
-
-  <div class="oto-sec">
-    <h2 style="text-align:center">Questions</h2>
-    <div class="oto-faq">
-      <details><summary>Do I need to enter my card again?</summary><p>No. Click the red button and it's added to the order you just placed.</p></details>
-      <details><summary>Is this a subscription?</summary><p>No. It's a one-time payment of {p}. Your Launch plan stays $17/month.</p></details>
-      <details><summary>Can I edit the funnel after you build it?</summary><p>Yes. It's built inside your own account, so you can change text, images and prices anytime.</p></details>
-      <details><summary>What if I don't have an offer yet?</summary><p>That's fine. Tell us what you know or what you'd like to sell, and we'll help you shape it into a first offer.</p></details>
-    </div>
-  </div>
-  <p class="oto-foot">&copy; 2026 Oceanic Funnels &middot; <a href="https://oceanicfunnels.com/privacy/">Privacy</a> &middot; <a href="https://oceanicfunnels.com/terms/">Terms</a> &middot; <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></p>
-</div></section>
-{JS}'''
+    html = rest(kind, up, p, B, q, pain_intro, pain, pain_end, diff_h, diff, band, get) + JS
     open(f"{kind}-1-top.html", "w").write(top)
     open(f"{kind}-2-rest.html", "w").write(html)
 
