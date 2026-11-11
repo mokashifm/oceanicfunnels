@@ -189,7 +189,7 @@ def downsell_rest(p, B, li):
   <div class="oto-sec oto-panel">
     <div class="oto-panel-h"><h3>So we want to make this easier for you</h3></div>
     <div class="oto-panel-b">
-      <p class="oto-p" style="margin-top:0">Because you said you're not ready, we're not taking this opportunity away completely.</p>
+      <p class="oto-p" style="margin-top:0">Because you said you're not ready, we're not taking this opportunity away completely. But this is your last chance to get it.</p>
       <p class="oto-price" style="text-align:center;margin-top:14px">One-time offer &ndash; <em>{p}</em></p>
       {B}
       <p class="oto-p"><b>We will still:</b></p>
@@ -199,9 +199,9 @@ def downsell_rest(p, B, li):
   </div>
 
   <div class="oto-sec oto-panel oto-real"><div class="oto-panel-b">
-    <h2>Second chance <em>price</em></h2><div class="line"></div>
-    <p class="oto-p">This isn't the full build. It's a smaller version for people who hesitated.</p>
-    <p class="oto-p">This price is only available on this page.</p>
+    <h2>This is the lowest it <em>will ever be</em></h2><div class="line"></div>
+    <p class="oto-p">This isn't the full build. It's a second chance price for people who hesitated.</p>
+    <p class="oto-p"><b>Once you leave this page, this offer is gone for good.</b></p>
     {B}
     <h2 style="margin-top:34px;font-size:32px">You don't have to <em>feel ready</em></h2>
     <p class="oto-p">You just need to get started. Let us handle the setup, so you can finally move forward.</p>
@@ -238,7 +238,7 @@ def page(kind):
         diff_h = "Here's the <em>difference</em>"
         diff = '''<p class="oto-p">The people who win don't waste time figuring everything out. <b>They get set up fast.</b></p>
         <p class="oto-p"><b>So let us build it for you.</b> Instead of guessing, stressing and losing weeks, our team designs your funnel inside your account.</p>'''
-        band = "One-time offer, only on this page"
+        band = "One-time offer. You won't see this deal anywhere else"
         get = ["<b>A sales page</b> for your offer, designed for you", "<b>A checkout page</b> connected so you can take payments",
                "<b>A thank-you page</b> that tells customers what happens next", "<b>Mobile and desktop ready</b>, so it looks right everywhere",
                "<b>Built inside your account</b>, so you can edit it anytime"]
@@ -323,7 +323,7 @@ def page(kind):
     <p class="oto-p">This upgrade helps you:</p>
     <ul class="oto-ok"><li>Get your offer live</li><li>Start collecting customers</li><li>Move toward your first sale faster</li></ul>
     <p class="oto-price">One-time upgrade &ndash; <em>{p}</em></p>
-    <p class="oto-note">One-time payment, no subscription. This offer is only available on this page.</p>
+    <p class="oto-note">One-time payment, no subscription. <b>This offer is only on this page. Once you leave, you won't see it again.</b></p>
     <h2 style="margin-top:30px;font-size:32px">Ready to get set up?</h2>
     <p class="oto-p">Stop trying to figure everything out on your own. Let us build your funnel so you can focus on getting paid.</p>
     {B}
