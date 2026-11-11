@@ -40,29 +40,18 @@
 .oto-ok li:before{content:"\2713";background:var(--aqd);color:#fff}
 .oto-x li:before{content:"\2715";background:#FFE1E1;color:var(--red)}
 .oto-ok b,.oto-x b{color:var(--ink)}
-.oto-lock{position:relative;border-radius:30px;padding:22px 16px 26px;min-height:340px;overflow:hidden;color:#fff;
- background:radial-gradient(120% 80% at 20% 0%,#2F7F75 0%,transparent 60%),radial-gradient(100% 90% at 100% 100%,#0E9C87 0%,transparent 55%),linear-gradient(160deg,#10292A,#081213);
- box-shadow:0 34px 60px -30px rgba(14,26,27,.7),inset 0 0 0 1px rgba(255,255,255,.08)}
-.oto-lock-t{text-align:center;font-weight:300;font-size:58px;line-height:1;letter-spacing:-.02em;opacity:.95}
-.oto-lock-d{text-align:center;font-size:13px;font-weight:500;opacity:.75;margin-top:6px}
-.oto-nots{display:grid;gap:8px;margin-top:22px}
-.oto-not{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#0E1A1B;border-radius:16px;padding:11px 12px;
- box-shadow:0 10px 24px -14px rgba(0,0,0,.6);opacity:0;transform:translateY(-14px) scale(.97);animation:otoNot 9s cubic-bezier(.2,.8,.2,1) infinite}
-.oto-not:nth-child(2){animation-delay:.9s}.oto-not:nth-child(3){animation-delay:1.8s}
-@keyframes otoNot{0%{opacity:0;transform:translateY(-14px) scale(.97)}8%,82%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateY(6px) scale(.98)}}
-.oto-not img{width:34px;height:34px;border-radius:9px;flex:0 0 34px;background:#0E1A1B;padding:5px}
-.oto-not div{flex:1;min-width:0;font-size:13px;line-height:1.35}
-.oto-not b{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700}
-.oto-not b span{font-weight:500;color:#5B6967}
-.oto-not p{color:#25302F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.oto-dev{position:relative;padding:4px 0 26px 0}
-.oto-dev-l{background:#1B2323;border-radius:12px 12px 0 0;padding:8px 8px 10px;box-shadow:0 26px 44px -26px rgba(14,26,27,.6)}
-.oto-dev-l img{display:block;width:100%;height:auto;border-radius:3px}
-.oto-dev-b{height:11px;margin:0 -16px;background:linear-gradient(#D7DEDC,#AEB8B6);border-radius:0 0 10px 10px}
-.oto-dev-p{position:absolute;right:-8px;bottom:0;width:30%;background:#1B2323;border-radius:18px;padding:5px;box-shadow:0 24px 40px -18px rgba(14,26,27,.7)}
-.oto-dev-p img{display:block;width:100%;height:auto;border-radius:14px}
+.oto-chart{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 22px 16px;box-shadow:0 20px 40px -30px rgba(14,26,27,.5)}
+.oto-chart .t{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--mut)}
+.oto-chart .t b{color:var(--aqd);font-size:22px;font-weight:800}
+.oto-bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:14px;border-bottom:2px solid var(--line)}
+.oto-bars i{flex:1;border-radius:7px 7px 0 0;background:linear-gradient(var(--aqua),var(--aqd))}
+.oto-chart .n{display:flex;gap:10px;margin-top:8px;font-size:11px;color:var(--mut)}
+.oto-chart .n span{flex:1;text-align:center}
+.oto-toast{display:flex;align-items:center;gap:10px;margin-top:14px;background:var(--mist);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.oto-toast i{width:30px;height:30px;border-radius:50%;background:var(--aqd);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:800}
+.oto-toast b{color:var(--ink)}
 .oto-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -36px rgba(14,26,27,.5)}
-.oto-card-in{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:center;padding:30px}
+.oto-card-in{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;padding:30px}
 .oto-band{background:var(--aqd);padding:24px 24px 22px;text-align:center}
 .oto-band h3{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:28px;text-transform:uppercase;color:#fff;letter-spacing:.02em}
 .oto-band .oto-cta{margin-top:16px}
@@ -108,17 +97,17 @@
 @media(max-width:720px){
  .oto-fc{flex-basis:240px}.oto-fc-view{height:320px}.oto-fc:hover .oto-fc-view img,.oto-fc.on .oto-fc-view img{transform:translateY(calc(-100% + 320px))}.oto-track{animation-duration:30s}
  .oto h1{font-size:42px}.oto-kick{font-size:17px}.oto h2{font-size:31px}.oto-sub{font-size:17px}
- .oto-split,.oto-split.rev,.oto-card-in{grid-template-columns:1fr}.oto-card-in{padding:24px 20px}.oto-dev{max-width:330px;margin:0 auto}.oto-lock{min-height:0}
+ .oto-split,.oto-split.rev,.oto-card-in{grid-template-columns:1fr}.oto-card-in{padding:24px 20px}.oto-card-in svg{max-width:170px;margin:0 auto}
  .oto-btn{font-size:17px;padding:16px 12px 13px}.oto-band h3,.oto-panel-h h3{font-size:22px}.oto-price{font-size:32px}
  .oto-hero{padding:20px 12px 12px;border-width:5px}.oto-panel-b{padding:22px 20px}.oto-phone{width:200px}
  .oto-ok li,.oto-x li,.oto-p{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.oto-btn,.oto-prog i{animation:none}.oto-not{animation:none;opacity:1;transform:none}.oto-track{animation-duration:90s}}
+@media(prefers-reduced-motion:reduce){.oto-btn,.oto-prog i{animation:none}.oto-track{animation-duration:90s}}
 </style>
 <section class="oto top"><div class="oto-w">
   <div class="oto-prog"><i></i><span>Almost done&hellip;</span></div>
-  <p class="oto-kick">Hold on. <b>Before you go&hellip;</b></p>
-  <h1>Get your first funnel<br><em>built for just $67</em></h1>
-  <p class="oto-sub">We get it, $97 isn't right for everyone. Here's a smaller version, so your first sales funnel still gets built.</p>
+  <p class="oto-kick">Hold up&hellip; <b>read this before you leave</b></p>
+  <h1>This might be <u>exactly</u><br>what you <em>need</em></h1>
+  <p class="oto-sub">Not ready for the full build? Here's a smaller version for $67, so your first sales funnel still gets built.</p>
   <div class="oto-show">
     <span class="oto-badge">Funnels built by our team</span>
     <div class="oto-track"><div class="oto-fc" style="--d:7s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/mindset-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="2574" loading="lazy"></div></div><div class="oto-fc" style="--d:6s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/strategy-call-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="2150" loading="lazy"></div></div><div class="oto-fc" style="--d:12s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/salon-seo-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="4691" loading="lazy"></div></div><div class="oto-fc" style="--d:4s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/sales-coach-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="1557" loading="lazy"></div></div><div class="oto-fc" style="--d:7s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/mindset-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="2574" loading="lazy"></div></div><div class="oto-fc" style="--d:6s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/strategy-call-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="2150" loading="lazy"></div></div><div class="oto-fc" style="--d:12s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/salon-seo-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="4691" loading="lazy"></div></div><div class="oto-fc" style="--d:4s"><div class="oto-fc-bar"><i></i><i></i><i></i></div><div class="oto-fc-view"><img src="https://oceanicfunnels.com/assets/showcase/sales-coach-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="1557" loading="lazy"></div></div></div>
