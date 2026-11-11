@@ -1,0 +1,26 @@
+<!-- OCEANIC FUNNELS: Launch checkout "AddPaymentInfo" event.
+     Paste into the checkout step: Funnel step > Settings > Tracking code > FOOTER code.
+     Sends AddPaymentInfo to Meta once, when a visitor types a valid email and leaves the field.
+     Uses the pixel already on the checkout page (fbq). Reads no card data. -->
+<script>
+(function(){
+  var KEY='of_api_'+location.pathname, sent=false;
+  try{ if(sessionStorage.getItem(KEY)) sent=true; }catch(e){}
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v||'').trim()); }
+  function fire(){
+    if(sent) return;
+    if(typeof window.fbq!=='function'){ return setTimeout(fire,500); }   // pixel not loaded yet
+    sent=true;
+    try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+    window.fbq('track','AddPaymentInfo',
+      {value:17, currency:'USD', content_name:'Oceanic Funnels Launch'},
+      {eventID:'api-'+Date.now()+'-'+Math.random().toString(36).slice(2,8)});
+  }
+  document.addEventListener('focusout',function(e){
+    var t=e.target;
+    if(!t || t.tagName!=='INPUT') return;
+    var hint=((t.name||'')+' '+(t.type||'')+' '+(t.placeholder||'')+' '+(t.autocomplete||'')+' '+(t.id||'')).toLowerCase();
+    if(hint.indexOf('email')>-1 && validEmail(t.value)) fire();
+  }, true);
+})();
+</script>
