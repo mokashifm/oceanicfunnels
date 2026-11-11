@@ -1,39 +1,34 @@
 <!-- OCEANIC FUNNELS CHECKOUT: LAUNCH block 2 of 3 (column next to the order form) -->
 <style>
-.ofl{font-family:Inter,system-ui,sans-serif;color:#25302F;background:#fff;border:1px solid #DCE6E3;border-radius:18px;padding:22px 22px 18px;max-width:440px;box-shadow:0 10px 30px -18px rgba(14,26,27,.25)}
+.ofl{font-family:Inter,system-ui,sans-serif;color:#25302F;background:#fff;border:1px solid #DCE6E3;border-radius:16px;padding:18px 20px 20px;max-width:520px;text-align:center}
 .ofl *{box-sizing:border-box;margin:0;padding:0}
-.ofl h2{font-family:"Inter Tight",Inter,sans-serif;font-size:18px;font-weight:700;color:#0E1A1B;letter-spacing:-.01em}
-.ofl h3{font-family:"Inter Tight",Inter,sans-serif;font-size:14px;font-weight:700;color:#0E1A1B;margin-top:16px;padding-top:14px;border-top:1px solid #EEF5F3}
-.ofl ul,.ofl ol{list-style:none;display:grid;gap:7px;margin-top:10px}
-.ofl ul li{display:flex;gap:9px;font-size:13.5px;line-height:1.45}
-.ofl ul li:before{content:"";flex:0 0 17px;height:17px;margin-top:1px;border-radius:50%;background:#DDF7F2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E9C87' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/11px no-repeat}
-.ofl ol{counter-reset:s}
-.ofl ol li{counter-increment:s;display:flex;gap:9px;font-size:13px;line-height:1.45;color:#5B6967}
-.ofl ol li:before{content:counter(s);flex:0 0 20px;height:20px;border-radius:50%;background:#EEF5F3;color:#0E9C87;font-weight:700;font-size:11px;display:grid;place-items:center}
-.ofl ol li b{color:#0E1A1B;font-weight:600}
-.ofl-price{margin-top:16px;background:#EEF5F3;border-radius:12px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
-.ofl-price b{font-family:"Inter Tight",Inter,sans-serif;font-size:17px;color:#0E1A1B}
-.ofl-price s{color:#9DB0AD;font-weight:500;font-size:14px;margin-right:5px}
-.ofl-foot{margin-top:11px;font-size:12.5px;color:#5B6967;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.ofl-bar{background:#0E9C87;color:#fff;font-family:"Inter Tight",Inter,sans-serif;font-weight:800;font-size:15px;letter-spacing:.02em;text-transform:uppercase;padding:10px 12px;border-radius:6px}
+.ofl-img{display:block;width:100%;height:auto;margin:16px 0 6px}
+.ofl-name{font-family:"Inter Tight",Inter,sans-serif;font-weight:800;font-size:30px;line-height:1.1;color:#0E9C87;letter-spacing:-.02em}
+.ofl-big{font-family:"Inter Tight",Inter,sans-serif;font-weight:900;font-size:44px;line-height:1.05;color:#0E1A1B;letter-spacing:-.03em;margin-top:2px}
+.ofl-big small{font-size:.45em;font-weight:700;color:#5B6967;letter-spacing:0}
+.ofl-was{font-size:17px;color:#25302F;margin-top:4px}
+.ofl-was s{color:#D9472A;text-decoration-thickness:2px}
+.ofl ul{list-style:none;text-align:left;display:grid;gap:9px;margin-top:16px}
+.ofl li{position:relative;padding-left:20px;font-size:15.5px;line-height:1.45}
+.ofl li:before{content:"";position:absolute;left:3px;top:.55em;width:8px;height:8px;border-radius:50%;background:#3DE3C8}
+.ofl li b{color:#0E1A1B}
+.ofl-foot{margin-top:16px;padding-top:12px;border-top:1px solid #EEF5F3;font-size:13px;color:#5B6967}
 .ofl-foot a{color:#0E9C87;font-weight:600;text-decoration:none}
+@media(max-width:600px){.ofl-name{font-size:25px}.ofl-big{font-size:36px}.ofl li{font-size:14.5px}}
 </style>
 <aside class="ofl">
-  <h2>What you get today</h2>
+  <div class="ofl-bar">Price goes up to $37 on November 20</div>
+  <img class="ofl-img" src="https://oceanicfunnels.com/assets/launch/checkout-bundle.webp" alt="Sales pages, an online store and checkout built with Oceanic Funnels" width="1000" height="572">
+  <div class="ofl-name">Launch Plan</div>
+  <div class="ofl-big">ONLY $17<small>/month</small></div>
+  <div class="ofl-was">Normally <s>$37/month</s></div>
   <ul>
-    <li><span><b>Your first sales page</b> from a template, no code needed</span></li>
-    <li><span><b>Take payments</b> on your pages, checkout and store</span></li>
-    <li><span><b>Sell anything:</b> guides, ebooks, classes or products</span></li>
-    <li><span><b>Unlimited funnels and websites</b> on your own domain</span></li>
+    <li><b>Your first sales page today</b> – pick a template, no code needed</li>
+    <li><b>Take payments</b> – on your pages, checkout and store</li>
+    <li><b>Sell anything</b> – guides, ebooks, classes or products</li>
+    <li><b>Unlimited funnels and websites</b> – on your own domain</li>
+    <li><b>Grow at your pace</b> – add a new offer whenever you're ready</li>
   </ul>
-
-  <h3>How you grow from here</h3>
-  <ol>
-    <li><span><b>Go live</b> with your first page today</span></li>
-    <li><span><b>Make your first sale</b> and save every customer</span></li>
-    <li><span><b>Add more offers</b> with a funnel for each one</span></li>
-    <li><span><b>Build your brand</b> with a full website and store</span></li>
-  </ol>
-
-  <div class="ofl-price"><span>Due today</span><b><s>$37</s>$17</b></div>
-  <div class="ofl-foot"><span>Cancel anytime. No contract.</span><a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></div>
+  <div class="ofl-foot">Cancel anytime. No contract. · <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></div>
 </aside>
