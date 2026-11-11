@@ -174,7 +174,7 @@ def page(kind):
   <p class="oto-kick">{kick}</p>
   <h1>{h1}</h1>
   <p class="oto-sub">{sub}</p>
-  <div class="oto-hero"><span class="oto-badge">{badge}</span><img src="{IMG}checkout-bundle.webp" alt="Sales pages, store and checkout designed by Oceanic Funnels" width="1000" height="572"></div>
+  <div class="oto-hero"><span class="oto-badge">Funnels built by our team</span><img src="https://oceanicfunnels.com/assets/showcase/funnels-built.webp" alt="Sales funnels built by the Oceanic Funnels team" width="1200" height="691"></div>
   {B}
 
   <div class="oto-sec oto-split">
