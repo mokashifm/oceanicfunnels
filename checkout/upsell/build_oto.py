@@ -1,8 +1,6 @@
 # Builds the one-click upsell ($97) and downsell ($67) pages for GHL as ONE custom-code block each.
 # The red buttons in the design click two native GHL buttons (texts OTO-YES / OTO-NO) that the script hides.
 
-from oto_rest import rest
-
 CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .oto{--ink:#0E1A1B;--aqua:#3DE3C8;--aqd:#0E9C87;--aql:#DDF7F2;--red:#E0242B;--redd:#B81A20;--mist:#EEF5F3;--line:#DCE6E3;--mut:#5B6967;
@@ -42,18 +40,29 @@ CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inte
 .oto-ok li:before{content:"\2713";background:var(--aqd);color:#fff}
 .oto-x li:before{content:"\2715";background:#FFE1E1;color:var(--red)}
 .oto-ok b,.oto-x b{color:var(--ink)}
-.oto-chart{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 22px 16px;box-shadow:0 20px 40px -30px rgba(14,26,27,.5)}
-.oto-chart .t{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--mut)}
-.oto-chart .t b{color:var(--aqd);font-size:22px;font-weight:800}
-.oto-bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:14px;border-bottom:2px solid var(--line)}
-.oto-bars i{flex:1;border-radius:7px 7px 0 0;background:linear-gradient(var(--aqua),var(--aqd))}
-.oto-chart .n{display:flex;gap:10px;margin-top:8px;font-size:11px;color:var(--mut)}
-.oto-chart .n span{flex:1;text-align:center}
-.oto-toast{display:flex;align-items:center;gap:10px;margin-top:14px;background:var(--mist);border-radius:12px;padding:10px 12px;font-size:13.5px}
-.oto-toast i{width:30px;height:30px;border-radius:50%;background:var(--aqd);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:800}
-.oto-toast b{color:var(--ink)}
+.oto-lock{position:relative;border-radius:30px;padding:22px 16px 26px;min-height:340px;overflow:hidden;color:#fff;
+ background:radial-gradient(120% 80% at 20% 0%,#2F7F75 0%,transparent 60%),radial-gradient(100% 90% at 100% 100%,#0E9C87 0%,transparent 55%),linear-gradient(160deg,#10292A,#081213);
+ box-shadow:0 34px 60px -30px rgba(14,26,27,.7),inset 0 0 0 1px rgba(255,255,255,.08)}
+.oto-lock-t{text-align:center;font-weight:300;font-size:58px;line-height:1;letter-spacing:-.02em;opacity:.95}
+.oto-lock-d{text-align:center;font-size:13px;font-weight:500;opacity:.75;margin-top:6px}
+.oto-nots{display:grid;gap:8px;margin-top:22px}
+.oto-not{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#0E1A1B;border-radius:16px;padding:11px 12px;
+ box-shadow:0 10px 24px -14px rgba(0,0,0,.6);opacity:0;transform:translateY(-14px) scale(.97);animation:otoNot 9s cubic-bezier(.2,.8,.2,1) infinite}
+.oto-not:nth-child(2){animation-delay:.9s}.oto-not:nth-child(3){animation-delay:1.8s}
+@keyframes otoNot{0%{opacity:0;transform:translateY(-14px) scale(.97)}8%,82%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateY(6px) scale(.98)}}
+.oto-not img{width:34px;height:34px;border-radius:9px;flex:0 0 34px;background:#0E1A1B;padding:5px}
+.oto-not div{flex:1;min-width:0;font-size:13px;line-height:1.35}
+.oto-not b{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700}
+.oto-not b span{font-weight:500;color:#5B6967}
+.oto-not p{color:#25302F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oto-dev{position:relative;padding:4px 0 26px 0}
+.oto-dev-l{background:#1B2323;border-radius:12px 12px 0 0;padding:8px 8px 10px;box-shadow:0 26px 44px -26px rgba(14,26,27,.6)}
+.oto-dev-l img{display:block;width:100%;height:auto;border-radius:3px}
+.oto-dev-b{height:11px;margin:0 -16px;background:linear-gradient(#D7DEDC,#AEB8B6);border-radius:0 0 10px 10px}
+.oto-dev-p{position:absolute;right:-8px;bottom:0;width:30%;background:#1B2323;border-radius:18px;padding:5px;box-shadow:0 24px 40px -18px rgba(14,26,27,.7)}
+.oto-dev-p img{display:block;width:100%;height:auto;border-radius:14px}
 .oto-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -36px rgba(14,26,27,.5)}
-.oto-card-in{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;padding:30px}
+.oto-card-in{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:center;padding:30px}
 .oto-band{background:var(--aqd);padding:24px 24px 22px;text-align:center}
 .oto-band h3{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:28px;text-transform:uppercase;color:#fff;letter-spacing:.02em}
 .oto-band .oto-cta{margin-top:16px}
@@ -99,11 +108,11 @@ CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inte
 @media(max-width:720px){
  .oto-fc{flex-basis:240px}.oto-fc-view{height:320px}.oto-fc:hover .oto-fc-view img,.oto-fc.on .oto-fc-view img{transform:translateY(calc(-100% + 320px))}.oto-track{animation-duration:30s}
  .oto h1{font-size:42px}.oto-kick{font-size:17px}.oto h2{font-size:31px}.oto-sub{font-size:17px}
- .oto-split,.oto-split.rev,.oto-card-in{grid-template-columns:1fr}.oto-card-in{padding:24px 20px}.oto-card-in svg{max-width:170px;margin:0 auto}
+ .oto-split,.oto-split.rev,.oto-card-in{grid-template-columns:1fr}.oto-card-in{padding:24px 20px}.oto-dev{max-width:330px;margin:0 auto}.oto-lock{min-height:0}
  .oto-btn{font-size:17px;padding:16px 12px 13px}.oto-band h3,.oto-panel-h h3{font-size:22px}.oto-price{font-size:32px}
  .oto-hero{padding:20px 12px 12px;border-width:5px}.oto-panel-b{padding:22px 20px}.oto-phone{width:200px}
  .oto-ok li,.oto-x li,.oto-p{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.oto-btn,.oto-prog i{animation:none}.oto-track{animation-duration:90s}}
+@media(prefers-reduced-motion:reduce){.oto-btn,.oto-prog i{animation:none}.oto-not{animation:none;opacity:1;transform:none}.oto-track{animation-duration:90s}}
 </style>
 '''
 
@@ -146,6 +155,9 @@ SLIDER = f'''<div class="oto-show">
   s.querySelectorAll('.oto-fc.on').forEach(function(x){{x.classList.remove('on')}});if(on)c.classList.add('on');s.classList.toggle('paused',on);}});}});
  if(!('ontouchstart' in window))return;var h=s.querySelector('.oto-hint');if(h)h.textContent='Tap a funnel to scroll through it';}})();
 </script>'''
+
+DEVICES = f'''<div class="oto-dev" aria-hidden="true"><div class="oto-dev-l"><img src="{IMG}sales.webp" alt="" width="1920" height="1200"></div><div class="oto-dev-b"></div>
+  <div class="oto-dev-p"><img src="{IMG}checkout.webp" alt="" width="585" height="1170"></div></div>'''
 
 def btn(price, kind, sub="Add it to your order with one click."):
     return f'''<div class="oto-cta"><button type="button" class="oto-btn" data-oto="yes">Yes! Build my first sales funnel ({price})<small>{sub}</small></button></div>'''
@@ -198,7 +210,79 @@ def page(kind):
   <div id="oto-buy"></div>
 </div></section>
 '''
-    html = rest(kind, up, p, B, q, pain_intro, pain, pain_end, diff_h, diff, band, get) + JS
+    html = f'''<!-- OCEANIC FUNNELS {kind.upper()} ({p}) BLOCK 2 of 2: Custom Code element BELOW your GHL buttons. Red buttons scroll back up to them. -->
+<section class="oto rest"><div class="oto-w">
+
+  <div class="oto-sec oto-split">
+    <div>
+      <h2>{q}</h2>
+      <p class="oto-p">{pain_intro}</p>
+      <ul class="oto-x">{li(pain)}</ul>
+      <p class="oto-p"><b>{pain_end}</b></p>
+    </div>
+    <div class="oto-lock" aria-hidden="true">
+      <div class="oto-lock-t">9:41</div><div class="oto-lock-d">Your first sales</div>
+      <div class="oto-nots">
+        <div class="oto-not"><img src="https://oceanicfunnels.com/icon.svg" alt=""><div><b>New order <span>now</span></b><p>$27.00 &middot; from your sales page</p></div></div>
+        <div class="oto-not"><img src="https://oceanicfunnels.com/icon.svg" alt=""><div><b>New order <span>2m ago</span></b><p>$27.00 &middot; from your sales page</p></div></div>
+        <div class="oto-not"><img src="https://oceanicfunnels.com/icon.svg" alt=""><div><b>New contact <span>5m ago</span></b><p>Added from your checkout</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="oto-sec oto-card">
+    <div class="oto-card-in">{DEVICES}<div><h2>{diff_h}</h2>{diff}</div></div>
+    <div class="oto-band"><h3>{band}</h3>{B}</div>
+  </div>
+
+  <div class="oto-sec oto-split rev">
+    <div class="oto-phone"><img src="{IMG}checkout.webp" alt="A checkout page on a phone" width="585" height="1170"></div>
+    <div>
+      <span class="oto-tag">For {p}</span>
+      <h2>What you're <em>getting</em></h2>
+      <ul class="oto-ok">{li(get)}</ul>
+    </div>
+  </div>
+  {B}
+
+  <div class="oto-sec oto-panel">
+    <div class="oto-panel-h"><h3>Here's what makes this powerful&hellip;</h3></div>
+    <div class="oto-panel-b">
+      <p class="oto-p" style="margin-top:0">You don't get a template and a "good luck." Our team builds your funnel the way we build every funnel:</p>
+      <ul class="oto-ok">
+        <li><b>Clear structure</b> that walks visitors from your offer to checkout</li>
+        <li><b>Your offer positioned clearly</b> on the page</li>
+        <li><b>Set up to sell</b>, with your checkout connected and ready</li>
+      </ul>
+      <p class="oto-p"><b>You're not doing this alone.</b></p>
+      {B}
+    </div>
+  </div>
+
+  <div class="oto-sec oto-panel oto-real"><div class="oto-panel-b">
+    <h2>Let's be real</h2><div class="line"></div>
+    <p class="oto-p">Without a sales funnel, you can't sell your offer. You're just preparing.</p>
+    <p class="oto-p">This upgrade helps you:</p>
+    <ul class="oto-ok"><li>Get your offer live</li><li>Start collecting customers</li><li>Move toward your first sale faster</li></ul>
+    <p class="oto-price">One-time upgrade &ndash; <em>{p}</em></p>
+    <p class="oto-note">One-time payment, no subscription. This offer is only available on this page.</p>
+    <h2 style="margin-top:30px;font-size:32px">Ready to get set up?</h2>
+    <p class="oto-p">Stop trying to figure everything out on your own. Let us build your funnel so you can focus on getting paid.</p>
+    {B}
+  </div></div>
+
+  <div class="oto-sec">
+    <h2 style="text-align:center">Questions</h2>
+    <div class="oto-faq">
+      <details><summary>Do I need to enter my card again?</summary><p>No. Click the red button and it's added to the order you just placed.</p></details>
+      <details><summary>Is this a subscription?</summary><p>No. It's a one-time payment of {p}. Your Launch plan stays $17/month.</p></details>
+      <details><summary>Can I edit the funnel after you build it?</summary><p>Yes. It's built inside your own account, so you can change text, images and prices anytime.</p></details>
+      <details><summary>What if I don't have an offer yet?</summary><p>That's fine. Tell us what you know or what you'd like to sell, and we'll help you shape it into a first offer.</p></details>
+    </div>
+  </div>
+  <p class="oto-foot">&copy; 2026 Oceanic Funnels &middot; <a href="https://oceanicfunnels.com/privacy/">Privacy</a> &middot; <a href="https://oceanicfunnels.com/terms/">Terms</a> &middot; <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></p>
+</div></section>
+{JS}'''
     open(f"{kind}-1-top.html", "w").write(top)
     open(f"{kind}-2-rest.html", "w").write(html)
 
