@@ -80,13 +80,28 @@ CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inte
 .oto-faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--mut)}
 .oto-foot{text-align:center;margin:44px 0 18px;font-size:13px;color:#9DB0AD}
 .oto-foot a{color:var(--mut)}
+.oto-show{position:relative;margin:30px -18px 0;padding:26px 0 6px;overflow:hidden}
+.oto-show .oto-badge{top:-4px;z-index:3}
+.oto-track{display:flex;gap:22px;width:max-content;padding:18px 0 22px;animation:otoSlide 38s linear infinite}
+.oto-show:hover .oto-track,.oto-show.paused .oto-track{animation-play-state:paused}
+@keyframes otoSlide{to{transform:translateX(calc(-50% - 11px))}}
+.oto-show{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.oto-fc{flex:0 0 300px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 22px 40px -22px rgba(14,26,27,.55),0 0 0 1px rgba(14,26,27,.08);cursor:pointer;transition:transform .3s,box-shadow .3s}
+.oto-fc:hover,.oto-fc.on{transform:translateY(-6px);box-shadow:0 30px 50px -22px rgba(14,26,27,.6),0 0 0 3px #3DE3C8}
+.oto-fc-bar{height:24px;background:#E9EEED;display:flex;align-items:center;gap:6px;padding:0 10px}
+.oto-fc-bar i{width:8px;height:8px;border-radius:50%;background:#FF6B5E}.oto-fc-bar i:nth-child(2){background:#FFBE2E}.oto-fc-bar i:nth-child(3){background:#2ACB42}
+.oto-fc-view{height:380px;overflow:hidden;position:relative}
+.oto-fc-view img{display:block;width:100%;height:auto;transform:translateY(0);transition:transform 1s ease-out}
+.oto-fc:hover .oto-fc-view img,.oto-fc.on .oto-fc-view img{transform:translateY(calc(-100% + 380px));transition:transform var(--d) linear}
+.oto-hint{text-align:center;font-size:13px;color:#5B6967;margin-top:2px}
 @media(max-width:720px){
+ .oto-fc{flex-basis:240px}.oto-fc-view{height:320px}.oto-fc:hover .oto-fc-view img,.oto-fc.on .oto-fc-view img{transform:translateY(calc(-100% + 320px))}.oto-track{animation-duration:30s}
  .oto h1{font-size:42px}.oto-kick{font-size:17px}.oto h2{font-size:31px}.oto-sub{font-size:17px}
  .oto-split,.oto-split.rev,.oto-card-in{grid-template-columns:1fr}.oto-card-in{padding:24px 20px}.oto-card-in svg{max-width:170px;margin:0 auto}
  .oto-btn{font-size:17px;padding:16px 12px 13px}.oto-band h3,.oto-panel-h h3{font-size:22px}.oto-price{font-size:32px}
  .oto-hero{padding:20px 12px 12px;border-width:5px}.oto-panel-b{padding:22px 20px}.oto-phone{width:200px}
  .oto-ok li,.oto-x li,.oto-p{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.oto-btn,.oto-prog i{animation:none}}
+@media(prefers-reduced-motion:reduce){.oto-btn,.oto-prog i{animation:none}.oto-track{animation-duration:90s}}
 </style>
 '''
 
@@ -109,6 +124,26 @@ FUNNEL_SVG = '''<svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
  <circle cx="152" cy="150" r="22" fill="#fff" stroke="#0E1A1B" stroke-width="5"/>
  <path d="M152 138v24M158 142c-2-3-12-4-12 2s12 3 12 9-10 5-12 2" stroke="#0E9C87" stroke-width="4" stroke-linecap="round"/>
 </svg>'''
+
+
+SHOW = "https://oceanicfunnels.com/assets/showcase/"
+FUNNELS = [("mindset", 2574), ("strategy-call", 2150), ("salon-seo", 4691), ("sales-coach", 1557)]
+def _card(k, h):
+    secs = max(4, round(h / 380))  # longer pages scroll a bit longer
+    return (f'<div class="oto-fc" style="--d:{secs}s"><div class="oto-fc-bar"><i></i><i></i><i></i></div>'
+            f'<div class="oto-fc-view"><img src="{SHOW}{k}-full.webp" alt="Funnel built by Oceanic Funnels" width="560" height="{h}" loading="lazy"></div></div>')
+_cards = "".join(_card(k, h) for k, h in FUNNELS)
+SLIDER = f'''<div class="oto-show">
+    <span class="oto-badge">Funnels built by our team</span>
+    <div class="oto-track">{_cards}{_cards}</div>
+    <p class="oto-hint">Hover a funnel to scroll through it</p>
+  </div>
+<script>
+(function(){{var s=document.querySelector('.oto-show');if(!s)return;
+ s.querySelectorAll('.oto-fc').forEach(function(c){{c.addEventListener('click',function(){{var on=!c.classList.contains('on');
+  s.querySelectorAll('.oto-fc.on').forEach(function(x){{x.classList.remove('on')}});if(on)c.classList.add('on');s.classList.toggle('paused',on);}});}});
+ if(!('ontouchstart' in window))return;var h=s.querySelector('.oto-hint');if(h)h.textContent='Tap a funnel to scroll through it';}})();
+</script>'''
 
 def btn(price, kind, sub="Add it to your order with one click."):
     return f'''<div class="oto-cta"><button type="button" class="oto-btn" data-oto="yes">Yes! Build my first sales funnel ({price})<small>{sub}</small></button></div>'''
@@ -157,7 +192,7 @@ def page(kind):
   <p class="oto-kick">{kick}</p>
   <h1>{h1}</h1>
   <p class="oto-sub">{sub}</p>
-  <div class="oto-hero"><span class="oto-badge">Funnels built by our team</span><img src="https://oceanicfunnels.com/assets/showcase/funnels-built.webp" alt="Sales funnels built by the Oceanic Funnels team" width="1200" height="691"></div>
+  {SLIDER}
   <div id="oto-buy"></div>
 </div></section>
 '''
