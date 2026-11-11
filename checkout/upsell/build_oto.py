@@ -4,7 +4,8 @@
 CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .oto{--ink:#0E1A1B;--aqua:#3DE3C8;--aqd:#0E9C87;--aql:#DDF7F2;--red:#E0242B;--redd:#B81A20;--mist:#EEF5F3;--line:#DCE6E3;--mut:#5B6967;
- font-family:Inter,system-ui,sans-serif;color:#25302F;background:#F3F7F6;padding:22px 0 10px;overflow:hidden}
+ font-family:Inter,system-ui,sans-serif;color:#25302F;background:#F3F7F6 url(https://assets.cdn.filesafe.space/NgdMDKbJ5CKK0QEKnkDw/media/6679e1ebcb186051ca415a59.png) repeat center top;padding:22px 0 10px;overflow:hidden}
+.oto.top{padding-bottom:6px}.oto.rest{padding-top:6px}
 .oto *{box-sizing:border-box;margin:0;padding:0}
 .oto-w{max-width:860px;margin:0 auto;padding:0 18px}
 .oto-prog{max-width:420px;margin:0 auto;background:#E2EAE8;border-radius:999px;height:22px;overflow:hidden;position:relative}
@@ -90,25 +91,11 @@ CSS = r'''<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inte
 '''
 
 JS = r'''<script>
-/* Red buttons above click your hidden GHL buttons. Native GHL button texts must be exactly OTO-YES and OTO-NO. */
-(function(){
-  function find(m){var a=document.querySelectorAll('a,button');for(var i=0;i<a.length;i++){if(a[i].closest('.oto'))continue;if((a[i].textContent||'').replace(/\s+/g,'').toUpperCase()===m)return a[i];}return null}
-  function hide(el){var w=el.closest('[class*="c-button"]')||el.parentElement||el;w.style.cssText+=';position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important'}
-  var tries=0;
-  (function wire(){
-    var y=find('OTO-YES'),n=find('OTO-NO');
-    if((!y||!n)&&tries++<40){return setTimeout(wire,250)}
-    if(y)hide(y);if(n)hide(n);
-    document.querySelectorAll('.oto [data-oto]').forEach(function(b){
-      b.addEventListener('click',function(e){
-        e.preventDefault();var t=b.getAttribute('data-oto')==='yes'?y:n;
-        if(!t){console.warn('Oceanic OTO: native button not found');return}
-        if(b.getAttribute('data-oto')==='yes'){document.querySelectorAll('.oto [data-oto="yes"]').forEach(function(x){x.disabled=true;x.firstChild.textContent='Processing your order… '})}
-        t.click();
-      });
-    });
-  })();
-})();
+/* Red buttons scroll back up to your GHL one-click button (placed right under block 1). */
+(function(){document.querySelectorAll('.oto [data-oto]').forEach(function(b){b.addEventListener('click',function(e){
+  e.preventDefault();var t=document.getElementById('oto-buy');
+  if(t){t.scrollIntoView({behavior:'smooth',block:'center'})}else{window.scrollTo({top:0,behavior:'smooth'})}
+});});})();
 </script>
 '''
 
@@ -123,10 +110,8 @@ FUNNEL_SVG = '''<svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
  <path d="M152 138v24M158 142c-2-3-12-4-12 2s12 3 12 9-10 5-12 2" stroke="#0E9C87" stroke-width="4" stroke-linecap="round"/>
 </svg>'''
 
-def btn(price, kind, sub="One click. No need to enter your card again."):
-    no = "No thanks, I'll build it myself" if kind == "upsell" else "No thanks, I'll skip this offer"
-    return f'''<div class="oto-cta"><button type="button" class="oto-btn" data-oto="yes">Yes! Build my first sales funnel ({price})<small>{sub}</small></button>
-    <button type="button" class="oto-no" data-oto="no">{no}</button></div>'''
+def btn(price, kind, sub="Add it to your order with one click."):
+    return f'''<div class="oto-cta"><button type="button" class="oto-btn" data-oto="yes">Yes! Build my first sales funnel ({price})<small>{sub}</small></button></div>'''
 
 def page(kind):
     up = kind == "upsell"
@@ -164,18 +149,20 @@ def page(kind):
         get = ["<b>A sales page</b> for your offer, designed for you", "<b>A checkout page</b> connected so you can take payments",
                "<b>Mobile and desktop ready</b>, so it looks right everywhere", "<b>Built inside your account</b>, so you can edit it anytime"]
     li = lambda xs: "".join(f"<li>{x}</li>" for x in xs)
-    html = f'''<!-- OCEANIC FUNNELS {kind.upper()} ({p}): paste this whole block into ONE Custom Code element.
-     Then add 2 normal GHL Button elements anywhere on the page:
-       1) Text: OTO-YES   Action: One-Click Upsell/Downsell -> {p} product
-       2) Text: OTO-NO    Action: go to {"the downsell page" if up else "the thank-you page"}
-     This code hides both and the red buttons in the design click them. -->
-{CSS}<section class="oto"><div class="oto-w">
+    top = f'''<!-- OCEANIC FUNNELS {kind.upper()} ({p}) BLOCK 1 of 2: Custom Code element at the very top.
+     Right under it: GHL Button (One-Click Upsell/Downsell -> {p} product) + GHL "No thanks" button (go to {"downsell page" if up else "thank-you page"}).
+     Then BLOCK 2 in a Custom Code element below the buttons. -->
+{CSS}<section class="oto top"><div class="oto-w">
   <div class="oto-prog"><i></i><span>Almost done&hellip;</span></div>
   <p class="oto-kick">{kick}</p>
   <h1>{h1}</h1>
   <p class="oto-sub">{sub}</p>
   <div class="oto-hero"><span class="oto-badge">Funnels built by our team</span><img src="https://oceanicfunnels.com/assets/showcase/funnels-built.webp" alt="Sales funnels built by the Oceanic Funnels team" width="1200" height="691"></div>
-  {B}
+  <div id="oto-buy"></div>
+</div></section>
+'''
+    html = f'''<!-- OCEANIC FUNNELS {kind.upper()} ({p}) BLOCK 2 of 2: Custom Code element BELOW your GHL buttons. Red buttons scroll back up to them. -->
+<section class="oto rest"><div class="oto-w">
 
   <div class="oto-sec oto-split">
     <div>
@@ -245,6 +232,7 @@ def page(kind):
   <p class="oto-foot">&copy; 2026 Oceanic Funnels &middot; <a href="https://oceanicfunnels.com/privacy/">Privacy</a> &middot; <a href="https://oceanicfunnels.com/terms/">Terms</a> &middot; <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></p>
 </div></section>
 {JS}'''
-    open(f"{kind}.html", "w").write(html)
+    open(f"{kind}-1-top.html", "w").write(top)
+    open(f"{kind}-2-rest.html", "w").write(html)
 
 page("upsell"); page("downsell")
