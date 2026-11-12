@@ -9,400 +9,544 @@
 @font-face{font-family:Play;font-weight:600;src:url(fonts/playfair-display-latin-600-normal.woff2)}
 @font-face{font-family:Play;font-weight:700;src:url(fonts/playfair-display-latin-700-normal.woff2)}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family:Inter,sans-serif;color:#1d2433;-webkit-font-smoothing:antialiased}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family:Inter,sans-serif;color:#111827;-webkit-font-smoothing:antialiased}
+svg.i{display:inline-block;vertical-align:middle;flex:none;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
 #stage{position:absolute;inset:0;overflow:hidden}
+#cam{position:absolute;inset:0;transform-origin:0 0}
 #fade{position:absolute;inset:0;background:#fff;pointer-events:none;z-index:90}
-/* cursor */
-#cur{position:absolute;left:0;top:0;width:34px;height:40px;z-index:80;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));will-change:transform}
-#ring{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;border:4px solid #3DE3C8;z-index:79;opacity:0}
-/* caption */
-#cap{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:85;background:#0E1A1B;color:#fff;font-weight:700;font-size:30px;padding:16px 30px 16px 18px;border-radius:999px;display:flex;align-items:center;gap:14px;box-shadow:0 20px 40px -18px rgba(0,0,0,.55);white-space:nowrap;opacity:0}
-#cap i{font-style:normal;width:44px;height:44px;border-radius:50%;background:#3DE3C8;color:#0E1A1B;display:grid;place-items:center;font-size:22px;font-weight:800}
-/* app chrome */
-.app{position:absolute;inset:0;background:#F3F6F6}
-.side{position:absolute;left:0;top:0;bottom:0;width:72px;background:#fff;border-right:1px solid #E3E8E8;display:flex;flex-direction:column;align-items:center;padding-top:92px;gap:22px}
-.side b{width:26px;height:26px;border-radius:7px;border:2px solid #9AA6A6;opacity:.75}
-.side b.on{background:#DDF7F2;border-color:#0E9C87}
-.top{position:absolute;left:0;right:0;top:0;height:64px;background:#fff;border-bottom:1px solid #E3E8E8;overflow:hidden}
-.top:before{content:"";position:absolute;left:0;top:0;width:1120px;height:64px;background:#62E3C9;clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
-.top .lg{position:absolute;left:16px;top:12px;width:40px;height:40px}
-.top .ic{position:absolute;right:28px;top:14px;display:flex;gap:12px}
-.top .ic span{width:36px;height:36px;border-radius:50%;background:#62E3C9}
-.top .ic span:nth-child(2){background:#0E1A1B}
-.nav{position:absolute;left:72px;right:0;top:64px;height:66px;background:#fff;border-bottom:1px solid #E3E8E8;display:flex;align-items:center;gap:10px;padding-left:26px}
-.nav h3{font-size:24px;font-weight:600;margin-right:12px}
-.nav span{font-size:17px;padding:9px 16px;border:1px solid #E3E8E8;border-radius:8px;color:#2b3442}
-.nav span.on{background:#0E1A1B;color:#fff;border-color:#0E1A1B}
-.main{position:absolute;left:72px;right:0;top:130px;bottom:0;padding:34px 70px}
-.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:9px;padding:13px 20px;font-size:17px}
-.btn.dark{background:#0E1A1B;color:#fff}
-.btn.blue{background:#3B5BFF;color:#fff}
-/* funnels list */
-.fl-h{display:flex;align-items:center;justify-content:space-between}
-.fl-h h2{font-size:34px;font-weight:700}
-.fl-h p{color:#5B6967;margin-top:6px;font-size:17px}
-.fl-list{margin-top:28px;background:#fff;border:1px solid #E3E8E8;border-radius:14px;overflow:hidden}
-.fl-row{display:grid;grid-template-columns:96px 1fr 180px 160px 140px;align-items:center;gap:20px;padding:18px 26px;border-top:1px solid #EEF2F2;font-size:18px}
-.fl-row:first-child{border-top:0;background:#F8FAFA;font-size:14px;font-weight:600;color:#6b7777;text-transform:uppercase;letter-spacing:.06em;padding:14px 26px}
-.thumb{width:96px;height:62px;border-radius:8px;background:linear-gradient(180deg,#B88570 0 55%,#F4EEEA 55%);border:1px solid #e5e5e5}
-.pill{display:inline-block;font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px;background:#DDF7F2;color:#0A7F6E}
-/* modal */
-.scrim{position:absolute;inset:0;background:rgba(40,46,56,.55);opacity:0}
-.modal{position:absolute;left:50%;top:50%;width:1180px;margin-left:-590px;margin-top:-250px;background:#fff;border-radius:16px;padding:28px 28px 26px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);opacity:0}
-.modal h4{font-size:24px;font-weight:600}
-.modal .x{position:absolute;right:28px;top:24px;font-size:26px;color:#333}
-.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
-.opt{border-radius:14px;padding:22px;border:2px solid transparent;transition:none;height:340px;position:relative}
-.opt .art{height:180px;border-radius:12px;position:relative;overflow:hidden}
-.opt h5{font-size:23px;font-weight:600;margin-top:22px}
-.opt p{font-size:17px;color:#5B6967;margin-top:8px;line-height:1.4}
-.o1{background:#F5F7F8}.o1 .art{border:2px dashed #C8D0D0;background:#fff;padding:30px 24px}
-.o1 .art label{font-size:17px;font-weight:500}.o1 .art label b{color:#E0242B}
-.o1 .art .in{margin-top:10px;height:46px;border:1px solid #CfD6D6;border-radius:7px;padding:12px;font-size:17px;color:#99A}
-.o2{background:linear-gradient(180deg,#EFE9FF,#fff)}.o2 .art{background:linear-gradient(135deg,#8E5CFF,#6B3CF0);color:#fff;padding:24px;font-size:22px;font-weight:600}
-.o3{background:linear-gradient(180deg,#FFF0EA,#fff)}.o3 .art{background:linear-gradient(135deg,#FFB8A0,#F38E77);padding:24px;font-size:22px;font-weight:600;color:#3a1d14}
-.opt.hov{border-color:#0E9C87;box-shadow:0 18px 40px -22px rgba(14,156,135,.8)}
-.mini{position:absolute;right:20px;top:26px;width:150px;height:140px;background:#fff;border-radius:8px;transform:rotate(-8deg);box-shadow:0 10px 24px -10px rgba(0,0,0,.4);overflow:hidden}
-.mini:before{content:"";position:absolute;left:0;right:0;top:0;height:60px;background:linear-gradient(90deg,#FDE6A3,#B9E5FF)}
-.mini i{position:absolute;left:12px;right:30px;height:8px;border-radius:4px;background:#E2E6EA}
-.modal .ft{display:flex;justify-content:flex-end;gap:12px;margin-top:22px}
-.modal .ft span{font-size:18px;font-weight:600;padding:12px 20px;border-radius:9px;border:1px solid #D7DCDC}
-.modal .ft span.b{background:#0E1A1B;color:#fff;border-color:#0E1A1B}
-/* templates */
-.chips{display:flex;gap:10px;margin-top:20px}
-.chips span{font-size:16px;font-weight:600;padding:9px 16px;border-radius:999px;background:#fff;border:1px solid #E3E8E8}
-.chips span.on{background:#0E1A1B;color:#fff}
-.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:26px}
-.tcard{background:#fff;border-radius:14px;border:1px solid #E3E8E8;overflow:hidden;position:relative}
-.tcard .pv{height:230px;position:relative;overflow:hidden}
-.tcard .pv .h{position:absolute;left:0;right:0;top:0;height:120px}
-.tcard .pv .t1{position:absolute;left:20px;top:34px;width:58%;height:14px;border-radius:4px;background:rgba(255,255,255,.9)}
-.tcard .pv .t2{position:absolute;left:20px;top:58px;width:44%;height:14px;border-radius:4px;background:rgba(255,255,255,.75)}
-.tcard .pv .b{position:absolute;left:20px;top:84px;width:80px;height:20px;border-radius:5px;background:#fff}
-.tcard .pv .l{position:absolute;left:20px;right:20px;height:9px;border-radius:4px;background:#E7EBEE}
-.tcard .pv .c{position:absolute;bottom:18px;width:28%;height:52px;border-radius:7px;background:#F1F3F5}
-.tcard .nm{padding:14px 16px;font-weight:600;font-size:17px;display:flex;justify-content:space-between}
-.tcard .nm small{font-weight:500;color:#7b8787;font-size:14px}
-.tcard .ov{position:absolute;left:0;right:0;top:0;height:230px;background:rgba(14,26,27,.55);display:flex;align-items:center;justify-content:center;gap:12px;opacity:0}
-.tcard .ov span{font-weight:600;font-size:17px;padding:11px 18px;border-radius:9px;background:#fff;color:#0E1A1B}
-.tcard .ov span.u{background:#3DE3C8}
-.creating{position:absolute;inset:0;background:rgba(255,255,255,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font-size:26px;font-weight:600;opacity:0}
-.spin{width:54px;height:54px;border-radius:50%;border:5px solid #DDF7F2;border-top-color:#0E9C87}
-/* steps view */
-.stepsv{position:absolute;left:72px;right:0;top:130px;bottom:0;padding:34px 70px;opacity:0;background:#F3F6F6}
-.stepsv .bk{font-size:17px;color:#333}
-.stepsv h2{font-size:30px;font-weight:600;margin-top:10px}
-.stepsv .tabs{display:flex;gap:30px;margin-top:22px;font-size:18px;border-bottom:1px solid #E3E8E8;padding-bottom:12px}
-.stepsv .tabs span:first-child{color:#0E9C87;font-weight:600}
-.sv{display:grid;grid-template-columns:420px 1fr;margin-top:24px;background:#fff;border-radius:6px;overflow:hidden;height:600px}
-.sv .lp{background:#E6F7F3;padding:26px 0}
-.sv .lp h4{font-size:26px;font-weight:500;color:#2a6b60;padding:0 26px 18px}
-.st{display:flex;align-items:center;height:74px;opacity:0}
-.st .ico{width:74px;height:74px;display:grid;place-items:center;background:#C9EFE6}
-.st .ico:after{content:"";width:22px;height:16px;border:2px solid #0E9C87;border-radius:3px}
-.st b{font-weight:500;font-size:19px;padding-left:26px;background:#fff;height:74px;flex:1;display:flex;align-items:center}
-.st.on .ico{background:#62E3C9}
-.sv .rp{padding:26px 34px}
-.sv .rp .hd{display:flex;justify-content:space-between;font-size:20px;border-bottom:1px solid #EEF2F2;padding-bottom:14px}
-.sv .rp .hd span{color:#0E9C87;font-weight:600}
-.sv .ctrl{margin-top:28px;width:420px}
-.sv .ctrl .lab{display:inline-block;font-size:15px;font-weight:600;color:#0A7F6E;background:#DDF7F2;padding:4px 10px;border-radius:5px}
-.sv .ctrl .pv{margin-top:10px;height:300px;border:1px solid #E3E8E8;border-radius:8px;overflow:hidden;position:relative}
-.sv .ctrl .act{display:flex;margin-top:16px;gap:10px}
-/* builder */
-.bld{position:absolute;inset:0;background:#F6F7F8}
-.bt{position:absolute;left:0;right:0;top:0;height:66px;background:#fff;border-bottom:1px solid #E6E9EC;display:flex;align-items:center;padding:0 22px;gap:18px;font-size:19px}
-.bt .as{font-size:15px;color:#555;border:1px solid #DDE2E6;border-radius:999px;padding:6px 14px}
-.bt .r{margin-left:auto;display:flex;gap:12px;align-items:center}
-.bt .r .sq{width:46px;height:46px;border:1px solid #DDE2E6;border-radius:9px}
-.pub{display:inline-flex;align-items:center;gap:10px;background:#3B5BFF;color:#fff;font-weight:600;font-size:19px;padding:12px 22px;border-radius:9px;min-width:140px;justify-content:center}
-.tb2{position:absolute;left:0;right:0;top:66px;height:56px;background:#fff;border-bottom:1px solid #E6E9EC;display:flex;align-items:center;padding:0 18px;gap:22px}
-.tb2 .g{width:22px;height:22px;border-radius:5px;border:2px solid #4b5563;opacity:.8}
-.tb2 .plus{font-size:30px;font-weight:300;line-height:1;width:34px;height:34px;display:grid;place-items:center;border-radius:7px}
-.tb2 .dev{margin-left:290px;display:flex;gap:6px;align-items:center;border-left:1px solid #E6E9EC;border-right:1px solid #E6E9EC;padding:0 18px;height:56px}
-.tb2 .dev span{width:40px;height:38px;border-radius:7px;display:grid;place-items:center}
-.tb2 .dev span.on{background:#EEF1F4}
-.tb2 .dev span i{display:block;border:2px solid #333;border-radius:3px}
-.urlb{position:absolute;left:0;right:0;top:122px;height:44px;background:#fff;border-bottom:1px solid #E6E9EC;display:flex;align-items:center;justify-content:center;gap:14px;font-size:17px;color:#3B5BFF}
-.urlb b{color:#2943d6;font-weight:600}
-.canvas{position:absolute;left:0;right:0;top:166px;bottom:40px;overflow:hidden;display:flex;justify-content:center}
-.bb{position:absolute;left:0;right:0;bottom:0;height:40px;background:#fff;border-top:1px solid #E6E9EC;display:flex;align-items:center;gap:10px;padding:0 18px;font-size:15px}
-.bb span{padding:3px 10px;border-radius:5px}
-.bb span.s{background:#E3F8E8;color:#147a2e}
-.page{width:1560px;background:#fff;height:1400px;position:relative;box-shadow:0 0 0 1px #E6E9EC}
-.pg-nav{height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 70px;font-family:Play;font-weight:700;font-size:28px}
-.pg-nav div{display:flex;gap:34px;font-family:Inter;font-size:16px;font-weight:500;color:#555}
-.hero{display:flex;flex-wrap:wrap;min-height:560px}
-.hero .lft{flex:1 1 560px;background:#B47F6A;color:#fff;padding:90px 70px 70px;position:relative}
-.hero .lft small{font-family:Play;font-style:italic;font-size:20px;opacity:.9}
-.hero h1{font-family:Play;font-weight:700;font-size:72px;line-height:1.05;margin-top:14px;position:relative;display:inline-block;min-height:76px;max-width:640px}
-.hero h1 .caret{display:inline-block;width:4px;height:64px;background:#fff;vertical-align:-8px;margin-left:4px}
-.hero .sub{font-size:21px;line-height:1.5;margin-top:22px;max-width:560px;opacity:.95}
-.hero .cta{display:inline-block;margin-top:30px;background:#fff;color:#7a4b39;font-weight:700;font-size:21px;padding:18px 30px;border-radius:8px;opacity:0;transform-origin:left center}
-.hero .rgt{flex:1 1 560px;background:linear-gradient(135deg,#F4E6DD,#E9D3C6);position:relative;min-height:560px;overflow:hidden}
-.course{position:absolute;left:50%;top:50%;width:440px;height:290px;margin:-170px 0 0 -220px;background:#fff;border-radius:16px;box-shadow:0 30px 60px -30px rgba(80,40,20,.6);overflow:hidden}
-.course .v{height:190px;background:linear-gradient(135deg,#2E3A46,#56677A);position:relative}
-.course .v:after{content:"";position:absolute;left:50%;top:50%;margin:-26px 0 0 -18px;border-left:44px solid #fff;border-top:26px solid transparent;border-bottom:26px solid transparent;opacity:.9}
-.course .m{padding:16px 20px}.course .m i{display:block;height:12px;border-radius:5px;background:#EDE3DD;margin-top:10px}
-.course .m i:first-child{width:70%;background:#D9C4B8;margin-top:0}
-.sel{position:absolute;border:3px solid #3B5BFF;pointer-events:none;opacity:0;z-index:5}
-.sel span{position:absolute;left:-3px;top:-34px;background:#3B5BFF;color:#fff;font-size:15px;font-weight:600;padding:5px 10px;border-radius:5px 5px 0 0;white-space:nowrap}
-.learn{padding:80px 70px;text-align:center}
-.learn h2{font-family:Play;font-size:52px}
-.learn .cards{display:flex;flex-wrap:wrap;gap:26px;margin-top:40px;justify-content:center}
-.learn .cards div{flex:1 1 300px;max-width:440px;background:#F7F1ED;border-radius:12px;height:220px}
-.panel{position:absolute;left:0;top:122px;bottom:40px;width:330px;background:#fff;border-right:1px solid #E6E9EC;box-shadow:12px 0 30px -20px rgba(0,0,0,.3);z-index:20;padding:22px;transform:translateX(-340px)}
-.panel h4{font-size:20px;font-weight:600}
-.panel .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.panel .el{border:1px solid #E3E6EA;border-radius:10px;height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:500}
-.panel .el i{width:30px;height:22px;border:2px solid #555;border-radius:5px}
-.panel .el.hov{border-color:#3B5BFF;background:#F1F4FF;color:#2943d6}
-.ghost{position:absolute;z-index:70;background:#3B5BFF;color:#fff;font-weight:600;font-size:17px;padding:12px 18px;border-radius:9px;opacity:0;box-shadow:0 16px 30px -12px rgba(59,91,255,.7)}
-.rpanel{position:absolute;right:0;top:122px;bottom:40px;width:360px;background:#fff;border-left:1px solid #E6E9EC;box-shadow:-12px 0 30px -20px rgba(0,0,0,.3);z-index:20;padding:22px;transform:translateX(370px)}
-.rpanel h4{font-size:20px;font-weight:600}
-.rpanel .lab{font-size:15px;color:#666;margin-top:22px}
-.sw{display:flex;gap:14px;margin-top:12px}
-.sw span{width:52px;height:52px;border-radius:12px;border:3px solid #fff;box-shadow:0 0 0 1px #DDE2E6}
-.sw span.on{box-shadow:0 0 0 3px #3B5BFF}
-.rpanel .fld{margin-top:12px;height:46px;border:1px solid #DDE2E6;border-radius:8px}
-.toast{position:absolute;right:40px;top:90px;z-index:60;background:#0E1A1B;color:#fff;border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.6);opacity:0;min-width:430px}
-.toast .ok{width:46px;height:46px;border-radius:50%;background:#3DE3C8;color:#0E1A1B;display:grid;place-items:center;font-weight:800;font-size:24px}
-.toast b{display:block;font-size:20px}.toast small{font-size:16px;color:#A9C2BE}
-/* sales */
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
-.kpi{background:#fff;border:1px solid #E3E8E8;border-radius:14px;padding:22px 26px}
-.kpi small{font-size:16px;color:#6b7777;font-weight:500}
-.kpi b{display:block;font-size:44px;font-weight:700;margin-top:6px;letter-spacing:-.02em}
-.kpi em{font-style:normal;font-size:15px;color:#0A7F6E;font-weight:600}
-.tx{margin-top:24px;background:#fff;border:1px solid #E3E8E8;border-radius:14px;overflow:hidden;height:520px;position:relative}
-.tr{display:grid;grid-template-columns:2.2fr 1fr 2fr 1.4fr 1fr 1fr;align-items:center;padding:0 26px;height:64px;border-top:1px solid #EEF2F2;font-size:18px;background:#fff}
-.tr.h{border-top:0;background:#F8FAFA;font-size:15px;font-weight:600;color:#6b7777;height:52px}
-.tr .cu{display:flex;align-items:center;gap:14px;font-weight:500}
-.tr .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px}
-.tr .ok{display:inline-block;font-size:15px;font-weight:600;color:#147a2e;background:#E3F8E8;border:1px solid #9FDDB0;padding:4px 12px;border-radius:999px}
-.rows{position:absolute;left:0;right:0;top:52px}.rows .tr{position:absolute;left:0;right:0;top:0}
-.demo{position:absolute;right:76px;top:48px;font-size:14px;color:#8a9696;font-weight:500}
-/* intro/outro */
-.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(70% 60% at 50% 40%,#EAFBF7,#fff)}
-.center .bigl{width:170px;height:170px}
-.center h1{font-size:92px;font-weight:800;letter-spacing:-.035em;color:#0E1A1B;margin-top:30px;line-height:1.02}
-.center h1 em{font-style:normal;color:#0E9C87}
-.center p{font-size:32px;color:#4a5856;margin-top:22px}
-.center .go{margin-top:44px;background:#FF7657;color:#fff;font-weight:700;font-size:34px;padding:24px 46px;border-radius:999px;box-shadow:0 24px 40px -20px rgba(255,118,87,.9)}
-.center .url{margin-top:26px;font-size:24px;font-weight:600;color:#0E9C87}
+#cur{position:absolute;left:0;top:0;width:26px;height:30px;z-index:80;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+#ring{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(59,91,255,.25);z-index:79;opacity:0}
+#cap{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:85;background:rgba(17,24,39,.92);color:#fff;font-weight:600;font-size:26px;padding:13px 26px 13px 14px;border-radius:999px;display:flex;align-items:center;gap:12px;white-space:nowrap;opacity:0;box-shadow:0 14px 34px -14px rgba(0,0,0,.6)}
+#cap i{font-style:normal;width:38px;height:38px;border-radius:50%;background:#3DE3C8;color:#0E1A1B;display:grid;place-items:center;font-size:19px;font-weight:800}
+
+/* ---------- app chrome ---------- */
+.app{position:absolute;inset:0;background:#F6F7F9}
+.tbar{position:absolute;left:0;right:0;top:0;height:54px;background:#fff}
+.tbar .band{position:absolute;left:0;top:0;width:1010px;height:54px;background:#69E4CC;clip-path:polygon(0 0,955px 0,1008px 54px,0 54px)}
+.tbar .ri{position:absolute;right:16px;top:9px;display:flex;gap:10px;align-items:center}
+.tbar .ri span{width:36px;height:36px;border-radius:50%;background:#69E4CC;display:grid;place-items:center;color:#fff;position:relative}
+.tbar .ri span.k{background:#111}
+.tbar .ri span.n:after{content:"";position:absolute;right:3px;top:3px;width:8px;height:8px;border-radius:50%;background:#F5A524}
+.tbar .ri img{width:30px;height:30px;margin-left:4px}
+.sbar{position:absolute;left:0;top:0;bottom:0;width:62px;background:#fff;border-right:1px solid #ECEEF1;z-index:2}
+.sbar .lg{position:absolute;left:10px;top:12px;width:40px;height:40px}
+.sbar .lg img{width:40px}
+.sbar .tg{position:absolute;left:53px;top:25px;width:15px;height:15px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center}
+.sbar .it{position:absolute;left:0;width:62px;display:grid;place-items:center;color:#374151}
+.sbar .av{position:absolute;left:7px;top:82px;width:48px;height:40px;border-radius:10px;border:1px solid #E5E7EB;background:#F9FAFB;display:grid;place-items:center;color:#6B7280}
+.sbar .se{position:absolute;left:9px;top:135px;width:44px;height:24px;border-radius:12px;border:1px solid #E5E7EB;display:grid;place-items:center}
+.sbar .zp{position:absolute;left:9px;top:166px;width:44px;height:16px;border-radius:8px;background:#69E4CC;display:grid;place-items:center;color:#0E1A1B}
+.sbar .on{background:#E5F6F2;border-radius:8px;left:8px;width:46px;color:#0E9C87}
+.sbar .sc{position:absolute;left:57px;top:200px;width:4px;height:630px;border-radius:2px;background:#69E4CC}
+.nav{position:absolute;left:62px;right:0;top:54px;height:52px;background:#fff;border-bottom:1px solid #E5E7EB;display:flex;align-items:center;gap:6px;padding-left:13px;z-index:1}
+.nav h3{font-size:20px;font-weight:500;margin-right:8px}
+.nav span{font-size:15px;padding:8px 12px;border:1px solid #E5E7EB;border-radius:6px;color:#111827;display:flex;align-items:center;gap:6px}
+.nav span.on{background:#111;color:#fff;border-color:#111}
+.nav .gear{border:0;color:#111}
+.b{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;border-radius:6px;height:36px;padding:0 14px}
+.bk{background:#111;color:#fff}.bw{background:#fff;border:1px solid #D1D5DB;color:#111}
+
+/* ---------- funnels list ---------- */
+.flist{position:absolute;left:287px;right:225px;top:132px}
+.flist .hd{display:flex;align-items:flex-end;justify-content:space-between}
+.flist h2{font-size:22px;font-weight:600}
+.flist p{color:#6B7280;font-size:15px;margin-top:6px}
+.srch{display:flex;align-items:center;gap:8px;width:260px;height:36px;border:1px solid #D1D5DB;border-radius:6px;padding:0 12px;color:#9CA3AF;font-size:15px;background:#fff}
+.ftab{margin-top:22px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;overflow:hidden}
+.fr{display:grid;grid-template-columns:1fr 160px 200px 60px;align-items:center;padding:0 22px;height:80px;border-top:1px solid #F0F1F3;font-size:15px;color:#374151}
+.fr.h{height:44px;border-top:0;background:#F9FAFB;font-size:14px;font-weight:500;color:#4B5563}
+.fr .nm{display:flex;align-items:center;gap:16px;color:#111827;font-weight:500}
+.fr .th{width:90px;height:56px;border-radius:5px;border:1px solid #E5E7EB;overflow:hidden;background:#fff}
+.fr .th img{width:100%;display:block}
+.scrim{position:absolute;inset:0;background:rgba(55,61,73,.66);opacity:0;z-index:5}
+.modal{position:absolute;left:560px;top:342px;width:800px;height:396px;background:#fff;border-radius:8px;opacity:0;z-index:6;box-shadow:0 30px 70px -20px rgba(0,0,0,.45)}
+.modal h4{position:absolute;left:16px;top:18px;font-size:17px;font-weight:600}
+.modal .x{position:absolute;right:18px;top:16px;color:#111}
+.card{position:absolute;top:56px;width:243px;height:268px;border-radius:6px;border:2px solid transparent}
+.card .art{position:absolute;left:17px;top:14px;width:204px;height:142px;border-radius:7px;overflow:hidden}
+.card .art img{width:100%;height:100%;display:block}
+.card h5{position:absolute;left:18px;top:176px;font-size:16px;font-weight:600;color:#111827}
+.card p{position:absolute;left:18px;top:202px;right:18px;font-size:14px;line-height:18px;color:#4B5563}
+.c1{left:16px;background:#F3F4F5}
+.c1 .dash{position:absolute;left:17px;top:14px;width:204px;height:146px;border:1px dashed #A7AFB8;border-radius:8px}
+.c1 label{position:absolute;left:38px;top:55px;font-size:14px;color:#111827}.c1 label b{color:#E11D48;font-weight:500}
+.c1 .in{position:absolute;left:38px;top:77px;width:162px;height:32px;border:1px solid #D1D5DB;border-radius:4px;background:#fff;font-size:14px;color:#9CA3AF;padding:7px 8px;white-space:nowrap;overflow:hidden}
+.c1 .in.f{border-color:#0E9C87;box-shadow:0 0 0 2px rgba(14,156,135,.15)}
+.c1 h5{top:180px}.c1 p{top:206px}
+.c2{left:279px;background:linear-gradient(180deg,#ECE6FD 0,#F8F5FF 55%,#fff)}
+.c3{left:541px;background:linear-gradient(180deg,#FCE7DE 0,#FDF3EF 55%,#fff)}
+.card.sel{border-color:#2B7A68}
+.c1.sel{background:#EEF1F1}
+.card.hov{box-shadow:0 0 0 2px #9CCFC3}
+.modal .ft{position:absolute;right:16px;bottom:12px;display:flex;gap:12px}
+.modal .ft span{height:32px;font-size:15px;font-weight:600;padding:0 10px;border-radius:4px;display:grid;place-items:center;border:1px solid #D1D5DB}
+.modal .ft span.k{background:#111;color:#fff;border-color:#111}
+
+/* ---------- templates ---------- */
+.tpl{position:absolute;left:62px;right:0;top:106px;bottom:0;padding:22px 140px 0;background:#F6F7F9}
+.tpl .bk2{font-size:15px;color:#111;display:flex;align-items:center;gap:6px}
+.tpl h2{font-size:22px;font-weight:600;margin-top:10px}
+.tpl .row{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.chips{display:flex;gap:8px}
+.chips span{font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid #E5E7EB;color:#374151}
+.chips span.on{background:#111;color:#fff;border-color:#111}
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px}
+.tc{background:#fff;border:1px solid #E5E7EB;border-radius:8px;overflow:hidden;position:relative}
+.tc .vp{height:300px;overflow:hidden;position:relative;border-bottom:1px solid #EEF0F2}
+.tc .vp img{width:100%;display:block;position:absolute;left:0;top:0}
+.tc .mt{padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+.tc .mt b{font-size:15px;font-weight:600}.tc .mt small{font-size:13px;color:#6B7280}
+.tc .ov{position:absolute;left:0;right:0;top:0;height:300px;background:rgba(17,24,39,.45);display:flex;align-items:center;justify-content:center;gap:10px;opacity:0}
+.tc .ov span{height:36px;padding:0 14px;border-radius:6px;font-size:14px;font-weight:600;display:grid;place-items:center;background:#fff;color:#111}
+.tc .ov span.u{background:#111;color:#fff}
+.tc.hv{box-shadow:0 0 0 2px #2B7A68}
+.loadov{position:absolute;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;gap:16px;font-size:15px;font-weight:600;letter-spacing:.2em;color:#4E7BE0;opacity:0;z-index:20}
+.loadov i{display:block;width:12px;height:30px;background:#4E7BE0;border-radius:2px}
+
+/* ---------- funnel steps ---------- */
+.fs{position:absolute;inset:0}
+.fs .bk2{position:absolute;left:288px;top:127px;font-size:15px;display:flex;gap:5px;align-items:center}
+.fs h2{position:absolute;left:287px;top:154px;font-size:20px;font-weight:500}
+.fs .sh{position:absolute;left:1616px;top:150px;width:35px;height:35px;border-radius:4px;background:#111;color:#fff;display:grid;place-items:center}
+.fs .inf{position:absolute;left:1660px;top:150px;width:35px;height:35px;border-radius:4px;background:#fff;border:1px solid #E5E7EB;display:grid;place-items:center}
+.fs .tabs{position:absolute;left:287px;right:225px;top:207px;height:32px;border-bottom:1px solid #E5E7EB;display:flex;font-size:16px}
+.fs .tabs span{padding:3px 8px 0;margin-right:8px;height:32px}
+.fs .tabs span.on{color:#1A9E86;border-bottom:2px solid #1A9E86}
+.fs .pan{position:absolute;left:287px;top:257px;width:1408px;height:578px;background:#fff}
+.fs .lp{position:absolute;left:0;top:0;width:352px;height:578px;background:#E2F4EF}
+.fs .lp h4{position:absolute;left:18px;top:20px;font-size:22px;font-weight:400;color:#3F7F72;display:flex;gap:10px;align-items:center}
+.st{position:absolute;left:0;width:352px;height:64px;display:flex}
+.st .ib{width:61px;height:64px;display:grid;place-items:center;color:#5FC9B4;position:relative}
+.st .lb{flex:1;display:flex;align-items:center;padding-left:22px;font-size:15px;color:#111}
+.st.on .ib{background:#5ED8C0;color:#0E3B33}.st.on .lb{background:#fff}
+.st .tri{position:absolute;left:22px;bottom:-9px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:9px solid #5ED8C0;z-index:2}
+.st .tri.l{border-top-color:#BDEBDF}
+.fs .add{position:absolute;left:9px;top:525px;width:334px;height:35px;border-radius:3px;background:#111;color:#fff;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.fs .rp{position:absolute;left:379px;top:0;right:27px;height:578px}
+.fs .rh{position:absolute;left:0;right:0;top:22px;height:33px;border-bottom:1px solid #E5E7EB;font-size:18px;color:#374151}
+.fs .rh .t{position:absolute;right:0;top:4px;display:flex;gap:16px;font-size:16px;color:#111}
+.fs .rh .t span{padding:0 9px 9px}
+.fs .rh .t span:first-child{color:#1A9E86;border-bottom:2px solid #1A9E86}
+.fs .msg{position:absolute;left:0;top:66px;font-size:15px;color:#4B5563}
+.tag{position:absolute;height:23px;padding:0 8px;background:#E7F4F1;color:#14735F;font-size:14px;font-weight:600;display:flex;align-items:center;gap:5px;border-radius:2px}
+.tag.v{background:#EEF1F4;color:#4B5563}
+.fs .thb{position:absolute;left:0;top:141px;width:304px;height:282px;border:1px solid #E5E7EB;border-radius:3px;overflow:hidden;background:#fff}
+.fs .thb img{width:100%;display:block;position:absolute;left:0;top:0}
+.fs .ed{position:absolute;left:0;top:431px;width:97px;height:35px;background:#111;color:#fff;border-radius:2px;display:flex;align-items:center;font-weight:600;font-size:15px}
+.fs .ed b{padding-left:18px;width:62px;font-weight:600}.fs .ed i{display:grid;place-items:center;width:35px;height:35px}
+.sq{position:absolute;top:431px;width:35px;height:35px;border:1px solid #D1D5DB;border-radius:3px;display:grid;place-items:center;color:#374151;background:#fff}
+.fs .split{position:absolute;left:330px;top:185px;width:342px;text-align:center}
+.fs .split img{width:212px;height:auto}
+.fs .split h6{font-size:18px;font-weight:400;margin-top:20px;color:#111}
+.fs .split p{font-size:15px;color:#4B5563;margin-top:8px;line-height:23px}
+.fs .var{position:absolute;left:699px;top:141px;width:303px;height:282px;border:1px dashed #C5CBD3;border-radius:3px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px}
+.fs .del{position:absolute;left:641px;top:519px;height:35px;padding:0 12px;background:#DC3B2E;color:#fff;border-radius:3px;display:flex;gap:8px;align-items:center;font-weight:600;font-size:15px}
+.fs .cln{white-space:nowrap;position:absolute;left:828px;top:519px;height:35px;padding:0 12px;border:1px solid #D1D5DB;border-radius:3px;display:flex;gap:8px;align-items:center;font-weight:600;font-size:15px;background:#fff}
+
+/* ---------- builder ---------- */
+.bld{position:absolute;inset:0;background:#fff}
+.r1{position:absolute;left:0;right:0;top:0;height:57px;border-bottom:1px solid #E5E7EB;background:#fff;z-index:30}
+.r1 .bk3{position:absolute;left:18px;top:17px;font-size:17px;display:flex;gap:8px;align-items:center}
+.r1 .dv{position:absolute;left:117px;top:0;width:1px;height:57px;background:#E5E7EB}
+.r1 .as{position:absolute;left:135px;top:16px;height:25px;padding:0 12px;border:1px solid #E5E7EB;border-radius:999px;display:flex;gap:8px;align-items:center;font-size:14px;color:#4B5563}
+.r1 .ib2{position:absolute;top:9px;width:40px;height:38px;border:1px solid #D1D5DB;border-radius:7px;display:grid;place-items:center;color:#111}
+.pubb{position:absolute;left:1790px;top:9px;width:121px;height:38px;border-radius:5px;background:#3851E8;color:#fff;font-weight:600;font-size:17px;display:flex;align-items:center;justify-content:center;gap:8px}
+.r2{position:absolute;left:0;right:0;top:57px;height:45px;border-bottom:1px solid #E5E7EB;background:#fff;z-index:30;color:#1F2937}
+.r2 .ti{position:absolute;top:6px;width:34px;height:33px;display:grid;place-items:center;border-radius:6px}
+.r2 .ti.on{background:#EEF0F3}
+.r2 .vd{position:absolute;top:0;width:1px;height:45px;background:#E5E7EB}
+.r2 .hm{position:absolute;left:800px;top:12px;font-size:16px;display:flex;gap:18px;align-items:center}
+.r2 .zm{position:absolute;left:1034px;top:14px;font-size:14px;display:flex;gap:6px;align-items:center}
+.r3{position:absolute;left:0;right:0;top:102px;height:41px;border-bottom:1px solid #E5E7EB;background:#fff;z-index:30;display:flex;justify-content:center;align-items:center;gap:6px;font-size:16px;color:#3B5BDB}
+.r3 b{font-weight:500;color:#2B44D6;margin-left:8px}
+.cv{position:absolute;left:0;right:0;top:143px;bottom:36px;background:#F1F2F4;overflow:hidden}
+#pgw{position:absolute;left:0;top:7px;width:1879px;height:8312px;transform-origin:0 0;background:#fff}
+#pgw>img{display:block;width:1879px;height:8312px}
+.ov2{position:absolute;color:#fff}
+#wel{left:127px;top:200px;font-family:Play;font-style:italic;font-weight:600;font-size:19px}
+#hl{left:127px;top:245px;width:720px;font-family:Play;font-weight:700;font-size:84px;line-height:100px}
+#sub{left:127px;top:568px;width:660px;font-weight:700;font-size:25px;line-height:34px}
+#cta{left:127px;top:658px;height:66px;padding:0 27px;border:2px solid #fff;font-weight:700;font-size:18px;display:flex;align-items:center;white-space:nowrap}
+#cdn{left:127px;top:748px;display:flex;gap:12px;opacity:0}
+#cdn div{width:78px;height:64px;border:1px solid rgba(255,255,255,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:24px;line-height:1}
+#cdn small{font-size:11px;font-weight:600;letter-spacing:.08em;margin-top:5px;opacity:.9}
+.caret{display:inline-block;width:3px;background:#fff;vertical-align:-0.12em;margin-left:2px}
+.selx{position:absolute;border:2px solid #F97316;pointer-events:none;opacity:0;z-index:5}
+.selx span{position:absolute;left:-2px;top:-24px;height:22px;padding:0 8px;background:#F97316;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;border-radius:3px 3px 0 0;white-space:nowrap}
+.aiglow{position:absolute;border:2px solid #8B5CF6;border-radius:4px;box-shadow:0 0 0 6px rgba(139,92,246,.2);opacity:0;pointer-events:none}
+.sbr{position:absolute;right:12px;top:20px;width:6px;height:70px;border-radius:3px;background:#9CA3AF;z-index:3}
+.bb{position:absolute;left:0;right:0;bottom:0;height:36px;border-top:1px solid #E5E7EB;background:#fff;display:flex;align-items:center;gap:8px;padding-left:20px;font-size:15px;z-index:30}
+.bb span{display:flex;align-items:center;gap:6px;padding:3px 8px;border-radius:4px}
+.bb span.s{background:#E8F8EE;border:1px solid #A6E3BC;color:#14532D}
+.aip{position:absolute;left:11px;top:155px;width:374px;height:874px;background:#fff;border-radius:6px;box-shadow:0 8px 30px -10px rgba(0,0,0,.25),0 0 0 1px #ECEEF1;z-index:25;opacity:0}
+.aip .hd{position:absolute;left:18px;top:14px;font-size:16px;font-weight:600;display:flex;gap:6px;align-items:center}
+.aip .hd svg{color:#6D28D9}
+.aip .xx{position:absolute;right:16px;top:14px}
+.aip .seg{position:absolute;left:18px;right:22px;top:49px;height:33px;background:#F3F4F6;border-radius:6px;display:flex;padding:3px;font-size:15px}
+.aip .seg span{flex:1;display:grid;place-items:center;color:#4B5563}
+.aip .seg span.on{background:#fff;color:#6D28D9;font-weight:600;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.aip .hi{position:absolute;left:18px;top:110px;font-size:16px;font-weight:600;color:#6D28D9}
+.aip .tx{position:absolute;left:18px;top:145px;width:330px;font-size:16px;line-height:22px;color:#111}
+.aip .sug{position:absolute;left:18px;top:210px;width:340px;display:flex;flex-wrap:wrap;gap:7px}
+.aip .sug span{border:1.5px solid #7C3AED;color:#5B21B6;font-size:15px;font-weight:500;padding:3px 8px;border-radius:5px}
+.aip .box{position:absolute;left:18px;top:306px;width:339px;height:148px;border:1px solid #D1D5DB;border-radius:8px;background:#fff}
+.aip .box.f{border-color:#8B5CF6;box-shadow:0 0 0 3px rgba(139,92,246,.12)}
+.aip .chip{position:absolute;left:8px;top:9px;display:flex;gap:6px;align-items:center;font-size:14px}
+.aip .chip i{font-style:normal;width:24px;height:24px;border:1px solid #D1D5DB;border-radius:50%;display:grid;place-items:center}
+.aip .chip span{display:flex;gap:5px;align-items:center;background:#F3F4F6;border-radius:4px;padding:2px 8px}
+.aip .ph{position:absolute;left:9px;top:40px;right:12px;font-size:15px;line-height:21px;color:#6B7280}
+.aip .ph.t{color:#111}
+.aip .clip{position:absolute;left:12px;bottom:12px;color:#4B5563}
+.aip .snd{position:absolute;right:10px;bottom:9px;width:30px;height:30px;border-radius:6px;background:#DDD6FE;color:#fff;display:grid;place-items:center}
+.aip .snd.on{background:#7C3AED}
+.aip .ft2{position:absolute;left:0;right:0;bottom:0;height:40px;border-top:1px solid #EEF0F2;font-size:12.5px;color:#6B7280;text-align:center;padding-top:5px;line-height:16px}
+.aip .chat{position:absolute;left:18px;right:18px;top:106px;opacity:0}
+.um{margin-left:auto;max-width:290px;background:#F3EEFF;color:#1F2937;border-radius:10px 10px 2px 10px;padding:10px 12px;font-size:15px;line-height:21px}
+.am{margin-top:16px;font-size:15px;line-height:22px;color:#111}
+.am .who{display:flex;gap:6px;align-items:center;font-weight:600;color:#6D28D9;font-size:14px}
+.am .think{margin-top:8px;color:#6B7280}
+.am .done{margin-top:6px}
+.am .ck{margin-top:10px;border:1px solid #D1FAE5;border-radius:8px;padding:9px 12px;font-size:14px;display:flex;gap:8px;align-items:center;color:#14532D;background:#F4FBF6}
+.qa{position:absolute;left:0;top:143px;width:727px;bottom:36px;background:#fff;z-index:25;border-right:1px solid #E5E7EB;transform:translateX(-740px)}
+.qa .cat{position:absolute;left:9px;top:10px;width:224px}
+.qa .cat div{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 0 0 22px;font-size:15px;color:#111;border-radius:4px}
+.qa .cat div.on{background:#F3F4F6}
+.qa .cat em{font-style:normal;background:#FDE047;color:#713F12;font-size:12px;font-weight:600;padding:2px 7px;border-radius:999px;margin-right:2px}
+.qa .cat hr{border:0;border-top:1px solid #E5E7EB;margin:8px 0}
+.qa .rt{position:absolute;left:245px;top:0;right:12px;bottom:0;border-left:1px solid #E5E7EB}
+.qa .rt h4{position:absolute;left:17px;top:20px;font-size:19px;font-weight:500}
+.qa .rt .xx{position:absolute;right:20px;top:20px}
+.qa .rt .hr{position:absolute;left:0;right:0;top:63px;border-top:1px solid #E5E7EB}
+.qa .lbl{position:absolute;left:17px;font-size:15px;color:#111}
+.tile{position:absolute;width:133px;height:118px;border:1px solid #D1D5DB;border-radius:3px;background:#fff;display:flex;flex-direction:column;align-items:center;font-size:14.5px;color:#111;text-align:center}
+.tile .dots{margin-top:10px;width:20px;height:6px;background-image:radial-gradient(#9CA3AF 1px,transparent 1.3px);background-size:5px 3px}
+.tile svg{margin-top:18px}
+.tile b{font-weight:400;margin-top:12px;line-height:19px}
+.tile.hv{border-color:#3851E8;box-shadow:0 0 0 1px #3851E8}
+.ghost2{position:absolute;z-index:70;width:133px;height:118px;border:1px solid #3851E8;background:rgba(255,255,255,.95);border-radius:3px;display:flex;flex-direction:column;align-items:center;font-size:14.5px;opacity:0;box-shadow:0 18px 40px -16px rgba(56,81,232,.55)}
+.ghost2 svg{margin-top:30px}.ghost2 b{font-weight:400;margin-top:12px}
+.drop{position:absolute;left:127px;top:736px;width:520px;height:5px;background:#3851E8;border-radius:2px;opacity:0}
+.toast{position:absolute;left:50%;top:70px;transform:translateX(-50%);z-index:60;background:#fff;border:1px solid #E5E7EB;border-radius:8px;box-shadow:0 18px 40px -16px rgba(0,0,0,.35);padding:14px 18px;display:flex;gap:12px;align-items:center;opacity:0;min-width:420px}
+.toast .ok{width:30px;height:30px;border-radius:50%;background:#16A34A;color:#fff;display:grid;place-items:center}
+.toast b{display:block;font-size:16px;font-weight:600}.toast small{font-size:14px;color:#3B5BDB}
+
+/* ---------- payments ---------- */
+.pay{position:absolute;left:62px;right:0;top:106px;bottom:0;padding:24px 140px 0}
+.pay .ttl{display:flex;justify-content:space-between;align-items:flex-end}
+.pay h2{font-size:22px;font-weight:600}
+.pay p{font-size:15px;color:#6B7280;margin-top:6px}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.kp div{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:14px 18px}
+.kp small{font-size:14px;color:#6B7280}
+.kp b{display:block;font-size:30px;font-weight:700;margin-top:4px;letter-spacing:-.01em}
+.ptab{margin-top:18px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;overflow:hidden;position:relative;height:637px}
+.pr{position:absolute;left:0;right:0;display:grid;grid-template-columns:330px 125px 410px 230px 185px 1fr 40px;align-items:center;padding:0 28px;height:67px;border-top:1px solid #EEF0F2;font-size:15.5px;color:#4B5563;background:#fff}
+.pr.h{position:relative;height:44px;border-top:0;background:#F9FAFB;font-size:14px;color:#4B5563;font-weight:500}
+.pr .cu{display:flex;align-items:center;gap:16px}
+.pr .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:500}
+.pr .pv{color:#111}.pr .am2{color:#111;font-weight:600}
+.pr .ok{justify-self:start;font-size:13.5px;color:#16A34A;border:1px solid #4ADE80;background:#F0FDF4;border-radius:999px;padding:2px 9px}
+.pr .src{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:30px}
+.pg{position:absolute;right:24px;bottom:16px;display:flex;gap:10px;align-items:center;font-size:15px;color:#111}
+.pg span{min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px}
+.pg span.on{border:1px solid #3B82F6;color:#2563EB}
+.pg span.btn{border:1px solid #D1D5DB;padding:0 14px}
+.pg span.dis{color:#9CA3AF}
+.ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#fff}
+.ctr img.lg{width:560px}
+.ctr h1{font-size:76px;font-weight:800;letter-spacing:-.035em;color:#0E1A1B;margin-top:34px;line-height:1.05}
+.ctr h1 em{font-style:normal;color:#0E9C87}
+.ctr p{font-size:28px;color:#4B5563;margin-top:18px}
+.ctr .go{margin-top:40px;background:#FF7657;color:#fff;font-weight:700;font-size:32px;padding:22px 44px;border-radius:999px}
+.ctr .url{margin-top:22px;font-size:24px;font-weight:600;color:#0E9C87}
 </style></head>
-<body><div id="stage"></div><div id="ring"></div>
+<body><div id="stage"><div id="cam"></div></div><div id="ring"></div>
 <svg id="cur" viewBox="0 0 24 28"><path d="M2 1.5v21.5l5.6-5.4 3.6 8.6 3.9-1.7-3.6-8.4h7.9z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
 <div id="cap"><i>1</i><span></span></div><div id="fade"></div>
+<script src="icons.js"></script>
 <script>
-const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const ic=(n,s=20,w=2,st='')=>`<svg class="i" width="${s}" height="${s}" viewBox="0 0 24 24" stroke-width="${w}" style="${st}">${ICONS[n]||''}</svg>`;
+const $=(s,r=document)=>r.querySelector(s);
 const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
-const io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;          // ease in-out
-const oo=x=>1-Math.pow(1-x,3);                               // ease out
-const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const oo=x=>1-Math.pow(1-x,3);
+const back=x=>{const c=1.4;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
 const P=(t,a,b,e=io)=>e(cl((t-a)/(b-a)));
 const L=(a,b,p)=>a+(b-a)*p;
-const LOGO=`<svg viewBox="0 0 100 100"><path d="M10 22c6.7-6 13.3-6 20 0s13.3 6 20 0 13.3-6 20 0 13.3 6 20 0" fill="none" stroke="#3DE3C8" stroke-width="9" stroke-linecap="round"/><rect x="18" y="38" width="64" height="10" rx="5" fill="#5FC8E8"/><rect x="29" y="56" width="42" height="10" rx="5" fill="#F29A86"/><rect x="40" y="74" width="20" height="10" rx="5" fill="#FF7657"/></svg>`;
-function chrome(active, inner){
-  return `<div class="app"><div class="top"><div class="lg">${LOGO}</div><div class="ic"><span></span><span></span><span></span><span></span></div></div>
-  <div class="side">${Array.from({length:14},(_,i)=>`<b class="${i==11?'on':''}"></b>`).join('')}</div>
-  <div class="nav"><h3>${active=='pay'?'Payments':'Sites'}</h3>${(active=='pay'?['Transactions','Orders','Subscriptions','Products','Coupons','Settings']:['Funnels','Websites','Stores','Webinars','Analytics','Blogs','Forms','Surveys','Quizzes']).map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div>${inner}</div>`;
+
+function sidebar(active){
+  const ys=[[219,'sparkles'],[258,'circle-gauge'],[299,'layout-grid'],[338,'message-circle'],[378,'calendar'],[417,'contact'],[457,'workflow'],[497,'receipt'],[535,'mail-check'],[575,'wand-sparkles'],[614,'sparkles'],[654,'users'],[694,'send'],[734,'circle-play'],[774,'app-window'],[813,'award'],[876,'settings']];
+  return `<div class="sbar"><div class="lg"><img src="icon.svg"></div><div class="tg">${ic('chevron-down',11,3,'transform:rotate(-90deg)')}</div>
+  <div class="av">${ic('user-round',18)}</div><div class="se">${ic('search',15,2.4)}</div><div class="zp">${ic('zap',11,2.6)}</div><div class="sc"></div>
+  ${ys.map(([y,n])=>{const on=(active=='sites'&&n=='app-window')||(active=='pay'&&n=='receipt');return `<div class="it ${on?'on':''}" style="top:${y-19}px;height:38px">${ic(n,21,1.8)}</div>`}).join('')}</div>`;
 }
-/* cursor & caption helpers */
-let CUR=[], CLICKS=[], CAPS=[];
-function center(el,dx=0,dy=0){const r=el.getBoundingClientRect();return [r.left+r.width/2+dx,r.top+r.height/2+dy]}
+function topbar(){return `<div class="tbar"><div class="band"></div><div class="ri"><span>${ic('phone',18,2)}</span><span class="k">${ic('sparkles',18,2)}</span><span>${ic('megaphone',18,2)}</span><span class="n">${ic('bell',18,2)}</span><span>${ic('circle-help',18,2)}</span><img src="icon.svg"></div></div>`}
+function sitesNav(){return `<div class="nav"><h3>Sites</h3>${['Funnels','Websites','Stores','Webinars','Analytics','Blogs','WordPress','Client Portal','Forms','Surveys','Quizzes','Chat Widget','QR Codes'].map((x,i)=>`<span class="${i==0?'on':''}">${x}${x=='Client Portal'?ic('chevron-down',16):''}</span>`).join('')}<span class="gear">${ic('settings',22,1.8)}</span></div>`}
+function payNav(){return `<div class="nav"><h3>Payments</h3>${['Transactions','Subscriptions','Orders','Payment Links','Products','Coupons','Settings','Integrations'].map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div>`}
+
+let CUR=[],CLICKS=[],CAPS=[];
+function rc(sel,dx=0,dy=0,ax=.5,ay=.5){const e=typeof sel=='string'?$(sel):sel;const r=e.getBoundingClientRect();return [r.left+r.width*ax+dx,r.top+r.height*ay+dy]}
+function kpos(k){return k.s?rc(k.s,k.dx||0,k.dy||0,k.ax??.5,k.ay??.5):[k.x,k.y]}
 function curAt(t){
-  if(!CUR.length) return null;
-  if(t<=CUR[0].t) return [CUR[0].x,CUR[0].y];
-  for(let i=1;i<CUR.length;i++){const a=CUR[i-1],b=CUR[i];if(t<=b.t){const p=io((t-a.t)/(b.t-a.t));return [L(a.x,b.x,p),L(a.y,b.y,p)]}}
-  const z=CUR[CUR.length-1];return [z.x,z.y];
+  if(!CUR.length)return null;
+  if(t<=CUR[0].t)return kpos(CUR[0]);
+  for(let i=1;i<CUR.length;i++){const a=CUR[i-1],b=CUR[i];if(t<=b.t){const p=io((t-a.t)/(b.t-a.t));const A=kpos(a),B=kpos(b);return [L(A[0],B[0],p),L(A[1],B[1],p)]}}
+  return kpos(CUR[CUR.length-1]);
 }
 function drawCursor(t){
-  const c=curAt(t), cur=$('#cur'), ring=$('#ring');
+  const c=curAt(t),cur=$('#cur'),ring=$('#ring');
   if(!c){cur.style.opacity=0;ring.style.opacity=0;return}
-  let s=1;for(const k of CLICKS){const d=t-k; if(d>=0&&d<.25) s=1-.18*Math.sin(Math.PI*d/.25)}
-  cur.style.opacity=1;cur.style.transform=`translate(${c[0]-3}px,${c[1]-2}px) scale(${s})`;
-  let ro=0,rs=.4;for(const k of CLICKS){const d=t-k;if(d>=0&&d<.5){ro=1-d/.5;rs=.4+d/.5*1.1}}
+  let s=1;for(const k of CLICKS){const d=t-k;if(d>=0&&d<.22)s=1-.15*Math.sin(Math.PI*d/.22)}
+  cur.style.opacity=1;cur.style.transform=`translate(${c[0]-2}px,${c[1]-1}px) scale(${s})`;
+  let ro=0,rs=.3;for(const k of CLICKS){const d=t-k;if(d>=0&&d<.45){ro=1-d/.45;rs=.3+d/.45}}
   ring.style.opacity=ro;ring.style.left=c[0]+'px';ring.style.top=c[1]+'px';ring.style.transform=`scale(${rs})`;
 }
 function drawCap(t){
   const cap=$('#cap');let o=0;
-  for(const c of CAPS){ if(t>=c.a-.3&&t<=c.b+.3){ o=Math.min(P(t,c.a-.3,c.a,oo),1-P(t,c.b,c.b+.3)); $('i',cap).textContent=c.n; $('span',cap).textContent=c.txt; } }
-  cap.style.opacity=o; cap.style.transform=`translateX(-50%) translateY(${(1-o)*24}px)`;
+  for(const c of CAPS){if(t>=c.a-.3&&t<=c.b+.3){o=Math.min(P(t,c.a-.3,c.a,oo),1-P(t,c.b,c.b+.3));$('i',cap).textContent=c.n;$('span',cap).textContent=c.txt}}
+  cap.style.opacity=o;cap.style.transform=`translateX(-50%) translateY(${(1-o)*20}px)`;
 }
-function fades(t,dur,fin=.45,fout=.45){ $('#fade').style.opacity = Math.max(1-P(t,0,fin,oo), P(t,dur-fout,dur)) }
+function fades(t,dur,fi=.4,fo=.4){$('#fade').style.opacity=Math.max(fi?1-P(t,0,fi,oo):0,fo?P(t,dur-fo,dur):0)}
+function typeText(t,a,b,str){return str.slice(0,Math.round(cl((t-a)/(b-a))*str.length))}
 
-/* ---------------- SCENES ---------------- */
 const SC={};
-SC.intro={dur:3.6,build(){
-  $('#stage').innerHTML=`<div class="center"><div class="bigl">${LOGO}</div><h1>Your funnel, <em>live in minutes.</em></h1><p>Build it. Publish it. Get paid.</p></div>`;
+SC.intro={dur:3.2,build(){
+  $('#cam').innerHTML=`<div class="ctr"><img class="lg" src="img/logo.svg"><h1>Your funnel, <em>live in minutes.</em></h1><p>Build it. Publish it. Get paid.</p></div>`;
 },tick(t){
-  const l=$('.bigl'), p=P(t,.15,.9,back);
-  l.style.transform=`scale(${L(.4,1,p)})`;l.style.opacity=P(t,.15,.6);
-  const h=$('.center h1');h.style.opacity=P(t,.6,1.2);h.style.transform=`translateY(${(1-P(t,.6,1.3,oo))*30}px)`;
-  const q=$('.center p');q.style.opacity=P(t,1.1,1.7);
+  const l=$('.ctr .lg');l.style.opacity=P(t,.1,.6);l.style.transform=`translateY(${(1-P(t,.1,.8,oo))*20}px)`;
+  const h=$('.ctr h1');h.style.opacity=P(t,.5,1.1);h.style.transform=`translateY(${(1-P(t,.5,1.2,oo))*24}px)`;
+  $('.ctr p').style.opacity=P(t,1,1.6);
   fades(t,this.dur,.3,.4);
 }};
 
-SC.create={dur:8.6,build(){
-  const rows=[['Business Masterclasses','3 steps','Published'],['Spring Course Launch','4 steps','Published'],['Free Guide Opt-in','2 steps','Draft'],['Coaching Call Booking','3 steps','Published']];
-  $('#stage').innerHTML=chrome('sites',`<div class="main"><div class="fl-h"><div><h2>Funnels</h2><p>Build sales funnels for any offer</p></div><span class="btn dark" id="newf">＋ New funnel</span></div>
-  <div class="fl-list"><div class="fl-row"><span></span><span>Name</span><span>Steps</span><span>Status</span><span>Updated</span></div>${rows.map(r=>`<div class="fl-row"><span class="thumb"></span><b style="font-weight:600">${r[0]}</b><span>${r[1]}</span><span><span class="pill">${r[2]}</span></span><span style="color:#6b7777">Today</span></div>`).join('')}</div></div>
+SC.create={dur:10.2,build(){
+  const rows=[['img/mindset-full.webp','Mindset Coaching','3 steps','Nov 10, 2026'],['img/strategy-call-full.webp','Strategy Call Booking','3 steps','Nov 8, 2026'],['img/salon-seo-full.webp','Salon Local SEO','2 steps','Nov 6, 2026'],['img/sales-coach-full.webp','Sales Coach Program','4 steps','Nov 3, 2026']];
+  $('#cam').innerHTML=`<div class="app">${topbar()}${sidebar('sites')}${sitesNav()}
+  <div class="flist"><div class="hd"><div><h2>Funnels</h2><p>Sales pages, checkouts and thank-you pages in one flow</p></div><div style="display:flex;gap:10px"><div class="srch">${ic('search',16)} Search funnels</div><span class="b bk" id="newf">${ic('plus',17,2.4)} New funnel</span></div></div>
+   <div class="ftab"><div class="fr h"><span>Name</span><span>Steps</span><span>Last updated</span><span></span></div>${rows.map(r=>`<div class="fr"><span class="nm"><span class="th"><img src="${r[0]}"></span>${r[1]}</span><span>${r[2]}</span><span>${r[3]}</span><span style="color:#6B7280">${ic('ellipsis-vertical',18)}</span></div>`).join('')}</div></div>
   <div class="scrim"></div>
-  <div class="modal"><h4>Create new funnel</h4><span class="x">✕</span>
-   <div class="opts">
-    <div class="opt o1" id="o1"><div class="art"><label>Funnel name <b>*</b></label><div class="in">e.g. Sales funnel</div></div><h5>From blank</h5><p>Design from scratch using the funnel builder.</p></div>
-    <div class="opt o2" id="o2"><div class="art">✦<br>Generate<br>using AI<div class="mini"><i style="top:76px"></i><i style="top:94px;right:50px"></i><i style="top:112px"></i></div></div><h5>Build with AI</h5><p>Whip it up with AI in just a few seconds!</p></div>
-    <div class="opt o3" id="o3"><div class="art">Over 1,000+<br>Templates<div class="mini" style="transform:rotate(10deg)"><i style="top:76px"></i><i style="top:94px;right:50px"></i><i style="top:112px"></i></div></div><h5>From templates</h5><p>Jump start with an awesome prebuilt funnel.</p></div>
-   </div><div class="ft"><span>Cancel</span><span class="b">Create</span></div></div>`);
-  const nf=center($('#newf')),a=center($('#o1'),0,40),b=center($('#o2'),0,40),c=center($('#o3'),0,40);
-  CUR=[{t:0,x:1300,y:760},{t:.6,x:1300,y:760},{t:1.5,x:nf[0],y:nf[1]},{t:2.5,x:nf[0],y:nf[1]},{t:3.0,x:a[0],y:a[1]},{t:4.1,x:a[0]+10,y:a[1]+6},{t:4.6,x:b[0],y:b[1]},{t:5.7,x:b[0]+10,y:b[1]+6},{t:6.2,x:c[0],y:c[1]},{t:8.6,x:c[0],y:c[1]}];
-  CLICKS=[1.65,7.5];
-  CAPS=[{a:.5,b:2.3,n:1,txt:'Create a new funnel'},{a:2.9,b:4.3,n:2,txt:'Start from blank…'},{a:4.5,b:5.9,n:2,txt:'…let AI build it…'},{a:6.1,b:8.1,n:2,txt:'…or pick from 1,000+ templates'}];
+  <div class="modal"><h4>Create new funnel</h4><span class="x">${ic('x',22,2.2)}</span>
+   <div class="card c1 sel" id="c1"><div class="dash"></div><label>Funnel name <b>*</b></label><div class="in" id="fname">e.g. Sales funnel</div><h5>From blank</h5><p>Design from scratch using the funnel builder.</p></div>
+   <div class="card c2" id="c2"><div class="art"><img src="img/art-ai.png"></div><h5>Build with AI</h5><p>Whip it up with AI in just a few seconds!</p></div>
+   <div class="card c3" id="c3"><div class="art"><img src="img/art-tpl.png"></div><h5>From templates</h5><p>Jump start with an awesome prebuilt funnel</p></div>
+   <div class="ft"><span>Cancel</span><span class="k" id="create">Create</span></div></div></div>`;
+  CUR=[{t:0,x:1250,y:820},{t:.5,x:1250,y:820},{t:1.4,s:'#newf'},{t:2.2,s:'#newf'},{t:2.9,s:'#fname',dx:-30},{t:4.6,s:'#fname',dx:-20,dy:40},{t:5.2,s:'#c2',dy:30},{t:6.4,s:'#c2',dx:12,dy:40},{t:7.0,s:'#c3',dy:30},{t:8.3,s:'#c3',dy:30},{t:9.0,s:'#create'},{t:10.2,s:'#create'}];
+  CLICKS=[1.5,3.0,7.6,9.1];
+  CAPS=[{a:.4,b:2.4,n:1,txt:'Create a new funnel'},{a:2.7,b:4.8,n:2,txt:'Start from blank…'},{a:5.0,b:6.6,n:2,txt:'…let AI build it for you…'},{a:6.8,b:9.6,n:2,txt:'…or pick from 1,000+ templates'}];
 },tick(t){
-  const m=P(t,1.75,2.2,oo);$('.scrim').style.opacity=m;const md=$('.modal');md.style.opacity=m;md.style.transform=`translateY(${(1-m)*30}px) scale(${L(.96,1,m)})`;
-  $('#o1').classList.toggle('hov',t>2.9&&t<4.3);$('#o2').classList.toggle('hov',t>4.5&&t<5.9);$('#o3').classList.toggle('hov',t>6.1);
-  $('#newf').style.transform=`scale(${t>1.6&&t<1.85?.95:1})`;
-  fades(t,this.dur);
+  const m=P(t,1.6,2.0,oo);$('.scrim').style.opacity=m;const md=$('.modal');md.style.opacity=m;md.style.transform=`translateY(${(1-m)*16}px) scale(${L(.97,1,m)})`;
+  const fn=$('#fname');const nm=typeText(t,3.25,4.4,'Business Masterclasses');
+  if(t<3.1){fn.textContent='e.g. Sales funnel';fn.style.color=''}else{fn.textContent=nm+(t<7.6&&Math.floor(t*2.5)%2==0?'|':'');fn.style.color='#111827'}
+  fn.classList.toggle('f',t>3.0&&t<7.6);
+  $('#c1').classList.toggle('sel',t<7.6);$('#c3').classList.toggle('sel',t>=7.6);
+  $('#c2').classList.toggle('hov',t>5.1&&t<6.6);
+  $('#create').style.transform=`scale(${t>9.1&&t<9.3?.95:1})`;
+  const z=1+.3*P(t,2.0,3.0)-.3*P(t,9.4,10.2);
+  $('#cam').style.transform=`translate(${960-960*z}px,${540-540*z}px) scale(${z})`;
+  fades(t,this.dur,.35,.3);
 }};
 
-SC.template={dur:7.2,build(){
-  const cols=[['#B47F6A','Masterclass','Courses'],['#0E9C87','Online Course','Courses'],['#2E3A46','Webinar Signup','Webinars'],['#E07A5F','Product Launch','Ecommerce'],['#6B5CA5','Coaching Program','Coaching'],['#F2B544','Free Guide','Lead magnet'],['#3D7EA6','Consulting Call','Services'],['#C2577A','Beauty Store','Ecommerce']];
-  $('#stage').innerHTML=chrome('sites',`<div class="main"><div class="fl-h"><div><h2>Choose a template</h2><p>1,000+ prebuilt funnels, ready to customize</p></div></div>
-   <div class="chips">${['All','Courses','Coaching','Ecommerce','Webinars','Lead magnets','Services'].map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div>
-   <div class="tgrid">${cols.map((c,i)=>`<div class="tcard" id="tc${i}"><div class="pv"><div class="h" style="background:${c[0]}"></div><div class="t1"></div><div class="t2"></div><div class="b"></div><div class="l" style="top:140px"></div><div class="l" style="top:158px;right:90px"></div><div class="c" style="left:20px"></div><div class="c" style="left:36%"></div><div class="c" style="right:20px"></div></div><div class="nm">${c[1]}<small>${c[2]}</small></div><div class="ov"><span>Preview</span><span class="u" id="use${i}">Use template</span></div></div>`).join('')}</div></div>
-   <div class="creating"><div class="spin"></div>Creating your funnel…</div>
-   <div class="stepsv"><div class="bk">← Back</div><h2>Online Course</h2><div class="tabs"><span>Steps</span><span>Stats</span><span>Sales</span><span>Settings</span></div>
-    <div class="sv"><div class="lp"><h4>Funnel steps</h4>
-      <div class="st on" id="s0"><span class="ico"></span><b>Sales page</b></div><div class="st" id="s1"><span class="ico"></span><b>Checkout</b></div><div class="st" id="s2"><span class="ico"></span><b>Thank you</b></div></div>
-     <div class="rp"><div class="hd">Sales page<span>Overview · Products · Publishing</span></div>
-      <div class="ctrl"><span class="lab">⚑ CONTROL</span><div class="pv"><div style="height:62%;background:#0E9C87"></div><div style="height:12px;width:60%;margin:16px;background:#E7EBEE;border-radius:5px"></div><div style="height:12px;width:40%;margin:0 16px;background:#E7EBEE;border-radius:5px"></div></div>
-      <div class="act"><span class="btn dark" id="edit">Edit ▾</span></div></div></div></div></div>`);
-  const u=center($('#tc1'),0,-20);
-  CUR=[{t:0,x:1500,y:900},{t:.4,x:1500,y:900},{t:1.3,x:u[0],y:u[1]}];
-  CLICKS=[2.25,6.45];
-  CAPS=[{a:.4,b:2.6,n:2,txt:'Pick a template you like'},{a:3.4,b:6.9,n:3,txt:'Your funnel is ready: sales page, checkout, thank you'}];
-  this._u=u;
+SC.template={dur:7.4,build(){
+  const T=[['img/page.jpg','Business Masterclasses','Coaching'],['img/mindset-full.webp','Mindset Coach','Coaching'],['img/strategy-call-full.webp','Strategy Call','Consulting'],['img/sales-coach-full.webp','Sales Coach','Coaching']];
+  const T2=[['img/salon-seo-full.webp','Salon & Spa','Local business',0],['img/mindset-full.webp','Life Coach','Coaching',900],['img/strategy-call-full.webp','Agency Booking','Services',760],['img/salon-seo-full.webp','Med Spa','Local business',1500]];
+  $('#cam').innerHTML=`<div class="app">${topbar()}${sidebar('sites')}${sitesNav()}
+  <div class="tpl"><div class="bk2">${ic('arrow-left',16)} Back</div><h2>Choose a template</h2>
+   <div class="row"><div class="chips">${['All templates','Coaching','Consulting','Courses','Local business','Ecommerce','Webinars','Lead magnets'].map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div><div class="srch">${ic('search',16)} Search 1,000+ templates</div></div>
+   <div class="tgrid">${T.map((c,i)=>`<div class="tc" id="tc${i}"><div class="vp"><img src="${c[0]}"></div><div class="mt"><b>${c[1]}</b><small>${c[2]}</small></div><div class="ov"><span>Preview</span><span class="u" id="use${i}">Use template</span></div></div>`).join('')}</div>
+   <div class="tgrid" style="margin-top:22px">${T2.map(c=>`<div class="tc"><div class="vp"><img src="${c[0]}" style="top:${-c[3]*0.68}px"></div><div class="mt"><b>${c[1]}</b><small>${c[2]}</small></div></div>`).join('')}</div>
+  </div>
+  <div class="loadov"><span>LOADING...</span><i></i></div></div>`;
+  CUR=[{t:0,x:1300,y:900},{t:.3,x:1300,y:900},{t:1.2,s:'#tc0',dy:-40},{t:3.6,s:'#tc0',dx:20,dy:-60},{t:4.4,s:'#use0'},{t:7.4,s:'#use0'}];
+  CLICKS=[4.55];
+  CAPS=[{a:.4,b:4.3,n:2,txt:'Pick a ready-made funnel'}];
 },tick(t){
-  // overlay hover on card 1
-  const ov=$('#tc1 .ov');ov.style.opacity=P(t,1.2,1.5);
-  const uu=center($('#use1'));
-  if(CUR.length==3){CUR.push({t:2.0,x:uu[0],y:uu[1]},{t:3.6,x:uu[0],y:uu[1]});}
-  const cr=$('.creating');cr.style.opacity=P(t,2.35,2.6)*(1-P(t,3.3,3.55));
-  $('.spin').style.transform=`rotate(${t*540}deg)`;
-  const sv=$('.stepsv');sv.style.opacity=P(t,3.3,3.6);
-  [0,1,2].forEach(i=>{const s=$('#s'+i);const p=P(t,3.7+i*.35,4.1+i*.35,oo);s.style.opacity=p;s.style.transform=`translateX(${(1-p)*-30}px)`});
-  if(t>3.6&&CUR.length==5){const e=center($('#edit'));CUR.push({t:5.4,x:e[0],y:e[1]},{t:7.2,x:e[0],y:e[1]});}
-  fades(t,this.dur);
+  $('#tc0').classList.toggle('hv',t>1.15&&t<4.6);
+  const img=$('#tc0 img');const w=img.getBoundingClientRect().width||1;const H=8312*w/1879;
+  img.style.top=-(H-300)*0.5*P(t,1.3,4.0,x=>x)+'px';
+  $('#tc0 .ov').style.opacity=P(t,3.7,4.0);
+  $('.loadov').style.opacity=P(t,4.8,5.1);$('.loadov i').style.transform=`scaleY(${.5+.5*Math.abs(Math.sin(t*6))})`;
+  fades(t,this.dur,.3,.35);
 }};
 
-SC.builder={dur:14.4,build(){
-  $('#stage').innerHTML=`<div class="bld">
-   <div class="bt">← Back <span class="as">☁ Autosave off</span><div class="r"><span class="sq"></span><span class="sq"></span><span class="pub" id="pub">➤ Publish</span></div></div>
-   <div class="tb2"><span class="plus" id="plus">＋</span>${Array.from({length:10},()=>'<span class="g"></span>').join('')}<div class="dev"><span class="on" id="dsk"><i style="width:22px;height:16px"></i></span><span><i style="width:16px;height:20px"></i></span><span id="mob"><i style="width:12px;height:20px"></i></span></div><span style="font-size:16px">100% ▾</span></div>
-   <div class="urlb">◌ https://yourbrand.com/course <b>Connect Domain</b></div>
-   <div class="canvas"><div class="page" id="page">
-     <div class="pg-nav">Bloom Academy<div><span>About</span><span>Courses</span><span>Pricing</span><span>Contact</span></div></div>
-     <div class="hero" id="hero"><div class="lft" id="lft"><small>Online course</small><br><h1 id="hl"><span id="hlt">Your headline here</span><span class="caret" id="caret"></span></h1>
-       <p class="sub">A simple, step-by-step program you can start today. Learn at your own pace, from any device.</p>
-       <div id="ctaw" style="height:0;overflow:visible"><span class="cta" id="cta">Enroll now · $49</span></div></div>
-      <div class="rgt"><div class="course"><div class="v"></div><div class="m"><i></i><i></i><i style="width:55%"></i></div></div></div></div>
-     <div class="learn"><h2>What you'll learn</h2><div class="cards"><div></div><div></div><div></div></div></div>
-     <div class="sel" id="sel"><span id="sellab">Headline</span></div>
-   </div></div>
-   <div class="panel" id="panel"><h4>Add elements</h4><div class="grid">${['Headline','Paragraph','Button','Image','Video','Order form','Countdown','Testimonial'].map(x=>`<div class="el" id="el-${x.split(' ')[0]}"><i></i>${x}</div>`).join('')}</div></div>
-   <div class="rpanel" id="rp"><h4>Section settings</h4><div class="lab">Background color</div><div class="sw"><span id="sw0" style="background:#B47F6A"></span><span id="sw1" style="background:#0E9C87"></span><span style="background:#2E3A46"></span><span style="background:#6B5CA5"></span></div><div class="lab">Padding</div><div class="fld"></div><div class="lab">Animation</div><div class="fld"></div></div>
-   <div class="bb"><span>▤ Page</span>›<span class="s" id="crumb">☰ Section</span></div>
-   <div class="ghost" id="ghost">▭ Button</div>
-   <div class="toast" id="toast"><span class="ok">✓</span><div><b>Your funnel is live!</b><small>yourbrand.com/course</small></div></div>
+SC.steps={dur:5.4,build(){
+  $('#cam').innerHTML=`<div class="app">${topbar()}${sidebar('sites')}${sitesNav()}<div class="fs">
+   <div class="bk2">${ic('arrow-left',15)} Back</div><h2>Business Masterclasses</h2><div class="sh">${ic('share-2',17)}</div><div class="inf">${ic('info',17)}</div>
+   <div class="tabs">${['Steps','Stats','Sales','Security','Events','SEO & AEO','Settings'].map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div>
+   <div class="pan"><div class="lp"><h4>${ic('circle-check',22,1.6)} Funnel steps</h4>
+     <div class="st on" id="s0" style="top:69px"><div class="ib">${ic('mail',18,1.8)}<span class="tri"></span></div><div class="lb">Home</div></div>
+     <div class="st" id="s1" style="top:133px"><div class="ib">${ic('mail',18,1.8)}<span class="tri l"></span></div><div class="lb">Appointment</div></div>
+     <div class="st" id="s2" style="top:197px"><div class="ib">${ic('mail',18,1.8)}</div><div class="lb">Thankyou</div></div>
+     <div class="add">${ic('plus',17,2.4)} Add new step or import</div></div>
+    <div class="rp"><div class="rh">Home<div class="t"><span>Overview</span><span>Products</span><span>Publishing</span></div></div>
+     <div class="msg">Please add a domain in the settings to see your Funnel live!</div>
+     <div class="tag" style="left:0;top:114px">${ic('flag',15,2)} CONTROL</div>
+     <div class="thb"><img src="img/page.jpg" id="thimg"></div>
+     <div class="ed" id="edit"><b>Edit</b><i>${ic('chevron-down',17,2.2)}</i></div><div class="sq" style="left:225px">${ic('external-link',17)}</div><div class="sq" style="left:269px">${ic('settings',17)}</div>
+     <div class="split"><img src="img/split.png"><h6>Start split test</h6><p>Optimize your lead and sales generation with split tests.</p></div>
+     <div class="tag v" style="left:699px;top:114px">${ic('flag',15,2)} VARIATION</div>
+     <div class="var">${ic('plus',17,2.4)} Create variation</div>
+     <div class="del">${ic('trash-2',17)} Delete Funnel Step</div><div class="cln">${ic('copy',17)} Clone Funnel Step</div></div></div></div>
+   <div class="loadov"><span>LOADING...</span><i></i></div></div>`;
+  CUR=[{t:0,x:1100,y:720},{t:.3,x:1100,y:720},{t:1.4,s:'#thimg',ay:.15},{t:2.4,s:'#thimg',dy:20,ay:.15},{t:3.0,s:'#edit',dx:-14},{t:3.5,s:'#edit',dx:-14}];
+  CLICKS=[3.55];
+  CAPS=[{a:.3,b:3.4,n:3,txt:'Your funnel is ready to edit'}];
+},tick(t){
+  [0,1,2].forEach(i=>{const s=$('#s'+i),p=P(t,.25+i*.25,.6+i*.25,oo);s.style.opacity=p;s.style.transform=`translateX(${(1-p)*-24}px)`});
+  $('#thimg').style.top=-(1360*P(t,1.4,3.0))+'px';
+  $('.loadov').style.opacity=P(t,3.8,4.1);$('.loadov i').style.transform=`scaleY(${.5+.5*Math.abs(Math.sin(t*6))})`;
+  fades(t,this.dur,.25,.3);
+}};
+
+SC.builder={dur:25,build(){
+  const tl=[[27,'plus'],[62,'sparkles'],[97,'layers'],[131,'file-text'],[167,'code-xml'],[202,'paint-roller'],[237,'type'],[272,'shapes'],[307,'panel-top'],[343,'file-search'],[378,'square-terminal'],[413,'palette'],[466,'columns-2']];
+  const cats=[['Quick Add'],['Sections'],['Rows'],['Elements'],['Prebuilt Sections'],['Saved Assets',1],['Widget Marketplace'],['Store'],['Icons And Graphics',1],['-'],['Buttons'],['Forms, Surveys And Quizzes',1],['Social Media Icons'],['Countdown Timers'],['Images'],['Progress Bar'],['Social Widgets',1]];
+  $('#cam').innerHTML=`<div class="bld">
+  <div class="r1"><div class="bk3">${ic('arrow-left',18)} Back</div><div class="dv"></div><div class="as">${ic('cloud-off',16)} Autosave off</div>
+   <div class="ib2" style="left:1693px">${ic('eye',19)}</div><div class="ib2" style="left:1742px">${ic('save',19)}</div><div class="pubb" id="pub"></div></div>
+  <div class="r2">${tl.map(([x,n])=>`<div class="ti" id="tb-${n}" style="left:${x-17}px">${ic(n,19,1.8,n=='sparkles'?'color:#7C3AED':'')}</div>`).join('')}<div class="vd" style="left:440px"></div><div class="vd" style="left:781px"></div>
+   <div class="hm">Home ${ic('chevron-down',16)}</div><div class="vd" style="left:890px"></div>
+   <div class="ti on" style="left:900px">${ic('monitor',18,1.8)}</div><div class="ti" style="left:936px">${ic('tablet',18,1.8)}</div><div class="ti" style="left:971px">${ic('smartphone',18,1.8)}</div><div class="vd" style="left:1016px"></div>
+   <div class="zm">100% ${ic('chevron-down',14)}</div><div class="vd" style="left:1102px"></div>
+   <div class="ti" style="left:1645px">${ic('keyboard',19,1.8)}</div><div class="vd" style="left:1697px"></div><div class="ti" style="left:1716px">${ic('history',19,1.8)}</div><div class="vd" style="left:1768px"></div>
+   <div class="ti" style="left:1778px;color:#9CA3AF">${ic('undo-2',18,1.8)}</div><div class="ti" style="left:1814px;color:#9CA3AF">${ic('redo-2',18,1.8)}</div><div class="vd" style="left:1866px"></div><div class="ti" style="left:1876px">${ic('sliders-horizontal',18,1.8)}</div></div>
+  <div class="r3">${ic('circle',13,2)} <span>https://links.oceanicfunnels.com/preview/htnr4N47mvsorO4VlbjC</span><b>Connect Domain</b></div>
+  <div class="cv"><div id="pgw"><img src="img/page_clean.jpg">
+     <div class="ov2" id="wel">Welcome to your company</div>
+     <div class="ov2" id="hl"><span id="hlt">Helping women discover their wings.</span></div>
+     <div class="ov2" id="sub">Laoreet erat nec tempus cubilia dictum urna conubia tristique a pretium sollicitudin</div>
+     <div class="ov2" id="cta"><span id="ctat">Get an appointment</span><span class="caret" id="caret2" style="height:22px;opacity:0"></span></div>
+     <div class="ov2" id="cdn"><div><span>02</span><small>DAYS</small></div><div><span>14</span><small>HOURS</small></div><div><span>36</span><small>MINS</small></div><div><span id="cd3">09</span><small>SECS</small></div></div>
+     <div class="drop" id="drop"></div>
+     <div class="aiglow" id="aig"></div>
+     <div class="selx" id="selx"><span id="sell">Headline</span></div>
+   </div><div class="sbr" id="sbr"></div></div>
+  <div class="bb"><span>${ic('file',15)} Page</span>${ic('chevron-down',13,2,'transform:rotate(-90deg);color:#9CA3AF')}<span class="s">${ic('rows-3',15)} <em id="crumbt" style="font-style:normal">Section</em></span></div>
+  <div class="aip" id="aip"><div class="hd">${ic('sparkles',17,2)} Ask AI</div><span class="xx" id="aix">${ic('x',20,2)}</span>
+    <div class="seg"><span>Assist</span><span class="on">Build</span></div>
+    <div id="greet"><div class="hi">Hi Oceanic, how can I help?</div><div class="tx">Type your request below or start with one of these Suggestions</div>
+    <div class="sug"><span>High-converting funnel</span><span>Copy for Impact</span><span>Draft a 3-stage follow-up funnel sequ...</span></div></div>
+    <div class="chat" id="chat"><div class="um">Write a stronger headline for my coaching business</div>
+      <div class="am"><div class="who">${ic('sparkles',15,2)} Ask AI</div><div class="think" id="think">Thinking…</div>
+      <div class="done" id="done" style="opacity:0">Done! I rewrote the headline in your hero section so it speaks to your clients.<div class="ck">${ic('check',16,2.6)} Updated: Headline</div></div></div></div>
+    <div class="box" id="aibox"><div class="chip"><i>${ic('at-sign',13)}</i><span>${ic('mouse-pointer-2',13)} Section ${ic('x',12)}</span></div><div class="ph" id="aiph">Plan, build, modify anything...</div><span class="clip">${ic('paperclip',17)}</span><span class="snd" id="snd">${ic('send-horizontal',16,2.2)}</span></div>
+    <div class="ft2">Ask AI can make mistakes. Please double-check<br>responses.</div></div>
+  <div class="qa" id="qa"><div class="cat">${cats.map(([c,n])=>c=='-'?'<hr>':`<div class="${c=='Quick Add'?'on':''}" id="cat-${c.split(' ')[0].replace(',','')}">${c}${n?'<em>New</em>':''}</div>`).join('')}</div>
+    <div class="rt"><h4 id="qah">Quick Add</h4><span class="xx" id="qax">${ic('x',22,2)}</span><div class="hr"></div>
+     <div id="qa1"><div class="lbl" style="top:86px">Popular</div>
+      ${[['Headline','type'],['Button','panel-top'],['Image','image'],['Video','tv-minimal-play'],['Form','file-text'],['Calendar','calendar']].map(([n,i],k)=>`<div class="tile" style="left:${17+(k%3)*143}px;top:${116+Math.floor(k/3)*130}px"><span class="dots"></span>${ic(i,24,1.6)}<b>${n}</b></div>`).join('')}
+      <div class="lbl" style="top:390px">Media</div>
+      ${[['Image Slider','images'],['Video','tv-minimal-play'],['Image','image']].map(([n,i],k)=>`<div class="tile" style="left:${17+k*143}px;top:420px"><span class="dots"></span>${ic(i,24,1.6)}<b>${n}</b></div>`).join('')}</div>
+     <div id="qa2" style="opacity:0"><div class="lbl" style="top:86px">Countdown Timers</div>
+      ${[['Countdown','timer'],['Minute Timer','timer'],['Day Timer','calendar']].map(([n,i],k)=>`<div class="tile" id="ct${k}" style="left:${17+k*143}px;top:116px"><span class="dots"></span>${ic(i,24,1.6)}<b>${n}</b></div>`).join('')}</div>
+    </div></div>
+  <div class="ghost2" id="ghost">${ic('timer',24,1.6)}<b>Countdown</b></div>
+  <div class="toast" id="toast"><span class="ok">${ic('check',18,3)}</span><div><b>Funnel published successfully</b><small>links.oceanicfunnels.com/business-masterclasses</small></div></div>
   </div>`;
-  const hl=center($('#hl'),-140,0),pl=center($('#plus')),btn=center($('#el-Button')),sub=center($('.hero .sub'),-150,90);
-  // compute later-needed targets with panels in place
-  const sw=$('#sw1').getBoundingClientRect(), rp=370; const swx=sw.left+sw.width/2-rp*0, swy=sw.top+sw.height/2;
-  const pb=$('#panel').getBoundingClientRect(); const bx=btn[0]+340, by=btn[1];
-  const rgt=center($('.hero .rgt'),0,-150), mob=center($('#mob')), pub=center($('#pub'));
-  const lft=center($('#lft'),200,-210);
-  CUR=[{t:0,x:1100,y:900},{t:.5,x:1100,y:900},{t:1.4,x:hl[0],y:hl[1]},{t:3.9,x:hl[0]+40,y:hl[1]+120},
-       {t:4.6,x:pl[0],y:pl[1]},{t:5.0,x:pl[0],y:pl[1]},{t:5.8,x:bx,y:by},{t:6.1,x:bx,y:by},{t:7.2,x:sub[0],y:sub[1]},{t:7.5,x:sub[0],y:sub[1]},
-       {t:8.2,x:lft[0],y:lft[1]},{t:8.45,x:lft[0],y:lft[1]},{t:9.1,x:swx-370+370,y:swy},{t:9.6,x:swx,y:swy},
-       {t:10.6,x:mob[0],y:mob[1]},{t:11.9,x:mob[0],y:mob[1]+4},{t:12.6,x:pub[0],y:pub[1]},{t:14.4,x:pub[0],y:pub[1]}];
-  CLICKS=[1.5,4.7,6.05,7.25,8.35,9.3,10.7,12.7];
-  CAPS=[{a:.5,b:4.2,n:3,txt:'Click any text and type'},{a:4.5,b:7.8,n:3,txt:'Drag & drop new elements'},{a:8.1,b:10.0,n:3,txt:'Change colors in one click'},{a:10.4,b:12.1,n:3,txt:'Looks great on mobile'},{a:12.4,b:14.0,n:4,txt:'Publish in one click'}];
+  this.pubState='';
+  CUR=[{t:0,x:1200,y:820},{t:.2,x:1200,y:820},{t:.9,s:'#tb-sparkles'},{t:1.5,s:'#tb-sparkles'},
+       {t:2.1,s:'#aibox',dy:-20},{t:2.4,s:'#aibox',dy:-20},{t:4.5,s:'#aibox',dx:60,dy:30},{t:5.0,s:'#snd'},{t:5.2,s:'#snd'},
+       {t:8.5,s:'#snd',dx:-60,dy:-300},{t:9.1,s:'#aix'},{t:9.5,s:'#aix'},
+       {t:10.3,s:'#cta',dx:40},{t:12.6,s:'#cta',dx:60,dy:10},
+       {t:13.2,s:'#tb-plus'},{t:13.6,s:'#tb-plus'},{t:14.3,s:'#cat-Countdown'},{t:14.6,s:'#cat-Countdown'},{t:15.3,s:'#ct0'},{t:15.6,s:'#ct0'},
+       {t:16.8,s:'#drop',ax:.3},{t:17.4,s:'#drop',ax:.3,dy:6},{t:18.0,s:'#qax'},{t:18.3,s:'#qax'},
+       {t:19.0,x:1500,y:700},{t:22.2,x:1600,y:500},{t:22.9,s:'#pub'},{t:25,s:'#pub'}];
+  CLICKS=[1.0,2.3,5.05,9.3,10.4,10.75,13.4,14.4,15.45,17.4,18.1,23.0];
+  CAPS=[{a:.4,b:8.6,n:3,txt:'Ask AI to write it for you'},{a:9.9,b:12.8,n:3,txt:'Or click any text and type'},{a:13.1,b:18.2,n:3,txt:'Drag in any element'},{a:18.6,b:22.4,n:3,txt:'A complete page, ready to sell'},{a:22.6,b:24.6,n:4,txt:'Publish in one click'}];
 },tick(t){
-  // headline typing
-  const OLD='Your headline here', NEW='Launch your first online course.';
-  let s=OLD; if(t>1.9){const del=Math.floor(cl((t-1.9)/.45)*OLD.length); s=OLD.slice(0,OLD.length-del); if(t>2.4){s=NEW.slice(0,Math.floor(cl((t-2.4)/1.3)*NEW.length))}}
-  $('#hlt').textContent=s; $('#caret').style.opacity=(t>1.6&&t<4.0&&Math.floor(t*3)%2==0)?1:(t>1.9&&t<3.8?1:0);
-  // selection box
-  const page=$('#page').getBoundingClientRect();
-  let target=null,label='';
-  if(t>1.5&&t<4.2){target=$('#hl');label='Headline'}
-  else if(t>7.25&&t<8.2){target=$('#cta');label='Button'}
-  else if(t>8.35&&t<10.2){target=$('#lft');label='Section'}
-  const sel=$('#sel');
-  if(target){const r=target.getBoundingClientRect();sel.style.opacity=1;sel.style.left=(r.left-page.left-8)+'px';sel.style.top=(r.top-page.top-8)+'px';sel.style.width=(r.width+16)+'px';sel.style.height=(r.height+16)+'px';$('#sellab').textContent=label;$('#crumb').textContent='☰ '+label}
-  else{sel.style.opacity=0;$('#crumb').textContent='☰ Section'}
-  // element panel
-  const po=P(t,4.75,5.15,oo)*(1-P(t,7.3,7.6));$('#panel').style.transform=`translateX(${(po-1)*340}px)`;
-  $('#el-Button').classList.toggle('hov',t>5.7&&t<6.2);
-  const g=$('#ghost');const c=curAt(t)||[0,0];g.style.opacity=(t>6.05&&t<7.25)?1:0;g.style.left=(c[0]+14)+'px';g.style.top=(c[1]+10)+'px';
-  const cta=$('#cta'),cp=P(t,7.25,7.65,back);cta.style.opacity=cl((t-7.25)/.2);cta.style.transform=`scale(${t<7.25?.5:L(.5,1,cp)})`;$('#ctaw').style.height=(t>7.25?96:0)+'px';
-  // right panel + color
-  const ro=P(t,8.4,8.8,oo)*(1-P(t,9.9,10.3));$('#rp').style.transform=`translateX(${(1-ro)*370}px)`;
-  const cc=P(t,9.35,9.8);const a=[180,127,106],b=[14,156,135];$('#lft').style.background=`rgb(${a.map((v,i)=>Math.round(L(v,b[i],cc))).join(',')})`;
-  $('#cta').style.color=cc>.5?'#0A7F6E':'#7a4b39';
-  $('#sw0').classList.toggle('on',t<9.35);$('#sw1').classList.toggle('on',t>=9.35);
-  // device switch
-  const dv=P(t,10.75,11.5);$('#page').style.width=L(1560,440,dv)+'px';
-  $('#dsk').classList.toggle('on',t<10.75);$('#mob').classList.toggle('on',t>=10.75);
-  const small=dv>.5;$('.hero h1').style.fontSize=(small?40:72)+'px';$('.hero .lft').style.padding=small?'46px 28px 40px':'90px 70px 70px';$('.pg-nav').style.padding=small?'0 24px':'0 70px';$('.pg-nav div').style.display=small?'none':'flex';$('.hero .rgt').style.minHeight=small?'300px':'560px';$('.learn').style.padding=small?'50px 24px':'80px 70px';$('.learn h2').style.fontSize=(small?34:52)+'px';$('.course').style.transform=`scale(${small?.6:1})`;
+  const pgw=$('#pgw');
+  const ai=P(t,1.05,1.4,oo)*(1-P(t,9.35,9.7,oo));
+  const qa=P(t,13.45,13.8,oo)*(1-P(t,18.15,18.5,oo));
+  $('#aip').style.opacity=ai;$('#aip').style.transform=`translateX(${(1-ai)*-30}px)`;
+  $('#qa').style.transform=`translateX(${(qa-1)*740}px)`;
+  $('#tb-sparkles').classList.toggle('on',t>1&&t<9.4);$('#tb-plus').classList.toggle('on',t>13.4&&t<18.2);
+  let s=1,x=11;
+  if(ai>0){s=L(1,1497/1879,ai);x=L(11,396,ai)}
+  else if(qa>0){s=L(1,1170/1879,qa);x=L(11,738,qa)}
+  const scroll=2700*P(t,19.0,22.0);
+  pgw.style.transform=`translate(${x}px,${-scroll*s}px) scale(${s})`;
+  $('#sbr').style.top=(20+scroll/8312*800)+'px';
+  // Ask AI
+  if(t<2.45||t>=5.1){$('#aiph').textContent='Plan, build, modify anything...';$('#aiph').classList.remove('t')}
+  else{$('#aiph').textContent=typeText(t,2.5,4.6,'Write a stronger headline for my coaching business');$('#aiph').classList.add('t')}
+  $('#aibox').classList.toggle('f',t>2.3&&t<5.1);$('#snd').classList.toggle('on',t>2.6&&t<5.1);
+  const ch=P(t,5.15,5.4);$('#greet').style.opacity=1-ch;$('#chat').style.opacity=ch;
+  const th=$('#think');th.style.display=t<6.9?'block':'none';th.style.opacity=.55+.45*Math.sin(t*8);
+  $('#done').style.opacity=P(t,6.9,7.2);
+  const OLD='Helping women discover their wings.',NEW='Grow the business you love.';
+  let h=OLD;
+  if(t>5.9)h=OLD.slice(0,Math.round(OLD.length*(1-cl((t-5.9)/.5))));
+  if(t>6.45)h=NEW.slice(0,Math.round(NEW.length*cl((t-6.45)/.6)));
+  $('#hlt').textContent=h||'​';
+  const ag=$('#aig'),g=P(t,5.6,5.9)*(1-P(t,8.2,8.7));ag.style.opacity=g;
+  const hr=$('#hl');ag.style.left=(hr.offsetLeft-14)+'px';ag.style.top=(hr.offsetTop-8)+'px';ag.style.width=(Math.max(560,$('#hlt').offsetWidth)+28)+'px';ag.style.height=(Math.max(300,hr.offsetHeight)+16)+'px';
+  // manual button edit
+  const OB='Get an appointment',NB='Book a free call';
+  let b=OB;if(t>10.85)b=NB.slice(0,Math.round(NB.length*cl((t-11.0)/1.1)));
+  $('#ctat').textContent=b||'​';
+  $('#caret2').style.opacity=(t>10.85&&t<12.9&&(t<12.15||Math.floor(t*3)%2==0))?1:0;
+  $('#ctat').style.background=(t>10.75&&t<10.9)?'rgba(59,130,246,.5)':'none';
+  const sel=$('#selx');let target=null,label='';
+  if(t>10.4&&t<13.3){target=$('#cta');label='Button'}
+  else if(t>17.5&&t<18.9){target=$('#cdn');label='Countdown'}
+  if(target){sel.style.opacity=1;sel.style.left=(target.offsetLeft-6)+'px';sel.style.top=(target.offsetTop-6)+'px';sel.style.width=(target.offsetWidth+12)+'px';sel.style.height=(target.offsetHeight+12)+'px';$('#sell').textContent=label;$('#crumbt').textContent=label}
+  else{sel.style.opacity=0;$('#crumbt').textContent='Section'}
+  // quick add
+  const cq=t>=14.45;
+  $('#cat-Quick').classList.toggle('on',!cq);$('#cat-Countdown').classList.toggle('on',cq);
+  $('#qah').textContent=cq?'Countdown Timers':'Quick Add';
+  $('#qa1').style.opacity=cq?0:1;$('#qa2').style.opacity=cq?1:0;
+  $('#ct0').classList.toggle('hv',t>15.2&&t<15.6);
+  const gh=$('#ghost'),c=curAt(t)||[0,0];gh.style.opacity=(t>15.45&&t<17.4)?1:0;gh.style.left=(c[0]-50)+'px';gh.style.top=(c[1]-40)+'px';
+  $('#drop').style.opacity=(t>16.3&&t<17.4)?1:0;
+  const cd=$('#cdn'),cp=P(t,17.4,17.7,oo);cd.style.opacity=cp;cd.style.transform=`translateY(${(1-cp)*10}px)`;
+  if(t>17.4){const sec=((9-Math.floor(t-17.4))%60+60)%60;$('#cd3').textContent=String(sec).padStart(2,'0')}
   // publish
-  const pb=$('#pub');pb.innerHTML=t>12.75&&t<13.2?'<span class="spin" style="width:22px;height:22px;border-width:3px;border-color:#9fb0ff;border-top-color:#fff;transform:rotate('+t*720+'deg)"></span> Publishing':(t>=13.2?'✓ Published':'➤ Publish');pb.style.background=t>=13.2?'#0E9C87':'#3B5BFF';
-  const to=$('#toast'),tp=P(t,13.2,13.55,back);to.style.opacity=cl((t-13.2)/.2);to.style.transform=`translateY(${(1-tp)*-30}px)`;
-  fades(t,this.dur);
+  const pb=$('#pub');let st='idle';if(t>23.0&&t<23.8)st='busy';else if(t>=23.8)st='done';
+  if(st=='busy')pb.innerHTML=`${ic('loader-circle',18,2.2,`transform:rotate(${t*720}deg)`)} <span>Publishing</span>`;
+  else if(st!=this.pubState){pb.innerHTML=st=='done'?`${ic('check',18,2.6)} <span>Published</span>`:`${ic('send',18)} <span>Publish</span>`}
+  this.pubState=st;pb.style.background=st=='done'?'#16A34A':'#3851E8';
+  const to=$('#toast'),tp=P(t,23.8,24.1,back);to.style.opacity=cl((t-23.8)/.15);to.style.transform=`translateX(-50%) translateY(${(1-tp)*-20}px)`;
+  fades(t,this.dur,.25,.35);
 }};
 
-SC.sales={dur:8.0,build(){
-  const NAMES=[['Emma Collins','#8E6FD6',49,'Online Course'],['Daniel Reyes','#C2577A',49,'Online Course'],['Priya Shah','#3D7EA6',97,'Course + Workbook'],['Marcus Lee','#0E9C87',49,'Online Course'],['Sofia Bennett','#E07A5F',49,'Online Course'],['James Carter','#6B5CA5',97,'Course + Workbook'],['Olivia Grant','#B47F6A',49,'Online Course'],['Noah Wright','#2E3A46',49,'Online Course']];
-  this.N=NAMES;this.T=[1.0,1.9,2.7,3.4,4.0,4.5,5.0,5.45];
-  $('#stage').innerHTML=chrome('pay',`<div class="main"><div class="fl-h"><div><h2>Transactions</h2><p>Every sale from your funnel, in one place</p></div></div><span class="demo">Demo data</span>
-   <div class="kpis"><div class="kpi"><small>Revenue today</small><b id="rev">$0.00</b><em id="revd">▲ live</em></div><div class="kpi"><small>Orders</small><b id="ord">0</b><em>from Online Course funnel</em></div><div class="kpi"><small>Checkout conversion</small><b id="conv">0.0%</b><em>sales page → checkout → paid</em></div></div>
-   <div class="tx"><div class="tr h"><span>Customer</span><span>Provider</span><span>Source</span><span>Date</span><span>Amount</span><span>Status</span></div><div class="rows" id="rows"></div></div></div>
-   <div class="toast" id="toast" style="top:150px"><span class="ok">$</span><div><b id="tb">New sale · $49.00</b><small id="ts">Online Course · just now</small></div></div>`);
-  $('#rows').innerHTML=NAMES.map((n,i)=>`<div class="tr" id="r${i}"><span class="cu"><span class="av" style="background:${n[1]}">${n[0].split(' ').map(w=>w[0]).join('')}</span>${n[0]}</span><span>Stripe</span><span>${n[3]}</span><span style="color:#6b7777">Today, ${['9:12 AM','9:47 AM','10:05 AM','10:31 AM','11:02 AM','11:18 AM','11:40 AM','12:03 PM'][i]}</span><b>$${n[2]}.00</b><span><span class="ok">Succeeded</span></span></div>`).join('');
+SC.sales={dur:8.4,build(){
+  const N=[['Emma Collins','#9B7EC8','Business Masterclasses - Starter Kit',49],['Daniel Reyes','#C47BB5','Business Masterclasses - Career Planning Kit',97],['Priya Shah','#B4B06A','Business Masterclasses - Starter Kit',49],['Marcus Lee','#6BBF7A','Business Masterclasses - Business Relationship',197],['Sofia Bennett','#97BD6A','Business Masterclasses - Starter Kit',49],['James Carter','#7B78C8','Business Masterclasses - Career Planning Kit',97],['Olivia Grant','#8DBF6A','Business Masterclasses - Starter Kit',49],['Noah Wright','#C06FB0','Business Masterclasses - Starter Kit',49]];
+  this.N=N;this.T=[.9,1.7,2.4,3.1,3.7,4.25,4.8,5.3];
+  const times=['01:12 PM','01:47 PM','02:05 PM','02:31 PM','03:02 PM','03:18 PM','03:40 PM','04:03 PM'];
+  $('#cam').innerHTML=`<div class="app">${topbar()}${sidebar('pay')}${payNav()}<div class="pay">
+   <div class="ttl"><div><h2>Transactions</h2><p>Every payment from your funnel, as it happens</p></div><div style="display:flex;gap:10px;align-items:center"><span style="font-size:13px;color:#9CA3AF;margin-right:8px">Demo data</span><span class="b bw">${ic('list-filter',16)} Filters</span><span class="b bw">Export</span></div></div>
+   <div class="kp"><div><small>Revenue today</small><b id="rev">$0.00</b></div><div><small>Payments</small><b id="ord">0</b></div><div><small>Funnel</small><b style="font-size:22px;margin-top:10px">Business Masterclasses</b></div></div>
+   <div class="ptab"><div class="pr h"><span>Customer</span><span>Provider</span><span>Source</span><span>Transaction Date</span><span>Amount</span><span>Status</span><span></span></div>
+    <div id="rows">${N.map((n,i)=>`<div class="pr" id="r${i}" style="top:44px;opacity:0"><span class="cu"><span class="av" style="background:${n[1]}">${n[0].split(' ').map(w=>w[0]).join('')}</span>${n[0]}</span><span class="pv">Stripe</span><span class="src">${n[2]}</span><span>Nov 12 at ${times[i]}</span><span class="am2">$${n[3]}.00</span><span class="ok">Succeeded</span><span style="color:#111">${ic('ellipsis-vertical',18)}</span></div>`).join('')}</div>
+    <div class="pg"><span class="btn dis">Previous</span><span class="on">1</span><span>2</span><span>3</span><span class="btn">Next</span><span class="btn" style="color:#4B5563">10 / page ${ic('chevron-down',14)}</span></div></div>
+  </div></div>`;
   CUR=[];CLICKS=[];
-  CAPS=[{a:.6,b:7.3,n:5,txt:'Get paid. Every sale lands here.'}];
+  CAPS=[{a:.5,b:7.8,n:5,txt:'Get paid. Every sale shows up here.'}];
 },tick(t){
-  const N=this.N,T=this.T;let shown=0,rev=0;T.forEach((a,i)=>{if(t>=a){shown++;rev+=N[i][2]}});
-  // rows stack: newest on top
-  N.forEach((n,i)=>{const r=$('#r'+i);if(t<T[i]){r.style.opacity=0;r.style.transform='translateY(-64px)';return}
-    const after=T.filter((a,j)=>j>i&&t>=a).length; // number of newer rows
-    let y=after*64; const k=i+1<T.length?T[i+1]:99; // slide when newer row arrives
-    const newest=T.findLastIndex?T.findLastIndex(a=>t>=a):0;
-    const pin=P(t,T[newest],T[newest]+.35,oo); if(i!=newest) y=(after-1)*64+64*pin*1; else y=0;
-    if(i!=newest) y=(after-1+pin)*64;
-    r.style.transform=`translateY(${y}px)`;r.style.opacity=i==newest?P(t,T[i],T[i]+.3):1;
-    r.style.background=(i==newest&&t-T[i]<.9)?`rgba(61,227,200,${.28*(1-cl((t-T[i])/.9))})`:'#fff';});
-  // counters (smooth)
-  let shownRev=0;T.forEach((a,i)=>{shownRev+=N[i][2]*P(t,a,a+.5)});
-  $('#rev').textContent='$'+shownRev.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-  $('#ord').textContent=shown;$('#conv').textContent=(shown?L(3.1,5.4,shown/8):0).toFixed(1)+'%';
-  const newest=T.reduce((m,a,i)=>t>=a?i:m,-1);const to=$('#toast');
-  if(newest>=0){const d=t-T[newest];to.style.opacity=cl(d/.15)*(d<.85?1:1-cl((d-.85)/.2));to.style.transform=`translateY(${(1-P(d,0,.3,back))*-24}px)`;$('#tb').textContent=`New sale · $${N[newest][2]}.00`;$('#ts').textContent=`${N[newest][3]} · just now`}else to.style.opacity=0;
-  fades(t,this.dur);
+  const N=this.N,T=this.T;const newest=T.reduce((m,a,i)=>t>=a?i:m,-1);
+  N.forEach((n,i)=>{const r=$('#r'+i);if(t<T[i]){r.style.opacity=0;return}
+    const after=T.filter((a,j)=>j>i&&t>=a).length;let y;
+    if(i==newest)y=0;else{const pin=P(t,T[newest],T[newest]+.35,oo);y=(after-1+pin)*67}
+    r.style.top=(44+y)+'px';r.style.opacity=i==newest?P(t,T[i],T[i]+.3):1;
+    r.style.background=(t-T[i]<1.0)?`rgba(220,252,231,${1-cl((t-T[i])/1.0)})`:'#fff';});
+  let rev=0;T.forEach((a,i)=>{rev+=N[i][3]*P(t,a,a+.45)});
+  $('#rev').textContent='$'+rev.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  $('#ord').textContent=newest+1;
+  fades(t,this.dur,.3,.4);
 }};
 
 SC.outro={dur:4.6,build(){
-  $('#stage').innerHTML=`<div class="center"><div class="bigl" style="width:120px;height:120px">${LOGO}</div><h1>Build it. Launch it.<br><em>Get paid.</em></h1><div class="go">Start building for $17/month →</div><div class="url">oceanicfunnels.com</div></div>`;
+  $('#cam').innerHTML=`<div class="ctr"><img class="lg" src="img/logo.svg" style="width:440px"><h1>Build it. Launch it.<br><em>Get paid.</em></h1><div class="go">Start building for $17/month</div><div class="url">oceanicfunnels.com</div></div>`;
   CUR=[];CLICKS=[];CAPS=[];
 },tick(t){
-  $('.bigl').style.opacity=P(t,.1,.5);$('.center h1').style.opacity=P(t,.3,.8);$('.center h1').style.transform=`translateY(${(1-P(t,.3,.9,oo))*30}px)`;
-  const g=$('.go'),p=P(t,.9,1.4,back);g.style.opacity=cl((t-.9)/.25);g.style.transform=`scale(${L(.85,1,p)*(1+.025*Math.sin(Math.max(0,t-1.6)*4))})`;
+  $('.ctr .lg').style.opacity=P(t,.1,.5);const h=$('.ctr h1');h.style.opacity=P(t,.3,.8);h.style.transform=`translateY(${(1-P(t,.3,.9,oo))*24}px)`;
+  const g=$('.go'),p=P(t,.9,1.4,back);g.style.opacity=cl((t-.9)/.25);g.style.transform=`scale(${L(.9,1,p)})`;
   $('.url').style.opacity=P(t,1.4,1.9);
-  fades(t,this.dur,.45,.5);
+  fades(t,this.dur,.4,.5);
 }};
 
 let CURSC=null;
-window.setup=name=>{CURSC=SC[name];CUR=[];CLICKS=[];CAPS=[];CURSC.build();return CURSC.dur};
+window.setup=name=>{CURSC=SC[name];CUR=[];CLICKS=[];CAPS=[];$('#cam').style.transform='';CURSC.build();return CURSC.dur};
 window.render=t=>{CURSC.tick(t);drawCursor(t);drawCap(t)};
+window.ready=async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.complete?0:new Promise(r=>{i.onload=i.onerror=r})))};
 </script></body></html>
