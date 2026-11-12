@@ -1390,6 +1390,9 @@ LAUNCH_CSS = r"""
 .ln-gal figcaption{margin-top:14px}
 .ln-gal figcaption b{display:block;font-family:var(--display);font-size:18px;color:var(--ink)}
 .ln-gal figcaption span{font-size:15px;color:var(--text)}
+.ln-feat div:nth-child(7):last-child{grid-column:1/-1;display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:center;background:var(--aqua-l);border-color:transparent}
+.ln-feat div:nth-child(7):last-child .ico{grid-row:span 2;margin:0;background:#fff}
+.ln-feat div:nth-child(7):last-child p{margin-top:2px}
 .ln-feat .ico{width:44px;height:44px;border-radius:12px;background:var(--aqua-l);display:grid;place-items:center;margin-bottom:14px}
 .ln-feat .ico svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:900px){.ln-hin{grid-template-columns:1fr;gap:40px;padding-block:20px 64px}.ln-gal{grid-template-columns:1fr}.ln-toast{left:6px;top:auto;bottom:6px}.ln-ph{right:-4px;width:31%}.ln-dev{padding:0 10px 40px 0}}
@@ -1403,6 +1406,22 @@ LAUNCH_CSS = r"""
 .ln-pr-cd{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-size:14px;color:#DDE7E5}
 .ln-ended .ln-cd{display:none}
 @media(max-width:600px){.ln-bar{font-size:13.5px}.ln-bar-in{flex-wrap:nowrap;gap:8px}}
+.ln-show{margin-top:56px}
+.ln-show h3{font-family:var(--display);font-size:clamp(22px,2.6vw,28px);color:var(--ink);text-align:center;letter-spacing:-.01em}
+.ln-show-hint{text-align:center;font-size:14px;color:var(--muted);margin-top:6px}
+.ln-show-vp{overflow:hidden;margin:18px -24px 0;padding:14px 0 20px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ln-track{display:flex;gap:22px;width:max-content;animation:lnSlide 40s linear infinite}
+.ln-show-vp:hover .ln-track,.ln-show-vp.paused .ln-track{animation-play-state:paused}
+@keyframes lnSlide{to{transform:translateX(calc(-50% - 11px))}}
+.ln-fc{flex:0 0 300px;background:#fff;border-radius:12px;overflow:hidden;cursor:pointer;box-shadow:0 22px 40px -24px rgba(14,26,27,.5),0 0 0 1px rgba(14,26,27,.08);transition:transform .3s,box-shadow .3s}
+.ln-fc:hover,.ln-fc.on{transform:translateY(-6px);box-shadow:0 30px 50px -24px rgba(14,26,27,.55),0 0 0 3px var(--aqua)}
+.ln-fc .tb{height:24px;background:#E9EEED;display:flex;align-items:center;gap:6px;padding:0 10px}
+.ln-fc .tb i{width:8px;height:8px;border-radius:50%;background:#FF6B5E}.ln-fc .tb i:nth-child(2){background:#FFBE2E}.ln-fc .tb i:nth-child(3){background:#2ACB42}
+.ln-fc .vw{height:380px;overflow:hidden}
+.ln-fc .vw img{display:block;width:100%;height:auto;transition:transform 1s ease-out}
+.ln-fc:hover .vw img,.ln-fc.on .vw img{transform:translateY(calc(-100% + 380px));transition:transform var(--d) linear}
+@media(max-width:700px){.ln-fc{flex-basis:240px}.ln-fc .vw{height:320px}.ln-fc:hover .vw img,.ln-fc.on .vw img{transform:translateY(calc(-100% + 320px))}.ln-track{animation-duration:30s}.ln-show-vp{margin-inline:-16px}}
+@media(prefers-reduced-motion:reduce){.ln-track{animation-duration:120s}}
 .ln-galsec{background:linear-gradient(180deg,#F4F8F7,#EAF3F1)}
 .ln-stop{background:var(--ink);color:#fff;position:relative;overflow:hidden}
 .ln-stop::before{content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(61,227,200,.22),rgba(61,227,200,0) 70%)}
@@ -1462,14 +1481,15 @@ def lp_launch(cfg, fonts, logo):
              ("Your Own Online Store", "Add products, create storefront pages and give customers somewhere to shop."),
              ("Built-In Payment Collection", "Connect a supported payment provider and accept payments through your store or checkout."),
              ("Drag-and-Drop Page Builder", "Choose a template, customize the design, add your content and publish without writing code."),
-             ("One Place to Build and Sell", "Manage your websites, funnels, storefronts and selling pages from one Oceanic Funnels account.")]
+             ("One Place to Build and Sell", "Manage your websites, funnels, storefronts and selling pages from one Oceanic Funnels account."),
+             ("24/7 Support", "Stuck on something? Our support team is here 24/7 to help you get your pages live.")]
     who = [("Coaches, teachers and nurses", "Turn what you know into guides, classes or sessions people can buy."),
            ("Entrepreneurs", "Give your new business idea a website or funnel people can actually visit."),
            ("Online Sellers", "Build an online storefront, show your products and accept payments."),
            ("Creators", "Create sales pages for your templates, resources and other products."),
            ("Small Businesses", "Build a professional online presence without hiring a developer for every new page.")]
     incl = ["Unlimited sales funnels", "Unlimited websites", "Online store builder", "Product pages and checkout",
-            "Payment provider integration", "Drag-and-drop page editing", "Custom domain connection", "Ready-to-customize templates"]
+            "Payment provider integration", "Drag-and-drop page editing", "Custom domain connection", "Ready-to-customize templates", "24/7 support"]
     faqs = [("Can I build a complete sales funnel?", "Yes. You can create sales pages, checkout pages and thank-you pages for your products and offers."),
             ("Can I create an online store?", "Yes. Add products, build your storefront and connect a supported payment provider."),
             ("Do I need coding experience?", "No. Oceanic Funnels includes a visual page builder, so you can create and customize pages without writing code."),
@@ -1480,7 +1500,9 @@ def lp_launch(cfg, fonts, logo):
             ("Can your team build everything for me?", "Yes. Optional Done-For-You Setup is available for $997, with a defined scope of work."),
             ("Can I cancel anytime?", "Yes. Launch is a month-to-month subscription with no long-term contract.")]
     faq_schema = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}
-    ICO = {'Unlimited Sales Funnels': '<path d="M3 4h18l-7 8v6l-4 2v-8z"/>', 'Unlimited Websites': '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>', 'Your Own Online Store': '<path d="M4 8h16l-1 12H5z"/><path d="M9 8a3 3 0 0 1 6 0"/>', 'Built-In Payment Collection': '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>', 'Drag-and-Drop Page Builder': '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M15 3h6v6M9 21H3v-6"/>', 'One Place to Build and Sell': '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'}
+    ICO = {'Unlimited Sales Funnels': '<path d="M3 4h18l-7 8v6l-4 2v-8z"/>', 'Unlimited Websites': '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>', 'Your Own Online Store': '<path d="M4 8h16l-1 12H5z"/><path d="M9 8a3 3 0 0 1 6 0"/>', 'Built-In Payment Collection': '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>', 'Drag-and-Drop Page Builder': '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M15 3h6v6M9 21H3v-6"/>', 'One Place to Build and Sell': '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>', '24/7 Support': '<path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M19.5 19c0 1.5-2 2.5-5 2.5"/>'}
+    SHOW = [("mindset", 2574), ("strategy-call", 2150), ("salon-seo", 4691), ("sales-coach", 1557)]
+    SHOW_CARDS = "".join(f'<div class="ln-fc" style="--d:{max(4, round(h/380))}s"><div class="tb"><i></i><i></i><i></i></div><div class="vw"><img src="/assets/showcase/{k}-full.webp" alt="A sales funnel built on Oceanic Funnels" width="560" height="{h}" loading="lazy"></div></div>' for k, h in SHOW)
     gal = "".join(f'<figure><div class="ln-bw"><div class="tb"><i></i><i></i><i></i></div><div class="im"><img src="/assets/launch/{f}.webp" alt="{E(alt)}" width="1920" height="1200" loading="lazy"></div></div><figcaption><b>{E(t)}</b><span>{E(d)}</span></figcaption></figure>'
                   for f, t, d, alt in [("sales", "Sales funnels for any offer", "A sales page, checkout and thank-you page for a product, service, program or download. Shown: a recipe guide.", "Example sales page for a meal prep guide"),
                                        ("store", "Online stores", "Product pages, prices and checkout for anything you ship or deliver. Shown: handmade ceramics.", "Example online store selling handmade ceramics"),
@@ -1509,6 +1531,12 @@ def lp_launch(cfg, fonts, logo):
   <h2>What you can build with Launch</h2>
   <p class="lead">Whatever you sell, Launch gives you the pages to sell it: products, services, programs or digital downloads. Pick a template, add your own words and products, and publish.</p>
   <div class="ln-gal">{gal}</div>
+  <div class="ln-show">
+    <h3>Real funnels built on Oceanic Funnels</h3>
+    <p class="ln-show-hint">Hover a funnel to scroll through the whole page</p>
+    <div class="ln-show-vp"><div class="ln-track">{SHOW_CARDS}{SHOW_CARDS}</div></div>
+  </div>
+  <script>(function(){{var v=document.querySelector('.ln-show-vp');if(!v)return;v.querySelectorAll('.ln-fc').forEach(function(c){{c.addEventListener('click',function(){{var on=!c.classList.contains('on');v.querySelectorAll('.ln-fc.on').forEach(function(x){{x.classList.remove('on')}});if(on)c.classList.add('on');v.classList.toggle('paused',on);}});}});if('ontouchstart' in window){{var h=document.querySelector('.ln-show-hint');if(h)h.textContent='Tap a funnel to scroll through the whole page';}}}})();</script>
 </div></section>
 <section class="ln-sec ln-stop"><div class="nf-wrap ln-stop-in">
   <div>
