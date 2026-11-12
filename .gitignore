@@ -6,3 +6,5 @@ __pycache__/
 
 # Rendered ad videos (large, kept out of the deploy repo)
 ads/**/out/*.mp4
+brand/animated-logo/frames/
+brand/animated-logo/*.mov
