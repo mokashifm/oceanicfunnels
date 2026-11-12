@@ -1,0 +1,408 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(fonts/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:500;src:url(fonts/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2)}
+@font-face{font-family:Play;font-weight:600;src:url(fonts/playfair-display-latin-600-normal.woff2)}
+@font-face{font-family:Play;font-weight:700;src:url(fonts/playfair-display-latin-700-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family:Inter,sans-serif;color:#1d2433;-webkit-font-smoothing:antialiased}
+#stage{position:absolute;inset:0;overflow:hidden}
+#fade{position:absolute;inset:0;background:#fff;pointer-events:none;z-index:90}
+/* cursor */
+#cur{position:absolute;left:0;top:0;width:34px;height:40px;z-index:80;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));will-change:transform}
+#ring{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;border:4px solid #3DE3C8;z-index:79;opacity:0}
+/* caption */
+#cap{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:85;background:#0E1A1B;color:#fff;font-weight:700;font-size:30px;padding:16px 30px 16px 18px;border-radius:999px;display:flex;align-items:center;gap:14px;box-shadow:0 20px 40px -18px rgba(0,0,0,.55);white-space:nowrap;opacity:0}
+#cap i{font-style:normal;width:44px;height:44px;border-radius:50%;background:#3DE3C8;color:#0E1A1B;display:grid;place-items:center;font-size:22px;font-weight:800}
+/* app chrome */
+.app{position:absolute;inset:0;background:#F3F6F6}
+.side{position:absolute;left:0;top:0;bottom:0;width:72px;background:#fff;border-right:1px solid #E3E8E8;display:flex;flex-direction:column;align-items:center;padding-top:92px;gap:22px}
+.side b{width:26px;height:26px;border-radius:7px;border:2px solid #9AA6A6;opacity:.75}
+.side b.on{background:#DDF7F2;border-color:#0E9C87}
+.top{position:absolute;left:0;right:0;top:0;height:64px;background:#fff;border-bottom:1px solid #E3E8E8;overflow:hidden}
+.top:before{content:"";position:absolute;left:0;top:0;width:1120px;height:64px;background:#62E3C9;clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
+.top .lg{position:absolute;left:16px;top:12px;width:40px;height:40px}
+.top .ic{position:absolute;right:28px;top:14px;display:flex;gap:12px}
+.top .ic span{width:36px;height:36px;border-radius:50%;background:#62E3C9}
+.top .ic span:nth-child(2){background:#0E1A1B}
+.nav{position:absolute;left:72px;right:0;top:64px;height:66px;background:#fff;border-bottom:1px solid #E3E8E8;display:flex;align-items:center;gap:10px;padding-left:26px}
+.nav h3{font-size:24px;font-weight:600;margin-right:12px}
+.nav span{font-size:17px;padding:9px 16px;border:1px solid #E3E8E8;border-radius:8px;color:#2b3442}
+.nav span.on{background:#0E1A1B;color:#fff;border-color:#0E1A1B}
+.main{position:absolute;left:72px;right:0;top:130px;bottom:0;padding:34px 70px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:9px;padding:13px 20px;font-size:17px}
+.btn.dark{background:#0E1A1B;color:#fff}
+.btn.blue{background:#3B5BFF;color:#fff}
+/* funnels list */
+.fl-h{display:flex;align-items:center;justify-content:space-between}
+.fl-h h2{font-size:34px;font-weight:700}
+.fl-h p{color:#5B6967;margin-top:6px;font-size:17px}
+.fl-list{margin-top:28px;background:#fff;border:1px solid #E3E8E8;border-radius:14px;overflow:hidden}
+.fl-row{display:grid;grid-template-columns:96px 1fr 180px 160px 140px;align-items:center;gap:20px;padding:18px 26px;border-top:1px solid #EEF2F2;font-size:18px}
+.fl-row:first-child{border-top:0;background:#F8FAFA;font-size:14px;font-weight:600;color:#6b7777;text-transform:uppercase;letter-spacing:.06em;padding:14px 26px}
+.thumb{width:96px;height:62px;border-radius:8px;background:linear-gradient(180deg,#B88570 0 55%,#F4EEEA 55%);border:1px solid #e5e5e5}
+.pill{display:inline-block;font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px;background:#DDF7F2;color:#0A7F6E}
+/* modal */
+.scrim{position:absolute;inset:0;background:rgba(40,46,56,.55);opacity:0}
+.modal{position:absolute;left:50%;top:50%;width:1180px;margin-left:-590px;margin-top:-250px;background:#fff;border-radius:16px;padding:28px 28px 26px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);opacity:0}
+.modal h4{font-size:24px;font-weight:600}
+.modal .x{position:absolute;right:28px;top:24px;font-size:26px;color:#333}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.opt{border-radius:14px;padding:22px;border:2px solid transparent;transition:none;height:340px;position:relative}
+.opt .art{height:180px;border-radius:12px;position:relative;overflow:hidden}
+.opt h5{font-size:23px;font-weight:600;margin-top:22px}
+.opt p{font-size:17px;color:#5B6967;margin-top:8px;line-height:1.4}
+.o1{background:#F5F7F8}.o1 .art{border:2px dashed #C8D0D0;background:#fff;padding:30px 24px}
+.o1 .art label{font-size:17px;font-weight:500}.o1 .art label b{color:#E0242B}
+.o1 .art .in{margin-top:10px;height:46px;border:1px solid #CfD6D6;border-radius:7px;padding:12px;font-size:17px;color:#99A}
+.o2{background:linear-gradient(180deg,#EFE9FF,#fff)}.o2 .art{background:linear-gradient(135deg,#8E5CFF,#6B3CF0);color:#fff;padding:24px;font-size:22px;font-weight:600}
+.o3{background:linear-gradient(180deg,#FFF0EA,#fff)}.o3 .art{background:linear-gradient(135deg,#FFB8A0,#F38E77);padding:24px;font-size:22px;font-weight:600;color:#3a1d14}
+.opt.hov{border-color:#0E9C87;box-shadow:0 18px 40px -22px rgba(14,156,135,.8)}
+.mini{position:absolute;right:20px;top:26px;width:150px;height:140px;background:#fff;border-radius:8px;transform:rotate(-8deg);box-shadow:0 10px 24px -10px rgba(0,0,0,.4);overflow:hidden}
+.mini:before{content:"";position:absolute;left:0;right:0;top:0;height:60px;background:linear-gradient(90deg,#FDE6A3,#B9E5FF)}
+.mini i{position:absolute;left:12px;right:30px;height:8px;border-radius:4px;background:#E2E6EA}
+.modal .ft{display:flex;justify-content:flex-end;gap:12px;margin-top:22px}
+.modal .ft span{font-size:18px;font-weight:600;padding:12px 20px;border-radius:9px;border:1px solid #D7DCDC}
+.modal .ft span.b{background:#0E1A1B;color:#fff;border-color:#0E1A1B}
+/* templates */
+.chips{display:flex;gap:10px;margin-top:20px}
+.chips span{font-size:16px;font-weight:600;padding:9px 16px;border-radius:999px;background:#fff;border:1px solid #E3E8E8}
+.chips span.on{background:#0E1A1B;color:#fff}
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:26px}
+.tcard{background:#fff;border-radius:14px;border:1px solid #E3E8E8;overflow:hidden;position:relative}
+.tcard .pv{height:230px;position:relative;overflow:hidden}
+.tcard .pv .h{position:absolute;left:0;right:0;top:0;height:120px}
+.tcard .pv .t1{position:absolute;left:20px;top:34px;width:58%;height:14px;border-radius:4px;background:rgba(255,255,255,.9)}
+.tcard .pv .t2{position:absolute;left:20px;top:58px;width:44%;height:14px;border-radius:4px;background:rgba(255,255,255,.75)}
+.tcard .pv .b{position:absolute;left:20px;top:84px;width:80px;height:20px;border-radius:5px;background:#fff}
+.tcard .pv .l{position:absolute;left:20px;right:20px;height:9px;border-radius:4px;background:#E7EBEE}
+.tcard .pv .c{position:absolute;bottom:18px;width:28%;height:52px;border-radius:7px;background:#F1F3F5}
+.tcard .nm{padding:14px 16px;font-weight:600;font-size:17px;display:flex;justify-content:space-between}
+.tcard .nm small{font-weight:500;color:#7b8787;font-size:14px}
+.tcard .ov{position:absolute;left:0;right:0;top:0;height:230px;background:rgba(14,26,27,.55);display:flex;align-items:center;justify-content:center;gap:12px;opacity:0}
+.tcard .ov span{font-weight:600;font-size:17px;padding:11px 18px;border-radius:9px;background:#fff;color:#0E1A1B}
+.tcard .ov span.u{background:#3DE3C8}
+.creating{position:absolute;inset:0;background:rgba(255,255,255,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font-size:26px;font-weight:600;opacity:0}
+.spin{width:54px;height:54px;border-radius:50%;border:5px solid #DDF7F2;border-top-color:#0E9C87}
+/* steps view */
+.stepsv{position:absolute;left:72px;right:0;top:130px;bottom:0;padding:34px 70px;opacity:0;background:#F3F6F6}
+.stepsv .bk{font-size:17px;color:#333}
+.stepsv h2{font-size:30px;font-weight:600;margin-top:10px}
+.stepsv .tabs{display:flex;gap:30px;margin-top:22px;font-size:18px;border-bottom:1px solid #E3E8E8;padding-bottom:12px}
+.stepsv .tabs span:first-child{color:#0E9C87;font-weight:600}
+.sv{display:grid;grid-template-columns:420px 1fr;margin-top:24px;background:#fff;border-radius:6px;overflow:hidden;height:600px}
+.sv .lp{background:#E6F7F3;padding:26px 0}
+.sv .lp h4{font-size:26px;font-weight:500;color:#2a6b60;padding:0 26px 18px}
+.st{display:flex;align-items:center;height:74px;opacity:0}
+.st .ico{width:74px;height:74px;display:grid;place-items:center;background:#C9EFE6}
+.st .ico:after{content:"";width:22px;height:16px;border:2px solid #0E9C87;border-radius:3px}
+.st b{font-weight:500;font-size:19px;padding-left:26px;background:#fff;height:74px;flex:1;display:flex;align-items:center}
+.st.on .ico{background:#62E3C9}
+.sv .rp{padding:26px 34px}
+.sv .rp .hd{display:flex;justify-content:space-between;font-size:20px;border-bottom:1px solid #EEF2F2;padding-bottom:14px}
+.sv .rp .hd span{color:#0E9C87;font-weight:600}
+.sv .ctrl{margin-top:28px;width:420px}
+.sv .ctrl .lab{display:inline-block;font-size:15px;font-weight:600;color:#0A7F6E;background:#DDF7F2;padding:4px 10px;border-radius:5px}
+.sv .ctrl .pv{margin-top:10px;height:300px;border:1px solid #E3E8E8;border-radius:8px;overflow:hidden;position:relative}
+.sv .ctrl .act{display:flex;margin-top:16px;gap:10px}
+/* builder */
+.bld{position:absolute;inset:0;background:#F6F7F8}
+.bt{position:absolute;left:0;right:0;top:0;height:66px;background:#fff;border-bottom:1px solid #E6E9EC;display:flex;align-items:center;padding:0 22px;gap:18px;font-size:19px}
+.bt .as{font-size:15px;color:#555;border:1px solid #DDE2E6;border-radius:999px;padding:6px 14px}
+.bt .r{margin-left:auto;display:flex;gap:12px;align-items:center}
+.bt .r .sq{width:46px;height:46px;border:1px solid #DDE2E6;border-radius:9px}
+.pub{display:inline-flex;align-items:center;gap:10px;background:#3B5BFF;color:#fff;font-weight:600;font-size:19px;padding:12px 22px;border-radius:9px;min-width:140px;justify-content:center}
+.tb2{position:absolute;left:0;right:0;top:66px;height:56px;background:#fff;border-bottom:1px solid #E6E9EC;display:flex;align-items:center;padding:0 18px;gap:22px}
+.tb2 .g{width:22px;height:22px;border-radius:5px;border:2px solid #4b5563;opacity:.8}
+.tb2 .plus{font-size:30px;font-weight:300;line-height:1;width:34px;height:34px;display:grid;place-items:center;border-radius:7px}
+.tb2 .dev{margin-left:290px;display:flex;gap:6px;align-items:center;border-left:1px solid #E6E9EC;border-right:1px solid #E6E9EC;padding:0 18px;height:56px}
+.tb2 .dev span{width:40px;height:38px;border-radius:7px;display:grid;place-items:center}
+.tb2 .dev span.on{background:#EEF1F4}
+.tb2 .dev span i{display:block;border:2px solid #333;border-radius:3px}
+.urlb{position:absolute;left:0;right:0;top:122px;height:44px;background:#fff;border-bottom:1px solid #E6E9EC;display:flex;align-items:center;justify-content:center;gap:14px;font-size:17px;color:#3B5BFF}
+.urlb b{color:#2943d6;font-weight:600}
+.canvas{position:absolute;left:0;right:0;top:166px;bottom:40px;overflow:hidden;display:flex;justify-content:center}
+.bb{position:absolute;left:0;right:0;bottom:0;height:40px;background:#fff;border-top:1px solid #E6E9EC;display:flex;align-items:center;gap:10px;padding:0 18px;font-size:15px}
+.bb span{padding:3px 10px;border-radius:5px}
+.bb span.s{background:#E3F8E8;color:#147a2e}
+.page{width:1560px;background:#fff;height:1400px;position:relative;box-shadow:0 0 0 1px #E6E9EC}
+.pg-nav{height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 70px;font-family:Play;font-weight:700;font-size:28px}
+.pg-nav div{display:flex;gap:34px;font-family:Inter;font-size:16px;font-weight:500;color:#555}
+.hero{display:flex;flex-wrap:wrap;min-height:560px}
+.hero .lft{flex:1 1 560px;background:#B47F6A;color:#fff;padding:90px 70px 70px;position:relative}
+.hero .lft small{font-family:Play;font-style:italic;font-size:20px;opacity:.9}
+.hero h1{font-family:Play;font-weight:700;font-size:72px;line-height:1.05;margin-top:14px;position:relative;display:inline-block;min-height:76px;max-width:640px}
+.hero h1 .caret{display:inline-block;width:4px;height:64px;background:#fff;vertical-align:-8px;margin-left:4px}
+.hero .sub{font-size:21px;line-height:1.5;margin-top:22px;max-width:560px;opacity:.95}
+.hero .cta{display:inline-block;margin-top:30px;background:#fff;color:#7a4b39;font-weight:700;font-size:21px;padding:18px 30px;border-radius:8px;opacity:0;transform-origin:left center}
+.hero .rgt{flex:1 1 560px;background:linear-gradient(135deg,#F4E6DD,#E9D3C6);position:relative;min-height:560px;overflow:hidden}
+.course{position:absolute;left:50%;top:50%;width:440px;height:290px;margin:-170px 0 0 -220px;background:#fff;border-radius:16px;box-shadow:0 30px 60px -30px rgba(80,40,20,.6);overflow:hidden}
+.course .v{height:190px;background:linear-gradient(135deg,#2E3A46,#56677A);position:relative}
+.course .v:after{content:"";position:absolute;left:50%;top:50%;margin:-26px 0 0 -18px;border-left:44px solid #fff;border-top:26px solid transparent;border-bottom:26px solid transparent;opacity:.9}
+.course .m{padding:16px 20px}.course .m i{display:block;height:12px;border-radius:5px;background:#EDE3DD;margin-top:10px}
+.course .m i:first-child{width:70%;background:#D9C4B8;margin-top:0}
+.sel{position:absolute;border:3px solid #3B5BFF;pointer-events:none;opacity:0;z-index:5}
+.sel span{position:absolute;left:-3px;top:-34px;background:#3B5BFF;color:#fff;font-size:15px;font-weight:600;padding:5px 10px;border-radius:5px 5px 0 0;white-space:nowrap}
+.learn{padding:80px 70px;text-align:center}
+.learn h2{font-family:Play;font-size:52px}
+.learn .cards{display:flex;flex-wrap:wrap;gap:26px;margin-top:40px;justify-content:center}
+.learn .cards div{flex:1 1 300px;max-width:440px;background:#F7F1ED;border-radius:12px;height:220px}
+.panel{position:absolute;left:0;top:122px;bottom:40px;width:330px;background:#fff;border-right:1px solid #E6E9EC;box-shadow:12px 0 30px -20px rgba(0,0,0,.3);z-index:20;padding:22px;transform:translateX(-340px)}
+.panel h4{font-size:20px;font-weight:600}
+.panel .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.panel .el{border:1px solid #E3E6EA;border-radius:10px;height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:500}
+.panel .el i{width:30px;height:22px;border:2px solid #555;border-radius:5px}
+.panel .el.hov{border-color:#3B5BFF;background:#F1F4FF;color:#2943d6}
+.ghost{position:absolute;z-index:70;background:#3B5BFF;color:#fff;font-weight:600;font-size:17px;padding:12px 18px;border-radius:9px;opacity:0;box-shadow:0 16px 30px -12px rgba(59,91,255,.7)}
+.rpanel{position:absolute;right:0;top:122px;bottom:40px;width:360px;background:#fff;border-left:1px solid #E6E9EC;box-shadow:-12px 0 30px -20px rgba(0,0,0,.3);z-index:20;padding:22px;transform:translateX(370px)}
+.rpanel h4{font-size:20px;font-weight:600}
+.rpanel .lab{font-size:15px;color:#666;margin-top:22px}
+.sw{display:flex;gap:14px;margin-top:12px}
+.sw span{width:52px;height:52px;border-radius:12px;border:3px solid #fff;box-shadow:0 0 0 1px #DDE2E6}
+.sw span.on{box-shadow:0 0 0 3px #3B5BFF}
+.rpanel .fld{margin-top:12px;height:46px;border:1px solid #DDE2E6;border-radius:8px}
+.toast{position:absolute;right:40px;top:90px;z-index:60;background:#0E1A1B;color:#fff;border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.6);opacity:0;min-width:430px}
+.toast .ok{width:46px;height:46px;border-radius:50%;background:#3DE3C8;color:#0E1A1B;display:grid;place-items:center;font-weight:800;font-size:24px}
+.toast b{display:block;font-size:20px}.toast small{font-size:16px;color:#A9C2BE}
+/* sales */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+.kpi{background:#fff;border:1px solid #E3E8E8;border-radius:14px;padding:22px 26px}
+.kpi small{font-size:16px;color:#6b7777;font-weight:500}
+.kpi b{display:block;font-size:44px;font-weight:700;margin-top:6px;letter-spacing:-.02em}
+.kpi em{font-style:normal;font-size:15px;color:#0A7F6E;font-weight:600}
+.tx{margin-top:24px;background:#fff;border:1px solid #E3E8E8;border-radius:14px;overflow:hidden;height:520px;position:relative}
+.tr{display:grid;grid-template-columns:2.2fr 1fr 2fr 1.4fr 1fr 1fr;align-items:center;padding:0 26px;height:64px;border-top:1px solid #EEF2F2;font-size:18px;background:#fff}
+.tr.h{border-top:0;background:#F8FAFA;font-size:15px;font-weight:600;color:#6b7777;height:52px}
+.tr .cu{display:flex;align-items:center;gap:14px;font-weight:500}
+.tr .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px}
+.tr .ok{display:inline-block;font-size:15px;font-weight:600;color:#147a2e;background:#E3F8E8;border:1px solid #9FDDB0;padding:4px 12px;border-radius:999px}
+.rows{position:absolute;left:0;right:0;top:52px}.rows .tr{position:absolute;left:0;right:0;top:0}
+.demo{position:absolute;right:76px;top:48px;font-size:14px;color:#8a9696;font-weight:500}
+/* intro/outro */
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(70% 60% at 50% 40%,#EAFBF7,#fff)}
+.center .bigl{width:170px;height:170px}
+.center h1{font-size:92px;font-weight:800;letter-spacing:-.035em;color:#0E1A1B;margin-top:30px;line-height:1.02}
+.center h1 em{font-style:normal;color:#0E9C87}
+.center p{font-size:32px;color:#4a5856;margin-top:22px}
+.center .go{margin-top:44px;background:#FF7657;color:#fff;font-weight:700;font-size:34px;padding:24px 46px;border-radius:999px;box-shadow:0 24px 40px -20px rgba(255,118,87,.9)}
+.center .url{margin-top:26px;font-size:24px;font-weight:600;color:#0E9C87}
+</style></head>
+<body><div id="stage"></div><div id="ring"></div>
+<svg id="cur" viewBox="0 0 24 28"><path d="M2 1.5v21.5l5.6-5.4 3.6 8.6 3.9-1.7-3.6-8.4h7.9z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+<div id="cap"><i>1</i><span></span></div><div id="fade"></div>
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;          // ease in-out
+const oo=x=>1-Math.pow(1-x,3);                               // ease out
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const P=(t,a,b,e=io)=>e(cl((t-a)/(b-a)));
+const L=(a,b,p)=>a+(b-a)*p;
+const LOGO=`<svg viewBox="0 0 100 100"><path d="M10 22c6.7-6 13.3-6 20 0s13.3 6 20 0 13.3-6 20 0 13.3 6 20 0" fill="none" stroke="#3DE3C8" stroke-width="9" stroke-linecap="round"/><rect x="18" y="38" width="64" height="10" rx="5" fill="#5FC8E8"/><rect x="29" y="56" width="42" height="10" rx="5" fill="#F29A86"/><rect x="40" y="74" width="20" height="10" rx="5" fill="#FF7657"/></svg>`;
+function chrome(active, inner){
+  return `<div class="app"><div class="top"><div class="lg">${LOGO}</div><div class="ic"><span></span><span></span><span></span><span></span></div></div>
+  <div class="side">${Array.from({length:14},(_,i)=>`<b class="${i==11?'on':''}"></b>`).join('')}</div>
+  <div class="nav"><h3>${active=='pay'?'Payments':'Sites'}</h3>${(active=='pay'?['Transactions','Orders','Subscriptions','Products','Coupons','Settings']:['Funnels','Websites','Stores','Webinars','Analytics','Blogs','Forms','Surveys','Quizzes']).map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div>${inner}</div>`;
+}
+/* cursor & caption helpers */
+let CUR=[], CLICKS=[], CAPS=[];
+function center(el,dx=0,dy=0){const r=el.getBoundingClientRect();return [r.left+r.width/2+dx,r.top+r.height/2+dy]}
+function curAt(t){
+  if(!CUR.length) return null;
+  if(t<=CUR[0].t) return [CUR[0].x,CUR[0].y];
+  for(let i=1;i<CUR.length;i++){const a=CUR[i-1],b=CUR[i];if(t<=b.t){const p=io((t-a.t)/(b.t-a.t));return [L(a.x,b.x,p),L(a.y,b.y,p)]}}
+  const z=CUR[CUR.length-1];return [z.x,z.y];
+}
+function drawCursor(t){
+  const c=curAt(t), cur=$('#cur'), ring=$('#ring');
+  if(!c){cur.style.opacity=0;ring.style.opacity=0;return}
+  let s=1;for(const k of CLICKS){const d=t-k; if(d>=0&&d<.25) s=1-.18*Math.sin(Math.PI*d/.25)}
+  cur.style.opacity=1;cur.style.transform=`translate(${c[0]-3}px,${c[1]-2}px) scale(${s})`;
+  let ro=0,rs=.4;for(const k of CLICKS){const d=t-k;if(d>=0&&d<.5){ro=1-d/.5;rs=.4+d/.5*1.1}}
+  ring.style.opacity=ro;ring.style.left=c[0]+'px';ring.style.top=c[1]+'px';ring.style.transform=`scale(${rs})`;
+}
+function drawCap(t){
+  const cap=$('#cap');let o=0;
+  for(const c of CAPS){ if(t>=c.a-.3&&t<=c.b+.3){ o=Math.min(P(t,c.a-.3,c.a,oo),1-P(t,c.b,c.b+.3)); $('i',cap).textContent=c.n; $('span',cap).textContent=c.txt; } }
+  cap.style.opacity=o; cap.style.transform=`translateX(-50%) translateY(${(1-o)*24}px)`;
+}
+function fades(t,dur,fin=.45,fout=.45){ $('#fade').style.opacity = Math.max(1-P(t,0,fin,oo), P(t,dur-fout,dur)) }
+
+/* ---------------- SCENES ---------------- */
+const SC={};
+SC.intro={dur:3.6,build(){
+  $('#stage').innerHTML=`<div class="center"><div class="bigl">${LOGO}</div><h1>Your funnel, <em>live in minutes.</em></h1><p>Build it. Publish it. Get paid.</p></div>`;
+},tick(t){
+  const l=$('.bigl'), p=P(t,.15,.9,back);
+  l.style.transform=`scale(${L(.4,1,p)})`;l.style.opacity=P(t,.15,.6);
+  const h=$('.center h1');h.style.opacity=P(t,.6,1.2);h.style.transform=`translateY(${(1-P(t,.6,1.3,oo))*30}px)`;
+  const q=$('.center p');q.style.opacity=P(t,1.1,1.7);
+  fades(t,this.dur,.3,.4);
+}};
+
+SC.create={dur:8.6,build(){
+  const rows=[['Business Masterclasses','3 steps','Published'],['Spring Course Launch','4 steps','Published'],['Free Guide Opt-in','2 steps','Draft'],['Coaching Call Booking','3 steps','Published']];
+  $('#stage').innerHTML=chrome('sites',`<div class="main"><div class="fl-h"><div><h2>Funnels</h2><p>Build sales funnels for any offer</p></div><span class="btn dark" id="newf">＋ New funnel</span></div>
+  <div class="fl-list"><div class="fl-row"><span></span><span>Name</span><span>Steps</span><span>Status</span><span>Updated</span></div>${rows.map(r=>`<div class="fl-row"><span class="thumb"></span><b style="font-weight:600">${r[0]}</b><span>${r[1]}</span><span><span class="pill">${r[2]}</span></span><span style="color:#6b7777">Today</span></div>`).join('')}</div></div>
+  <div class="scrim"></div>
+  <div class="modal"><h4>Create new funnel</h4><span class="x">✕</span>
+   <div class="opts">
+    <div class="opt o1" id="o1"><div class="art"><label>Funnel name <b>*</b></label><div class="in">e.g. Sales funnel</div></div><h5>From blank</h5><p>Design from scratch using the funnel builder.</p></div>
+    <div class="opt o2" id="o2"><div class="art">✦<br>Generate<br>using AI<div class="mini"><i style="top:76px"></i><i style="top:94px;right:50px"></i><i style="top:112px"></i></div></div><h5>Build with AI</h5><p>Whip it up with AI in just a few seconds!</p></div>
+    <div class="opt o3" id="o3"><div class="art">Over 1,000+<br>Templates<div class="mini" style="transform:rotate(10deg)"><i style="top:76px"></i><i style="top:94px;right:50px"></i><i style="top:112px"></i></div></div><h5>From templates</h5><p>Jump start with an awesome prebuilt funnel.</p></div>
+   </div><div class="ft"><span>Cancel</span><span class="b">Create</span></div></div>`);
+  const nf=center($('#newf')),a=center($('#o1'),0,40),b=center($('#o2'),0,40),c=center($('#o3'),0,40);
+  CUR=[{t:0,x:1300,y:760},{t:.6,x:1300,y:760},{t:1.5,x:nf[0],y:nf[1]},{t:2.5,x:nf[0],y:nf[1]},{t:3.0,x:a[0],y:a[1]},{t:4.1,x:a[0]+10,y:a[1]+6},{t:4.6,x:b[0],y:b[1]},{t:5.7,x:b[0]+10,y:b[1]+6},{t:6.2,x:c[0],y:c[1]},{t:8.6,x:c[0],y:c[1]}];
+  CLICKS=[1.65,7.5];
+  CAPS=[{a:.5,b:2.3,n:1,txt:'Create a new funnel'},{a:2.9,b:4.3,n:2,txt:'Start from blank…'},{a:4.5,b:5.9,n:2,txt:'…let AI build it…'},{a:6.1,b:8.1,n:2,txt:'…or pick from 1,000+ templates'}];
+},tick(t){
+  const m=P(t,1.75,2.2,oo);$('.scrim').style.opacity=m;const md=$('.modal');md.style.opacity=m;md.style.transform=`translateY(${(1-m)*30}px) scale(${L(.96,1,m)})`;
+  $('#o1').classList.toggle('hov',t>2.9&&t<4.3);$('#o2').classList.toggle('hov',t>4.5&&t<5.9);$('#o3').classList.toggle('hov',t>6.1);
+  $('#newf').style.transform=`scale(${t>1.6&&t<1.85?.95:1})`;
+  fades(t,this.dur);
+}};
+
+SC.template={dur:7.2,build(){
+  const cols=[['#B47F6A','Masterclass','Courses'],['#0E9C87','Online Course','Courses'],['#2E3A46','Webinar Signup','Webinars'],['#E07A5F','Product Launch','Ecommerce'],['#6B5CA5','Coaching Program','Coaching'],['#F2B544','Free Guide','Lead magnet'],['#3D7EA6','Consulting Call','Services'],['#C2577A','Beauty Store','Ecommerce']];
+  $('#stage').innerHTML=chrome('sites',`<div class="main"><div class="fl-h"><div><h2>Choose a template</h2><p>1,000+ prebuilt funnels, ready to customize</p></div></div>
+   <div class="chips">${['All','Courses','Coaching','Ecommerce','Webinars','Lead magnets','Services'].map((x,i)=>`<span class="${i==0?'on':''}">${x}</span>`).join('')}</div>
+   <div class="tgrid">${cols.map((c,i)=>`<div class="tcard" id="tc${i}"><div class="pv"><div class="h" style="background:${c[0]}"></div><div class="t1"></div><div class="t2"></div><div class="b"></div><div class="l" style="top:140px"></div><div class="l" style="top:158px;right:90px"></div><div class="c" style="left:20px"></div><div class="c" style="left:36%"></div><div class="c" style="right:20px"></div></div><div class="nm">${c[1]}<small>${c[2]}</small></div><div class="ov"><span>Preview</span><span class="u" id="use${i}">Use template</span></div></div>`).join('')}</div></div>
+   <div class="creating"><div class="spin"></div>Creating your funnel…</div>
+   <div class="stepsv"><div class="bk">← Back</div><h2>Online Course</h2><div class="tabs"><span>Steps</span><span>Stats</span><span>Sales</span><span>Settings</span></div>
+    <div class="sv"><div class="lp"><h4>Funnel steps</h4>
+      <div class="st on" id="s0"><span class="ico"></span><b>Sales page</b></div><div class="st" id="s1"><span class="ico"></span><b>Checkout</b></div><div class="st" id="s2"><span class="ico"></span><b>Thank you</b></div></div>
+     <div class="rp"><div class="hd">Sales page<span>Overview · Products · Publishing</span></div>
+      <div class="ctrl"><span class="lab">⚑ CONTROL</span><div class="pv"><div style="height:62%;background:#0E9C87"></div><div style="height:12px;width:60%;margin:16px;background:#E7EBEE;border-radius:5px"></div><div style="height:12px;width:40%;margin:0 16px;background:#E7EBEE;border-radius:5px"></div></div>
+      <div class="act"><span class="btn dark" id="edit">Edit ▾</span></div></div></div></div></div>`);
+  const u=center($('#tc1'),0,-20);
+  CUR=[{t:0,x:1500,y:900},{t:.4,x:1500,y:900},{t:1.3,x:u[0],y:u[1]}];
+  CLICKS=[2.25,6.45];
+  CAPS=[{a:.4,b:2.6,n:2,txt:'Pick a template you like'},{a:3.4,b:6.9,n:3,txt:'Your funnel is ready: sales page, checkout, thank you'}];
+  this._u=u;
+},tick(t){
+  // overlay hover on card 1
+  const ov=$('#tc1 .ov');ov.style.opacity=P(t,1.2,1.5);
+  const uu=center($('#use1'));
+  if(CUR.length==3){CUR.push({t:2.0,x:uu[0],y:uu[1]},{t:3.6,x:uu[0],y:uu[1]});}
+  const cr=$('.creating');cr.style.opacity=P(t,2.35,2.6)*(1-P(t,3.3,3.55));
+  $('.spin').style.transform=`rotate(${t*540}deg)`;
+  const sv=$('.stepsv');sv.style.opacity=P(t,3.3,3.6);
+  [0,1,2].forEach(i=>{const s=$('#s'+i);const p=P(t,3.7+i*.35,4.1+i*.35,oo);s.style.opacity=p;s.style.transform=`translateX(${(1-p)*-30}px)`});
+  if(t>3.6&&CUR.length==5){const e=center($('#edit'));CUR.push({t:5.4,x:e[0],y:e[1]},{t:7.2,x:e[0],y:e[1]});}
+  fades(t,this.dur);
+}};
+
+SC.builder={dur:14.4,build(){
+  $('#stage').innerHTML=`<div class="bld">
+   <div class="bt">← Back <span class="as">☁ Autosave off</span><div class="r"><span class="sq"></span><span class="sq"></span><span class="pub" id="pub">➤ Publish</span></div></div>
+   <div class="tb2"><span class="plus" id="plus">＋</span>${Array.from({length:10},()=>'<span class="g"></span>').join('')}<div class="dev"><span class="on" id="dsk"><i style="width:22px;height:16px"></i></span><span><i style="width:16px;height:20px"></i></span><span id="mob"><i style="width:12px;height:20px"></i></span></div><span style="font-size:16px">100% ▾</span></div>
+   <div class="urlb">◌ https://yourbrand.com/course <b>Connect Domain</b></div>
+   <div class="canvas"><div class="page" id="page">
+     <div class="pg-nav">Bloom Academy<div><span>About</span><span>Courses</span><span>Pricing</span><span>Contact</span></div></div>
+     <div class="hero" id="hero"><div class="lft" id="lft"><small>Online course</small><br><h1 id="hl"><span id="hlt">Your headline here</span><span class="caret" id="caret"></span></h1>
+       <p class="sub">A simple, step-by-step program you can start today. Learn at your own pace, from any device.</p>
+       <div id="ctaw" style="height:0;overflow:visible"><span class="cta" id="cta">Enroll now · $49</span></div></div>
+      <div class="rgt"><div class="course"><div class="v"></div><div class="m"><i></i><i></i><i style="width:55%"></i></div></div></div></div>
+     <div class="learn"><h2>What you'll learn</h2><div class="cards"><div></div><div></div><div></div></div></div>
+     <div class="sel" id="sel"><span id="sellab">Headline</span></div>
+   </div></div>
+   <div class="panel" id="panel"><h4>Add elements</h4><div class="grid">${['Headline','Paragraph','Button','Image','Video','Order form','Countdown','Testimonial'].map(x=>`<div class="el" id="el-${x.split(' ')[0]}"><i></i>${x}</div>`).join('')}</div></div>
+   <div class="rpanel" id="rp"><h4>Section settings</h4><div class="lab">Background color</div><div class="sw"><span id="sw0" style="background:#B47F6A"></span><span id="sw1" style="background:#0E9C87"></span><span style="background:#2E3A46"></span><span style="background:#6B5CA5"></span></div><div class="lab">Padding</div><div class="fld"></div><div class="lab">Animation</div><div class="fld"></div></div>
+   <div class="bb"><span>▤ Page</span>›<span class="s" id="crumb">☰ Section</span></div>
+   <div class="ghost" id="ghost">▭ Button</div>
+   <div class="toast" id="toast"><span class="ok">✓</span><div><b>Your funnel is live!</b><small>yourbrand.com/course</small></div></div>
+  </div>`;
+  const hl=center($('#hl'),-140,0),pl=center($('#plus')),btn=center($('#el-Button')),sub=center($('.hero .sub'),-150,90);
+  // compute later-needed targets with panels in place
+  const sw=$('#sw1').getBoundingClientRect(), rp=370; const swx=sw.left+sw.width/2-rp*0, swy=sw.top+sw.height/2;
+  const pb=$('#panel').getBoundingClientRect(); const bx=btn[0]+340, by=btn[1];
+  const rgt=center($('.hero .rgt'),0,-150), mob=center($('#mob')), pub=center($('#pub'));
+  const lft=center($('#lft'),200,-210);
+  CUR=[{t:0,x:1100,y:900},{t:.5,x:1100,y:900},{t:1.4,x:hl[0],y:hl[1]},{t:3.9,x:hl[0]+40,y:hl[1]+120},
+       {t:4.6,x:pl[0],y:pl[1]},{t:5.0,x:pl[0],y:pl[1]},{t:5.8,x:bx,y:by},{t:6.1,x:bx,y:by},{t:7.2,x:sub[0],y:sub[1]},{t:7.5,x:sub[0],y:sub[1]},
+       {t:8.2,x:lft[0],y:lft[1]},{t:8.45,x:lft[0],y:lft[1]},{t:9.1,x:swx-370+370,y:swy},{t:9.6,x:swx,y:swy},
+       {t:10.6,x:mob[0],y:mob[1]},{t:11.9,x:mob[0],y:mob[1]+4},{t:12.6,x:pub[0],y:pub[1]},{t:14.4,x:pub[0],y:pub[1]}];
+  CLICKS=[1.5,4.7,6.05,7.25,8.35,9.3,10.7,12.7];
+  CAPS=[{a:.5,b:4.2,n:3,txt:'Click any text and type'},{a:4.5,b:7.8,n:3,txt:'Drag & drop new elements'},{a:8.1,b:10.0,n:3,txt:'Change colors in one click'},{a:10.4,b:12.1,n:3,txt:'Looks great on mobile'},{a:12.4,b:14.0,n:4,txt:'Publish in one click'}];
+},tick(t){
+  // headline typing
+  const OLD='Your headline here', NEW='Launch your first online course.';
+  let s=OLD; if(t>1.9){const del=Math.floor(cl((t-1.9)/.45)*OLD.length); s=OLD.slice(0,OLD.length-del); if(t>2.4){s=NEW.slice(0,Math.floor(cl((t-2.4)/1.3)*NEW.length))}}
+  $('#hlt').textContent=s; $('#caret').style.opacity=(t>1.6&&t<4.0&&Math.floor(t*3)%2==0)?1:(t>1.9&&t<3.8?1:0);
+  // selection box
+  const page=$('#page').getBoundingClientRect();
+  let target=null,label='';
+  if(t>1.5&&t<4.2){target=$('#hl');label='Headline'}
+  else if(t>7.25&&t<8.2){target=$('#cta');label='Button'}
+  else if(t>8.35&&t<10.2){target=$('#lft');label='Section'}
+  const sel=$('#sel');
+  if(target){const r=target.getBoundingClientRect();sel.style.opacity=1;sel.style.left=(r.left-page.left-8)+'px';sel.style.top=(r.top-page.top-8)+'px';sel.style.width=(r.width+16)+'px';sel.style.height=(r.height+16)+'px';$('#sellab').textContent=label;$('#crumb').textContent='☰ '+label}
+  else{sel.style.opacity=0;$('#crumb').textContent='☰ Section'}
+  // element panel
+  const po=P(t,4.75,5.15,oo)*(1-P(t,7.3,7.6));$('#panel').style.transform=`translateX(${(po-1)*340}px)`;
+  $('#el-Button').classList.toggle('hov',t>5.7&&t<6.2);
+  const g=$('#ghost');const c=curAt(t)||[0,0];g.style.opacity=(t>6.05&&t<7.25)?1:0;g.style.left=(c[0]+14)+'px';g.style.top=(c[1]+10)+'px';
+  const cta=$('#cta'),cp=P(t,7.25,7.65,back);cta.style.opacity=cl((t-7.25)/.2);cta.style.transform=`scale(${t<7.25?.5:L(.5,1,cp)})`;$('#ctaw').style.height=(t>7.25?96:0)+'px';
+  // right panel + color
+  const ro=P(t,8.4,8.8,oo)*(1-P(t,9.9,10.3));$('#rp').style.transform=`translateX(${(1-ro)*370}px)`;
+  const cc=P(t,9.35,9.8);const a=[180,127,106],b=[14,156,135];$('#lft').style.background=`rgb(${a.map((v,i)=>Math.round(L(v,b[i],cc))).join(',')})`;
+  $('#cta').style.color=cc>.5?'#0A7F6E':'#7a4b39';
+  $('#sw0').classList.toggle('on',t<9.35);$('#sw1').classList.toggle('on',t>=9.35);
+  // device switch
+  const dv=P(t,10.75,11.5);$('#page').style.width=L(1560,440,dv)+'px';
+  $('#dsk').classList.toggle('on',t<10.75);$('#mob').classList.toggle('on',t>=10.75);
+  const small=dv>.5;$('.hero h1').style.fontSize=(small?40:72)+'px';$('.hero .lft').style.padding=small?'46px 28px 40px':'90px 70px 70px';$('.pg-nav').style.padding=small?'0 24px':'0 70px';$('.pg-nav div').style.display=small?'none':'flex';$('.hero .rgt').style.minHeight=small?'300px':'560px';$('.learn').style.padding=small?'50px 24px':'80px 70px';$('.learn h2').style.fontSize=(small?34:52)+'px';$('.course').style.transform=`scale(${small?.6:1})`;
+  // publish
+  const pb=$('#pub');pb.innerHTML=t>12.75&&t<13.2?'<span class="spin" style="width:22px;height:22px;border-width:3px;border-color:#9fb0ff;border-top-color:#fff;transform:rotate('+t*720+'deg)"></span> Publishing':(t>=13.2?'✓ Published':'➤ Publish');pb.style.background=t>=13.2?'#0E9C87':'#3B5BFF';
+  const to=$('#toast'),tp=P(t,13.2,13.55,back);to.style.opacity=cl((t-13.2)/.2);to.style.transform=`translateY(${(1-tp)*-30}px)`;
+  fades(t,this.dur);
+}};
+
+SC.sales={dur:8.0,build(){
+  const NAMES=[['Emma Collins','#8E6FD6',49,'Online Course'],['Daniel Reyes','#C2577A',49,'Online Course'],['Priya Shah','#3D7EA6',97,'Course + Workbook'],['Marcus Lee','#0E9C87',49,'Online Course'],['Sofia Bennett','#E07A5F',49,'Online Course'],['James Carter','#6B5CA5',97,'Course + Workbook'],['Olivia Grant','#B47F6A',49,'Online Course'],['Noah Wright','#2E3A46',49,'Online Course']];
+  this.N=NAMES;this.T=[1.0,1.9,2.7,3.4,4.0,4.5,5.0,5.45];
+  $('#stage').innerHTML=chrome('pay',`<div class="main"><div class="fl-h"><div><h2>Transactions</h2><p>Every sale from your funnel, in one place</p></div></div><span class="demo">Demo data</span>
+   <div class="kpis"><div class="kpi"><small>Revenue today</small><b id="rev">$0.00</b><em id="revd">▲ live</em></div><div class="kpi"><small>Orders</small><b id="ord">0</b><em>from Online Course funnel</em></div><div class="kpi"><small>Checkout conversion</small><b id="conv">0.0%</b><em>sales page → checkout → paid</em></div></div>
+   <div class="tx"><div class="tr h"><span>Customer</span><span>Provider</span><span>Source</span><span>Date</span><span>Amount</span><span>Status</span></div><div class="rows" id="rows"></div></div></div>
+   <div class="toast" id="toast" style="top:150px"><span class="ok">$</span><div><b id="tb">New sale · $49.00</b><small id="ts">Online Course · just now</small></div></div>`);
+  $('#rows').innerHTML=NAMES.map((n,i)=>`<div class="tr" id="r${i}"><span class="cu"><span class="av" style="background:${n[1]}">${n[0].split(' ').map(w=>w[0]).join('')}</span>${n[0]}</span><span>Stripe</span><span>${n[3]}</span><span style="color:#6b7777">Today, ${['9:12 AM','9:47 AM','10:05 AM','10:31 AM','11:02 AM','11:18 AM','11:40 AM','12:03 PM'][i]}</span><b>$${n[2]}.00</b><span><span class="ok">Succeeded</span></span></div>`).join('');
+  CUR=[];CLICKS=[];
+  CAPS=[{a:.6,b:7.3,n:5,txt:'Get paid. Every sale lands here.'}];
+},tick(t){
+  const N=this.N,T=this.T;let shown=0,rev=0;T.forEach((a,i)=>{if(t>=a){shown++;rev+=N[i][2]}});
+  // rows stack: newest on top
+  N.forEach((n,i)=>{const r=$('#r'+i);if(t<T[i]){r.style.opacity=0;r.style.transform='translateY(-64px)';return}
+    const after=T.filter((a,j)=>j>i&&t>=a).length; // number of newer rows
+    let y=after*64; const k=i+1<T.length?T[i+1]:99; // slide when newer row arrives
+    const newest=T.findLastIndex?T.findLastIndex(a=>t>=a):0;
+    const pin=P(t,T[newest],T[newest]+.35,oo); if(i!=newest) y=(after-1)*64+64*pin*1; else y=0;
+    if(i!=newest) y=(after-1+pin)*64;
+    r.style.transform=`translateY(${y}px)`;r.style.opacity=i==newest?P(t,T[i],T[i]+.3):1;
+    r.style.background=(i==newest&&t-T[i]<.9)?`rgba(61,227,200,${.28*(1-cl((t-T[i])/.9))})`:'#fff';});
+  // counters (smooth)
+  let shownRev=0;T.forEach((a,i)=>{shownRev+=N[i][2]*P(t,a,a+.5)});
+  $('#rev').textContent='$'+shownRev.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  $('#ord').textContent=shown;$('#conv').textContent=(shown?L(3.1,5.4,shown/8):0).toFixed(1)+'%';
+  const newest=T.reduce((m,a,i)=>t>=a?i:m,-1);const to=$('#toast');
+  if(newest>=0){const d=t-T[newest];to.style.opacity=cl(d/.15)*(d<.85?1:1-cl((d-.85)/.2));to.style.transform=`translateY(${(1-P(d,0,.3,back))*-24}px)`;$('#tb').textContent=`New sale · $${N[newest][2]}.00`;$('#ts').textContent=`${N[newest][3]} · just now`}else to.style.opacity=0;
+  fades(t,this.dur);
+}};
+
+SC.outro={dur:4.6,build(){
+  $('#stage').innerHTML=`<div class="center"><div class="bigl" style="width:120px;height:120px">${LOGO}</div><h1>Build it. Launch it.<br><em>Get paid.</em></h1><div class="go">Start building for $17/month →</div><div class="url">oceanicfunnels.com</div></div>`;
+  CUR=[];CLICKS=[];CAPS=[];
+},tick(t){
+  $('.bigl').style.opacity=P(t,.1,.5);$('.center h1').style.opacity=P(t,.3,.8);$('.center h1').style.transform=`translateY(${(1-P(t,.3,.9,oo))*30}px)`;
+  const g=$('.go'),p=P(t,.9,1.4,back);g.style.opacity=cl((t-.9)/.25);g.style.transform=`scale(${L(.85,1,p)*(1+.025*Math.sin(Math.max(0,t-1.6)*4))})`;
+  $('.url').style.opacity=P(t,1.4,1.9);
+  fades(t,this.dur,.45,.5);
+}};
+
+let CURSC=null;
+window.setup=name=>{CURSC=SC[name];CUR=[];CLICKS=[];CAPS=[];CURSC.build();return CURSC.dur};
+window.render=t=>{CURSC.tick(t);drawCursor(t);drawCap(t)};
+</script></body></html>
