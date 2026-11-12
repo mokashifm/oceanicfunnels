@@ -1,5 +1,5 @@
 import numpy as np,soundfile as sf
-SR=44100;BPM=112;beat=60/BPM;DUR=65.5
+SR=44100;BPM=112;beat=60/BPM;DUR=66.5
 N=int(SR*DUR);L=np.zeros(N);R=np.zeros(N)
 rng=np.random.default_rng(7)
 def midi(m):return 440*2**((m-69)/12)
@@ -43,7 +43,7 @@ for b in range(nbars):
         s=np.sin(2*np.pi*f*tt)+.3*np.sin(4*np.pi*f*tt)
         s*=np.minimum(1,tt/.005)*np.exp(-tt/.18)
         add(L,t0+k*beat/2,s,.16);add(R,t0+k*beat/2,s,.16)
-    if sec==2 and t0>61:continue
+    if sec==2 and t0>62:continue
     # pluck arpeggio 16ths
     pat=[0,2,1,3,2,1,3,2]*2
     for k in range(16):
