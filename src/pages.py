@@ -307,7 +307,7 @@ def page(cfg, fonts, path, title, desc, crumbs, body, logo, extra=()):
 <meta property="og:image" content="{cfg["domain"]}/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 {fonts}
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_VER}">
 <script type="application/ld+json">
 {json.dumps(schema, indent=1)}
 </script>
@@ -891,10 +891,15 @@ def guides_hub(cfg, fonts, logo):
     return path, page(cfg, fonts, path, "Sales & Marketing Automation Guides | Oceanic Funnels",
                       f"{len(GUIDES)} step-by-step guides on CRM, automation, AI agents, websites, SEO, online stores, courses, communities, payments, reviews and more.", crumbs, body, logo, extra)
 
+CSS_VER = "1"
+
 def build_all(cfg, fonts, src, site):
     css, logo = extract(src)
     os.makedirs(f"{site}/assets", exist_ok=True)
-    open(f"{site}/assets/site.css", "w").write(css + PAGE_CSS)
+    global CSS_VER
+    full = css + PAGE_CSS
+    CSS_VER = __import__("hashlib").md5(full.encode()).hexdigest()[:10]
+    open(f"{site}/assets/site.css", "w").write(full)
     out = [legal_page(cfg, fonts, logo, "privacy", "Privacy Policy | Oceanic Funnels", "Privacy Policy",
                       "How Oceanic Funnels collects, uses, shares and protects personal information, including SMS consent, cookies, analytics and your privacy rights.", legal.PRIVACY),
            legal_page(cfg, fonts, logo, "terms", "Terms of Service | Oceanic Funnels", "Terms of Service",
