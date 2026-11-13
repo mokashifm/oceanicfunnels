@@ -1368,6 +1368,13 @@ LAUNCH_CSS = r"""
 .ln-copy h1{font-family:var(--display);font-size:clamp(38px,4.8vw,62px);line-height:1.02;letter-spacing:-.045em;margin-top:14px;max-width:16ch}
 .ln-copy .sub{font-size:18.5px;line-height:1.55;margin-top:14px;max-width:46ch;color:var(--text)}
 .ln-dev{position:relative;padding-bottom:36px}
+.ln-vid{position:relative;border-radius:18px;overflow:hidden;background:#0E1A1B;aspect-ratio:16/9;box-shadow:0 40px 70px -36px rgba(14,26,27,.6),0 0 0 1px rgba(14,26,27,.08)}
+.ln-vid video{width:100%;height:100%;display:block;object-fit:cover}
+.ln-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;cursor:pointer;background:linear-gradient(180deg,rgba(14,26,27,.05),rgba(14,26,27,.45));color:#fff;font:inherit}
+.ln-play .ic{width:84px;height:84px;border-radius:50%;background:var(--aqua);color:var(--ink);display:grid;place-items:center;padding-left:5px;box-shadow:0 18px 40px -12px rgba(0,0,0,.55);transition:transform .2s}
+.ln-play:hover .ic{transform:scale(1.07)}
+.ln-play .tx{font-weight:700;font-size:17px;background:rgba(14,26,27,.75);padding:7px 14px;border-radius:999px}
+.ln-vid.on .ln-play{display:none}
 .ln-lap .scr{border:10px solid #1B1F22;border-bottom-width:14px;border-radius:18px 18px 6px 6px;overflow:hidden;background:#1B1F22;aspect-ratio:16/10;box-shadow:0 40px 70px -40px rgba(14,26,27,.6)}
 .ln-lap img,.ln-bw img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .ln-lap .base{height:14px;margin:0 -6%;background:linear-gradient(#E3E6E9,#A9AFB6);border-radius:0 0 16px 16px}
@@ -1520,11 +1527,11 @@ def lp_launch(cfg, fonts, logo):
       <p class="ln-hp"><s>$37</s> <b>$17/month</b> until November 20</p>
       <p class="ln-note">Month-to-month. Cancel anytime. No mandatory setup fee.</p>
     </div>
-    <div class="ln-dev" aria-label="Example: a sales page and checkout built with Launch" role="img">
-      <div class="ln-lap"><div class="scr ln-rot"><img class="on" src="/assets/launch/sales.webp" alt="" width="1920" height="1200" fetchpriority="high"><img src="/assets/launch/store.webp" alt="" width="1920" height="1200" loading="lazy"><img src="/assets/launch/teach.webp" alt="" width="1920" height="1200" loading="lazy"></div><div class="base"></div></div>
-      <div class="ln-ph ln-rot"><img class="on" src="/assets/launch/checkout.webp" alt="" width="585" height="1170"><img src="/assets/launch/checkout-store.webp" alt="" width="585" height="1170" loading="lazy"><img src="/assets/launch/checkout-teach.webp" alt="" width="585" height="1170" loading="lazy"></div>
-      <div class="ln-toast"><span class="ic">$</span><div><b id="ln-tb">New order: $27.00</b><small id="ln-ts">30-Day Meal Prep Plan, just now</small></div></div>
+    <div class="ln-vid" id="ln-vid">
+      <video id="ln-video" src="/assets/video/oceanic-demo.mp4" poster="/assets/video/oceanic-demo-poster.webp" preload="none" playsinline width="1280" height="720"></video>
+      <button class="ln-play" type="button" aria-label="Play the 1-minute demo"><span class="ic"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="tx">Watch the 1-minute demo</span></button>
     </div>
+</div>
   </div>
 </section>
 <section class="ln-sec ln-galsec"><div class="nf-wrap">
@@ -1624,11 +1631,8 @@ function t(){{var ms=end-Date.now();if(ms<=0){{B.forEach(function(b){{b.style.di
 var s=Math.floor(ms/1000),v={{d:Math.floor(s/86400),h:p(Math.floor(s%86400/3600)),m:p(Math.floor(s%3600/60)),s:p(s%60)}};
 document.querySelectorAll(".ln-cd i").forEach(function(i){{i.textContent=v[i.dataset.u]}});return true}}
 if(t())setInterval(t,1000)}})();
-(function(){{var d=[["New order: $27.00","30-Day Meal Prep Plan, just now"],["New order: $32.00","Morning Mug, just now"],["New order: $19.00","Reading Comprehension Kit, just now"]];
-var R=document.querySelectorAll(".ln-rot"),tb=document.getElementById("ln-tb"),ts=document.getElementById("ln-ts"),dev=document.querySelector(".ln-dev"),i=0,hold=false;
-if(!R.length)return;dev.addEventListener("mouseenter",function(){{hold=true}});dev.addEventListener("mouseleave",function(){{hold=false}});
-setInterval(function(){{if(hold||document.hidden)return;i=(i+1)%3;R.forEach(function(r){{var im=r.querySelectorAll("img");im.forEach(function(x,k){{x.classList.toggle("on",k===i)}})}});
-tb.style.opacity=ts.style.opacity=0;setTimeout(function(){{tb.textContent=d[i][0];ts.textContent=d[i][1];tb.style.opacity=ts.style.opacity=1}},300)}},3000)}})();
+(function(){{var w=document.getElementById("ln-vid"),v=document.getElementById("ln-video");if(!w||!v)return;
+w.querySelector(".ln-play").addEventListener("click",function(){{w.classList.add("on");v.controls=true;v.play()}});}})();
 </script>'''
     htm = page(cfg, fonts, path, "Build Your First Sales Funnel for $17/Month | Oceanic Funnels",
                "Build unlimited sales funnels, websites and online stores and take payments. No coding. $17/month, cancel anytime.",
