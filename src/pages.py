@@ -1538,7 +1538,7 @@ def lp_launch(cfg, fonts, logo):
     </div>
     <div class="ln-vwrap">
       <div class="ln-vid" id="ln-vid">
-        <video id="ln-video" src="/assets/video/oceanic-demo.mp4" poster="/assets/video/oceanic-demo-poster.webp" preload="none" playsinline width="1280" height="720"></video>
+        <video id="ln-video" src="/assets/video/oceanic-demo.mp4?v=2" poster="/assets/video/oceanic-demo-poster.webp" preload="none" playsinline width="1280" height="720"></video>
         <button class="ln-play" type="button" aria-label="Play the 1-minute demo"><span class="ic"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="tx">Watch the 1-minute demo</span></button>
         <div class="ln-prog" aria-hidden="true"><i></i></div>
       </div>
