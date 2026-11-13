@@ -12,3 +12,4 @@ video/demo/out/
 video/demo/*.mp4
 video/demo/list.txt
 video/demo/vo/
+video/demo/*.txt

@@ -259,6 +259,45 @@ svg.i{display:inline-block;vertical-align:middle;flex:none;fill:none;stroke:curr
 .ctr p{font-size:28px;color:#4B5563;margin-top:18px}
 .ctr .go{margin-top:40px;background:#FF7657;color:#fff;font-weight:700;font-size:32px;padding:22px 44px;border-radius:999px}
 .ctr .url{margin-top:22px;font-size:24px;font-weight:600;color:#0E9C87}
+
+/* ---------- hook ---------- */
+.hk{position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 45%,#F2FCFA 0,#fff 70%);overflow:hidden}
+.hk .grid{position:absolute;inset:-40px;background-image:linear-gradient(#E9F3F1 1px,transparent 1px),linear-gradient(90deg,#E9F3F1 1px,transparent 1px);background-size:48px 48px;opacity:.6}
+.hk .lg{position:absolute;left:50%;top:56px;transform:translateX(-50%);width:300px}
+.hk .flt{position:absolute;width:300px;height:420px;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(14,26,27,.45);opacity:0;background:#fff}
+.hk .flt img{width:100%;display:block}
+.hk .txt{position:absolute;left:160px;right:160px;top:50%;transform:translateY(-50%);text-align:center}
+.hk .ln{font-weight:800;font-size:92px;line-height:1.08;letter-spacing:-.035em;color:#0E1A1B}
+.hk .ln.s{font-size:72px}
+.hk .txt.n{left:330px;right:330px}
+.hk .txt.n .ln{font-size:70px}
+.hk .w{display:inline-block;opacity:0}
+.hk .w.h{color:#0E9C87;position:relative}
+.hk .w.h:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.12em;border-radius:.06em;background:#3DE3C8;opacity:.55;transform-origin:left;transform:scaleX(var(--u,0));z-index:-1}
+.hk .price{position:absolute;left:50%;top:520px;transform:translateX(-50%);display:flex;align-items:center;gap:40px;opacity:0}
+.hk .price .now{background:#0E1A1B;color:#fff;border-radius:28px;padding:34px 60px;text-align:center}
+.hk .price .now b{display:block;font-size:130px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.hk .price .now small{font-size:28px;color:#9FE9DA;font-weight:600}
+.hk .price .ar{font-size:60px;color:#9CA3AF}
+.hk .price .then{border:4px dashed #F3A08C;border-radius:28px;padding:30px 50px;text-align:center;color:#C2410C}
+.hk .price .then b{display:block;font-size:96px;font-weight:800;line-height:1;text-decoration:line-through;text-decoration-thickness:5px}
+.hk .price .then small{font-size:28px;font-weight:600}
+.hk .tpls{position:absolute;left:50%;top:560px;transform:translateX(-50%);display:flex;gap:28px}
+.hk .tpls div{width:260px;height:330px;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 24px 50px -24px rgba(14,26,27,.5);border:1px solid #E5E7EB;opacity:0;position:relative}
+.hk .tpls img{width:100%;display:block}
+.hk .tpls div.pick{outline:4px solid #0E9C87}
+.hk .pbtn{position:absolute;left:50%;top:930px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#3851E8;color:#fff;font-weight:700;font-size:30px;padding:16px 34px;border-radius:12px;opacity:0;box-shadow:0 20px 40px -18px rgba(56,81,232,.8)}
+.hk .txs{position:absolute;left:50%;top:560px;transform:translateX(-50%);width:1000px;background:#fff;border:1px solid #E5E7EB;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(14,26,27,.45)}
+.hk .txs .r{display:grid;grid-template-columns:1fr 1.6fr .8fr .9fr;align-items:center;gap:10px;padding:0 26px;height:78px;border-top:1px solid #EEF0F2;font-size:22px;color:#4B5563;opacity:0}
+.hk .txs .r:first-child{border-top:0}
+.hk .txs .r .cu{display:flex;gap:14px;align-items:center;color:#111827;font-weight:500}
+.hk .txs .av{width:42px;height:42px;border-radius:50%;color:#fff;display:grid;place-items:center;font-size:16px}
+.hk .txs .r b{color:#111;font-weight:700}
+.hk .txs .ok{justify-self:start;font-size:18px;color:#16A34A;border:1px solid #4ADE80;background:#F0FDF4;border-radius:999px;padding:3px 12px}
+.hk .big{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0}
+.hk .big b{font-size:260px;font-weight:800;letter-spacing:-.05em;color:#0E1A1B;line-height:1}
+.hk .big span{font-size:70px;font-weight:700;color:#0E9C87}
+.hk .big p{font-size:30px;color:#6B7280;margin-top:10px;font-weight:500}
 </style></head>
 <body><div id="stage"><div id="cam"></div></div><div id="ring"></div>
 <svg id="cur" viewBox="0 0 24 28"><path d="M2 1.5v21.5l5.6-5.4 3.6 8.6 3.9-1.7-3.6-8.4h7.9z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -310,6 +349,55 @@ function fades(t,dur,fi=.4,fo=.4){$('#fade').style.opacity=Math.max(fi?1-P(t,0,f
 function typeText(t,a,b,str){return str.slice(0,Math.round(cl((t-a)/(b-a))*str.length))}
 
 const SC={};
+
+const HP=[[0.35,1.272],[1.622,3.218],[3.298,4.381],[4.501,6.528],[6.578,7.633],[7.983,9.449],[9.699,10.987],[11.187,13.014],[13.074,14.266],[14.616,16.012],[16.212,18.47],[18.53,19.454],[19.654,22.078],[22.378,23.874],[24.124,25.629]];
+const HT=['Oh, you *made *it.','Listen, you are a *business *owner','or an *entrepreneur,','or you want to create a *digital *product','and *sell *it *online.','You landed at the *right *place.','You need to start *right *now.','The price goes up on *November *20,','so you want to *hurry *up.','Make sure you *sign *up right now.','Pick a *template, let *AI build your page,','and hit *publish.','So you can start *taking *payments today.','',"I can't wait to see what you *build."];
+// groups of lines shown together: [lineIdx...], layout: 'c' center or 't' top (visual below)
+const HG=[[[0],'c'],[[1,2,3,4],'c'],[[5,6],'c'],[[7,8],'t'],[[9,10,11],'t'],[[12],'t'],[[13],'big'],[[14],'c']];
+SC.hook={dur:26.6,build(){
+  const flt=[['img/mindset-full.webp',-90,170,-8],['img/page.jpg',1710,130,7],['img/salon-seo-full.webp',-80,640,6],['img/sales-coach-full.webp',1720,610,-6]];
+  let lines='';
+  HG.forEach(([ids,lay],g)=>{if(lay=='big')return;
+    lines+=`<div class="txt ${g==1||g==2?'n':''}" id="g${g}" style="${lay=='t'?'top:330px':''}">`+ids.map(i=>`<div class="ln ${ids.length>2||lay=='t'?'s':''}" id="l${i}">`+HT[i].split(' ').map(w=>`<span class="w ${w[0]=='*'?'h':''}">${w.replace('*','')}</span>`).join(' ')+`</div>`).join('')+`</div>`});
+  $('#cam').innerHTML=`<div class="hk"><div class="grid"></div>
+   ${flt.map((f,i)=>`<div class="flt" id="f${i}" style="left:${f[1]}px;top:${f[2]}px;transform:rotate(${f[3]}deg)"><img src="${f[0]}"></div>`).join('')}
+   <img class="lg" id="hlg" src="img/logo.svg">
+   ${lines}
+   <div class="price" id="price"><div class="now"><small>TODAY</small><b>$17</b><small>per month</small></div><div class="ar">→</div><div class="then"><b>$37</b><small>from Nov 20</small></div></div>
+   <div class="tpls" id="tpls"><div><img src="img/page.jpg"></div><div><img src="img/mindset-full.webp"></div><div><img src="img/strategy-call-full.webp"></div><div><img src="img/salon-seo-full.webp"></div></div>
+   <div class="pbtn" id="hpub">${ic('send',28,2.2)} Publish</div>
+   <div class="txs" id="txs">${[['Emma Collins','#9B7EC8','Starter Kit',49],['Daniel Reyes','#C47BB5','Career Planning Kit',97],['Marcus Lee','#6BBF7A','Business Relationship',197]].map(r=>`<div class="r"><span class="cu"><span class="av" style="background:${r[1]}">${r[0].split(' ').map(w=>w[0]).join('')}</span>${r[0]}</span><span>${r[2]}</span><b>$${r[3]}.00</b><span class="ok">Succeeded</span></div>`).join('')}</div>
+   <div class="big" id="big"><b>$17</b><span>/month</span><p>Price goes up to $37 on November 20</p></div>
+  </div>`;
+  CUR=[];CLICKS=[];CAPS=[];
+},tick(t){
+  // group visibility
+  HG.forEach(([ids,lay],g)=>{
+    const a=HP[ids[0]][0]-.15, last=ids[ids.length-1]; const nextG=HG[g+1]; const end=nextG?HP[nextG[0][0]][0]-.2:99;
+    const o=P(t,a,a+.2)*(1-P(t,end-.05,end+.15));
+    if(lay=='big'){const b=$('#big');b.style.opacity=o;b.style.transform=`translateY(-50%) scale(${L(.85,1,P(t,a,a+.35,back))})`;return}
+    const el=$('#g'+g);el.style.opacity=o;
+    ids.forEach(i=>{const [s0,e0]=HP[i];const ws=[...$('#l'+i).querySelectorAll('.w')];const n=ws.length;
+      ws.forEach((w,k)=>{const wt=s0+(e0-s0)*k/n-.05;const p=P(t,wt,wt+.22,oo);w.style.opacity=p;w.style.transform=`translateY(${(1-p)*28}px)`;
+        if(w.classList.contains('h'))w.style.setProperty('--u',P(t,wt+.15,wt+.45,oo))})});
+  });
+  // floating real funnels (lines 1-6)
+  [0,1,2,3].forEach(i=>{const f=$('#f'+i);const a=1.5+i*.35;const o=P(t,a,a+.5)*(1-P(t,10.8,11.2));f.style.opacity=o*.9;
+    const r=[-8,7,6,-6][i];f.style.transform=`translateY(${(1-P(t,a,a+.7,oo))*60+Math.sin(t*.8+i)*8}px) rotate(${r}deg)`});
+  $('#hlg').style.opacity=P(t,.1,.5)*(1-P(t,11,11.3))+P(t,24,24.4);
+  // price
+  const pr=$('#price'),po=P(t,11.6,11.95)*(1-P(t,14.3,14.5));pr.style.opacity=po;pr.style.transform=`translateX(-50%) scale(${L(.9,1,P(t,11.6,12,back))})`;
+  $('.hk .then').style.transform=`scale(${1+.04*Math.sin(Math.max(0,t-12.5)*9)*(t>12.5&&t<13.5?1:0)})`;
+  // templates + publish
+  const tp=[...$('#tpls').children];tp.forEach((c,i)=>{const a=16.2+i*.22;const p=P(t,a,a+.4,oo);c.style.opacity=p*(1-P(t,19.45,19.65));c.style.transform=`translateY(${(1-p)*50}px)`;
+    c.classList.toggle('pick',i==0&&t>17.3);c.querySelector('img').style.transform=`translateY(${-P(t,a+.3,19.4,x=>x)*(i==0?900:300)}px)`});
+  const pb=$('#hpub'),pp=P(t,18.45,18.7,back);pb.style.opacity=cl((t-18.45)/.15)*(1-P(t,19.45,19.65));pb.style.transform=`translateX(-50%) scale(${t>18.95&&t<19.1?.94:L(.8,1,pp)})`;
+  if(t>19.0)pb.style.background='#16A34A',pb.innerHTML=`${ic('check',28,3)} Published`;else pb.style.background='#3851E8',pb.innerHTML=`${ic('send',28,2.2)} Publish`;
+  // transactions
+  const tx=$('#txs');tx.style.opacity=P(t,19.7,19.9)*(1-P(t,22.1,22.3));
+  [...tx.children].forEach((r,i)=>{const a=20.3+i*.55;const p=P(t,a,a+.3,oo);r.style.opacity=p;r.style.transform=`translateX(${(1-p)*-40}px)`;r.style.background=(t-a<.8&&t>a)?`rgba(220,252,231,${1-(t-a)/.8})`:'#fff'});
+  fades(t,this.dur,.15,.35);
+}};
 SC.intro={dur:3.2,build(){
   $('#cam').innerHTML=`<div class="ctr"><img class="lg" src="img/logo.svg"><h1>Your funnel, <em>live in minutes.</em></h1><p>Build it. Publish it. Get paid.</p></div>`;
 },tick(t){
