@@ -174,13 +174,13 @@ seo_head = f"""<meta charset="utf-8">
 <meta property="og:title" content="Stop fishing for customers. Build the net.">
 <meta property="og:description" content="{DESC}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{CONFIG['domain']}/og-image.png">
+<meta property="og:image" content="{CONFIG['domain']}/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stop fishing for customers. Build the net.">
 <meta name="twitter:description" content="{DESC}">
-<meta name="twitter:image" content="{CONFIG['domain']}/og-image.png">"""
+<meta name="twitter:image" content="{CONFIG['domain']}/og-image.png?v=2">"""
 os.makedirs(SITE, exist_ok=True)
 open(f"{SITE}/index.html", "w").write(
     f'<!doctype html>\n<html lang="en">\n<head>\n{seo_head}\n{head}<style>html,body{{margin:0;background:#FFFFFF}}</style>\n{pages.CLARITY}\n{pages.pixel_for("/")}\n</head>\n<body>\n{page}\n</body>\n</html>\n')

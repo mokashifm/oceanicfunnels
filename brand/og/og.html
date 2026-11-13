@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:I;font-weight:500;src:url(inter-latin-500-normal.woff2)}
+@font-face{font-family:I;font-weight:600;src:url(inter-latin-600-normal.woff2)}
+@font-face{font-family:I;font-weight:700;src:url(inter-latin-700-normal.woff2)}
+@font-face{font-family:I;font-weight:800;src:url(inter-latin-800-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;overflow:hidden;font-family:I;background:#0E1A1B;position:relative;color:#fff}
+.st{position:absolute;right:0;top:0;width:560px;height:630px;background:repeating-linear-gradient(135deg,rgba(61,227,200,.55) 0 3px,transparent 3px 22px);-webkit-mask:linear-gradient(225deg,#000 0,rgba(0,0,0,.6) 30%,transparent 62%);mask:linear-gradient(225deg,#000 0,rgba(0,0,0,.6) 30%,transparent 62%)}
+.gl{position:absolute;right:-120px;bottom:-200px;width:720px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,118,87,.35),transparent)}
+.lg{position:absolute;left:72px;top:64px;height:52px}
+.c{position:absolute;left:72px;top:150px;right:60px;display:flex;flex-direction:column;align-items:flex-start;gap:26px}
+h1{font-weight:800;font-size:84px;line-height:1.04;letter-spacing:-.045em}
+h1 em{font-style:normal;color:#3DE3C8;position:relative}
+h1 em:after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:8px;background:#3DE3C8;border-radius:4px}
+p{font-size:28px;color:#C7D6D3;font-weight:500}
+.row{display:flex;align-items:center;gap:22px;margin-top:6px}
+.pill{background:#3DE3C8;color:#0E1A1B;font-weight:700;font-size:26px;padding:14px 28px;border-radius:999px}
+.sub{font-size:22px;color:#9DB0AD;font-weight:600}
+</style></head><body><div class="st"></div><div class="gl"></div><img class="lg" src="logo-dark.svg">
+<div class="c"><h1 id="h"></h1><p id="p"></p><div class="row"><div class="pill" id="b"></div><div class="sub" id="s"></div></div></div>
+<script>
+const v={home:{h:'Stop fishing for customers.<br><em>Build the net.</em>',p:'Funnels, CRM, email, SMS and AI agents in one system.',b:'From $17/month',s:''},
+launch:{h:'Build your first<br><em>sales funnel.</em>',p:'Funnels, websites, online store and payments. No coding.',b:'$17/month',s:'Launch price until November 20'}}[location.search.slice(1)];
+h.innerHTML=v.h;p.textContent=v.p;b.textContent=v.b;s.textContent=v.s;
+
+</script></body></html>

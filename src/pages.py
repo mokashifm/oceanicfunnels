@@ -304,7 +304,7 @@ def page(cfg, fonts, path, title, desc, crumbs, body, logo, extra=()):
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{cfg["domain"]}/og-image.png">
+<meta property="og:image" content="{cfg["domain"]}/{"og-launch.png" if path.startswith("/lp/launch") else "og-image.png"}?v=2">
 <meta name="twitter:card" content="summary_large_image">
 {fonts}
 <link rel="stylesheet" href="/assets/site.css?v={CSS_VER}">
