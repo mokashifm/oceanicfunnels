@@ -997,3 +997,24 @@ body:has(.lp-sticky){padding-bottom:76px}}
 @media(max-width:1000px){.ln-who{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.ln-flow,.ln-feat,.ln-steps{grid-template-columns:1fr}.ln-sec{padding-block:52px}.ln-price{padding:28px 22px}}
 @media(max-width:520px){.ln-who{grid-template-columns:1fr}}
+
+.nf-score{display:flex;justify-content:center;gap:18px;margin:26px auto 22px;flex-wrap:wrap}
+.nf-score>div{min-width:200px;text-align:center;padding:18px 26px;border-radius:16px;background:#fff;border:1px solid var(--line,#DCE6E3)}
+.nf-score>div.us{background:var(--ink,#0E1A1B);color:#fff;border-color:transparent}
+.nf-score b{display:block;font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.03em;line-height:1}
+.nf-score>div.us b{color:var(--aqua,#3DE3C8)}
+.nf-score span{display:block;margin-top:6px;font-size:14px;font-weight:600;opacity:.8}
+.nf-mx td{vertical-align:top}
+.nf-mx td small{display:block;margin-top:3px;font-size:13px;color:var(--muted,#5B6967);font-weight:400}
+.nf-mx td.us small{color:inherit;opacity:.75}
+.mx{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:13px;font-weight:800;margin-right:6px;vertical-align:-4px}
+.mx.y{background:#DDF7F2;color:#0A7F6E}.mx.p{background:#FFF3D6;color:#9A6400}.mx.a{background:#FFE7DF;color:#C2410C}.mx.n{background:#F3E1E1;color:#B42318}
+.nf-xstack{margin:34px auto 0;max-width:860px;background:var(--ink,#0E1A1B);color:#fff;border-radius:20px;padding:32px 34px;display:block}
+.nf-xstack h3{color:#fff;font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0}
+.nf-xstack ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;margin:18px 0;padding:0}
+.nf-xstack li{display:block;padding-left:24px;position:relative;font-size:15.5px;line-height:1.4;color:#fff}
+.nf-xstack li:before{content:"✕";position:absolute;left:0;top:0;color:#FF8E73;font-weight:800}
+.nf-xstack li b{display:block;color:#fff}.nf-xstack li span{display:block;opacity:.7;font-size:14px}
+.nf-xstack p{color:#fff;opacity:.85;margin:6px 0 18px;font-size:15.5px;max-width:none}
+.nf-xstack .nf-btn{display:inline-flex;width:auto}
+@media(max-width:700px){.nf-xstack ul{grid-template-columns:1fr}.nf-xstack{padding:24px 20px}.nf-score>div{min-width:140px}.nf-score b{font-size:36px}}

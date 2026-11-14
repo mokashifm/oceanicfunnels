@@ -4,7 +4,7 @@ Shares the homepage design: its stylesheet is extracted to /assets/site.css.
 import tools
 import html, json, os, re
 import legal
-from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED
+from competitors import COMPETITORS, OF, ROW_LABELS, CHECKED, FEATS, MATRIX
 from industries import INDUSTRIES, GENERIC_FAQ, CATEGORIES
 from ind_deep import DEEP
 from guides_a import G_A
@@ -399,6 +399,40 @@ def compare_page(cfg, fonts, logo, c):
     plans = "".join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in c["plans"])
     srcs = " · ".join(f'<a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a>' for t, u in c["sources"])
     more = "".join(f'<a href="/compare/{o["slug"]}/">vs {E(o["name"])}</a>' for o in COMPETITORS if o["slug"] != c["slug"])
+    mx = MATRIX.get(c["slug"], {})
+    ICON = {"yes": ("✓", "y", "Included"), "part": ("◐", "p", "Limited"), "add": ("＋", "a", "Extra app or add-on"), "no": ("✕", "n", "Not included")}
+    mrows = ""; theirs = 0; missing = []
+    for k, label, plan in FEATS:
+        if k not in mx: continue
+        st, note = mx[k]
+        ic, cls, word = ICON[st]
+        if st == "yes": theirs += 1
+        else: missing.append((label, st, note))
+        mrows += (f'<tr><th scope="row">{E(label)}</th><td class="us" data-l="Oceanic Funnels OS"><span class="mx y">✓</span> Included'
+                  f'<small>{E(plan)} plan</small></td><td data-l="{E(n)}"><span class="mx {cls}">{ic}</span> {E(word)}'
+                  f'{f"<small>{E(note)}</small>" if note else ""}</td></tr>')
+    total = sum(1 for k, _, _ in FEATS if k in mx)
+    stack = "".join(f'<li><b>{E(l)}</b><span>{E(nt) if nt else ("Not included in " + E(n))}</span></li>' for l, st, nt in missing)
+    matrix = f'''<section class="nf-band nf-cmp" id="features" style="padding-top:0">
+  <div class="nf-wrap">
+    <div class="nf-center nf-caps">
+      <span class="nf-eyebrow">Feature by feature</span>
+      <h2>One system <span class="g">vs one tool</span></h2>
+      <p class="nf-sub" style="margin-top:12px">Of the {total} features below, {E(n)} fully includes {theirs}. Oceanic Funnels OS includes all {total}, in one login, with one bill.</p>
+    </div>
+    <div class="nf-score"><div class="us"><b>{total}/{total}</b><span>Oceanic Funnels OS</span></div><div><b>{theirs}/{total}</b><span>{E(n)}</span></div></div>
+    <div class="nf-tablewrap">
+      <table class="nf-table nf-mx">
+        <thead><tr><th scope="col"><span hidden>Feature</span></th><th scope="col" class="us">Oceanic Funnels OS</th><th scope="col">{E(n)}</th></tr></thead>
+        <tbody>{mrows}</tbody>
+      </table>
+    </div>
+    <p class="nf-srcs">✓ included · ◐ limited · ＋ needs an extra app, add-on or separate product · ✕ not included. {E(n)} features from {E(n)}'s own pricing and feature pages, checked November 2026. Features we could not confirm are left out.</p>
+    {"" if not missing else f'''<div class="nf-xstack"><h3>To match Oceanic Funnels with {E(n)}, you would still need:</h3><ul>{stack}</ul>
+    <p>Every extra tool is another login, another bill and another place your leads can slip through. With Oceanic Funnels OS it is all in one system from $97 a month.</p>
+    <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Get the full system <span class="ar" aria-hidden="true">→</span></a></div>'''}
+  </div>
+</section>'''
     cheap = f'The full Oceanic Funnels system with CRM, email, SMS and automations is $97 a month, and AI Pro, with every AI feature, is $197 a month. A separate Launch plan at $17 a month covers only funnels, websites and a store. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
     faqs = [
       (f"What is the difference between Oceanic Funnels and {n}?", c["answer"]),
@@ -415,7 +449,7 @@ def compare_page(cfg, fonts, logo, c):
       {crumbs_html(crumbs)}
       <span class="nf-vs">Oceanic Funnels <i>vs</i> {E(n)}</span>
       <h1>{E(c["h1"])}</h1>
-      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. The full system starts at $97 a month.</p>
+      <p class="nf-sub">{E(n)} is {E(art(c["kind"]))}. Oceanic Funnels OS is the whole system: funnels, website, store, CRM, email, SMS, booking, courses, communities, payments, reviews and AI agents, with unlimited contacts and users. The full system starts at $97 a month.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#comparison">See the comparison</a>
@@ -438,6 +472,7 @@ def compare_page(cfg, fonts, logo, c):
         <li><span class="k">{E(n)}</span><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
         <li><span class="k">Starts at</span><span>$97/month (full system) vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
         <li><span class="k">Contacts</span><span>Unlimited on Growth, AI Pro and Scale</span></li>
+        <li><span class="k">Features</span><span>Oceanic Funnels includes {total} of {total} in our feature table. {E(n)} fully includes {theirs}. <a href="#features">See all</a></span></li>
       </ul>
     </div>
   </div>
@@ -458,6 +493,8 @@ def compare_page(cfg, fonts, logo, c):
     <p class="nf-srcs">{E(n)} details from {E(n)}'s own pricing pages, checked {CHECKED}. Plans and prices change, so confirm on {E(n)}'s website. Sources: {srcs}</p>
   </div>
 </section>
+
+{matrix}
 
 <section class="nf-band" style="padding-top:0">
   <div class="nf-wrap">
@@ -483,7 +520,7 @@ def compare_page(cfg, fonts, logo, c):
   <div class="nf-wrap">
     <div class="nf-center nf-caps">
       <span class="nf-eyebrow">All-in-one vs piece-by-piece</span>
-      <h2>Everything {E(n)} does, <span class="g">plus the rest of your stack</span></h2>
+      <h2>One login <span class="g">instead of a stack of tools</span></h2>
     </div>
     <ul class="nf-feat">
       <li><b>Funnels and websites</b><span>Unlimited funnels, landing pages and websites, on every plan.</span></li>
@@ -1484,6 +1521,28 @@ LAUNCH_CSS = r"""
 @media(max-width:520px){.ln-who{grid-template-columns:1fr}}
 """
 PAGE_CSS += LAUNCH_CSS
+PAGE_CSS += r"""
+.nf-score{display:flex;justify-content:center;gap:18px;margin:26px auto 22px;flex-wrap:wrap}
+.nf-score>div{min-width:200px;text-align:center;padding:18px 26px;border-radius:16px;background:#fff;border:1px solid var(--line,#DCE6E3)}
+.nf-score>div.us{background:var(--ink,#0E1A1B);color:#fff;border-color:transparent}
+.nf-score b{display:block;font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.03em;line-height:1}
+.nf-score>div.us b{color:var(--aqua,#3DE3C8)}
+.nf-score span{display:block;margin-top:6px;font-size:14px;font-weight:600;opacity:.8}
+.nf-mx td{vertical-align:top}
+.nf-mx td small{display:block;margin-top:3px;font-size:13px;color:var(--muted,#5B6967);font-weight:400}
+.nf-mx td.us small{color:inherit;opacity:.75}
+.mx{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:13px;font-weight:800;margin-right:6px;vertical-align:-4px}
+.mx.y{background:#DDF7F2;color:#0A7F6E}.mx.p{background:#FFF3D6;color:#9A6400}.mx.a{background:#FFE7DF;color:#C2410C}.mx.n{background:#F3E1E1;color:#B42318}
+.nf-xstack{margin:34px auto 0;max-width:860px;background:var(--ink,#0E1A1B);color:#fff;border-radius:20px;padding:32px 34px;display:block}
+.nf-xstack h3{color:#fff;font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0}
+.nf-xstack ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;margin:18px 0;padding:0}
+.nf-xstack li{display:block;padding-left:24px;position:relative;font-size:15.5px;line-height:1.4;color:#fff}
+.nf-xstack li:before{content:"✕";position:absolute;left:0;top:0;color:#FF8E73;font-weight:800}
+.nf-xstack li b{display:block;color:#fff}.nf-xstack li span{display:block;opacity:.7;font-size:14px}
+.nf-xstack p{color:#fff;opacity:.85;margin:6px 0 18px;font-size:15.5px;max-width:none}
+.nf-xstack .nf-btn{display:inline-flex;width:auto}
+@media(max-width:700px){.nf-xstack ul{grid-template-columns:1fr}.nf-xstack{padding:24px 20px}.nf-score>div{min-width:140px}.nf-score b{font-size:36px}}
+"""
 
 
 def lp_launch(cfg, fonts, logo):
