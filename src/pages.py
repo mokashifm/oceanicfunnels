@@ -247,7 +247,7 @@ def footer(cfg):
   <div class="nf-wrap nf-foot-top">
     <div>
       <h2>Stop fishing. Build the net.</h2>
-      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system. Plans from $17 a month.</p>
+      <p>Oceanic Funnels OS: the all-in-one sales funnel, CRM and automation system. Full system from $97 a month.</p>
       <a class="nf-btn nf-btn--aqua" href="/#pricing">Build my net</a>
     </div>
     <nav class="nf-foot-cols" aria-label="Footer">
@@ -304,7 +304,7 @@ def page(cfg, fonts, path, title, desc, crumbs, body, logo, extra=()):
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{cfg["domain"]}/{"og-launch.png" if path.startswith("/lp/launch") else "og-image.png"}?v=2">
+<meta property="og:image" content="{cfg["domain"]}/{"og-launch.png" if path.startswith("/lp/launch") else "og-image.png"}?v=3">
 <meta name="twitter:card" content="summary_large_image">
 {fonts}
 <link rel="stylesheet" href="/assets/site.css?v={CSS_VER}">
@@ -399,7 +399,7 @@ def compare_page(cfg, fonts, logo, c):
     plans = "".join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in c["plans"])
     srcs = " · ".join(f'<a href="{u}" rel="nofollow noopener" target="_blank">{E(t)}</a>' for t, u in c["sources"])
     more = "".join(f'<a href="/compare/{o["slug"]}/">vs {E(o["name"])}</a>' for o in COMPETITORS if o["slug"] != c["slug"])
-    cheap = f'Oceanic Funnels plans start at $17 a month for funnels, websites and a store. The full system with CRM, email, SMS and automations is $97 a month, and AI Pro, with every AI feature, is $197 a month. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
+    cheap = f'The full Oceanic Funnels system with CRM, email, SMS and automations is $97 a month, and AI Pro, with every AI feature, is $197 a month. A separate Launch plan at $17 a month covers only funnels, websites and a store. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
     faqs = [
       (f"What is the difference between Oceanic Funnels and {n}?", c["answer"]),
       (f"Is Oceanic Funnels OS cheaper than {n}?", cheap + " Usage like SMS and AI is pay-as-you-go."),
@@ -415,7 +415,7 @@ def compare_page(cfg, fonts, logo, c):
       {crumbs_html(crumbs)}
       <span class="nf-vs">Oceanic Funnels <i>vs</i> {E(n)}</span>
       <h1>{E(c["h1"])}</h1>
-      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. Plans from $17 a month, with the full system from $97.</p>
+      <p class="nf-sub">One system for funnels, CRM, email, SMS, AI agents, booking and payments, with unlimited contacts and users. The full system starts at $97 a month.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#comparison">See the comparison</a>
@@ -436,7 +436,7 @@ def compare_page(cfg, fonts, logo, c):
       <ul class="nf-facts">
         <li><span class="k">Oceanic Funnels</span><span>All-in-one sales funnel, CRM and automation system</span></li>
         <li><span class="k">{E(n)}</span><span>{E(c["kind"][0].upper() + c["kind"][1:])}</span></li>
-        <li><span class="k">Starts at</span><span>$17/month vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
+        <li><span class="k">Starts at</span><span>$97/month (full system) vs {E(c["plans"][0][1] if "$0" not in c["plans"][0][1] else c["plans"][1][1])}</span></li>
         <li><span class="k">Contacts</span><span>Unlimited on Growth, AI Pro and Scale</span></li>
       </ul>
     </div>
@@ -749,7 +749,7 @@ def industry_page(cfg, fonts, logo, d):
              "serviceType": "CRM, sales funnel and marketing automation software", "description": d["answer"],
              "provider": {"@id": cfg["domain"] + "/#org"}, "areaServed": "Worldwide",
              "audience": {"@type": "BusinessAudience", "name": n},
-             "offers": {"@type": "Offer", "price": "67", "priceCurrency": "USD", "url": CK}}]
+             "offers": {"@type": "Offer", "price": "97", "priceCurrency": "USD", "url": CK}}]
     desc = d["answer"]
     if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0] + "…"
     return path, page(cfg, fonts, path, title, desc, crumbs, body, logo, extra)
@@ -839,7 +839,7 @@ def guide_page(cfg, fonts, logo, g):
 <section class="nf-band" style="padding-top:0">
   <div class="nf-wrap">
     <div class="nf-cta-band nf-hatch" style="--hc:var(--coral)">
-      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system. Plans from $17 a month.</p></div>
+      <div><h2>Stop fishing for customers. Build the net.</h2><p>Funnels, CRM, email, SMS, WhatsApp, AI agents, booking and payments in one system, from $97 a month.</p></div>
       <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Build my net <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <h2 class="nf-more-h">Built for these industries</h2>

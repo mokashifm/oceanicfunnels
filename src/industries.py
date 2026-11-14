@@ -429,7 +429,7 @@ BASE = [
 
 GENERIC_FAQ = [
   ("Do you set it up for me?", "On the Scale plan ($297 a month), a dedicated account manager and a builder work with you to set up your system and grow your business. On Growth and AI Pro, you build it yourself with our templates and guides."),
-  ("How much does it cost?", "Plans start at $17 a month for funnels, websites and a store. The full system with unlimited contacts and users is $97 a month on Growth, AI Pro adds every AI feature for $197 a month, and Scale adds a dedicated account manager and builder for $297 a month. Usage like SMS, email and AI is pay-as-you-go, and WhatsApp is a +$19/month add-on."),
+  ("How much does it cost?", "The full system with unlimited contacts and users is $97 a month on Growth, AI Pro adds every AI feature for $197 a month, and Scale adds a dedicated account manager and builder for $297 a month. Usage like SMS, email and AI is pay-as-you-go, and WhatsApp is a +$19/month add-on. A separate Launch plan at $17 a month covers only funnels, websites and a store."),
 ]
 
 from ind_trades import TRADES

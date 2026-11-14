@@ -7,7 +7,7 @@ CHECKED = "October 30, 2026"
 
 # Oceanic Funnels OS values, reused on every page
 OF = {
-    "price": "From $17/month (Launch), full system $97/month",
+    "price": "Full system $97/month (separate Launch plan: $17/month for funnels, websites and a store only)",
     "contacts": "Unlimited on Growth, AI Pro and Scale",
     "users": "Unlimited on Growth, AI Pro and Scale",
     "funnels": "Unlimited funnels and websites",

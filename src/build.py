@@ -24,7 +24,7 @@ B, P = CONFIG["brand"], CONFIG["product"]
 
 FAQ = [
     (f"What is {P}?",
-     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. Plans start at $17 a month for funnels, websites and a store, and the full system starts at $97 a month."),
+     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. The full system starts at $97 a month. A separate Launch plan at $17 a month covers only funnels, websites and a store."),
     ("What is a sales funnel?",
      "A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel."),
     ("What are the plans?",
@@ -174,13 +174,13 @@ seo_head = f"""<meta charset="utf-8">
 <meta property="og:title" content="Stop fishing for customers. Build the net.">
 <meta property="og:description" content="{DESC}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{CONFIG['domain']}/og-image.png?v=2">
+<meta property="og:image" content="{CONFIG['domain']}/og-image.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stop fishing for customers. Build the net.">
 <meta name="twitter:description" content="{DESC}">
-<meta name="twitter:image" content="{CONFIG['domain']}/og-image.png?v=2">"""
+<meta name="twitter:image" content="{CONFIG['domain']}/og-image.png?v=3">"""
 os.makedirs(SITE, exist_ok=True)
 open(f"{SITE}/index.html", "w").write(
     f'<!doctype html>\n<html lang="en">\n<head>\n{seo_head}\n{head}<style>html,body{{margin:0;background:#FFFFFF}}</style>\n{pages.CLARITY}\n{pages.pixel_for("/")}\n</head>\n<body>\n{page}\n</body>\n</html>\n')
