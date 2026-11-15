@@ -747,7 +747,8 @@ if(h.indexOf('checkout.oceanicfunnels.com')>-1){ofT('InitiateCheckout',{content_
 <div class="nf">
 
 <!-- announcement bar -->
-<div class="nf-bar"><div class="nf-wrap"><a href="#pricing"><b>FOUNDING MEMBER PRICING</b><span>First 50 businesses lock in their price for life</span></a></div></div>
+<div class="nf-bar" id="nf-trialbar"><div class="nf-wrap"><a href="#pricing"><b>TRY ANY PLAN 7 DAYS FOR $1</b><span>Offer ends Wednesday, November 18 · <span id="nf-tcd"></span></span></a></div></div>
+<script>(function(){var end=new Date("2026-11-18T23:59:59-05:00").getTime(),el=document.getElementById("nf-tcd"),bar=document.getElementById("nf-trialbar");function p(n){return(n<10?"0":"")+n}function t(){var s=Math.floor((end-Date.now())/1000);if(s<=0){if(bar)bar.style.display="none";return}el.textContent=p(Math.floor(s/86400))+"d "+p(Math.floor(s%86400/3600))+"h "+p(Math.floor(s%3600/60))+"m "+p(s%60)+"s left"}t();setInterval(t,1000)})();</script>
 
 <!-- HERO -->
 <section class="nf-hero" id="top">
@@ -770,7 +771,7 @@ if(h.indexOf('checkout.oceanicfunnels.com')>-1){ofT('InitiateCheckout',{content_
       <h1>Stop fishing for customers. <em>Build the net.</em></h1>
       <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. Plans start at $97 a month, and you can try any plan for 7 days for $1.</p>
       <div class="nf-hero-cta">
-        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
+        <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Start my $1 trial <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#features">See what's inside</a>
       </div>
       <div class="nf-hero-ticks"><span>Unlimited contacts and users</span><span>Founding price locked for life</span><span>30-day money-back guarantee</span></div>
@@ -1204,7 +1205,7 @@ if(h.indexOf('checkout.oceanicfunnels.com')>-1){ofT('InitiateCheckout',{content_
   <div class="nf-wordmark" aria-hidden="true">OCEANIC</div>
 </footer>
 
-<div class="nf-sticky"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a></div>
+<div class="nf-sticky"><a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Start my $1 trial <span class="ar" aria-hidden="true">→</span></a></div>
 </div>
 
 <script>
