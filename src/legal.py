@@ -109,7 +109,7 @@ TERMS = [
 
 ("Plans and account services", """
 <ul>
-<li><b>Plans:</b> Launch ($17 a month) includes unlimited sales funnels, websites and an e-commerce store, with payment collection and contact storage. It does not include sending email or SMS, or any other feature. Growth ($97 a month) includes every feature except AI features. AI Pro ($197 a month) includes every feature, including AI features. Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale your business. The features in each plan are listed on our pricing page.</li>
+<li><b>Plans:</b> Growth ($97 a month) includes every feature except AI features. AI Pro ($197 a month) includes every feature, including AI features. Scale ($297 a month) includes everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale your business. The features in each plan are listed on our pricing page.</li>
 <li><b>Scale services:</b> your account manager and builder work with you on setting up and growing your system. There is no build fee.</li>
 <li><b>Done-For-You Setup:</b> a one-time setup service you can add at checkout, where our team builds your system for you. Our "live in 14 days" target applies to it, and if we miss it for reasons within our control, your first month's plan fee is free and is credited to your next invoice. Done-For-You Setup is not covered by the 30-day money-back guarantee once work has started.</li>
 <li><b>Extra funnels:</b> funnels built by our team beyond your plan are $297 one time per funnel. You can build unlimited funnels yourself on every plan.</li>
@@ -121,7 +121,8 @@ TERMS = [
 <ul>
 <li>You can cancel any time from your account or by emailing hello@oceanicfunnels.com. Cancellation takes effect at the end of your current billing period, and you keep access until then.</li>
 <li><b>30-day money-back guarantee:</b> if you cancel the Growth or AI Pro plan within 30 days of your first payment for your first subscription, we will refund that first subscription payment. This does not cover usage charges, add-ons, third-party fees or extra funnel builds.</li>
-<li>The 30-day money-back guarantee does not apply to the Launch or Scale plans.</li>
+<li>The 30-day money-back guarantee does not apply to the Scale plan.</li>
+<li><b>$1 trial:</b> where a 7-day trial is offered, you pay $1 at sign-up and get full access to your plan for 7 days. Unless you cancel before the trial ends, your subscription then renews automatically at the plan's monthly price, charged to the same payment method. The $1 trial fee is non-refundable.</li>
 <li>Except as stated above or required by law, payments are non-refundable.</li>
 </ul>"""),
 

@@ -15,7 +15,7 @@ CONFIG = {
     "path": "/",                                  # homepage
     "email": "hello@oceanicfunnels.com",
     # Replace these with your real links (checkout / order form per plan, app login, contact calendar)
-    "plans": {"launch": "https://checkout.oceanicfunnels.com/oceanic_funnels-page", "growth": "https://checkout.oceanicfunnels.com/oceanic_funnels-page",
+    "plans": {"growth": "https://checkout.oceanicfunnels.com/oceanic_funnels-page",
               "aipro": "https://checkout.oceanicfunnels.com/oceanic_funnels-page", "scale": "https://checkout.oceanicfunnels.com/oceanic_funnels-page"},
     "login": "https://app.oceanicfunnels.com", "book_url": "#get-started",
     "updated": datetime.date.today().isoformat(),
@@ -24,11 +24,11 @@ B, P = CONFIG["brand"], CONFIG["product"]
 
 FAQ = [
     (f"What is {P}?",
-     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. The full system starts at $97 a month. A separate Launch plan at $17 a month covers only funnels, websites and a store."),
+     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. The full system starts at $97 a month. You can try any plan for 7 days for $1."),
     ("What is a sales funnel?",
      "A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel."),
     ("What are the plans?",
-     "There are four plans: " + plans.summary_text() + ". Every plan is month to month."),
+     "There are three plans: " + plans.summary_text() + ". Every plan is month to month."),
     ("What is the difference between Growth and AI Pro?",
      "Growth ($97 a month) includes every feature except AI: CRM and pipelines, phone, SMS and email, calendars, automation workflows, funnels and websites, payments, courses and communities, reviews and reporting. AI Pro ($197 a month) adds all the AI features: Conversation AI, Voice AI, Content AI, Reviews AI, Workflow AI, Website and Funnel AI, AI Studio, Agent Studio, the AI Knowledge Base and Ask AI."),
     ("What do I get on Scale?",

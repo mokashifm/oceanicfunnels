@@ -362,6 +362,8 @@
 .nf-price ul+.nf-btn{margin-top:30px}
 .nf-price .nf-btn{width:100%}
 .nf-price .after{font-size:12.5px;color:var(--muted);margin-top:12px}
+.nf-trial{margin-top:10px;font-weight:700;font-size:14px;color:#0A7F6E;background:#DDF7F2;padding:5px 12px;border-radius:999px}
+.nf-price--pop .nf-trial{background:rgba(61,227,200,.18);color:#3DE3C8}
 .nf-price--pop{background:var(--ink);border-color:var(--ink);color:#fff}
 .nf-price--pop .pop{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--coral);color:var(--ink);font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.12em;padding:6px 18px;border-radius:999px;white-space:nowrap}
 .nf-price--pop .plan{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
@@ -542,7 +544,7 @@
 .nf-addons span{font-family:var(--display);font-weight:600;color:var(--aqua-d);white-space:nowrap}
 .nf-found{text-align:center;margin-top:26px;font-size:15px;color:var(--text)}
 .nf-found b{color:var(--coral-d)}
-.nf-prices--4{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.nf-prices--4{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1080px;margin-left:auto;margin-right:auto}
 .nf-prices--4 .nf-price{padding:36px 22px 26px}
 .nf-prices--4 .nf-price .amt{font-size:52px}
 .nf-compare-wrap{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
@@ -563,7 +565,7 @@
 .nf-ftable .yes{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--aqua);color:var(--ink);font-size:13px;font-weight:800}
 .nf-ftable .no{display:inline-grid;place-items:center;width:24px;height:24px;color:#B4C2BF;font-size:14px;font-weight:700}
 .nf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:1100px){.nf-prices--4{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;gap:32px 16px}}
+@media (max-width:1000px){.nf-prices--4{grid-template-columns:1fr;max-width:480px;gap:32px 16px}}
 @media (max-width:640px){.nf-prices--4{grid-template-columns:1fr;max-width:480px}.nf-compare-wrap{padding:20px 12px}.nf-ftable{font-size:13px}.nf-ftable thead th{padding:10px 3px}.nf-ftable thead th b{font-size:13px}.nf-ftable thead th small{font-size:11px}.nf-ftable tbody th{padding:9px 4px}.nf-ftable td{padding:9px 2px}.nf-ftable col.cf{width:36%}.nf-ftable col.cp{width:16%}.nf-ftable tr.grp td{font-size:10px;letter-spacing:-.01em}.nf-ftable tr.grp th{font-size:11px;letter-spacing:.04em}.nf-ftable .yes,.nf-ftable .no{width:20px;height:20px;font-size:11px}}
 @media (max-width:1060px){.nf-stack,.nf-extras{grid-template-columns:1fr}}
 @media (max-width:680px){.nf-hatch::after{width:34%;height:16%}.nf-stack-old,.nf-stack-new{padding:28px 22px}}
@@ -593,7 +595,7 @@
     <div class="nf-hero-in">
       <span class="nf-badge"><i aria-hidden="true"></i>All-in-one sales funnel system</span>
       <h1>Stop fishing for customers. <em>Build the net.</em></h1>
-      <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. The full system starts at $97 a month. Only need funnels, a website and a store? The separate Launch plan is $17 a month.</p>
+      <p class="nf-sub">Oceanic Funnels OS works 24/7. It catches every lead, replies in seconds, books the call and collects the payment, even while you sleep. Plans start at $97 a month, and you can try any plan for 7 days for $1.</p>
       <div class="nf-hero-cta">
         <a class="nf-btn nf-btn--aqua nf-btn--lg" href="#pricing">Build my net <span class="ar" aria-hidden="true">→</span></a>
         <a class="nf-btn nf-btn--line" href="#features">See what's inside</a>
@@ -784,7 +786,7 @@
         <li><span class="k">Replaces</span><span>Funnel builder, email and SMS tools, CRM, scheduler, website chat, reviews, invoicing</span></li>
         <li><span class="k">Key metrics</span><span>Speed to lead, lead-to-customer rate, revenue per lead</span></li>
         <li><span class="k">Best for</span><span>Local service businesses, coaches, consultants, agencies and online sellers</span></li>
-        <li><span class="k">Oceanic OS</span><span>Full system from $97 a month, with unlimited contacts and users. Launch (funnels, websites and a store only): $17</span></li>
+        <li><span class="k">Oceanic OS</span><span>Full system from $97 a month, with unlimited contacts and users. Try any plan 7 days for $1</span></li>
       </ul>
     </div>
   </div>
@@ -858,7 +860,7 @@
       <h2>From sign-up to a working net, <span class="g">step by step</span></h2>
     </div>
     <ol class="nf-steps">
-      <li><h3>Pick your plan</h3><span class="d">Day 1</span><p>Launch for funnels and a store, Growth for the full system, AI Pro to add AI, or Scale to work with a dedicated account manager and builder.</p></li>
+      <li><h3>Pick your plan</h3><span class="d">Day 1</span><p>Growth for the full system, AI Pro to add AI, or Scale to work with a dedicated account manager and builder. Start with a 7-day trial for $1.</p></li>
       <li><h3>Set up your net</h3><span class="d">Week 1</span><p>Connect your domain, business email, phone number and text registration, then switch on your automations and, on AI Pro and Scale, your AI agent.</p></li>
       <li><h3>Go live</h3><span class="d">Week 2</span><p>Your funnel and automations start catching, replying to and booking every lead that comes in.</p></li>
       <li><h3>Keep growing</h3><span class="d">Every month</span><p>Add funnels, automations and campaigns as you grow. On Scale, your account manager and builder help you get there.</p></li>
@@ -911,16 +913,16 @@
 <section class="nf-band nf-pricing" id="pricing">
   <div class="nf-wrap">
     <div class="nf-center nf-c">
-      <span class="nf-eyebrow">Pricing (4 plans)</span>
+      <span class="nf-eyebrow">Pricing · try any plan 7 days for $1</span>
       <h2>Pick the plan <span class="g">that fits</span></h2>
-      <p class="nf-sub">Start with funnels and a store, move to the full system, switch on AI, or have our team help you scale. Unlimited funnels and websites on every plan.</p>
+      <p class="nf-sub">Run the full system, switch on AI, or have our team help you scale. Unlimited funnels and websites on every plan. Start any plan with a 7-day trial for $1.</p>
     </div>
     <div class="nf-prices nf-prices--4">
       {{PRICING_CARDS}}
     </div>
     <div class="nf-compare-wrap" id="compare-plans">
       <h3 class="nf-ct">Compare every feature</h3>
-      <p class="nf-cs">{{FEATURE_N}} features across 4 plans. ✓ included, ✕ not included.</p>
+      <p class="nf-cs">{{FEATURE_N}} features across 3 plans. ✓ included, ✕ not included.</p>
       <div class="nf-ftable-scroll">{{PRICING_TABLE}}</div>
     </div>
     <div class="nf-extras">

@@ -7,7 +7,7 @@ CHECKED = "October 30, 2026"
 
 # Oceanic Funnels OS values, reused on every page
 OF = {
-    "price": "Full system $97/month (separate Launch plan: $17/month for funnels, websites and a store only)",
+    "price": "From $97/month for the full system. Try any plan 7 days for $1",
     "contacts": "Unlimited on Growth, AI Pro and Scale",
     "users": "Unlimited on Growth, AI Pro and Scale",
     "funnels": "Unlimited funnels and websites",
@@ -70,7 +70,7 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'funnel builder',
   'h1': 'The ClickFunnels alternative with CRM, SMS and AI built in',
   'answer': "ClickFunnels' Launch plan is $97 a month ($81 billed yearly) for 10,000 contacts and 2 team members. Oceanic Funnels OS "
-            'includes unlimited funnels too. Funnels, websites and a store alone start at $17 a month on Launch, and the full system '
+            'includes unlimited funnels too. The full system '
             'with a CRM, built-in two-way SMS, booking and payments is $97 a month with unlimited contacts and users. AI agents are '
             'included from $197 a month on AI Pro.',
   'rows': {'price': 'From $97/month (Launch), $81/month billed yearly',
@@ -110,8 +110,8 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'ecommerce funnel builder',
   'h1': 'The Funnelish alternative with a full CRM and no visitor caps',
   'answer': 'Funnelish is a checkout and funnel builder for online stores, with a Basic plan at $49 a month for up to 20,000 visitors, 20 '
-            'funnels, 1 store and 2 team members. Oceanic Funnels gives you unlimited funnels, websites and a store from $17 a month on '
-            'Launch. The full system adds a CRM, email, SMS, booking and courses with unlimited contacts and users for $97 a month, '
+            'funnels, 1 store and 2 team members. Oceanic Funnels gives you unlimited funnels, websites and a store, '
+            'plus a CRM, email, SMS, booking and courses with unlimited contacts and users, for $97 a month, '
             'and AI agents are included from $197 a month on AI Pro.',
   'rows': {'price': 'From $49/month (Basic), $41/month billed yearly',
            'traffic': 'Up to 20,000 visitors a month on Basic',
@@ -132,8 +132,8 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'ecommerce platform',
   'h1': 'The Shopify alternative with funnels, CRM, SMS and booking built in',
   'answer': "Shopify's Basic plan is $39 a month, and it charges a 2% fee on Basic when you use a third-party payment provider. Oceanic "
-            'Funnels includes an online store, checkout and sales funnels from $17 a month on Launch, with no platform fee on your '
-            'sales. The full system adds a CRM, email, SMS, booking and courses for $97 a month, and AI agents are included from $197 '
+            'Funnels includes an online store, checkout and sales funnels with no platform fee on your sales, plus a CRM, email, SMS, '
+            'booking and courses, from $97 a month. Try any plan 7 days for $1. AI agents are included from $197 '
             'a month on AI Pro.',
   'rows': {'price': 'From $39/month (Basic), $29/month billed yearly',
            'fee': '2% on Basic with a third-party payment provider (1% Grow, 0.6% Advanced)',
@@ -260,8 +260,8 @@ COMPETITORS = [{'slug': 'skool',
   'kind': 'link-in-bio tool',
   'h1': 'The Linktree alternative that turns clicks into customers',
   'answer': 'Linktree is a link-in-bio page with a free plan and paid plans from $9 a month ($7 billed yearly). Its pricing page lists 0% '
-            'fees on sales from the Pro plan up. Oceanic Funnels gives you full funnels and websites from $17 a month on Launch, and '
-            'the full system adds the CRM, email, SMS and booking to follow up with every visitor for $97 a month.',
+            'fees on sales from the Pro plan up. Oceanic Funnels gives you full funnels and websites, plus the CRM, email, SMS and '
+            'booking to follow up with every visitor, for $97 a month. Try any plan 7 days for $1.',
   'rows': {'price': 'Free; paid plans from $9/month ($7 billed yearly)',
            'fee': '0% fees on sales on Pro and Premium',
            'funnels': 'Link-in-bio page'},
@@ -279,9 +279,9 @@ COMPETITORS = [{'slug': 'skool',
 # Our side: which plan includes each feature. Competitor side: only features we are confident about
 # (from their pricing/feature pages, checked November 2026). Unknown features are left out, never guessed.
 FEATS = [
-    ("funnels", "Sales funnels and landing pages", "Launch"),
-    ("website", "Website builder", "Launch"),
-    ("store", "Online store and checkout", "Launch"),
+    ("funnels", "Sales funnels and landing pages", "Growth"),
+    ("website", "Website builder", "Growth"),
+    ("store", "Online store and checkout", "Growth"),
     ("crm", "CRM and sales pipelines", "Growth"),
     ("email", "Email campaigns and automations", "Growth"),
     ("sms", "SMS and two-way texting", "Growth"),

@@ -354,12 +354,12 @@ def legal_page(cfg, fonts, logo, slug, title, h1, intro, sections):
 
 ABOUT = [
  ("Who we are", """<p>Oceanic Funnels is the company behind Oceanic Funnels OS, an all-in-one sales funnel, CRM and marketing automation system for small and growing businesses. We sell it, set it up, build on it and support it.</p>
-<p>Start with funnels, websites and a store on Launch, run the full system yourself on Growth, add every AI feature on AI Pro, or work with a dedicated account manager and builder on Scale.</p>"""),
+<p>Run the full system yourself on Growth, add every AI feature on AI Pro, or work with a dedicated account manager and builder on Scale. Every plan starts with a 7-day trial for $1.</p>"""),
  ("Where we are", """<p>Oceanic Funnels is based in Bahawalpur, Pakistan, and works with businesses worldwide. All plans are priced in US dollars.</p>"""),
  ("Who you deal with", """<p>You deal with Oceanic Funnels directly. You sign up and pay with us, our team onboards you and answers your support requests, and on Scale your dedicated account manager and builder work with you directly. There is no third party between you and the people who look after your account.</p>"""),
  ("Support", """<ul><li><b>24/7 support.</b> Our team replies within the same hour, day or night.</li><li><b>Instant answers.</b> Our AI support assistant replies straight away while a person picks up your request.</li><li><b>Email:</b> <a href="mailto:hello@oceanicfunnels.com">hello@oceanicfunnels.com</a></li></ul>"""),
  ("Your data and your freedom to leave", """<ul><li><b>You own your contacts.</b> Export your contacts and data at any time.</li><li><b>Your domain stays in your name.</b> If you connect your own domain, it is registered to you, not to us.</li><li><b>No lock-in.</b> Every plan is month to month. Cancel anytime.</li></ul>"""),
- ("Plans", """<ul><li><b>Launch:</b> $17 a month. Unlimited sales funnels, websites and an e-commerce store, with payments and contacts. No email or SMS sending.</li><li><b>Growth:</b> $97 a month. Every feature except AI.</li><li><b>AI Pro:</b> $197 a month. Every feature, including all AI.</li><li><b>Scale:</b> $297 a month. Everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale.</li></ul><p>Every plan is month to month. Growth and AI Pro include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> to compare every feature.</p>"""),
+ ("Plans", """<ul><li><b>Growth:</b> $97 a month. Every feature except AI.</li><li><b>AI Pro:</b> $197 a month. Every feature, including all AI.</li><li><b>Scale:</b> $297 a month. Everything in AI Pro, plus a dedicated account manager and a builder to help you grow and scale.</li></ul><p>Every plan is month to month, and you can try any plan for 7 days for $1. Growth and AI Pro include a 30-day money-back guarantee. See <a href="/#pricing">pricing</a> to compare every feature.</p>"""),
 ]
 
 def about_page(cfg, fonts, logo):
@@ -433,7 +433,7 @@ def compare_page(cfg, fonts, logo, c):
     <a class="nf-btn nf-btn--aqua nf-btn--lg" href="{CK}">Get the full system <span class="ar" aria-hidden="true">→</span></a></div>'''}
   </div>
 </section>'''
-    cheap = f'The full Oceanic Funnels system with CRM, email, SMS and automations is $97 a month, and AI Pro, with every AI feature, is $197 a month. A separate Launch plan at $17 a month covers only funnels, websites and a store. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
+    cheap = f'The full Oceanic Funnels system with CRM, email, SMS and automations is $97 a month, and AI Pro, with every AI feature, is $197 a month. You can try any plan for 7 days for $1. {n}\'s published pricing: {c["rows"]["price"][0].lower() + c["rows"]["price"][1:]}.'
     faqs = [
       (f"What is the difference between Oceanic Funnels and {n}?", c["answer"]),
       (f"Is Oceanic Funnels OS cheaper than {n}?", cheap + " Usage like SMS and AI is pay-as-you-go."),
@@ -505,7 +505,7 @@ def compare_page(cfg, fonts, logo, c):
     <div class="nf-two">
       <div class="nf-box ink">
         <h3>Oceanic Funnels OS</h3>
-        <ul class="nf-plist"><li><b>Launch (funnels, websites, store)</b><span>$17/month</span></li><li><b>Growth (every feature except AI)</b><span>$97/month</span></li><li><b>AI Pro (every feature and all AI)</b><span>$197/month</span></li><li><b>Scale (plus account manager and builder)</b><span>$297/month</span></li></ul>
+        <ul class="nf-plist"><li><b>7-day trial, any plan</b><span>$1</span></li><li><b>Growth (every feature except AI)</b><span>$97/month</span></li><li><b>AI Pro (every feature and all AI)</b><span>$197/month</span></li><li><b>Scale (plus account manager and builder)</b><span>$297/month</span></li></ul>
         <p style="margin-top:16px">Unlimited funnels on every plan, and unlimited contacts and users from Growth up. SMS, email and AI usage is pay-as-you-go.</p>
       </div>
       <div class="nf-box">
@@ -834,8 +834,8 @@ def guide_page(cfg, fonts, logo, g):
     more = "".join(f'<a href="/guides/{o["slug"]}/">{E(o["kw"].split(":")[0])}</a>' for o in rel[:10]) + '<a href="/guides/">All guides</a>' 
     pbox = ""
     if g.get("plan") == "launch":
-        pbox = (f'<div class="nf-gcta"><div><b>Build this on Launch for $17/month</b><span>Unlimited funnels and websites, an online store, checkout and payments. No coding. Cancel anytime.</span></div>'
-                f'<a class="nf-btn nf-btn--ink" href="/lp/launch/?utm_source=site&amp;utm_medium=guide&amp;utm_campaign={g["slug"]}">Start for $17/month</a></div>')
+        pbox = (f'<div class="nf-gcta"><div><b>Build this with Oceanic Funnels. Try it 7 days for $1</b><span>Unlimited funnels and websites, an online store, checkout, payments, CRM, email and SMS. No coding. Cancel anytime.</span></div>'
+                f'<a class="nf-btn nf-btn--ink" href="{CK}">Start my $1 trial</a></div>')
     elif g.get("plan_box"):
         t, d, u, b = g["plan_box"]
         pbox = f'<div class="nf-gcta"><div><b>{E(t)}</b><span>{E(d)}</span></div><a class="nf-btn nf-btn--ink" href="{u}">{E(b)}</a></div>'
