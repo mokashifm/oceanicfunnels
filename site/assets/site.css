@@ -136,6 +136,7 @@
 .nf-flow .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .nf-ai{border:1px solid var(--coral);background:var(--coral-l);border-radius:6px;padding:11px 12px;font-size:11.5px;line-height:1.5}
 .nf-ai b{color:var(--coral-d);font-weight:600}
+.nf-shot{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.12)}
 .nf-app-note{font-size:12.5px;color:var(--soft);margin-top:12px;text-align:right}
 
 /* ---------- answer block */
