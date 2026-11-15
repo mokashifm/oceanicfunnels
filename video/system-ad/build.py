@@ -126,10 +126,10 @@ run(['ffmpeg', '-y', '-v', 'error', *inputs, '-filter_complex', ';'.join(fc), '-
 os.replace('seg/tmp.mp4', 'seg/video.mp4')
 
 # ---------- audio ----------
-run(['ffmpeg', '-y', '-v', 'error', '-i', 'ad_vo.wav', '-i', 'ad_music.wav', '-filter_complex',
-     '[1:a]volume=0.55,afade=t=out:st=33.8:d=2[m];[0:a]asplit[v1][v2];[m][v2]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=400[md];'
+run(['ffmpeg', '-y', '-v', 'error', '-i', 'ad_vo.wav', '-i', 'ad_music2.wav', '-filter_complex',
+     '[1:a]volume=0.32,afade=t=in:d=0.6,afade=t=out:st=34:d=2[m];[0:a]asplit[v1][v2];[m][v2]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=400[md];'
      '[v1][md]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5[a]', '-map', '[a]', '-ar', '48000', 'seg/audio.wav'])
 run(['ffmpeg', '-y', '-v', 'error', '-i', 'seg/video.mp4', '-i', 'seg/audio.wav', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
      '-shortest', 'seg/tmp.mp4'])
-os.replace('seg/tmp.mp4', 'oceanic-system-ad-v1.mp4')
+os.replace('seg/tmp.mp4', 'oceanic-system-ad-v2.mp4')
 print('done')
