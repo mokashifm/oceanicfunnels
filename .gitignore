@@ -15,3 +15,8 @@ video/demo/vo/
 video/demo/*.txt
 video/system-ad/seg/
 video/system-ad/chk/
+video/el-style/
+video/system-ad/*.mp4
+video/system-ad/*.wav
+video/system-ad/clips/
+video/system-ad/ov/
