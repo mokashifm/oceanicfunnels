@@ -367,8 +367,6 @@
 .nf-price ul+.nf-btn{margin-top:30px}
 .nf-price .nf-btn{width:100%}
 .nf-price .after{font-size:12.5px;color:var(--muted);margin-top:12px}
-.nf-trial{margin-top:10px;font-weight:700;font-size:14px;color:#0A7F6E;background:#DDF7F2;padding:5px 12px;border-radius:999px}
-.nf-price--pop .nf-trial{background:rgba(61,227,200,.18);color:#3DE3C8}
 .nf-price--pop{background:var(--ink);border-color:var(--ink);color:#fff}
 .nf-price--pop .pop{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--coral);color:var(--ink);font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.12em;padding:6px 18px;border-radius:999px;white-space:nowrap}
 .nf-price--pop .plan{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}

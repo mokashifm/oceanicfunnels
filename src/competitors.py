@@ -7,7 +7,7 @@ CHECKED = "October 30, 2026"
 
 # Oceanic Funnels OS values, reused on every page
 OF = {
-    "price": "From $97/month for the full system. Try any plan 7 days for $1",
+    "price": "From $97/month for the full system",
     "contacts": "Unlimited on Growth, AI Pro and Scale",
     "users": "Unlimited on Growth, AI Pro and Scale",
     "funnels": "Unlimited funnels and websites",
@@ -133,7 +133,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Shopify alternative with funnels, CRM, SMS and booking built in',
   'answer': "Shopify's Basic plan is $39 a month, and it charges a 2% fee on Basic when you use a third-party payment provider. Oceanic "
             'Funnels includes an online store, checkout and sales funnels with no platform fee on your sales, plus a CRM, email, SMS, '
-            'booking and courses, from $97 a month. Try any plan 7 days for $1. AI agents are included from $197 '
+            'booking and courses, from $97 a month. AI agents are included from $197 '
             'a month on AI Pro.',
   'rows': {'price': 'From $39/month (Basic), $29/month billed yearly',
            'fee': '2% on Basic with a third-party payment provider (1% Grow, 0.6% Advanced)',
@@ -261,7 +261,7 @@ COMPETITORS = [{'slug': 'skool',
   'h1': 'The Linktree alternative that turns clicks into customers',
   'answer': 'Linktree is a link-in-bio page with a free plan and paid plans from $9 a month ($7 billed yearly). Its pricing page lists 0% '
             'fees on sales from the Pro plan up. Oceanic Funnels gives you full funnels and websites, plus the CRM, email, SMS and '
-            'booking to follow up with every visitor, for $97 a month. Try any plan 7 days for $1.',
+            'booking to follow up with every visitor, for $97 a month.',
   'rows': {'price': 'Free; paid plans from $9/month ($7 billed yearly)',
            'fee': '0% fees on sales on Pro and Premium',
            'funnels': 'Link-in-bio page'},

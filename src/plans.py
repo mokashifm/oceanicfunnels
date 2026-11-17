@@ -9,17 +9,17 @@ PLANS = [
                   "SMS and email marketing", "Calendars and appointments", "Automation workflows",
                   "Invoices, payments and subscriptions", "Courses, communities and client portal",
                   "Reviews, social planner and ad manager", "Dashboards, reporting and integrations"],
-         cta="Start my $1 trial", after="$1 for 7 days, then $97/month. Cancel anytime."),
+         cta="Get Growth", after="30-day money-back guarantee"),
     dict(key="aipro", name="AI Pro", price=197, pop=True,
          pitch="Every feature, including all AI.",
          bullets=["Everything in Growth, plus:", "Conversation AI for chat, SMS and social", "Voice AI that answers your calls",
                   "Content AI and Reviews AI", "Workflow AI and Website and Funnel AI", "AI Studio and Agent Studio",
                   "AI Knowledge Base and Ask AI"],
-         cta="Start my $1 trial", after="$1 for 7 days, then $197/month. Cancel anytime."),
+         cta="Get AI Pro", after="30-day money-back guarantee"),
     dict(key="scale", name="Scale", price=297,
          pitch="Everything in AI Pro, plus people to help you grow.",
          bullets=["Everything in AI Pro, plus:", "A dedicated account manager", "A builder who helps you grow and scale your business"],
-         cta="Start my $1 trial", after="$1 for 7 days, then $297/month. Cancel anytime."),
+         cta="Scale with us", after="Cancel anytime"),
 ]
 PLAN_BY = {p["key"]: p for p in PLANS}
 
@@ -70,7 +70,7 @@ def cards_html(links):
             f'<article class="nf-price{" nf-price--pop" if pop else ""}">'
             + ('<span class="pop">MOST POPULAR</span>' if pop else "")
             + f'<span class="plan">{E(p["name"])}</span>'
-            f'<div class="amt"><span class="v">${p["price"]}</span> <small>/month</small></div><p class="nf-trial">Try it 7 days for $1</p>'
+            f'<div class="amt"><span class="v">${p["price"]}</span> <small>/month</small></div>'
             f'<p class="for">{E(p["pitch"])}</p><ul>{lis}</ul>'
             f'<a class="nf-btn {"nf-btn--aqua" if pop else "nf-btn--ink"}" href="{links[p["key"]]}">{E(p["cta"])}</a>'
             f'<p class="after">{E(p["after"])}</p></article>')
@@ -96,4 +96,4 @@ def table_html():
 def summary_text():
     """Plain-text plan summary used in FAQs, llms.txt and legal."""
     return ("Growth $97/month (every feature except AI), AI Pro $197/month (every feature, including all AI), "
-            "and Scale $297/month (everything in AI Pro plus a dedicated account manager and a builder to help you grow and scale). Every plan can be tried for 7 days for $1")
+            "and Scale $297/month (everything in AI Pro plus a dedicated account manager and a builder to help you grow and scale)")

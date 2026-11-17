@@ -68,13 +68,13 @@ EXPAND = {
  ],
  replace={
   "Building funnels in Oceanic Funnels OS": ("Building funnels in Oceanic Funnels OS", """
-<p>Every plan includes unlimited funnels and websites with a drag-and-drop builder, order forms, checkout and payments. The <b>Growth plan ($97/month)</b> covers every step of this guide: your landing page, order form, checkout and thank-you page, plus the CRM and pipelines, lead forms, calendars, email and SMS follow-up and automations. You can try it 7 days for $1. On Scale, a dedicated builder helps you build and grow it. See <a href="/#pricing">all plans</a>.</p>"""),
+<p>Every plan includes unlimited funnels and websites with a drag-and-drop builder, order forms, checkout and payments. The <b>Growth plan ($97/month)</b> covers every step of this guide: your landing page, order form, checkout and thank-you page, plus the CRM and pipelines, lead forms, calendars, email and SMS follow-up and automations. On Scale, a dedicated builder helps you build and grow it. See <a href="/#pricing">all plans</a>.</p>"""),
  },
  faqs_add=[
   ("Do I need a website to have a sales funnel?", "No. A funnel can live on its own domain or subdomain. Many businesses start with a funnel for one offer and add a full website later."),
   ("How long does it take to build a sales funnel?", "A simple one-offer funnel with a sales page, checkout and thank-you page can be built in an afternoon from a template. More complex funnels with webinars or multiple upsells take longer."),
   ("Can I sell digital products with a funnel?", "Yes. Guides, templates, printables and other downloads are some of the easiest things to sell with a funnel, because there's nothing to ship."),
-  ("How much does it cost to build a sales funnel?", "The full system starts at $97 a month, and you can try it 7 days for $1. Your other costs are your domain, payment-processing fees and any ads you run."),
+  ("How much does it cost to build a sales funnel?", "The full system starts at $97 a month. Your other costs are your domain, payment-processing fees and any ads you run."),
  ],
 ),
 
@@ -90,7 +90,7 @@ EXPAND = {
 <li>Add an upsell step after the checkout step in the funnel for your one-click offer.</li>
 <li>Run a test purchase and check the bump, the upsell and the thank-you page all work.</li>
 </ol>
-<p>Funnel checkouts with two-step order forms, order bumps and one-click upsells are included on every plan, along with automatic email and SMS follow-up for abandoned checkouts. Plans start at $97 a month, with a 7-day trial for $1. On Scale, your builder helps you set up the checkout and follow-up.</p>"""),
+<p>Funnel checkouts with two-step order forms, order bumps and one-click upsells are included on every plan, along with automatic email and SMS follow-up for abandoned checkouts. Plans start at $97 a month. On Scale, your builder helps you set up the checkout and follow-up.</p>"""),
   "Two-step order forms": ("Two-step order forms", """
 <p>A two-step order form asks for contact details first, then payment. Because the contact is saved after step one, you can follow up with anyone who doesn't finish checkout. That follow-up by email and SMS is included from the Growth plan.</p>"""),
  },
@@ -191,7 +191,7 @@ EXPAND = {
 <li>Site submitted to Google Search Console with your sitemap.</li>
 </ul>"""),
   ("What it costs to build a business website", """
-<p>On Oceanic Funnels, unlimited websites and funnels are included on every plan, along with an online store, checkout, payments, lead forms, booking calendars, live chat and email or SMS follow-up. Plans start at $97 a month, and you can try any plan 7 days for $1. Your other costs are the domain and payment-processing fees if you sell online. See <a href="/#pricing">all plans</a>.</p>"""),
+<p>On Oceanic Funnels, unlimited websites and funnels are included on every plan, along with an online store, checkout, payments, lead forms, booking calendars, live chat and email or SMS follow-up. Plans start at $97 a month. Your other costs are the domain and payment-processing fees if you sell online. See <a href="/#pricing">all plans</a>.</p>"""),
   ("Common website mistakes", """
 <ul>
 <li><b>A vague headline</b> that doesn't say what you do in the first few seconds.</li>
@@ -277,7 +277,7 @@ EXPAND = {
 <p>Every order creates a contact, so your buyers are saved in one place. On the Growth plan you can then send follow-up emails and texts, ask for reviews, recover <a href="/guides/order-bumps-and-upsells/">abandoned checkouts</a> and run campaigns. For a single hero product, a product funnel with order bumps and upsells often converts better than a store page.</p>"""),
  },
  faqs_add=[
-  ("Which plan includes the online store?", "The online store, checkout and payments are included on every plan, together with email and SMS marketing to your buyers. Plans start at $97 a month, with a 7-day trial for $1."),
+  ("Which plan includes the online store?", "The online store, checkout and payments are included on every plan, together with email and SMS marketing to your buyers. Plans start at $97 a month."),
   ("Can I sell digital products in my store?", "Yes. You can sell digital products as well as physical ones."),
   ("Do I need my own domain for my store?", "It's strongly recommended. A store on your own domain looks more trustworthy and keeps your brand in one place."),
  ],
@@ -287,7 +287,7 @@ EXPAND = {
 "create-and-sell-an-online-course": dict(
  updated=UPD, read=13,
  plan_box=("Sell it with a funnel, host it on Growth",
-           "Growth ($97/month) covers the sales page, checkout, payments, course hosting, member areas and drip lessons. Try it 7 days for $1.",
+           "Growth ($97/month) covers the sales page, checkout, payments, course hosting, member areas and drip lessons.",
            "/#pricing", "See the plans"),
  insert_after="Plan your course",
  add=[
@@ -328,7 +328,7 @@ EXPAND = {
 <tr><td>4</td><td>Close</td><td>Answer questions, share the deadline, and close the offer when you said you would</td></tr>
 </tbody></table></div>"""),
   ("What you need to sell a course", """
-<p>You need a sales page, a checkout, a place to host lessons, and email to deliver and follow up. In Oceanic Funnels, the sales funnel, checkout, course hosting with modules, lessons and drip schedules, member areas, communities and email follow-up are all included from Growth ($97/month), in one system. You can try it 7 days for $1. See <a href="/#pricing">all plans</a>.</p>"""),
+<p>You need a sales page, a checkout, a place to host lessons, and email to deliver and follow up. In Oceanic Funnels, the sales funnel, checkout, course hosting with modules, lessons and drip schedules, member areas, communities and email follow-up are all included from Growth ($97/month), in one system. See <a href="/#pricing">all plans</a>.</p>"""),
   ("Recording your lessons without a studio", """
 <ul>
 <li><b>Camera:</b> a recent phone on a stand, at eye level, facing a window for soft light.</li>

@@ -24,7 +24,7 @@ B, P = CONFIG["brand"], CONFIG["product"]
 
 FAQ = [
     (f"What is {P}?",
-     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. The full system starts at $97 a month. You can try any plan for 7 days for $1."),
+     f"{P} is an all-in-one sales funnel, CRM and marketing automation system. It replaces separate tools for funnels and websites, email and SMS, scheduling, website chat, reviews, invoicing and courses with one login and one monthly bill. The full system starts at $97 a month."),
     ("What is a sales funnel?",
      "A sales funnel is the step-by-step path a stranger takes to become a paying customer: an ad or search result, a landing page, an offer, a checkout or booked call, and the email and SMS follow-up in between. Each step filters people out, so fewer reach the end, which is why it is drawn as a funnel."),
     ("What are the plans?",

@@ -122,7 +122,6 @@ TERMS = [
 <li>You can cancel any time from your account or by emailing hello@oceanicfunnels.com. Cancellation takes effect at the end of your current billing period, and you keep access until then.</li>
 <li><b>30-day money-back guarantee:</b> if you cancel the Growth or AI Pro plan within 30 days of your first payment for your first subscription, we will refund that first subscription payment. This does not cover usage charges, add-ons, third-party fees or extra funnel builds.</li>
 <li>The 30-day money-back guarantee does not apply to the Scale plan.</li>
-<li><b>$1 trial:</b> where a 7-day trial is offered, you pay $1 at sign-up and get full access to your plan for 7 days. Unless you cancel before the trial ends, your subscription then renews automatically at the plan's monthly price, charged to the same payment method. The $1 trial fee is non-refundable.</li>
 <li>Except as stated above or required by law, payments are non-refundable.</li>
 </ul>"""),
 
